@@ -46,12 +46,6 @@
       "@userStore/*"    : ["src/main/_user/shared/store/*"],
 
       "@workspace/*"        : ["src/main/_user/auth/_workspace/*"],
-      "@workShared/*"     : ["src/main/_user/auth/_workspace/shared/*"],
-      "@app_stock/*"      : ["src/main/_user/auth/_workspace/app-stock/*"],
-      "@app_sale/*"       : ["src/main/_user/auth/_workspace/app-sale/*"],
-      "@app_management/*" : ["src/main/_user/auth/_workspace/app-management/*"],
-      "@app_report/*"     : ["src/main/_user/auth/_workspace/app-report/*"],
-      "@app_users/*"      : ["src/main/_user/auth/_workspace/app-users/*"],
 
       "@style/*"            : ["src/assets/styles/*"]
     },

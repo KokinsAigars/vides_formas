@@ -24,8 +24,8 @@
     import { onMounted} from 'vue';
     import { RouterView } from 'vue-router'
 
-    // Services
-    // import { RefreshService } from '@auth/services/refresh.service';
+    // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
+    import { RefreshService } from '@user/shared/services/refresh.service';
 
     // import { v4 as uuid4 } from 'uuid';
     // console.log("ts : " + uuid4());
@@ -34,7 +34,7 @@
 
     onMounted(() => {
         // on Page Refresh
-        // RefreshService(); //=> ts : 4310cc2b-d5c5-4c9a-bce9-adbe55ae8e64
+        RefreshService(); //=> ts :
     });
 
 </script>

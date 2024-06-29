@@ -13,23 +13,22 @@
 -->
 
 <template>
-  aaaaaa
-<!--  <div class="LP-Layout">-->
-<!--    <HeaderComponent/>-->
-<!--    <BodyComponent/>-->
-<!--    <FooterComponent/>-->
-<!--  </div>	-->
+  <div class="LP-Layout">
+    <HeaderComponent/>
+    <BodyComponent/>
+    <FooterComponent/>
+  </div>
 </template>
 
 <script setup lang="ts">
 
-  // import HeaderComponent  from '@landing_page/components/header/lp-header-componentV2.vue';
-  // import BodyComponent    from '@landing_page/components/body/lp-body-componentV1.vue';
-  // import FooterComponent  from '@landing_page/components/footer/lp-footer-componentV2.vue';
-
-  if (localStorage.getItem('UserStore')) {
-    localStorage.removeItem('UserStore');
-  }
+  import HeaderComponent  from '@landing_page/components/header/lp-header-componentV2.vue';
+  import BodyComponent    from '@landing_page/components/body/lp-body-componentV1.vue';
+  import FooterComponent  from '@landing_page/components/footer/lp-footer-componentV2.vue';
+  //
+  // if (localStorage.getItem('UserStore')) {
+  //   localStorage.removeItem('UserStore');
+  // }
   
 </script>
 

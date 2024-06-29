@@ -11,14 +11,9 @@
 //  *   
 
 import { createApp } from 'vue';
-import { createI18n } from 'vue-i18n'
 import { createPinia } from 'pinia';
 import init_app_vue from './main/initialize_app.vue' //=> ts : 507bc6bc-b152-4adc-a92f-6b96d8987c6f
 import router from './main/main.routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
-
-// const i18n = createI18n({
-        // something vue-i18n options here ...
-// })
 import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d907
 
 const   VIVENTE = createApp(init_app_vue)
@@ -28,20 +23,14 @@ const   VIVENTE = createApp(init_app_vue)
         VIVENTE.mount('.app')
 
 // Styles
-// import '@style/mixin.scss';
-// import '@style/Variables.scss';
-// import '@style/Fonts.scss';
-// import '@style/Typography.scss';
+import '@style/mixin.scss';
+import '@style/Variables.scss';
+import '@style/Fonts.scss';
+import '@style/Typography.scss';
 import '@style/stylesReset.scss';
-// import '@style/stylesRoot_Light.scss';
-// import '@style/stylesRoot_Dark.scss';
-// import '@style/stylesRoot_Custom.scss';
-// import '@style/stylesRoot_Light_ColorA.scss';
-// import '@style/stylesScrollbar.scss';
-// import '@style/landing-page/Typography-LP-V2.scss';
-// import '@style/sign-in/Typography-signIn-V1.scss';
-// import '@style/workspace/T-workspace-V1.scss';
-// import '@style/workspace/styleWorkspace-V1.scss';
-// import '@style/tabs/T-tabs-V1.scss';
-// import '@style/invoice/T-invoice.scss';
-// import '@style/settings/T-settings.scss';
+import '@style/stylesRoot_Light.scss';
+import '@style/stylesRoot_Dark.scss';
+import '@style/stylesRoot_Custom.scss';
+import '@style/stylesRoot_Light_ColorA.scss';
+import '@style/stylesScrollbar.scss';
+import '@style/landing-page/Typography-LP-V2.scss';
