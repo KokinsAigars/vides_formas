@@ -1,0 +1,106 @@
+
+//  *
+//  *   Project Name: "Vides Formas"
+//  *   Organization: VIVENTE
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
+//  *   Contributor(s): Aigars Kokins
+//  *	 
+//  *   GLOBAL Styles - variables (V)
+//  *   
+
+// in index.html <body class"v">
+.v {
+
+    // GLOBAL
+    --V-screen-height: 100vh;
+    --V-screen-width: 100vw;
+    --M-max-width: 1000px;
+    --V-scrollbar-width: 16px;
+
+    // Landing Page//<header>
+    --LP-V-h-height: 62px;
+    --LP-T-h_Title-opacity: 0.8;
+    --LP-T-h_Title-opacity-title: 0.7;
+
+    // Landing Page//<footer>
+    --LP-V-h-footer: 115px;
+    --V-login-f-height: 150px;
+
+    // SIGNIN && LOGIN
+    --V-signin-height: 650px;
+    --V-signin-width: 450px;
+
+    // HEADER
+    --V-h-height: 70px;
+    --V-hs-height: 35px;
+    --V-h-height-icon-title-width: 250px;
+    --V-h-height-icon-title-width-small: 70px;
+    --V-h-SEARCH-width: 500px;
+    --V-h-SEARCH-width-middle: 380px;
+    --V-h-SEARCH-width-small: 300px;
+    
+    // msg-Alert
+    --V-h-mA-height: 35px;
+
+    // SETTINGS
+    --V-h-ui-settings: 310px;
+    --V-h-ui-setting-top: 50px;
+    --V-h-ui-setting-sidebar: 220px;
+    --V-h-ui-set-btn-height: 30px;
+
+    // BODY
+    --V-b-ui-DOC-h-progress-height: 20px;
+
+    // TABS
+    --V-t-height: 35px;
+    --V-t-height-s: 25px;
+    
+    // EXPLORER (sidebar)
+    --V-ui-EXP-b-width: 260px;
+    --V-ui-EXP-search-height: 20px;
+    --V-ui-EXP-File-Tree-t-tr-height: 20px;
+    --V-ui-ex-top-line: 30px;
+
+    // ACTIVITY BAR
+    --V-ui-AB-b-c-width: 52px;
+
+    // FOOTER
+    --V-f-height: 24px;
+    --V-fs-height: 22px;
+
+    //INVOICE
+    --V-section-h-height: 40px;
+    --V-section-h-td-height: 30px;
+    --V-section-h-tr-height: 25px;
+    --V-section-h-tdra-width: 70px;
+    --V-inv-svg-width: 40px;
+    --V-inv-cust-firstColl: 130px;
+    --V-inv-cust-row-height: 28px;
+
+    // VIVENTE STOCK
+    --V-RSp-heder-height: 25px;
+    --V-RSp-tr-height: 24px;
+
+    // VIVENTE STOCK -- Product File Tree
+    --V-rsFTg-height: 45px;
+
+    --V-rs-ft-b-tr-height: 40px;//row hight
+    --V-rs-ft-b-tr-height2: 30px;//row hight
+    --V-rs-ft-b-tr-height3: 50px;//row hight
+    --V-rs-ft-b-tr-padding-top-bottom: 10px;
+
+    --V-rs-ftTa: 40px;
+    --V-rs-ftTb: 20px;
+    --V-rs-ftTc: 250px;
+    --V-rs-ftTd: 100px;
+    
+    --V-rs-ftTe: 50px;
+    --V-rs-ftTf: 50px;
+    --V-rs-ftTg: 50px;
+    --V-rs-ftTh: 50px;
+    --V-rs-ftTJ: 150px;
+    --V-rs-ftTX: 80px;
+    --V-rs-ftTO: 130px;
+
+}

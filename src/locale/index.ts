@@ -1,15 +1,16 @@
 
-//  *   ts : a922fa37-1747-45c5-b595-5d76159a1223
+//  *   ts : aa82b725-d29a-4717-9812-ea128c49d907
 //  *
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
-//  *   Vue 3 + Typescript + SCSS + Vite
-//  *   Built on 2024.06.28
-//  *   Contributor(s): Aigars Kokins 
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
+//  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Internationalization (i18n)
 //  *
 
+// https://vue-i18n.intlify.dev/guide/installation.html
 import { createI18n } from 'vue-i18n'
 
 const messages = {

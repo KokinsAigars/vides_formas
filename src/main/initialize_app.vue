@@ -1,18 +1,17 @@
-
-<!-- 
-//  *   ts : ecf65dc1-96b2-4821-8148-13c89b160df4
+<!--
+//  *   ts : 507bc6bc-b152-4adc-a92f-6b96d8987c6f
 //  *
-//  *   Project Name: Vides Formas
+//  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
-//  *   Vue 3 + Typescript + SCSS + Vite
-//  *   Built on 2024.06.28
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
 //  *   
 //  *   <RouterView/>
 //  * 
-//  *   [router-view-component.vue]
+//  *   [Initialize App Vue]
 //  *
-//  *   description: This component is render "mounted" first
+//  *   description: This component is render, "mounted", first
 //  *
 -->
 
@@ -34,9 +33,6 @@
     // console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
 
     onMounted(() => {
-
-      console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
-
         // on Page Refresh
         // RefreshService(); //=> ts : 4310cc2b-d5c5-4c9a-bce9-adbe55ae8e64
     });

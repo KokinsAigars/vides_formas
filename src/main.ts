@@ -1,22 +1,27 @@
 
 //  *   ts : 9ce03af6-fd0e-4c23-9be7-022c8c0c964e
 //  *
-//  *   Project Name: Vides Formas
+//  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
-//  *   Vue 3 + Typescript + SCSS + Vite
-//  *   Built on 2024.06.28
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
 //  *	 
 //  *   [main.ts]
 //  *   
 
 import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n'
 import { createPinia } from 'pinia';
-import RouterView from './main/router-view-component.vue' //=> ts : 94c7e038-2cfe-4283-9165-644f0ed43ed9
-import router from './main/main.routes' //=> ts : 9c87f043-90a2-4d7e-a1af-a4936ee057fc
-import i18n from '@/locale/index'; //=> ts : f7114ab1-95e0-42eb-9d09-9a58add7370c
+import init_app_vue from './main/initialize_app.vue' //=> ts : 507bc6bc-b152-4adc-a92f-6b96d8987c6f
+import router from './main/main.routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
 
-const   VIVENTE = createApp(RouterView)
+// const i18n = createI18n({
+        // something vue-i18n options here ...
+// })
+import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d907
+
+const   VIVENTE = createApp(init_app_vue)
         VIVENTE.use(i18n)
         VIVENTE.use(router)
         VIVENTE.use(createPinia())
@@ -27,7 +32,7 @@ const   VIVENTE = createApp(RouterView)
 // import '@style/Variables.scss';
 // import '@style/Fonts.scss';
 // import '@style/Typography.scss';
-// import '@style/stylesReset.scss';
+import '@style/stylesReset.scss';
 // import '@style/stylesRoot_Light.scss';
 // import '@style/stylesRoot_Dark.scss';
 // import '@style/stylesRoot_Custom.scss';

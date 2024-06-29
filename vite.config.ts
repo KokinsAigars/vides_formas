@@ -1,10 +1,10 @@
 
 //  *   ts : 09533637-797a-43ab-98a7-90b6a3447ae9
 //  *
-//  *   Project Name: Vides Formas
+//  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
-//  *   Vue 3 + Typescript + SCSS + Vite
-//  *   Built on 2024.06.28
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   vite.config.ts
@@ -13,20 +13,21 @@
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+// import vueJsx from '@vitejs/plugin-vue-jsx'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    vueJsx(),
+    // vueJsx(),
   ],
 
   // FOLDER NAME IN TOMCAT SERVER
   base: '/vue',
 
   resolve: {
+
     //  Vite compiler path alias
     // also in && => tsconfig.json "paths" { ... }
     alias: {

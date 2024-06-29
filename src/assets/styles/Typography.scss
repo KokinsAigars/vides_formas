@@ -1,9 +1,10 @@
 
+//  *
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
-//  *   Vue 3 + Typescript + SCSS + Vite
-//  *   Built on 2024.06.28
-//  *   Contributor(s): Aigars Kokins 
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
+//  *   Contributor(s): Aigars Kokins
 //  *	 
 //  *   GLOBAL Typography [stylesTypography.scss]
 //  *   
@@ -16,7 +17,7 @@
     letter-spacing: 0.1em; 
     font-weight: 500; 
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
     color: white;
     padding-left: 70px;
 }

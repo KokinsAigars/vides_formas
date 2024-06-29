@@ -1,10 +1,11 @@
 <!-- 
-//  *   ts : e2823e62-7d2c-4c9a-b1e0-f3959eb84e00
+//  *   ts : 909c371e-652b-45a3-ac7d-ec3a65c2ff8c
 //  *
-//  *   Project Name: VIVENTE Front-end
-//  *   Vue 3 + Typescript + SCSS + Vite
-//  *   Built on 2024.02.20
-//  *   Contributor(s): Aigars Kokins 
+//  *   Project Name: "Vides Formas"
+//  *   Organization: VIVENTE
+//  *   Vue + Typescript + SCSS + Vite
+//  *   Built on 2024.06.29
+//  *   Contributor(s): Aigars Kokins
 //  *	 
 //  *   Landing page  [.ts]
 //  *   abbreviation: LP
