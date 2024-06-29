@@ -12,10 +12,6 @@
 //  *
 
 {
-
-
-  "exclude": ["src/**/__tests__/*"],
-
   "compilerOptions": {
     "plugins": [{ "name": "vue" }],
     "composite": true,
@@ -36,7 +32,6 @@
     // Typescript path alias
     // also in && => vite.config.ts "resolve / alias" { ... }
     "paths": {
-
 
       "@/*"                 : ["src/*"        ],
       "@assets/*"           : ["src/assets/*" ],
@@ -87,5 +82,6 @@
       "nightwatch.conf.*",
       "playwright.config.*"
     ],
+    "exclude": ["src/**/__tests__/*"]
   }
 }
