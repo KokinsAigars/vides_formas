@@ -5,13 +5,23 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   GLOBAL Fonts [stylesFonts.scss]
-//  *   
+//  *
 //  *
 
-// Cormorant_SC
-//@font-face {
-//    font-family: 'CormorantSCMedium';
-//    src: url('../Fonts/Cormorant_SC/CormorantSC-Medium.ttf');
-//}
+
+
+// Public Sans
+@font-face {
+  font-family: 'PublicSansRegular';
+  src: url('@assets/Fonts/Public_Sans/PublicSans-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PublicSansThin';
+  src: url('@assets/Fonts/Public_Sans/PublicSans-Thin.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}

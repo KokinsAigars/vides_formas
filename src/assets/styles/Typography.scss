@@ -5,28 +5,28 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   GLOBAL Typography [stylesTypography.scss]
-//  *   
+//  *
 
 .T-test-color{
     // font-family: 'DMSansExtraBold', 'DMSansExtraBoldItalic', 'SegoeUIBold', 'InterRegular', 'Open Sans', 'Segoe UI', sans-serif;
     font-family: 'CormorantSCMedium', 'CormorantSCBold', sans-serif;
     font-size: 2.05rem;
     line-height: 2.2em;
-    letter-spacing: 0.1em; 
-    font-weight: 500; 
+    letter-spacing: 0.1em;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
     color: white;
     padding-left: 70px;
 }
 
-.T-default{
-    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+.T-title-formas, .T-GPS-formas{
+    font-family: 'PublicSansThin', 'RobotoRegular', 'Open Sans', sans-serif;
     font-size: 1rem;
     line-height: 1.2rem;
-    letter-spacing: normal; 
+    letter-spacing: normal;
     font-weight: 400;
     color: var(--C-T-h-SearchInput);
     opacity: 0.7;}
