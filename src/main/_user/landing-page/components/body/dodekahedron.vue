@@ -16,8 +16,8 @@
 
   <div class="div_cls_svg_form">
 
-    <div class="title-formas T-title-formas">Dodekahedron</div>
-    <div class="GPS-formas T-GPS-formas">56°32'43.5"N 27°53'08.1"E</div>
+<!--    <div class="title-formas T-title-formas">Dodekahedron</div>-->
+<!--    <div class="GPS-formas T-GPS-formas">56°32'43.5"N 27°53'08.1"E</div>-->
 
     <svg class="cls_svg_dodekahedron"
          x="0px" y="0px" viewBox="0 0 480 480"
@@ -63,3 +63,5 @@
 
 <script setup lang="ts">
 </script>
+
+<style lang="scss" src="./formaStyle.scss"/>

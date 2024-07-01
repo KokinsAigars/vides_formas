@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.01
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - header [.ts]
@@ -37,91 +37,29 @@
                   </div>
       </div>
 
-<!--            <div class="LPh-store"> -->
 
-<!--                <div class="LPh-Translate">-->
-<!--                        -->
-<!--                    <div class="LPh-Light-Dark-hover"-->
-<!--                        @click.stop="onLang_menu()">-->
+        <!-- Menu -->
+        <div class="hb-c">
+        <div
+            v-if="MENU_option_display"
+            class="hb-c-div">
 
-<!--                        <svg class="LPh-icon-svg-hover" aria-hidden="true" focusable="false" role="img"-->
-<!--                            width="48" height="48" viewBox="0 0 48 48" style="user-select:none; overflow:hidden;">-->
-<!--                            <circle class="LPh-iA-hover" cx="24" cy="24" r="24"/>-->
-<!--                        </svg>-->
+          <select
+              class="hb-c-select T-hb-c-select"
+              id="hb-c-select"
+              v-model="MENU_selected"
+              @click="MENU_fn_ChangeApp(MENU_selected)">
+            <option
+                v-for="x in MENU_option" :key="x"
+                class="hb-c-select-o T-hb-c-select"
+                :value="x"
+            >
+              {{ x }}
+            </option>
+          </select>
 
-<!--                        <button class="LPh-icon-btn-B"-->
-<!--                            role="button" type="button" aria-hidden="true">-->
-<!--                            <svg class="LPh-icon-svg-B" aria-hidden="true" focusable="false" role="img"-->
-<!--                                width="48" height="48" viewBox="0 0 48 48" style="user-select:none; overflow:hidden;">-->
-<!--                                <path class="LPh-iA" d="M23.8,44l9.1-24h4.2l9.1,24H42l-2.1-6.1h-9.7L28,44H23.8z M8,38l-2.8-2.8l10.1-10.1c-1.2-1.2-2.2-2.5-3.2-4s-1.8-3.2-2.6-5.1h4.2c0.7,1.3,1.3,2.4,2,3.4s1.5,1.9,2.4,2.9c1.1-1.1,2.2-2.6,3.4-4.6c1.2-2,2.1-3.9,2.7-5.7H2V8h14V4h4v4h14v4h-5.8c-0.7,2.4-1.8,4.9-3.1,7.4c-1.4,2.5-2.8,4.5-4.2,5.8l4.8,4.9l-1.5,4.1l-6.1-6.3L8,38z M31.4,34.4h7.2L35,24.2L31.4,34.4z"/>-->
-<!--                            </svg>-->
-<!--                        </button>-->
-
-<!--                    </div>-->
-
-<!--                    <div v-if="langMenu"-->
-<!--                        ref="ref_langMenuContainer"-->
-<!--                        class="LPh-themeMenu-container">-->
-
-<!--                        <button v-for="x in uiLang" :key="x.id"-->
-<!--                            class="LPh-menu-buttn T-LPh-menu-buttn" role="button" type="button" aria-hidden="true"-->
-<!--                            @click="onLangMenuBttonClick(x.value)">-->
-<!--                            {{ x.name }}-->
-<!--                        </button>-->
-
-<!--                    </div>-->
-
-<!--                </div>-->
-
-<!--                <div class="LPh-Light-Dark">-->
-
-<!--                    <div class="LPh-Light-Dark-hover"-->
-<!--                        @click.stop="onTheme_menu()">-->
-
-<!--                        <svg class="LPh-icon-svg-hover" aria-hidden="true" focusable="false" role="img"-->
-<!--                            width="48" height="48" viewBox="0 0 48 48" style="user-select:none; overflow:hidden;">-->
-<!--                            <circle class="LPh-iA-hover" cx="24" cy="24" r="24"/>-->
-<!--                        </svg>-->
-
-<!--                        <button class="LPh-icon-btn-B-svg"-->
-<!--                            role="button" type="button" aria-hidden="true">-->
-<!--                            <svg class="LPh-icon-svg-B" aria-hidden="true" focusable="false" role="img"-->
-<!--                                width="48" height="48" viewBox="0 0 48 48" style="user-select:none; overflow:hidden;">-->
-<!--                                <g v-if="ifThemeDark !== 'ThemeDark'">-->
-<!--                                    <path class="LPh-iA" d="M24,30c1.7,0,3.1-0.6,4.2-1.8c1.2-1.2,1.8-2.6,1.8-4.2s-0.6-3.1-1.8-4.2S25.7,18,24,18s-3.1,0.6-4.2,1.8-->
-<!--                                        C18.6,20.9,18,22.3,18,24s0.6,3.1,1.8,4.2C20.9,29.4,22.3,30,24,30z M24,34c-2.8,0-5.1-1-7.1-2.9C15,29.1,14,26.8,14,24-->
-<!--                                        s1-5.1,2.9-7.1S21.2,14,24,14s5.1,1,7.1,2.9S34,21.2,34,24s-1,5.1-2.9,7.1C29.1,33,26.8,34,24,34z M10,26H2v-4h8V26z M46,26h-8v-4-->
-<!--                                        h8V26z M22,10V2h4v8H22z M22,46v-8h4v8H22z M12.8,15.5l-5.1-4.8l2.9-3l4.8,5L12.8,15.5z M37.4,40.3l-4.9-5l2.7-2.8l5,4.8L37.4,40.3-->
-<!--                                        z M32.5,12.8l4.9-5l2.9,2.8l-5,4.8L32.5,12.8z M7.7,37.4l5-4.9l2.8,2.7l-4.8,5L7.7,37.4z"/>-->
-<!--                                </g>-->
-<!--                                <g  v-if="ifThemeDark === 'ThemeDark'">-->
-<!--                                    <path class="LPh-iA" d="M28,44c-2.7,0-5.3-0.5-7.8-1.6s-4.6-2.5-6.4-4.3s-3.2-3.9-4.3-6.4S8,26.7,8,24c0-2.8,0.5-5.4,1.6-7.8-->
-<!--                                        c1.1-2.4,2.5-4.5,4.3-6.4s3.9-3.2,6.4-4.3S25.3,4,28,4c1.8,0,3.6,0.2,5.2,0.7c1.7,0.5,3.3,1.1,4.8,2c-3,1.8-5.5,4.2-7.3,7.2-->
-<!--                                        c-1.8,3-2.7,6.4-2.7,10.1c0,3.7,0.9,7.1,2.7,10.1c1.8,3,4.2,5.4,7.3,7.2c-1.5,0.9-3,1.5-4.8,2C31.6,43.8,29.8,44,28,44z M28,40h1.1-->
-<!--                                        c0.3,0,0.6,0,0.9-0.1c-1.9-2.2-3.4-4.7-4.4-7.4C24.5,29.8,24,27,24,24s0.5-5.8,1.6-8.5c1-2.7,2.5-5.2,4.4-7.4C29.7,8,29.4,8,29.1,8-->
-<!--                                        H28c-4.4,0-8.2,1.6-11.3,4.7S12,19.6,12,24s1.6,8.2,4.7,11.3C19.8,38.4,23.6,40,28,40z"/>-->
-<!--                                </g>-->
-<!--                            </svg>-->
-<!--                        </button>-->
-
-<!--                    </div>-->
-
-<!--                    <div v-if="themeMenu"-->
-<!--                        ref="ref_themeMenuContainer"-->
-<!--                        class="LPh-themeMenu-container">-->
-
-<!--                        <button v-for="y in uiTheme" :key="y.id"-->
-<!--                            class="LPh-menu-buttn T-LPh-menu-buttn" role="button" type="button" aria-hidden="true"-->
-<!--                            @click="onThemeMenuChange(y.value)">-->
-<!--                            {{ y.name }}-->
-<!--                        </button>-->
-
-<!--                    </div>-->
-<!--                    -->
-<!--                </div>-->
-
-<!--            </div>-->
-
+        </div>
+      </div>
         </div>
     </header>
 
@@ -129,14 +67,49 @@
 
 <script setup lang="ts">
 
-    import { useRouter } from 'vue-router';
-    import { onMounted, onUnmounted, ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import {onMounted, onUnmounted, ref, computed, Ref} from 'vue';
 
-    // localization // => ts : aa82b725-d29a-4717-9812-ea128c49d907
-    import i18n from '@locale/index'
+// localization // => ts : aa82b725-d29a-4717-9812-ea128c49d907
+import i18n from '@locale/index'
 
-    // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
-    import { useRootStore } from '@rootStore/index.html-store';
+// RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
+import { useRootStore } from '@rootStore/index.html-store';
+
+
+// MENU
+const MENU_option: Ref<string[]> = ref([]);
+const MENU_option_display = ref(false);
+const MENU_selected = ref('');
+
+if(MENU_option.value.length > 0){
+  MENU_option_display.value = true;
+  if (useRootStore.$state.formas[0].title == 'Hexahedron' && useRootStore.$state.apps[0].value !== '')
+  {MENU_selected.value = String(useRootStore.$state.formas[0].value);}
+  else MENU_selected.value = MENU_option.value[0];
+}
+
+const MENU_fn_ChangeApp = (value: string) => {
+
+  if (useRootStore.$state.formas[0].value !== value){
+
+    useRootStore.$state.formas[0].value = value;
+    MENU_selected.value = value;
+
+    try {
+      router.push({ name: value });
+    } catch (error) {
+      // console.error(error);
+      // console.error('Failed to navigate to ', value, ': ', ID);
+      // if  (value === 'Workspace') {ResetService(); router.push({ name: 'lp' });}
+      // else router.push({ name: 'Workspace' });
+    }
+  }
+}
+
+
+
+
 
     const RootStore = useRootStore();
     const router = useRouter();
@@ -223,14 +196,81 @@
     });
 
 
-    // SIGN IN || LOG IN
-    const onLogin = () => {router.push('/login');}
-
 </script>
 
 <style scoped lang="scss">
 
     @import '@style/mixin.scss';
+
+
+    .hb-c{
+      margin-left: auto;
+      display: flex;
+      justify-content: right;
+      height: 48px; min-height: 48px; max-height: 48px;
+      margin-top: 9px;
+      margin-right: 15px;
+      background-color: transparent;
+      @include for-size(720px) {
+        display:none;
+        transition: 1s;
+      }}
+    .hb-c-div{
+      display: flex;
+      text-decoration: none;
+      background-color: transparent;
+      border: 1px solid var(--C-T-app-h-search-line);
+      //background-color: transparent;
+      border-radius: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      overflow: hidden !important;
+      cursor: pointer;}
+    .hb-c-select {
+      background-color: transparent;
+      border: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 3px;}
+    .hb-c-select-o{
+      background-color: var(--C-app-h-bg);
+    }
+    .hb-c-select:focus, .hb-c-select-o:focus {
+      outline: none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // -------- auxiliary lines
 // .AuxiliaryLine0{@include AuxL_Horizontal(0px);}

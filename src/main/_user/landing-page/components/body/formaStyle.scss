@@ -1,7 +1,10 @@
 
-$b-height: calc(var(--V-screen-height) - var(--V-h-height));
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
 
-// BODY CONTAINER
+$b-height: calc(var(--V-screen-height) - var(--V-h-height));
 .LPb{
   overflow:visible;
   left: 0;
@@ -21,7 +24,7 @@ $b-height: calc(var(--V-screen-height) - var(--V-h-height));
   height:25px;
 }
 
-$svg_form_size: 750px;
+$svg_form_size: 450px;
 .cls_svg_hexahedron, .cls_svg_tetrahedron, .cls_svg_octahedron, .cls_svg_dodekahedron, .cls_svg_icosahedron{
   width: $svg_form_size;
   height: $svg_form_size;

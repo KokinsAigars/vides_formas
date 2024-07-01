@@ -1,4 +1,4 @@
-<!-- 
+<!--
 //  *   ts : 909c371e-652b-45a3-ac7d-ec3a65c2ff8c
 //  *
 //  *   Project Name: "Vides Formas"
@@ -6,7 +6,7 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   Landing page  [.ts]
 //  *   abbreviation: LP
 //  *
@@ -15,7 +15,9 @@
 <template>
   <div class="LP-Layout">
     <HeaderComponent/>
-    <BodyComponent/>
+<!--    <BodyComponent/>-->
+
+
     <FooterComponent/>
   </div>
 </template>
@@ -29,7 +31,7 @@
   // if (localStorage.getItem('UserStore')) {
   //   localStorage.removeItem('UserStore');
   // }
-  
+
 </script>
 
 

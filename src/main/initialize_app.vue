@@ -4,11 +4,11 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.01
 //  *   Contributor(s): Aigars Kokins
-//  *   
+//  *
 //  *   <RouterView/>
-//  * 
+//  *
 //  *   [Initialize App Vue]
 //  *
 //  *   description: This component is render, "mounted", first
@@ -16,7 +16,18 @@
 -->
 
 <template>
-    <RouterView/>
+  <div class="LP-Layout">
+
+    <HeaderComponent/>
+
+    <div class="LPb">
+      <RouterView/>
+    </div>
+
+    <FooterComponent/>
+
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -27,9 +38,13 @@
     // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
     import { RefreshService } from '@user/shared/services/refresh.service';
 
+    import HeaderComponent  from '@landing_page/components/header/lp-header-componentV2.vue';
+    import FooterComponent  from '@landing_page/components/footer/lp-footer-componentV2.vue';
+
+
     // import { v4 as uuid4 } from 'uuid';
     // console.log("ts : " + uuid4());
-    
+
     // console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
 
     onMounted(() => {
@@ -38,3 +53,24 @@
     });
 
 </script>
+
+
+
+<style scoped lang="scss">
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+
+$b-height: calc(var(--V-screen-height) - var(--V-h-height));
+.LPb{
+  overflow:visible;
+  left: 0;
+  top: var(--V-h-height);
+  min-height: $b-height;
+  width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
+  background-color: var(--C-background-color);
+  border: 1px solid transparent;
+}
+</style>

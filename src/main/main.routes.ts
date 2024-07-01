@@ -1,14 +1,14 @@
- 
+
 //  *   ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
 //  *
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.01
 //  *   Contributor(s): Aigars Kokins
-//  *   
+//  *
 //  *   /ROUTES  [main.routes.ts]
-//  * 
+//  *
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -17,12 +17,35 @@ const router = createRouter ({
   history: createWebHistory(import.meta.env.BASE_URL),
 
   routes: [
+
+    { path: '/', redirect: '/h' },
+
     {
-      // Landing_Page => ts : 909c371e-652b-45a3-ac7d-ec3a65c2ff8c
-      path: '/',
-      name: "lp",
-      component: () => import('@user/landing-page/landing-page-component.vue'),
+      path: '/h',
+      name: "Hexahedron",
+      component: () => import('@bodyComp/hexahedron.vue'),
     },
+    {
+      path: '/t',
+      name: "Tetrahedron",
+      component: () => import('@bodyComp/tetrahedron.vue'),
+    },
+    {
+      path: '/o',
+      name: "Octahedron",
+      component: () => import('@bodyComp/octahedron.vue'),
+    },
+    {
+      path: '/d',
+      name: "Dodekahedron",
+      component: () => import('@bodyComp/dodekahedron.vue'),
+    },
+    {
+      path: '/i',
+      name: "Icosahedron",
+      component: () => import('@bodyComp/icosahedron.vue'),
+    },
+
     {
       //  Route_NotFound => ts : d25f0af1-2337-43d1-98b7-f339fc7bca3a
       path: '/:catchAll(.*)*',
