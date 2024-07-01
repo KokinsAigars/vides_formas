@@ -1,0 +1,36 @@
+
+$b-height: calc(var(--V-screen-height) - var(--V-h-height));
+
+// BODY CONTAINER
+.LPb{
+  overflow:visible;
+  left: 0;
+  top: var(--V-h-height);
+  min-height: $b-height;
+  width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
+  background-color: var(--C-background-color);
+  border: 1px solid transparent;
+}
+
+.div_cls_svg_form{
+  width: 100%;
+}
+
+.title-formas{
+  width: 100%;
+  height:25px;
+}
+
+$svg_form_size: 750px;
+.cls_svg_hexahedron, .cls_svg_tetrahedron, .cls_svg_octahedron, .cls_svg_dodekahedron, .cls_svg_icosahedron{
+  width: $svg_form_size;
+  height: $svg_form_size;
+}
+
+.st_svg_hex{ fill:none;
+  stroke:#5B5B5B;
+  stroke-width:0.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}

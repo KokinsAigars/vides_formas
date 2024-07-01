@@ -43,6 +43,8 @@ export default defineConfig({
       '@user'           : '/src/main/_user',
       '@auth'           : '/src/main/_user/auth',
       '@landing_page'   : '/src/main/_user/landing-page',
+      '@bodyComp'       : '/src/main/_user/landing-page/components/body/comp',
+
       '@user_shared'    : '/src/main/_user/shared',
       "@userStore"      : '/src/main/_user/shared/store',
 

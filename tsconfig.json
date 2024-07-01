@@ -33,21 +33,23 @@
     // also in && => vite.config.ts "resolve / alias" { ... }
     "paths": {
 
-      "@/*"                 : ["src/*"        ],
-      "@assets/*"           : ["src/assets/*" ],
-      "@locale/*"           : ["src/locale/*" ],
-      "@main/*"             : ["src/main/*"   ],
-      "@rootStore/*"        : ["src/store/*"  ],
+      "@/*"             : ["src/*"        ],
+      "@assets/*"       : ["src/assets/*" ],
+      "@locale/*"       : ["src/locale/*" ],
+      "@main/*"         : ["src/main/*"   ],
+      "@rootStore/*"    : ["src/store/*"  ],
 
-      "@user/*"             : ["src/main/_user/*"],
-      "@auth/*"           : ["src/main/_user/auth/*"],
-      "@landing_page/*"   : ["src/main/_user/landing-page/*"],
-      "@user_shared/*"    : ["src/main/_user/shared/*"],
+      "@user/*"         : ["src/main/_user/*"],
+      "@auth/*"         : ["src/main/_user/auth/*"],
+      "@landing_page/*" : ["src/main/_user/landing-page/*"],
+      "@bodyComp/*"     : ["src/main/_user/landing-page/components/body/comp/*"],
+
+      "@user_shared/*"  : ["src/main/_user/shared/*"],
       "@userStore/*"    : ["src/main/_user/shared/store/*"],
 
-      "@workspace/*"        : ["src/main/_user/auth/_workspace/*"],
+      "@workspace/*"    : ["src/main/_user/auth/_workspace/*"],
 
-      "@style/*"            : ["src/assets/styles/*"]
+      "@style/*"        : ["src/assets/styles/*"]
     },
 
     "files": [],
