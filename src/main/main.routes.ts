@@ -46,14 +46,7 @@ const router = createRouter ({
       component: () => import('@components/body/icosahedron.vue'),
     },
 
-    {
-      //  Route_NotFound => ts : d25f0af1-2337-43d1-98b7-f339fc7bca3a
-      path: '/:catchAll(.*)*',
-      // path: '/:pathMatch(.*)*',
-      name: 'NotFound',
-      // component: () => import('@components/404-not-found/404-componentV1.vue')
-      redirect: '/h'
-    },
+    { path: '/:catchAll(.*)*', name: 'NotFound', redirect: '/h' },
   ],
 
 })

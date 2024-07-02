@@ -48,8 +48,8 @@
     // console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
 
     onMounted(() => {
-        // on Page Refresh
-        RefreshService(); //=> ts :
+
+        RefreshService(); // on Page Refresh
     });
 
 </script>

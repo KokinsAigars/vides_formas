@@ -1,3 +1,4 @@
+@import '@style/mixin.scss';
 
 html, body {
   overflow-x: hidden;
@@ -10,11 +11,13 @@ html, body {
   width: 100%;
   height: auto;}
 
+$imageContainer: 45%;
 .image-container{
   display: flex;
   justify-content: left;
   align-items: center;
   padding-left: 40px;
+  width: $imageContainer; min-width: $imageContainer; max-width: $imageContainer;
 }
 
 .text-container{
@@ -22,9 +25,55 @@ html, body {
   flex-direction: column;
   justify-content: left;
   padding-left: 50px;
+  padding-right: 50px;
+  margin-right: 16px;
   padding-top: 30px;
-  width: 100%;
+  //width: 100%;
+  @include for-size(860px) {
+    display:none;
+    transition: 1s;
+  }}
+.text-space{
+  text-align: justify;
+  text-justify: inter-word;
 }
+
+
+.switch-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  height: 25px;
+  margin-bottom: 25px;
+  //border: 1px dashed green;
+}
+.switch-items{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.si-b{
+  margin-left: 20px;
+}
+.btn_swi{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0;
+  overflow: hidden !important;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+}
+.btn_swi:hover {
+  border-bottom: 1px solid darkslategray;
+}
+
+
 
 .title-formas{
   width: 100%;
