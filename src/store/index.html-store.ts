@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL STORE (pinia)

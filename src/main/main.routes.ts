@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.01
+//  *   Built on 2024.07.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
@@ -23,27 +23,27 @@ const router = createRouter ({
     {
       path: '/h',
       name: "Hexahedron",
-      component: () => import('@bodyComp/hexahedron.vue'),
+      component: () => import('@components/body/hexahedron.vue'),
     },
     {
       path: '/t',
       name: "Tetrahedron",
-      component: () => import('@bodyComp/tetrahedron.vue'),
+      component: () => import('@components/body/tetrahedron.vue'),
     },
     {
       path: '/o',
       name: "Octahedron",
-      component: () => import('@bodyComp/octahedron.vue'),
+      component: () => import('@components/body/octahedron.vue'),
     },
     {
       path: '/d',
       name: "Dodekahedron",
-      component: () => import('@bodyComp/dodekahedron.vue'),
+      component: () => import('@components/body/dodekahedron.vue'),
     },
     {
       path: '/i',
       name: "Icosahedron",
-      component: () => import('@bodyComp/icosahedron.vue'),
+      component: () => import('@components/body/icosahedron.vue'),
     },
 
     {
@@ -51,8 +51,8 @@ const router = createRouter ({
       path: '/:catchAll(.*)*',
       // path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import('@user/shared/components/404-not-found/404-componentV1.vue')
-
+      // component: () => import('@components/404-not-found/404-componentV1.vue')
+      redirect: '/h'
     },
   ],
 

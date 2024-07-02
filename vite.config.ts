@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   vite.config.ts
@@ -40,15 +40,8 @@ export default defineConfig({
       '@main'           : '/src/main',
       '@rootStore'      : '/src/store',
 
-      '@user'           : '/src/main/_user',
-      '@auth'           : '/src/main/_user/auth',
-      '@landing_page'   : '/src/main/_user/landing-page',
-      '@bodyComp'       : '/src/main/_user/landing-page/components/body',
-
-      '@user_shared'    : '/src/main/_user/shared',
-      "@userStore"      : '/src/main/_user/shared/store',
-
-      '@workspace'      : '/src/main/_user/auth/_workspace',
+      '@components'     : '/src/main/components',
+      '@services'       : '/src/main/services',
 
       '@style'          : '/src/assets/styles/',
 

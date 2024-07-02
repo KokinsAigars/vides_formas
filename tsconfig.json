@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   tsconfig.json
@@ -33,23 +33,16 @@
     // also in && => vite.config.ts "resolve / alias" { ... }
     "paths": {
 
-      "@/*"             : ["src/*"        ],
-      "@assets/*"       : ["src/assets/*" ],
-      "@locale/*"       : ["src/locale/*" ],
-      "@main/*"         : ["src/main/*"   ],
-      "@rootStore/*"    : ["src/store/*"  ],
+      "@/*"           : ["src/*"        ],
+      "@assets/*"     : ["src/assets/*" ],
+      "@locale/*"     : ["src/locale/*" ],
+      "@main/*"       : ["src/main/*"   ],
+      "@rootStore/*"  : ["src/store/*"  ],
 
-      "@user/*"         : ["src/main/_user/*"],
-      "@auth/*"         : ["src/main/_user/auth/*"],
-      "@landing_page/*" : ["src/main/_user/landing-page/*"],
-      "@bodyComp/*"     : ["src/main/_user/landing-page/components/body/*"],
+      "@components/*" : ["src/main/components/*"],
+      "@services/*"   : ["src/main/services/*"],
 
-      "@user_shared/*"  : ["src/main/_user/shared/*"],
-      "@userStore/*"    : ["src/main/_user/shared/store/*"],
-
-      "@workspace/*"    : ["src/main/_user/auth/_workspace/*"],
-
-      "@style/*"        : ["src/assets/styles/*"]
+      "@style/*"      : ["src/assets/styles/*"]
     },
 
     "files": [],

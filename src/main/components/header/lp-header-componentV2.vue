@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.01
+//  *   Built on 2024.07.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - header [.ts]
@@ -39,27 +39,29 @@
 
 
         <!-- Menu -->
-        <div class="hb-c">
-        <div
-            v-if="MENU_option_display"
-            class="hb-c-div">
+<!--        <div class="hb-c">-->
+<!--          <div-->
+<!--              v-if="MENU_option_display"-->
+<!--              class="hb-c-div">-->
+<!--  -->
+<!--            <select-->
+<!--                class="hb-c-select T-hb-c-select"-->
+<!--                id="hb-c-select"-->
+<!--                v-model="MENU_selected"-->
+<!--                @click="MENU_fn_ChangeApp(MENU_selected)">-->
+<!--              <option-->
+<!--                  v-for="x in MENU_option" :key="x"-->
+<!--                  class="hb-c-select-o T-hb-c-select"-->
+<!--                  :value="x"-->
+<!--              >-->
+<!--                {{ x }}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--  -->
+<!--          </div>-->
+<!--      </div>-->
 
-          <select
-              class="hb-c-select T-hb-c-select"
-              id="hb-c-select"
-              v-model="MENU_selected"
-              @click="MENU_fn_ChangeApp(MENU_selected)">
-            <option
-                v-for="x in MENU_option" :key="x"
-                class="hb-c-select-o T-hb-c-select"
-                :value="x"
-            >
-              {{ x }}
-            </option>
-          </select>
 
-        </div>
-      </div>
         </div>
     </header>
 
@@ -82,34 +84,34 @@ const MENU_option: Ref<string[]> = ref([]);
 const MENU_option_display = ref(false);
 const MENU_selected = ref('');
 
-if(MENU_option.value.length > 0){
-  MENU_option_display.value = true;
-  if (useRootStore.$state.formas[0].title == 'Hexahedron' && useRootStore.$state.apps[0].value !== '')
-  {MENU_selected.value = String(useRootStore.$state.formas[0].value);}
-  else MENU_selected.value = MENU_option.value[0];
-}
-
-const MENU_fn_ChangeApp = (value: string) => {
-
-  if (useRootStore.$state.formas[0].value !== value){
-
-    useRootStore.$state.formas[0].value = value;
-    MENU_selected.value = value;
-
-    try {
-      router.push({ name: value });
-    } catch (error) {
-      // console.error(error);
-      // console.error('Failed to navigate to ', value, ': ', ID);
-      // if  (value === 'Workspace') {ResetService(); router.push({ name: 'lp' });}
-      // else router.push({ name: 'Workspace' });
-    }
-  }
-}
-
-
-
-
+// if(MENU_option.value.length > 0){
+//   MENU_option_display.value = true;
+//   if (useRootStore.$state.formas[0].title == 'Hexahedron' && useRootStore.$state.apps[0].value !== '')
+//   {MENU_selected.value = String(useRootStore.$state.formas[0].value);}
+//   else MENU_selected.value = MENU_option.value[0];
+// }
+//
+// const MENU_fn_ChangeApp = (value: string) => {
+//
+//   if (useRootStore.$state.formas[0].value !== value){
+//
+//     useRootStore.$state.formas[0].value = value;
+//     MENU_selected.value = value;
+//
+//     try {
+//       router.push({ name: value });
+//     } catch (error) {
+//       // console.error(error);
+//       // console.error('Failed to navigate to ', value, ': ', ID);
+//       // if  (value === 'Workspace') {ResetService(); router.push({ name: 'lp' });}
+//       // else router.push({ name: 'Workspace' });
+//     }
+//   }
+// }
+//
+//
+//
+//
 
     const RootStore = useRootStore();
     const router = useRouter();

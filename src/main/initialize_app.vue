@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.01
+//  *   Built on 2024.07.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   <RouterView/>
@@ -36,10 +36,10 @@
     import { RouterView } from 'vue-router'
 
     // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
-    import { RefreshService } from '@user/shared/services/refresh.service';
+    import { RefreshService } from '@services/refresh.service';
 
-    import HeaderComponent  from '@landing_page/components/header/lp-header-componentV2.vue';
-    import FooterComponent  from '@landing_page/components/footer/lp-footer-componentV2.vue';
+    import HeaderComponent  from '@components/header/lp-header-componentV2.vue';
+    import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
 
     // import { v4 as uuid4 } from 'uuid';
