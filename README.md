@@ -1,6 +1,7 @@
-# vides_formas
-# Vue 3 + TypeScript + Vite
+# Vides Formas / Objekti
 
-# npm run dev
+``` bash
+npm run dev
 
-# npm run build
+npm run build
+```

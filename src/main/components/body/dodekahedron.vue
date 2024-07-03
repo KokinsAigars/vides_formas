@@ -17,7 +17,9 @@
   <div class="div_container">
 
     <div class="image-container">
-      <svg class="cls_svg_dodekahedron"
+
+      <div v-if="MENU_selected === 'geometry'">
+        <svg class="cls_svg_dodekahedron"
            x="0px" y="0px" viewBox="0 0 480 480"
            style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
            xmlns="http://www.w3.org/2000/svg">
@@ -54,6 +56,21 @@
           <line class="st_svg_hex" x1="414.3" y1="173.35" x2="269.86" y2="105.65"/>
         </g>
       </svg>
+      </div>
+
+      <div v-if="MENU_selected === '3d'">
+<!--        <canvas id="webglCanvasID" ref="ref_webglCanvas" class="webgl"></canvas>-->
+        <canvas id="webglCanvasID" width="300" height="300" style="background: #2c3e50"></canvas>
+      </div>
+
+      <div v-if="MENU_selected === 'image'">
+        image
+      </div>
+
+      <div v-if="MENU_selected === 'map'">
+        map
+      </div>
+
     </div>
 
     <div class="text-container">
@@ -64,6 +81,13 @@
           <button class="btn_swi T-switch" id="btn1" role="button" type="button" aria-hidden="true"
                   @click="fn_switch_items('geometry')"
                   @contextmenu.prevent="fn_switch_items('geometry')">geometry
+          </button>
+        </div>
+
+        <div class="switch-items si-b">
+          <button class="btn_swi T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+                  @click="fn_switch_items('3d')"
+                  @contextmenu.prevent="fn_switch_items('3d')">3d
           </button>
         </div>
 
@@ -127,6 +151,60 @@ MENU_selected.value = "geometry";
 const fn_switch_items = (switchTo: string) => {
   MENU_selected.value = switchTo;
 }
+
+const ref_webglCanvas = ref(null);
+//
+// console.log(ref_webglCanvas.value as HTMLElement);
+//
+
+
+
+import { Scene, PerspectiveCamera, Vector3,WebGLRenderer } from 'three';
+import {OrbitControls} from  'three/examples/jsm/controls/OrbitControls.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+const objHex = new OBJLoader();
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+const mtlHex = new MTLLoader();
+
+const canvas = <HTMLCanvasElement> document.getElementById('webglCanvasID');
+// const gl = canvas.getContext("webgl", {
+//   antialias: false,
+//   depth: false,
+// });
+// const ctx = canvas.getContext("2d");
+// console.log(ctx);
+
+const scene  = new Scene();
+
+const camera = new PerspectiveCamera(45,window.innerWidth / window.innerHeight,0.1,1000);
+camera.position.set(5,0.5, 0);
+const pt = new Vector3(0,1,2);
+camera.lookAt(pt);
+scene.add(camera);
+
+// const controls = new OrbitControls(camera, canvas)
+// controls.enableDamping = true
+// controls.maxPolarAngle = Math.PI / 2;
+// controls.enabled = true
+
+// const renderer = new WebGLRenderer({
+//   canvas: canvas,
+//   alpha: true,
+//   // powerPreference: 'high-performance',
+//   antialias: true
+// });
+// renderer.setClearColor( 0xffffff, 0);
+// renderer.setSize(100, 100);
+// renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// RelTimeRender();
+//
+// // Rel Time Render enable orbit
+// function RelTimeRender() {
+//   controls.update()
+//   renderer.render(scene, camera)
+//   window.requestAnimationFrame(RelTimeRender)
+// }
 
 </script>
 

@@ -14,7 +14,7 @@
 :root[data-theme="ThemeLight"] {
 
     // GLOBAL
-    --C-background-color: #fff;
+    --C-background-color: #e1e1e1;//#fff;
     --C-background-line: #dadce0;
 
     --vivente-icon-lines: #23313b;
@@ -38,7 +38,7 @@
     --LP-T-h2: #1a2a30;
     --LP-T-h2b: #2c3e50;
     --LP-T-p1: #646469;
- 
+
     // Landing Page//<footer>
     --C-ui-f-bg: #f1f2f3;
     --LP-T-p: #646469;
@@ -63,7 +63,7 @@
 
     // workspace
     --C-app-bg:#f6f8fa;
-    --C-app-bg2:#f1f1f2; 
+    --C-app-bg2:#f1f1f2;
     --C-app-h-bg: rgb(235,235,235);
     --C-T-app-h-search-input: #f2f4f5;
     --C-T-app-h-search-input-focuss:#f1f1f2;
@@ -79,7 +79,7 @@
     --T-app-h-title:#2e3d53;
     --C-ui-footer-bg: rgb(240,240,240);
     --C-ui-footer-LineA: rgb(190,190,190);
-    --C-ui-ab-LineA: rgb(190,190,190);    
+    --C-ui-ab-LineA: rgb(190,190,190);
     --C-app-h-mA-bg: #619bf7;
     --C-app-h-mA-bg-cheked: rgba(156, 226, 166, 0.571);
     --C-T-app-h-mA-bg-cheked: rgb(0,0,0);
@@ -93,7 +93,7 @@
     --C-ui-Line-1-hover: #afafaf;
     --C-ui-box-shadow: #e6e8ee;
     --C-sepv-active: #afafaf;
-    
+
     // HEADER
     --C-h-u-bg: #f1f2f3;
     --C-T-h-1:rgba(33,33,38,.70);
@@ -200,8 +200,8 @@
     --T-inv-info-field: rgb(122, 127, 130);
     --T-inv-bttn1: rgb(0, 0, 0);
     --T-inv-total: rgb(141, 32, 83);
-    
+
     --C-ui-ICON-Line-1: rgba(33,33,38,.70);
-    --C-T-b-DOC-td4: rgba(33,33,38,.70);  
+    --C-T-b-DOC-td4: rgba(33,33,38,.70);
     --C-RSp-active-Line-2: rgba(3, 12, 31, 0.4);
 }

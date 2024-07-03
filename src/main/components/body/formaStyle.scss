@@ -1,4 +1,6 @@
 @import '@style/mixin.scss';
+$imageContainer: 45%;
+$svg_form_size: 450px;
 
 html, body {
   overflow-x: hidden;
@@ -11,13 +13,17 @@ html, body {
   width: 100%;
   height: auto;}
 
-$imageContainer: 45%;
+
 .image-container{
-  display: flex;
-  justify-content: left;
-  align-items: center;
   padding-left: 40px;
   width: $imageContainer; min-width: $imageContainer; max-width: $imageContainer;
+  min-height: $svg_form_size;
+  //border: 1px dashed red;
+}
+.webgl{
+  width: 100%; min-width: 100%; max-width: 100%;
+  height: 100%; min-height: $svg_form_size; max-height: 100%;
+  border: 1px dashed gray;
 }
 
 .text-container{
@@ -80,15 +86,16 @@ $imageContainer: 45%;
   height:25px;
 }
 
-$svg_form_size: 450px;
+
 .cls_svg_hexahedron, .cls_svg_tetrahedron, .cls_svg_octahedron, .cls_svg_dodekahedron, .cls_svg_icosahedron{
   width: $svg_form_size;
   height: $svg_form_size;
 }
 
-.st_svg_hex{ fill:none;
-  stroke:#5B5B5B;
-  stroke-width:0.5;
+.st_svg_hex{
+  fill:none;
+  stroke: #11184e;//#5B5B5B;
+  stroke-width:0.7;
   stroke-linecap:round;
   stroke-linejoin:round;
   stroke-miterlimit:10;
