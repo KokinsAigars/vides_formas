@@ -59,8 +59,7 @@
       </div>
 
       <div v-if="MENU_selected === '3d'">
-<!--        <canvas id="webglCanvasID" ref="ref_webglCanvas" class="webgl"></canvas>-->
-        <canvas id="webglCanvasID" width="300" height="300" style="background: #2c3e50"></canvas>
+        <canvas ref="ref_canvas"></canvas>
       </div>
 
       <div v-if="MENU_selected === 'image'">
@@ -143,68 +142,35 @@
 
 <script setup lang="ts">
 
-import {ref} from 'vue';
+  import {onMounted, ref} from 'vue';
 
-const MENU_selected = ref('');
-MENU_selected.value = "geometry";
+  const MENU_selected = ref('');
+  MENU_selected.value = "geometry";
 
-const fn_switch_items = (switchTo: string) => {
-  MENU_selected.value = switchTo;
-}
+  const fn_switch_items = (switchTo: string) => {
+    MENU_selected.value = switchTo;
+  }
 
-const ref_webglCanvas = ref(null);
-//
-// console.log(ref_webglCanvas.value as HTMLElement);
-//
+  const REF_canvas = ref<HTMLCanvasElement | null>(null);
 
+  import { Scene, PerspectiveCamera, Vector3, WebGLRenderer } from 'three';
 
+  const scene  = new Scene();
 
-import { Scene, PerspectiveCamera, Vector3,WebGLRenderer } from 'three';
-import {OrbitControls} from  'three/examples/jsm/controls/OrbitControls.js';
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-const objHex = new OBJLoader();
-import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
-const mtlHex = new MTLLoader();
+  const camera = new PerspectiveCamera(45,window.innerWidth / window.innerHeight,0.1,1000);
+  scene.add(camera);
 
-const canvas = <HTMLCanvasElement> document.getElementById('webglCanvasID');
-// const gl = canvas.getContext("webgl", {
-//   antialias: false,
-//   depth: false,
-// });
-// const ctx = canvas.getContext("2d");
-// console.log(ctx);
+  onMounted(() => {
+    const renderer = new WebGLRenderer({
+      canvas: REF_canvas.value as unknown as HTMLCanvasElement,
+      antialias: true
+    });
 
-const scene  = new Scene();
+      renderer.setSize(window.innerWidth, window.innerHeight);
 
-const camera = new PerspectiveCamera(45,window.innerWidth / window.innerHeight,0.1,1000);
-camera.position.set(5,0.5, 0);
-const pt = new Vector3(0,1,2);
-camera.lookAt(pt);
-scene.add(camera);
+      renderer.render(scene, camera);
 
-// const controls = new OrbitControls(camera, canvas)
-// controls.enableDamping = true
-// controls.maxPolarAngle = Math.PI / 2;
-// controls.enabled = true
-
-// const renderer = new WebGLRenderer({
-//   canvas: canvas,
-//   alpha: true,
-//   // powerPreference: 'high-performance',
-//   antialias: true
-// });
-// renderer.setClearColor( 0xffffff, 0);
-// renderer.setSize(100, 100);
-// renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-// RelTimeRender();
-//
-// // Rel Time Render enable orbit
-// function RelTimeRender() {
-//   controls.update()
-//   renderer.render(scene, camera)
-//   window.requestAnimationFrame(RelTimeRender)
-// }
+  })
 
 </script>
 
