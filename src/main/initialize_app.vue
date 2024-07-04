@@ -32,25 +32,35 @@
 
 <script setup lang="ts">
 
-    import { onMounted} from 'vue';
-    import { RouterView } from 'vue-router'
+  import { onMounted, ref} from 'vue';
+  import { RouterView } from 'vue-router'
 
-    // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
-    import { RefreshService } from '@services/refresh.service';
+  // const isMobile = ref(false);
+  // const isDesktop = ref(true);
 
-    import HeaderComponent  from '@components/header/lp-header-componentV2.vue';
-    import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
+  // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
+  import { RefreshService } from '@services/refresh.service';
+
+  import HeaderComponent  from '@components/header/lp-header-componentV2.vue';
+  import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
 
-    // import { v4 as uuid4 } from 'uuid';
-    // console.log("ts : " + uuid4());
+  // import { v4 as uuid4 } from 'uuid';
+  // console.log("ts : " + uuid4());
 
-    // console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
+  // console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
 
-    onMounted(() => {
+  onMounted(() => {
 
-        RefreshService(); // on Page Refresh
-    });
+  RefreshService(); // on Page Refresh
+    //
+    // if (window.innerWidth < 600){
+    //   isMobile.value = true;
+    //   isDesktop.value = false;
+    // }
+    // console.log(window.screen.width + ' x ' + window.screen.height);
+
+  });
 
 </script>
 
@@ -58,19 +68,19 @@
 
 <style scoped lang="scss">
 
-html, body {
-  overflow-x: hidden;
-  overflow-y: auto !important;
-}
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+  }
 
-$b-height: calc(var(--V-screen-height) - var(--V-h-height));
-.LPb{
-  overflow:visible;
-  left: 0;
-  top: var(--V-h-height);
-  min-height: $b-height;
-  width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
-  background-color: var(--C-background-color);
-  border: 1px solid transparent;
-}
+  $b-height: calc(var(--V-screen-height) - var(--V-h-height));
+  .LPb{
+    overflow:visible;
+    left: 0;
+    top: var(--V-h-height);
+    min-height: $b-height;
+    width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
+    background-color: var(--C-background-color);
+    border: 1px solid transparent;
+  }
 </style>

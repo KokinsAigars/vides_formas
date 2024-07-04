@@ -7,50 +7,33 @@
 //  *   Built on 2024.07.01
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   Landing page - body - components - Hexahedron
+//  *   Landing page - body - components - Tetrahedron
 //  *   version: 1.0.0
 //  *
 -->
 
 <template>
+
   <div class="div_container">
 
     <div class="image-container">
-
-      <div v-if="MENU_selected === 'geometry'">
-        <svg class="cls_svg_hexahedron"
+      <svg class="cls_svg_tetrahedron"
            x="0px" y="0px" viewBox="0 0 480 480"
            style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
            xmlns="http://www.w3.org/2000/svg">
         <g>
-          <line class="st_svg_hex" x1="450" y1="82.17" x2="190.12" y2="7.35"/>
-          <line class="st_svg_hex" x1="450" y1="82.17" x2="450" y2="343.18"/>
-          <line class="st_svg_hex" x1="190.12" y1="268.36" x2="450" y2="343.18"/>
-          <line class="st_svg_hex" x1="190.12" y1="7.35" x2="190.12" y2="268.36"/>
-          <line class="st_svg_hex" x1="299.06" y1="210.99" x2="450" y2="82.17"/>
-          <line class="st_svg_hex" x1="299.06" y1="210.99" x2="299.06" y2="472"/>
-          <line class="st_svg_hex" x1="450" y1="343.18" x2="299.06" y2="472"/>
-          <line class="st_svg_hex" x1="190.12" y1="7.35" x2="39.18" y2="136.17"/>
-          <line class="st_svg_hex" x1="39.18" y1="397.18" x2="190.12" y2="268.36"/>
-          <line class="st_svg_hex" x1="39.18" y1="136.17" x2="299.06" y2="210.99"/>
-          <line class="st_svg_hex" x1="39.18" y1="136.17" x2="39.18" y2="397.18"/>
-          <line class="st_svg_hex" x1="299.06" y1="472" x2="39.18" y2="397.18"/>
+          <line class="st_svg_hex" x1="39.18" y1="269.15" x2="427.54" y2="449.13"/>
+          <line class="st_svg_hex" x1="39.18" y1="269.15" x2="302.24" y2="30.22"/>
+          <line class="st_svg_hex" x1="427.54" y1="449.13" x2="440" y2="105.43"/>
+          <line class="st_svg_hex" x1="302.24" y1="30.22" x2="440" y2="105.43"/>
+          <line class="st_svg_hex" x1="427.54" y1="449.13" x2="302.24" y2="30.22"/>
+          <line class="st_svg_hex" x1="440" y1="105.43" x2="39.18" y2="269.15"/>
         </g>
       </svg>
-      </div>
-
-      <div v-if="MENU_selected === 'image'">
-        image
-      </div>
-
-      <div v-if="MENU_selected === 'map'">
-        map
-      </div>
 
     </div>
 
     <div class="text-container">
-
 
       <!--switch-container-->
       <div class="switch-container">
@@ -100,8 +83,7 @@
 
         <div v-if="MENU_selected === 'image'"></div>
 
-        <div v-if="MENU_selected === 'map'">56°34'18.9"N 23°04'24.4"E</div>
-
+        <div v-if="MENU_selected === 'map'">57°00'57.4"N 21°34'51.1"E</div>
       </div>
 
     </div>
@@ -111,17 +93,18 @@
 </template>
 
 
+
 <script setup lang="ts">
 
-  import {ref} from 'vue';
+import {ref} from 'vue';
 
-  const MENU_selected = ref('');
-  MENU_selected.value = "geometry";
+const MENU_selected = ref('');
+MENU_selected.value = "geometry";
 
-  const fn_switch_items = (switchTo: string) => {
-    MENU_selected.value = switchTo;
-  }
+const fn_switch_items = (switchTo: string) => {
+  MENU_selected.value = switchTo;
+}
 
 </script>
 
-<style lang="scss" src="./_formaStyle.scss"/>
+<style lang="scss" src="./_formaStyleMobile.scss"/>

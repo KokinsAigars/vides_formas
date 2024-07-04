@@ -130,4 +130,4 @@ const fn_switch_items = (switchTo: string) => {
 
 </script>
 
-<style lang="scss" src="./formaStyle.scss"/>
+<style lang="scss" src="./_formaStyle.scss"/>

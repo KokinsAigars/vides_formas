@@ -229,4 +229,4 @@
 
 </script>
 
-<style lang="scss" src="./_formaStyle.scss"/>
+<style lang="scss" src="./_formaStyleMobile.scss"/>

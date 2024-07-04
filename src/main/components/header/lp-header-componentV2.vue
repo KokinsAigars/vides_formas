@@ -19,6 +19,9 @@
     <div class="LPh-container">
 
       <div class="hb-c">
+
+<!--        <div class="hb-c-select T-hb-c-select">Vietas Latvijā</div>-->
+
         <div class="hb-c-div">
           <select class="hb-c-select T-hb-c-select" id="hb-c-select"
               v-model="MENU_selected"
@@ -55,6 +58,12 @@
 
   const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
 
+  import DoDEC from '@assets/svg/DoDEC.vue'
+  import {RefreshService} from "@services/refresh.service";
+
+  const isDesktop = ref(true);
+  const isMobile = ref(false);
+
   // MENU
   const MENU_selected = ref('');
   MENU_selected.value = "Hexahedron";
@@ -63,18 +72,54 @@
     MENU_selected.value = value;
 
     try {
-      router.push({name: value});
+      if (isDesktop.value === true){
+        router.push({name: value});
+      }
+      else if (isMobile.value === true){
+        router.push({name: value + 'Mobile'});
+      }
+
     } catch (error) {
         console.error(error);
         console.error('Failed to navigate to ', value, ': ', ID);
       }
   }
 
+
+  onMounted(() => {
+
+    if (window.innerWidth < 800){
+      isMobile.value = true;
+      isDesktop.value = false;
+    }
+    console.log(window.innerWidth + ' x ' +window.innerHeight);
+    console.log(window.screen.width + ' x ' + window.screen.height);
+
+  });
+
+
 </script>
 
 <style scoped lang="scss">
 
 @import '@style/mixin.scss';
+
+$svg_form_header_size: 25px;
+
+.cls_svg_hexahedron, .cls_svg_tetrahedron, .cls_svg_octahedron, .cls_svg_dodekahedron, .cls_svg_icosahedron{
+  width: $svg_form_header_size;
+  height: $svg_form_header_size;
+}
+
+.st_svg_hex{
+  fill:none;
+  stroke: #11184e;//#5B5B5B;
+  stroke-width:0.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
 
 // -------- Header
 .LPh-header{

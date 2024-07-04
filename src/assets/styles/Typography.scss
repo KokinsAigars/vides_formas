@@ -22,7 +22,7 @@
     padding-left: 70px;
 }
 
-.T-default, .T-title-formas, .T-text-space, .T-h-header, .T-hb-c-select, .T-switch {
+.T-default, .T-title-formas, .T-text-space, .T-h-header, .T-hb-c-select, .T-switch, .T-switch-image {
     font-family: 'PublicSansThin', 'RobotoRegular', 'Open Sans', sans-serif;
     font-size: 1rem;
     line-height: 1.2rem;
@@ -33,4 +33,9 @@
 
 .T-hb-c-select{
     color: #11184e;
+}
+
+.T-switch-image {
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.9rem;
 }
