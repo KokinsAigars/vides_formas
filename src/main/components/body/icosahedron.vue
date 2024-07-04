@@ -16,8 +16,10 @@
 
   <div class="div_container">
 
-    <div class="image-container">
-      <svg class="cls_svg_icosahedron"
+    <div v-if="MENU_selected === 'geometry' || MENU_selected === '3d'" class="image-container-overflow">
+
+      <div v-if="MENU_selected === 'geometry'">
+        <svg class="cls_svg_icosahedron"
            x="0px" y="0px" viewBox="0 0 480 480"
            style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
            xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +56,27 @@
           <line class="st_svg_hex" x1="272.09" y1="362.26" x2="316.51" y2="452.49"/>
         </g>
       </svg>
+      </div>
+
+      <!--      <div >-->
+      <!--        <canvas ref="ref_canvas"></canvas>-->
+      <!--      </div>-->
+
     </div>
+
+
+    <div v-if="MENU_selected !== 'geometry' && MENU_selected !== '3d'" class="image-container">
+
+      <div v-if="MENU_selected === 'image'">
+      </div>
+
+      <div v-if="MENU_selected === 'map'">
+        <div class="m_image"><img v-bind:src="ref_image_karte" alt="dodec"></div>
+        <div class="m_text-space-vertical T-text-space">Icosahedron: 57°52'18.5"N, 25°00'20.7"E</div>
+      </div>
+
+    </div>
+
 
     <div class="text-container">
 
@@ -119,13 +141,40 @@
 
 <script setup lang="ts">
 
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
+
+const isMobile = ref(false);
+const isDesktop = ref(true);
+
+const ref_image_karte = ref('');
+ref_image_karte.value = 'img/map.jpg';
 
 const MENU_selected = ref('');
 MENU_selected.value = "geometry";
 
 const fn_switch_items = (switchTo: string) => {
   MENU_selected.value = switchTo;
+}
+
+const ref_image = ref('');
+ref_image.value = 'img/dodekahedron00' + 1 + '.jpg';
+
+function fn_switch_image(number){
+  try {
+    const imageUrl = 'img/dodekahedron00' + number + '.jpg';
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = () => {
+      this.ref_image = imageUrl;
+    };
+
+    img.onerror = () => {
+      return null;
+    };
+  } catch (error) {
+    return null;
+  }
 }
 
 </script>

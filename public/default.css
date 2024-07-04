@@ -3,3 +3,7 @@
     /*background-color: #e1e1e1;*/
     color: #ff0000;
   }
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}

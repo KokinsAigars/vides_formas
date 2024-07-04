@@ -16,27 +16,46 @@
 
   <div class="div_container">
 
+    <div v-if="MENU_selected === 'geometry' || MENU_selected === '3d'" class="image-container-overflow">
 
-    <div class="image-container">
-      <svg class="cls_svg_octahedron"
-           x="0px" y="0px" viewBox="0 0 480 480"
-           style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
-           xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <line class="st_svg_hex" x1="239.59" y1="438.97" x2="464" y2="260.5"/>
-          <line class="st_svg_hex" x1="464" y1="260.5" x2="282.21" y2="130.03"/>
-          <line class="st_svg_hex" x1="15.18" y1="218.85" x2="282.21" y2="130.03"/>
-          <line class="st_svg_hex" x1="239.59" y1="40.38" x2="282.21" y2="130.03"/>
-          <line class="st_svg_hex" x1="464" y1="260.5" x2="196.97" y2="349.32"/>
-          <line class="st_svg_hex" x1="464" y1="260.5" x2="239.59" y2="40.38"/>
-          <line class="st_svg_hex" x1="239.59" y1="40.38" x2="196.97" y2="349.32"/>
-          <line class="st_svg_hex" x1="15.18" y1="218.85" x2="196.97" y2="349.32"/>
-          <line class="st_svg_hex" x1="15.18" y1="218.85" x2="239.59" y2="40.38"/>
-          <line class="st_svg_hex" x1="196.97" y1="349.32" x2="239.59" y2="438.97"/>
-          <line class="st_svg_hex" x1="282.21" y1="130.03" x2="239.59" y2="438.97"/>
-          <line class="st_svg_hex" x1="239.59" y1="438.97" x2="15.18" y2="218.85"/>
-        </g>
-      </svg>
+      <div v-if="MENU_selected === 'geometry'">
+        <svg class="cls_svg_octahedron"
+             x="0px" y="0px" viewBox="0 0 480 480"
+             style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
+             xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <line class="st_svg_hex" x1="239.59" y1="438.97" x2="464" y2="260.5"/>
+            <line class="st_svg_hex" x1="464" y1="260.5" x2="282.21" y2="130.03"/>
+            <line class="st_svg_hex" x1="15.18" y1="218.85" x2="282.21" y2="130.03"/>
+            <line class="st_svg_hex" x1="239.59" y1="40.38" x2="282.21" y2="130.03"/>
+            <line class="st_svg_hex" x1="464" y1="260.5" x2="196.97" y2="349.32"/>
+            <line class="st_svg_hex" x1="464" y1="260.5" x2="239.59" y2="40.38"/>
+            <line class="st_svg_hex" x1="239.59" y1="40.38" x2="196.97" y2="349.32"/>
+            <line class="st_svg_hex" x1="15.18" y1="218.85" x2="196.97" y2="349.32"/>
+            <line class="st_svg_hex" x1="15.18" y1="218.85" x2="239.59" y2="40.38"/>
+            <line class="st_svg_hex" x1="196.97" y1="349.32" x2="239.59" y2="438.97"/>
+            <line class="st_svg_hex" x1="282.21" y1="130.03" x2="239.59" y2="438.97"/>
+            <line class="st_svg_hex" x1="239.59" y1="438.97" x2="15.18" y2="218.85"/>
+          </g>
+        </svg>
+      </div>
+
+      <!--      <div >-->
+      <!--        <canvas ref="ref_canvas"></canvas>-->
+      <!--      </div>-->
+
+    </div>
+
+    <div v-if="MENU_selected !== 'geometry' && MENU_selected !== '3d'" class="image-container">
+
+      <div v-if="MENU_selected === 'image'">
+      </div>
+
+      <div v-if="MENU_selected === 'map'">
+        <div class="m_image"><img v-bind:src="ref_image_karte" alt="dodec"></div>
+        <div class="m_text-space-vertical T-text-space">Octahedron: 57°45'29.7"N, 22°35'48.3"E</div>
+      </div>
+
     </div>
 
     <div class="text-container">
@@ -102,13 +121,40 @@
 
 <script setup lang="ts">
 
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
+
+const isMobile = ref(false);
+const isDesktop = ref(true);
+
+const ref_image_karte = ref('');
+ref_image_karte.value = 'img/map.jpg';
 
 const MENU_selected = ref('');
 MENU_selected.value = "geometry";
 
 const fn_switch_items = (switchTo: string) => {
   MENU_selected.value = switchTo;
+}
+
+const ref_image = ref('');
+ref_image.value = 'img/dodekahedron00' + 1 + '.jpg';
+
+function fn_switch_image(number){
+  try {
+    const imageUrl = 'img/dodekahedron00' + number + '.jpg';
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = () => {
+      this.ref_image = imageUrl;
+    };
+
+    img.onerror = () => {
+      return null;
+    };
+  } catch (error) {
+    return null;
+  }
 }
 
 </script>

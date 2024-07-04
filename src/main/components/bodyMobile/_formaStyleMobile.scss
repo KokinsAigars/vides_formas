@@ -1,136 +1,91 @@
 
 @import '@style/mixin.scss';
 
-$imageContainer: 45%;
-$svg_form_size: 450px;
+$svg_form_size: 350px;
+$maxImgWidth: 900px;
 
-html, body {
-  overflow-x: hidden;
-  overflow-y: auto !important;
-}
-
-.div_container{
-  display: flex;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: auto;}
-
-.image-container-overflow{
-  padding-left: 40px;
-  width: $imageContainer; min-width: $imageContainer; max-width: $imageContainer;
-  min-height: $svg_form_size;
-}
-.image-container{
-  padding-left: 40px;
-  width: $imageContainer; min-width: $imageContainer; max-width: $imageContainer;
-  min-height: $svg_form_size;
-  overflow: hidden;
-  //border: 1px dashed red;
-}
-.webgl{
-  width: 100%; min-width: 100%; max-width: 100%;
-  height: 100%; min-height: $svg_form_size; max-height: 100%;
-  border: 1px dashed gray;
-}
-.image-container-image{
-  display: flex;
-  justify-content: center;
-}
-.multiple-ImageSwitch-container{
-  display: flex;
-  flex-direction: row;
-  padding-top: 20px;
-  width: 100%; min-width: 100%; max-width: 100%;
-  height: 125px; min-height: 125px; max-height: 125px;
-  //border: 1px dashed red;
-}
-.misc-list{
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-  align-content: space-between;
-}
-.listItems {
-  padding-left: 10px;
-}
-.gps-on-screen{
-  padding-top: 15px;
-}
-
-.text-container{
+.m_container{
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  padding-left: 50px;
-  padding-right: 50px;
-  margin-right: 16px;
-  padding-top: 30px;
-  //width: 100%;
-  @include for-size(960px) {
-    display:none;
-    transition: 1s;
-  }}
-.text-space{
-  text-align: justify;
-  text-justify: inter-word;
-}
+  flex-wrap: nowrap;
+  width: 100%; min-width: 100%; max-width: 100%;
+  height: auto;
+  padding-left: 40px;
+  padding-right: 60px;}
 
-.gpskarte{
-  padding-top: 40px;
-}
-
-.switch-container{
+.m_switch-container{
   display: flex;
   flex-direction: row;
   justify-content: left;
   height: 25px;
-  margin-bottom: 25px;
-  //border: 1px dashed green;
-}
-.switch-items{
+  margin-bottom: 25px;}
+  .m_sw-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  }
+  .m_switch-items-second{
+    margin-left: 20px;  }
+  .m_swit_btn {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+    overflow: hidden !important;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid transparent;  }
+  .m_swit_btn:hover {
+    border-bottom: 1px solid darkslategray;  }
+
+.m_art_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100%; min-width: 100%; max-width: 100%;
+  min-height: $svg_form_size;
+  margin-bottom: 25px;}
+
+.m_text-space-horizontal{
+  text-align: justify;
+  text-justify: inter-word;}
+
+.m_text-space-vertical{
+  padding-top: 25px;}
+
+.m_image{
+  justify-content: left;
+  max-width: $maxImgWidth !important;
+  }
+
+.m_image-switch-container{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
+  padding-top: 10px;}
 
-}
-.si-b{
-  margin-left: 20px;
-}
-.btn_swi{
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  background-color: transparent;
-  border: 0;
-  overflow: hidden !important;
-  cursor: pointer;
-  user-select: none;
-  border-bottom: 1px solid transparent;
-}
-.btn_swi:hover {
-  border-bottom: 1px solid darkslategray;
-}
+.m_image-switch-ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  flex-wrap: nowrap;
+  align-content: space-between;}
+
+.m_image-switch-li {
+  padding-left: 10px;}
 
 
-
-.title-formas{
-  width: 100%;
-  height:25px;
-}
-
-
-.cls_svg_hexahedron, .cls_svg_tetrahedron, .cls_svg_octahedron, .cls_svg_dodekahedron, .cls_svg_icosahedron{
+//  Hexahedron  //  Tetrahedron //  Octahedron  //  Dodekahedron  //  Icosahedron
+.m_svg_hexahedron, .m_svg_tetrahedron, .m_svg_octahedron, .m_svg_dodekahedron, .m_svg_icosahedron {
   width: $svg_form_size;
   height: $svg_form_size;
-}
-
-.st_svg_hex{
+  margin-left: 40px}
+.m_st_svg{
   fill:none;
-  stroke: #dd2b39;//#5B5B5B;
-  stroke-width:0.7;
+  stroke: #252633;//#5B5B5B;
+  stroke-width:1;
   stroke-linecap:round;
   stroke-linejoin:round;
-  stroke-miterlimit:10;
-}
+  stroke-miterlimit:10;}

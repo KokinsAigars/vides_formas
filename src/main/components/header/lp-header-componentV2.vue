@@ -44,7 +44,7 @@
 
 <script setup lang="ts">
 
-  import {onMounted, onUnmounted, ref, computed, Ref} from 'vue';
+import {onMounted, ref } from 'vue';
 
   import {useRouter} from 'vue-router';
   const router = useRouter();
@@ -58,7 +58,6 @@
 
   const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
 
-  import DoDEC from '@assets/svg/DoDEC.vue'
   import {RefreshService} from "@services/refresh.service";
 
   const isDesktop = ref(true);
@@ -72,11 +71,13 @@
     MENU_selected.value = value;
 
     try {
-      if (isDesktop.value === true){
-        router.push({name: value});
-      }
-      else if (isMobile.value === true){
+      if (window.innerWidth < 800){
         router.push({name: value + 'Mobile'});
+        // console.log(window.innerWidth, 'Mobile');
+      }
+      else {
+        router.push({name: value});
+        // console.log(window.innerWidth, 'Desktop');
       }
 
     } catch (error) {
@@ -86,48 +87,18 @@
   }
 
 
-  onMounted(() => {
-
-    if (window.innerWidth < 800){
-      isMobile.value = true;
-      isDesktop.value = false;
-    }
-    console.log(window.innerWidth + ' x ' +window.innerHeight);
-    console.log(window.screen.width + ' x ' + window.screen.height);
-
-  });
-
-
 </script>
 
 <style scoped lang="scss">
 
 @import '@style/mixin.scss';
 
-$svg_form_header_size: 25px;
-
-.cls_svg_hexahedron, .cls_svg_tetrahedron, .cls_svg_octahedron, .cls_svg_dodekahedron, .cls_svg_icosahedron{
-  width: $svg_form_header_size;
-  height: $svg_form_header_size;
-}
-
-.st_svg_hex{
-  fill:none;
-  stroke: #11184e;//#5B5B5B;
-  stroke-width:0.7;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-miterlimit:10;
-}
-
-
-// -------- Header
 .LPh-header{
   top: 0;
   height: var(--LP-V-h-height); min-height: var(--LP-V-h-height); max-height: var(--LP-V-h-height);
   width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
-  // border-bottom: 1px solid var(--C-background-line);
-  background-color: var(--C-background-color);}
+  background-color: var(--C-background-color);
+}
 .LPh-container{
   height: var(--LP-V-h-height); min-height: var(--LP-V-h-height); max-height: var(--LP-V-h-height);
   width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
@@ -139,24 +110,26 @@ $svg_form_header_size: 25px;
   flex-wrap: nowrap;
   flex-shrink: 0;
   flex-grow: 0;
-  background-color: transparent;}
-////////////////////////////////////////////////////
+  background-color: transparent;
+}
+
 .LPh-products{
   display: flex;
   justify-content: right;
   flex: 1;
   margin-left: auto;
   background-color: transparent;
-  @include for-size(650px) {
-    display:none;
-  }}
+}
+
 .hc2-user-text-s{
   height: 40px;
   margin-right: 16px;
   background-color: transparent;
   text-decoration: none;
   border: 1px solid transparent;
-  cursor: pointer;}
+  cursor: pointer;
+}
+
 .LPh-signin-text, .hc2-user-text-options{
   margin-top: 7px;
   margin-left: 16px;
@@ -164,8 +137,8 @@ $svg_form_header_size: 25px;
   background-color: transparent;
   text-decoration: none;
   border: 1px solid transparent;
-  cursor: pointer;}
-////////////////////////////////////////////
+  cursor: pointer;
+}
 
 .hb-c{
   margin-left: auto;
@@ -175,38 +148,42 @@ $svg_form_header_size: 25px;
   margin-top: 9px;
   margin-right: 15px;
   background-color: transparent;
-  @include for-size(720px) {
-    display:none;
-    transition: 1s;
-  }}
+}
+
 .hb-c-div{
   display: flex;
   text-decoration: none;
   background-color: transparent;
   border: 1px solid var(--C-T-app-h-search-line);
-  //background-color: transparent;
   border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
   overflow: hidden !important;
-  cursor: pointer;}
+  cursor: pointer;
+}
+
 .hb-c-select {
   background-color: transparent;
   border: 0;
   padding-left: 10px;
   padding-right: 10px;
-  border-radius: 3px;}
+  border-radius: 3px;
+}
+
 .hb-c-select-o{
   background-color: var(--C-app-h-bg);
 }
+
 .hb-c-select:focus, .hb-c-select-o:focus {
-  outline: none;}
+  outline: none;
+}
+
 *:focus {
   outline: none;
 }
+
 input:focus {
   outline:none;
 }
-/////////////////////
 
 </style>

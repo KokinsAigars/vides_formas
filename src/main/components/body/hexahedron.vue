@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.01
+//  *   Built on 2024.07.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - components - Hexahedron
@@ -15,36 +15,45 @@
 <template>
   <div class="div_container">
 
-    <div class="image-container">
+    <div v-if="MENU_selected === 'geometry' || MENU_selected === '3d'" class="image-container-overflow">
 
       <div v-if="MENU_selected === 'geometry'">
         <svg class="cls_svg_hexahedron"
-           x="0px" y="0px" viewBox="0 0 480 480"
-           style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
-           xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <line class="st_svg_hex" x1="450" y1="82.17" x2="190.12" y2="7.35"/>
-          <line class="st_svg_hex" x1="450" y1="82.17" x2="450" y2="343.18"/>
-          <line class="st_svg_hex" x1="190.12" y1="268.36" x2="450" y2="343.18"/>
-          <line class="st_svg_hex" x1="190.12" y1="7.35" x2="190.12" y2="268.36"/>
-          <line class="st_svg_hex" x1="299.06" y1="210.99" x2="450" y2="82.17"/>
-          <line class="st_svg_hex" x1="299.06" y1="210.99" x2="299.06" y2="472"/>
-          <line class="st_svg_hex" x1="450" y1="343.18" x2="299.06" y2="472"/>
-          <line class="st_svg_hex" x1="190.12" y1="7.35" x2="39.18" y2="136.17"/>
-          <line class="st_svg_hex" x1="39.18" y1="397.18" x2="190.12" y2="268.36"/>
-          <line class="st_svg_hex" x1="39.18" y1="136.17" x2="299.06" y2="210.99"/>
-          <line class="st_svg_hex" x1="39.18" y1="136.17" x2="39.18" y2="397.18"/>
-          <line class="st_svg_hex" x1="299.06" y1="472" x2="39.18" y2="397.18"/>
-        </g>
-      </svg>
+             x="0px" y="0px" viewBox="0 0 480 480"
+             style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
+             xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <line class="st_svg_hex" x1="450" y1="82.17" x2="190.12" y2="7.35"/>
+            <line class="st_svg_hex" x1="450" y1="82.17" x2="450" y2="343.18"/>
+            <line class="st_svg_hex" x1="190.12" y1="268.36" x2="450" y2="343.18"/>
+            <line class="st_svg_hex" x1="190.12" y1="7.35" x2="190.12" y2="268.36"/>
+            <line class="st_svg_hex" x1="299.06" y1="210.99" x2="450" y2="82.17"/>
+            <line class="st_svg_hex" x1="299.06" y1="210.99" x2="299.06" y2="472"/>
+            <line class="st_svg_hex" x1="450" y1="343.18" x2="299.06" y2="472"/>
+            <line class="st_svg_hex" x1="190.12" y1="7.35" x2="39.18" y2="136.17"/>
+            <line class="st_svg_hex" x1="39.18" y1="397.18" x2="190.12" y2="268.36"/>
+            <line class="st_svg_hex" x1="39.18" y1="136.17" x2="299.06" y2="210.99"/>
+            <line class="st_svg_hex" x1="39.18" y1="136.17" x2="39.18" y2="397.18"/>
+            <line class="st_svg_hex" x1="299.06" y1="472" x2="39.18" y2="397.18"/>
+          </g>
+        </svg>
       </div>
+
+      <!--      <div >-->
+      <!--        <canvas ref="ref_canvas"></canvas>-->
+      <!--      </div>-->
+
+    </div>
+
+    <div v-if="MENU_selected !== 'geometry' && MENU_selected !== '3d'" class="image-container">
 
       <div v-if="MENU_selected === 'image'">
         image
       </div>
 
       <div v-if="MENU_selected === 'map'">
-        map
+        <div class="image-container-image gpskarte"><img v-bind:src="ref_image_karte" alt="dodec"></div>
+        <div class="m_text-space-vertical T-text-space">Hexahedron: 56°34'18.9"N, 23°04'24.4"E</div>
       </div>
 
     </div>
@@ -113,14 +122,41 @@
 
 <script setup lang="ts">
 
-  import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 
-  const MENU_selected = ref('');
-  MENU_selected.value = "geometry";
+const isMobile = ref(false);
+const isDesktop = ref(true);
 
-  const fn_switch_items = (switchTo: string) => {
-    MENU_selected.value = switchTo;
+const ref_image_karte = ref('');
+ref_image_karte.value = 'img/map.jpg';
+
+const MENU_selected = ref('');
+MENU_selected.value = "geometry";
+
+const fn_switch_items = (switchTo: string) => {
+  MENU_selected.value = switchTo;
+}
+
+const ref_image = ref('');
+ref_image.value = 'img/dodekahedron00' + 1 + '.jpg';
+
+function fn_switch_image(number){
+  try {
+    const imageUrl = 'img/dodekahedron00' + number + '.jpg';
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = () => {
+      this.ref_image = imageUrl;
+    };
+
+    img.onerror = () => {
+      return null;
+    };
+  } catch (error) {
+    return null;
   }
+}
 
 </script>
 

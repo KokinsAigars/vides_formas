@@ -16,20 +16,39 @@
 
   <div class="div_container">
 
-    <div class="image-container">
-      <svg class="cls_svg_tetrahedron"
-           x="0px" y="0px" viewBox="0 0 480 480"
-           style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
-           xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <line class="st_svg_hex" x1="39.18" y1="269.15" x2="427.54" y2="449.13"/>
-          <line class="st_svg_hex" x1="39.18" y1="269.15" x2="302.24" y2="30.22"/>
-          <line class="st_svg_hex" x1="427.54" y1="449.13" x2="440" y2="105.43"/>
-          <line class="st_svg_hex" x1="302.24" y1="30.22" x2="440" y2="105.43"/>
-          <line class="st_svg_hex" x1="427.54" y1="449.13" x2="302.24" y2="30.22"/>
-          <line class="st_svg_hex" x1="440" y1="105.43" x2="39.18" y2="269.15"/>
-        </g>
-      </svg>
+    <div v-if="MENU_selected === 'geometry' || MENU_selected === '3d'" class="image-container-overflow">
+
+      <div v-if="MENU_selected === 'geometry'">
+        <svg class="cls_svg_tetrahedron"
+             x="0px" y="0px" viewBox="0 0 480 480"
+             style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
+             xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <line class="st_svg_hex" x1="39.18" y1="269.15" x2="427.54" y2="449.13"/>
+            <line class="st_svg_hex" x1="39.18" y1="269.15" x2="302.24" y2="30.22"/>
+            <line class="st_svg_hex" x1="427.54" y1="449.13" x2="440" y2="105.43"/>
+            <line class="st_svg_hex" x1="302.24" y1="30.22" x2="440" y2="105.43"/>
+            <line class="st_svg_hex" x1="427.54" y1="449.13" x2="302.24" y2="30.22"/>
+            <line class="st_svg_hex" x1="440" y1="105.43" x2="39.18" y2="269.15"/>
+          </g>
+        </svg>
+      </div>
+
+      <!--      <div >-->
+      <!--        <canvas ref="ref_canvas"></canvas>-->
+      <!--      </div>-->
+
+    </div>
+
+    <div v-if="MENU_selected !== 'geometry' && MENU_selected !== '3d'" class="image-container">
+
+      <div v-if="MENU_selected === 'image'">
+      </div>
+
+      <div v-if="MENU_selected === 'map'">
+        <div class="m_image"><img v-bind:src="ref_image_karte" alt="dodec"></div>
+        <div class="m_text-space-vertical T-text-space">Tetrahedron: 57°00'57.4"N, 21°34'51.1"E</div>
+      </div>
 
     </div>
 
@@ -96,13 +115,40 @@
 
 <script setup lang="ts">
 
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
+
+const isMobile = ref(false);
+const isDesktop = ref(true);
+
+const ref_image_karte = ref('');
+ref_image_karte.value = 'img/map.jpg';
 
 const MENU_selected = ref('');
 MENU_selected.value = "geometry";
 
 const fn_switch_items = (switchTo: string) => {
   MENU_selected.value = switchTo;
+}
+
+const ref_image = ref('');
+ref_image.value = 'img/dodekahedron00' + 1 + '.jpg';
+
+function fn_switch_image(number){
+  try {
+    const imageUrl = 'img/dodekahedron00' + number + '.jpg';
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = () => {
+      this.ref_image = imageUrl;
+    };
+
+    img.onerror = () => {
+      return null;
+    };
+  } catch (error) {
+    return null;
+  }
 }
 
 </script>

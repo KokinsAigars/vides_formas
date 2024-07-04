@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.01
+//  *   Built on 2024.07.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - components - Dodekahedron
@@ -97,6 +97,7 @@
 
       <div v-if="MENU_selected === 'map'">
         <div class="image-container-image gpskarte"><img v-bind:src="ref_image_karte" alt="dodec"></div>
+        <div class="m_text-space-vertical T-text-space">Tetrahedron: 57°00'57.4"N, 21°34'51.1"E</div>
       </div>
 
     </div>
@@ -164,8 +165,6 @@
 
 </template>
 
-
-
 <script setup lang="ts">
 
   import {onMounted, ref} from 'vue';
@@ -173,6 +172,8 @@
   const isMobile = ref(false);
   const isDesktop = ref(true);
 
+  const ref_image_karte = ref('');
+  ref_image_karte.value = 'img/map.jpg';
 
   const MENU_selected = ref('');
   MENU_selected.value = "geometry";
@@ -201,9 +202,6 @@
       return null;
     }
   }
-
-  const ref_image_karte = ref('');
-  ref_image_karte.value = 'img/dodekahedronKartee.jpg';
 
   //
   // const REF_canvas = ref<HTMLCanvasElement | null>(null);
