@@ -25,12 +25,12 @@
         </button>
       </div>
 
-      <div class="m_sw-items m_switch-items-second">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
-                @click="fn_switch_items('image')"
-                @contextmenu.prevent="fn_switch_items('image')">image
-        </button>
-      </div>
+<!--      <div class="m_sw-items m_switch-items-second">-->
+<!--        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"-->
+<!--                @click="fn_switch_items('image')"-->
+<!--                @contextmenu.prevent="fn_switch_items('image')">image-->
+<!--        </button>-->
+<!--      </div>-->
 
       <div class="m_sw-items m_switch-items-second">
         <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
@@ -66,8 +66,8 @@
 
       <div class="m_image T-m_image"><img v-bind:src="ref_image" alt="image_tetrahedron"></div>
 
-      <div class="m_image-switch-container">
-        <ul class="m_image-switch-ul">
+<!--      <div class="m_image-switch-container">-->
+<!--        <ul class="m_image-switch-ul">-->
 
 <!--          <li class="m_image-switch-li">-->
 <!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
@@ -90,8 +90,8 @@
           <!--            </button>-->
           <!--          </li>-->
 
-        </ul>
-      </div>
+<!--        </ul>-->
+<!--      </div>-->
 
     </div>
 

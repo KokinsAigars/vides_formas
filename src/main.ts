@@ -6,9 +6,9 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   [main.ts]
-//  *   
+//  *
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -16,10 +16,17 @@ import init_app_vue from './main/initialize_app.vue' //=> ts : 507bc6bc-b152-4ad
 import router from './main/main.routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
 import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d907
 
+import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";
+import { app as firebaseApp } from './firebase';
+
 const   VIVENTE = createApp(init_app_vue)
         VIVENTE.use(i18n)
         VIVENTE.use(router)
         VIVENTE.use(createPinia())
+        VIVENTE.use(VueFire, {
+                firebaseApp,
+                modules: [VueFireFirestoreOptionsAPI()],
+        });
         VIVENTE.mount('.app')
 
 // Styles

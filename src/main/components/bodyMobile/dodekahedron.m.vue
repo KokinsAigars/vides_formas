@@ -90,22 +90,22 @@
 
       <img class="m_image T-m_image" v-bind:src="ref_image" alt="image_dodekahedron">
 
-      <div class="m_image-switch-container">
-        <ul class="m_image-switch-ul">
+<!--      <div class="m_image-switch-container">-->
+<!--        <ul class="m_image-switch-ul">-->
 
-          <li class="m_image-switch-li">
-            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"
-                    @click="fn_switch_image(1)"
-                    @contextmenu.prevent="fn_switch_image(1)">1.,
-            </button>
-          </li>
+<!--          <li class="m_image-switch-li">-->
+<!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
+<!--                    @click="fn_switch_image(1)"-->
+<!--                    @contextmenu.prevent="fn_switch_image(1)">1.,-->
+<!--            </button>-->
+<!--          </li>-->
 
-          <li class="m_image-switch-li">
-            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"
-                    @click="fn_switch_image(2)"
-                    @contextmenu.prevent="fn_switch_image(2)">2.,
-            </button>
-          </li>
+<!--          <li class="m_image-switch-li">-->
+<!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
+<!--                    @click="fn_switch_image(2)"-->
+<!--                    @contextmenu.prevent="fn_switch_image(2)">2.,-->
+<!--            </button>-->
+<!--          </li>-->
 
 <!--          <li class="m_image-switch-li">-->
 <!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
@@ -114,8 +114,8 @@
 <!--            </button>-->
 <!--          </li>-->
 
-        </ul>
-      </div>
+<!--        </ul>-->
+<!--      </div>-->
 
     </div>
 
