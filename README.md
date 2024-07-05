@@ -4,19 +4,18 @@
 npm run dev
 
 npm run build
+
+npm run firebase
 ```
 
+https://console.firebase.google.com/project/videsformas/overview
 
 
 
-npm install firebase
-npm install -g firebase-tools
+firebase emulators:start
 
-firebase login
-firebase init
-firebase init hosting
+firebase deploy --only hosting:videsformas-ae836
 
-firebase deploy
+firebase hosting:disable
 
-
-
+firebase hosting:disable -s videsformas-ae836
