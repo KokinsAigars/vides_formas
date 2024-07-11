@@ -10,7 +10,7 @@ npm run firebase
 
 https://console.firebase.google.com/project/videsformas/overview
 
-
+https://console.firebase.google.com/project/videsformas/hosting/sites
 
 firebase emulators:start
 

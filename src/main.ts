@@ -16,7 +16,7 @@ import init_app_vue from './main/initialize_app.vue' //=> ts : 507bc6bc-b152-4ad
 import router from './main/main.routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
 import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d907
 
-import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";
+import { VueFire, VueFireAuth, VueFireFirestoreOptionsAPI } from "vuefire";
 import { app as firebaseApp } from './firebase';
 
 const   VIVENTE = createApp(init_app_vue)
@@ -25,7 +25,9 @@ const   VIVENTE = createApp(init_app_vue)
         VIVENTE.use(createPinia())
         VIVENTE.use(VueFire, {
                 firebaseApp,
-                modules: [VueFireFirestoreOptionsAPI()],
+                modules: [
+                    VueFireFirestoreOptionsAPI()
+                ],
         });
         VIVENTE.mount('.app')
 
