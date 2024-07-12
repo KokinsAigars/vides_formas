@@ -70,7 +70,7 @@
 
     <div class="m_art_container" v-if="MENU_selected === 'image'">
 
-      <div class="m_image T-m_image"><img v-bind:src="ref_image" alt="image_hexahedron"></div>
+<!--      <div class="m_image T-m_image"><img v-bind:src="ref_image" alt="image_hexahedron"></div>-->
 
 <!--      <div class="m_image-switch-container">-->
 <!--        <ul class="m_image-switch-ul">-->
@@ -103,78 +103,44 @@
 
     <div class="m_art_container" v-if="MENU_selected === 'map'">
 
-      <div class="m_image"><img v-bind:src="ref_image_karte" alt="map_forms_LV"></div>
+      <GoogleMap
+          :api-key="key"
+          style="height: 30rem; width: 50rem;"
+          :center="center"
+          :zoom="7"
+          :disableDefaultUi="true"
+      >
 
-      <div class="m_text-space-vertical T-text-space">Hexahedron: 56°34'18.9"N, 23°04'24.4"E</div>
+        <Marker :options="{ position: { lat: 56.5719081, lng: 23.0734866 }}" >
+          <InfoWindow>
+              <h3 id="firstHeading" class="firstHeading">Hexahedron</h3>
+          </InfoWindow>
+        </Marker>
+
+      </GoogleMap>
 
     </div>
 
-    <div class="m_art_container">
-
-      <div class="m_text-space-horizontal T-text-space">
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim id laborum nulla ullam? Animi
-        asperiores atque consectetur cupiditate, esse facere fugit impedit laudantium mollitia qui, repellat rerum
-        similique velit.
-        A amet distinctio dolor dolore earum, eos eum expedita id ipsum nulla officia pariatur perferendis quae
-        quibusdam quidem quisquam reprehenderit saepe tempora. Blanditiis iure libero modi necessitatibus quibusdam
-        suscipit voluptatum.
-        Ab autem beatae blanditiis corporis cum deleniti dignissimos distinctio earum harum impedit inventore,
-        minus mollitia necessitatibus nihil numquam odit omnis possimus provident quibusdam quisquam quos saepe
-        soluta voluptas voluptate voluptatibus?
-        Aliquid amet architecto aspernatur, debitis dicta esse illo iusto nihil non optio perferendis quae
-        quaerat quia recusandae rem reprehenderit sapiente, sint veniam. A debitis deserunt libero modi pariatur
-        velit veniam?
-        Ab alias corporis, doloribus eius in labore magnam maxime necessitatibus officia porro sed similique
-        veniam! Architecto aut pariatur quasi quis repellat. Aliquam delectus deleniti explicabo facere laborum?
-        Asperiores culpa, repellat!
-
-      </div>
-    </div>
-
-
-  </div>
+</div>
 
 </template>
 
 
 <script setup lang="ts">
 
-import {onMounted, ref} from 'vue';
+import {onBeforeMount, onMounted, ref} from 'vue';
 
-const isMobile = ref(false);
-const isDesktop = ref(true);
+import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
 
-const ref_image_karte = ref('');
-ref_image_karte.value = 'img/map.jpg';
+const key = 'AIzaSyB14TR74Nym584RN4Yy6zcIN_AtZiw3-ew'
+const center = { lat: 56.927628, lng: 24.405436 }
 
-const MENU_selected = ref('');
-MENU_selected.value = "geometry";
+  const MENU_selected = ref('');
+  MENU_selected.value = "geometry";
 
-const fn_switch_items = (switchTo: string) => {
-  MENU_selected.value = switchTo;
-}
-
-const ref_image = ref('');
-ref_image.value = 'img/hexahedron001.jpg';
-
-function fn_switch_image(number){
-  try {
-    const imageUrl = 'img/hexahedron00' + number + '.jpg';
-    const img = new Image();
-    img.src = imageUrl;
-
-    img.onload = () => {
-      this.ref_image = imageUrl;
-    };
-
-    img.onerror = () => {
-      return null;
-    };
-  } catch (error) {
-    return null;
+  const fn_switch_items = (switchTo: string) => {
+    MENU_selected.value = switchTo;
   }
-}
 
 </script>
 

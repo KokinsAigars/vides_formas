@@ -90,64 +90,29 @@
 
       <img class="m_image T-m_image" v-bind:src="ref_image" alt="image_dodekahedron">
 
-<!--      <div class="m_image-switch-container">-->
-<!--        <ul class="m_image-switch-ul">-->
-
-<!--          <li class="m_image-switch-li">-->
-<!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
-<!--                    @click="fn_switch_image(1)"-->
-<!--                    @contextmenu.prevent="fn_switch_image(1)">1.,-->
-<!--            </button>-->
-<!--          </li>-->
-
-<!--          <li class="m_image-switch-li">-->
-<!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
-<!--                    @click="fn_switch_image(2)"-->
-<!--                    @contextmenu.prevent="fn_switch_image(2)">2.,-->
-<!--            </button>-->
-<!--          </li>-->
-
-<!--          <li class="m_image-switch-li">-->
-<!--            <button class="m_swit_btn T-switch-image" id="btn1" role="button" type="button" aria-hidden="true"-->
-<!--                    @click="fn_switch_image(3)"-->
-<!--                    @contextmenu.prevent="fn_switch_image(3)">3.-->
-<!--            </button>-->
-<!--          </li>-->
-
-<!--        </ul>-->
-<!--      </div>-->
-
     </div>
 
     <div class="m_art_container" v-if="MENU_selected === 'map'">
 
-      <div class="m_image"><img v-bind:src="ref_image_karte" alt="map_forms_LV"></div>
+      <GoogleMap
+          :api-key="key"
+          style="height: 30rem; width: 50rem;"
+          :center="center"
+          :zoom="7"
+          :disableDefaultUi="true"
+      >
+        <Marker :options="{ position: { lat: 56.5454149, lng: 27.8855629 }}" >
+          <InfoWindow>
+            <h3 id="firstHeading" class="firstHeading">Dodekahedron</h3>
+          </InfoWindow>
+        </Marker>
 
-      <div class="m_text-space-vertical T-text-space">Dodekahedron: 56°32'43.5"N, 27°53'08.1"E</div>
+      </GoogleMap>
 
     </div>
 
     <div class="m_art_container">
 
-      <div class="m_text-space-horizontal T-text-space">
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim id laborum nulla ullam? Animi
-        asperiores atque consectetur cupiditate, esse facere fugit impedit laudantium mollitia qui, repellat rerum
-        similique velit.
-        A amet distinctio dolor dolore earum, eos eum expedita id ipsum nulla officia pariatur perferendis quae
-        quibusdam quidem quisquam reprehenderit saepe tempora. Blanditiis iure libero modi necessitatibus quibusdam
-        suscipit voluptatum.
-        Ab autem beatae blanditiis corporis cum deleniti dignissimos distinctio earum harum impedit inventore,
-        minus mollitia necessitatibus nihil numquam odit omnis possimus provident quibusdam quisquam quos saepe
-        soluta voluptas voluptate voluptatibus?
-        Aliquid amet architecto aspernatur, debitis dicta esse illo iusto nihil non optio perferendis quae
-        quaerat quia recusandae rem reprehenderit sapiente, sint veniam. A debitis deserunt libero modi pariatur
-        velit veniam?
-        Ab alias corporis, doloribus eius in labore magnam maxime necessitatibus officia porro sed similique
-        veniam! Architecto aut pariatur quasi quis repellat. Aliquam delectus deleniti explicabo facere laborum?
-        Asperiores culpa, repellat!
-
-      </div>
     </div>
 
   </div>
@@ -157,6 +122,11 @@
 <script setup lang="ts">
 
   import {onMounted, ref} from 'vue';
+
+  import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
+
+  const key = 'AIzaSyB14TR74Nym584RN4Yy6zcIN_AtZiw3-ew'
+  const center = { lat: 56.927628, lng: 24.405436 }
 
   const isMobile = ref(false);
   const isDesktop = ref(true);

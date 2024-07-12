@@ -137,27 +137,27 @@
         </div>
       </div>
 
-      <div class="text-space T-text-space">
+<!--      <div class="text-space T-text-space">-->
 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim id laborum nulla ullam? Animi
-        asperiores atque consectetur cupiditate, esse facere fugit impedit laudantium mollitia qui, repellat rerum
-        similique velit.
-        A amet distinctio dolor dolore earum, eos eum expedita id ipsum nulla officia pariatur perferendis quae
-        quibusdam quidem quisquam reprehenderit saepe tempora. Blanditiis iure libero modi necessitatibus quibusdam
-        suscipit voluptatum.
-        Ab autem beatae blanditiis corporis cum deleniti dignissimos distinctio earum harum impedit inventore,
-        minus mollitia necessitatibus nihil numquam odit omnis possimus provident quibusdam quisquam quos saepe
-        soluta voluptas voluptate voluptatibus?
-        Aliquid amet architecto aspernatur, debitis dicta esse illo iusto nihil non optio perferendis quae
-        quaerat quia recusandae rem reprehenderit sapiente, sint veniam. A debitis deserunt libero modi pariatur
-        velit veniam?
-        Ab alias corporis, doloribus eius in labore magnam maxime necessitatibus officia porro sed similique
-        veniam! Architecto aut pariatur quasi quis repellat. Aliquam delectus deleniti explicabo facere laborum?
-        Asperiores culpa, repellat!
+<!--        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim id laborum nulla ullam? Animi-->
+<!--        asperiores atque consectetur cupiditate, esse facere fugit impedit laudantium mollitia qui, repellat rerum-->
+<!--        similique velit.-->
+<!--        A amet distinctio dolor dolore earum, eos eum expedita id ipsum nulla officia pariatur perferendis quae-->
+<!--        quibusdam quidem quisquam reprehenderit saepe tempora. Blanditiis iure libero modi necessitatibus quibusdam-->
+<!--        suscipit voluptatum.-->
+<!--        Ab autem beatae blanditiis corporis cum deleniti dignissimos distinctio earum harum impedit inventore,-->
+<!--        minus mollitia necessitatibus nihil numquam odit omnis possimus provident quibusdam quisquam quos saepe-->
+<!--        soluta voluptas voluptate voluptatibus?-->
+<!--        Aliquid amet architecto aspernatur, debitis dicta esse illo iusto nihil non optio perferendis quae-->
+<!--        quaerat quia recusandae rem reprehenderit sapiente, sint veniam. A debitis deserunt libero modi pariatur-->
+<!--        velit veniam?-->
+<!--        Ab alias corporis, doloribus eius in labore magnam maxime necessitatibus officia porro sed similique-->
+<!--        veniam! Architecto aut pariatur quasi quis repellat. Aliquam delectus deleniti explicabo facere laborum?-->
+<!--        Asperiores culpa, repellat!-->
 
-        <div v-if="MENU_selected === 'map'" class="gps-on-screen">56°32'43.5"N 27°53'08.1"E</div>
+<!--        <div v-if="MENU_selected === 'map'" class="gps-on-screen">56°32'43.5"N 27°53'08.1"E</div>-->
 
-      </div>
+<!--      </div>-->
 
     </div>
 

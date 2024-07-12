@@ -1,4 +1,4 @@
-<!-- 
+<!--
 //  *   ts : 5b2b11cc-f727-408d-973a-993916120dc4
 //  *
 //  *   Project Name: "Vides Formas"
@@ -6,7 +6,7 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   Landing page - footer  [.ts]
 //  *   abbreviation: LPf
 //  *   version: 2
@@ -38,7 +38,6 @@
         background-color: var(--C-background-color);
         border-top:1px solid var(--C-background-line);
         padding: 33px;
-        // border:1px dashed green;
     }
     .LPf-container{
         margin: auto;

@@ -52,13 +52,13 @@
 
   onMounted(() => {
 
-  RefreshService(); // on Page Refresh
-    //
-    // if (window.innerWidth < 600){
-    //   isMobile.value = true;
-    //   isDesktop.value = false;
-    // }
-    // console.log(window.screen.width + ' x ' + window.screen.height);
+    RefreshService(); // on Page Refresh
+      //
+      // if (window.innerWidth < 600){
+      //   isMobile.value = true;
+      //   isDesktop.value = false;
+      // }
+      // console.log(window.screen.width + ' x ' + window.screen.height);
 
   });
 

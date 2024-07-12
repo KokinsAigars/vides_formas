@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "videsformas-ae836",
+    "site": "videsformas",
     "public": "dist",
     "ignore": [
       "firebase.json",

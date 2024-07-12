@@ -96,31 +96,25 @@
     </div>
 
     <div class="m_art_container" v-if="MENU_selected === 'map'">
-      <div class="m_image"><img v-bind:src="ref_image_karte" alt="map_forms_LV"></div>
-      <div class="m_text-space-vertical T-text-space">Tetrahedron: 57°00'57.4"N, 21°34'51.1"E</div>
+
+      <GoogleMap
+          :api-key="key"
+          style="height: 30rem; width: 50rem;"
+          :center="center"
+          :zoom="7"
+          :disableDefaultUi="true"
+      >
+        <Marker :options="{ position: { lat: 57.0159213, lng: 21.5810198 }}" >
+          <InfoWindow>
+            <h3 id="firstHeading" class="firstHeading">Tetrahedron</h3>
+          </InfoWindow>
+        </Marker>
+
+      </GoogleMap>
+
     </div>
 
     <div class="m_art_container">
-
-      <div class="m_text-space-horizontal T-text-space">
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim id laborum nulla ullam? Animi
-        asperiores atque consectetur cupiditate, esse facere fugit impedit laudantium mollitia qui, repellat rerum
-        similique velit.
-        A amet distinctio dolor dolore earum, eos eum expedita id ipsum nulla officia pariatur perferendis quae
-        quibusdam quidem quisquam reprehenderit saepe tempora. Blanditiis iure libero modi necessitatibus quibusdam
-        suscipit voluptatum.
-        Ab autem beatae blanditiis corporis cum deleniti dignissimos distinctio earum harum impedit inventore,
-        minus mollitia necessitatibus nihil numquam odit omnis possimus provident quibusdam quisquam quos saepe
-        soluta voluptas voluptate voluptatibus?
-        Aliquid amet architecto aspernatur, debitis dicta esse illo iusto nihil non optio perferendis quae
-        quaerat quia recusandae rem reprehenderit sapiente, sint veniam. A debitis deserunt libero modi pariatur
-        velit veniam?
-        Ab alias corporis, doloribus eius in labore magnam maxime necessitatibus officia porro sed similique
-        veniam! Architecto aut pariatur quasi quis repellat. Aliquam delectus deleniti explicabo facere laborum?
-        Asperiores culpa, repellat!
-
-      </div>
     </div>
 
 
@@ -136,6 +130,12 @@
 <script setup lang="ts">
 
 import {onMounted, ref} from 'vue';
+
+
+import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
+
+const key = 'AIzaSyB14TR74Nym584RN4Yy6zcIN_AtZiw3-ew'
+const center = { lat: 56.927628, lng: 24.405436 }
 
 const isMobile = ref(false);
 const isDesktop = ref(true);
