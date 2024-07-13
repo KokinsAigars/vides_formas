@@ -9,7 +9,14 @@ npm run dev
 
 npm run build
 
-npm run firebase
+npm run firebaseemulators
+
+npm run firebasdeploy
+
+npm run firebasdisable
+
+npm run firebasdisablevidesformas
+
 ```
 
 https://console.firebase.google.com/project/videsformas/overview

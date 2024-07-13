@@ -12,6 +12,7 @@
 //  *
 //  *   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 //  *   import { useRootStore } from '@rootStore/index.html-store';
+//  *   const RootStore = useRootStore();
 
 import i18n from '@/locale/index';
 import {defineStore} from "pinia";
@@ -38,6 +39,10 @@ export const useRootStore = defineStore({
             {id: 3, title: 'Dodekahedron'   , value: false},
             {id: 4, title: 'Icosahedron'    , value: false},
         ],
+
+        mapAPI: 'AIzaSyB14TR74Nym584RN4Yy6zcIN_AtZiw3-ew',
+        mapStyleId: 'aff95100f6e051a6',
+
     }),
 
     actions: {

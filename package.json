@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build --base=/",
     "preview": "vite preview",
-    "firebase": "firebase emulators:start --import=./local --export-on-exit"
+    "firebaseemulators": "firebase emulators:start --import=./local --export-on-exit",
+    "firebasdeploy": "firebase deploy --only hosting:videsformas",
+    "firebasdisable": "firebase emulators:start",
+    "firebasdisablevidesformas": "firebase hosting:disable -s videsformas"
   },
   "dependencies": {
     "axios": "^1.7.2",

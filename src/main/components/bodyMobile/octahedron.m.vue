@@ -77,21 +77,24 @@
 
     <div class="m_art_container" v-if="MENU_selected === 'map'">
 
-      <GoogleMap
-          :api-key="key"
-          style="height: 30rem; width: 50rem;"
-          :center="center"
-          :zoom="7"
-          :disableDefaultUi="true"
-      >
-        <Marker :options="{ position: { lat: 57.7582386, lng: 22.5969097 }}" >
-          <InfoWindow>
-            <h3 id="firstHeading" class="firstHeading">Octahedron</h3>
-          </InfoWindow>
-        </Marker>
-
+      <div class="googleMapsContainer">
+        <GoogleMap
+            style="width: 100%; height: 100%"
+            :map-id="map_id"
+            :api-key="apiKey"
+            version="3.55"
+            :center="center"
+            :zoom="7"
+            :disableDefaultUi="true"
+        >
+          <Marker :options="{
+            position: { lat: 57.7582386, lng: 22.5969097 },
+            icon: svgMarker,
+            title: 'Octahedron',
+             }"
+          />
       </GoogleMap>
-
+      </div>
     </div>
 
     <div class="m_art_container">
@@ -109,10 +112,25 @@
 import {onMounted, ref} from 'vue';
 
 
+// RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
+import { useRootStore } from '@rootStore/index.html-store';
+const RootStore = useRootStore();
+
 import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
 
-const key = 'AIzaSyB14TR74Nym584RN4Yy6zcIN_AtZiw3-ew'
+const apiKey  = RootStore.mapAPI;
+const map_id  = RootStore.mapStyleId;
 const center = { lat: 56.927628, lng: 24.405436 }
+
+const svgMarker = {
+  path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+  fillColor: "blue",
+  fillOpacity: 0.6,
+  strokeWeight: 0,
+  rotation: 0,
+  scale: 1.5,
+  // anchor: new google.maps.Point(0, 20),s
+}
 
 const isMobile = ref(false);
 const isDesktop = ref(true);
