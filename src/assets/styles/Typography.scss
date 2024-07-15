@@ -22,7 +22,7 @@
     padding-left: 70px;
 }
 
-.T-default, .T-title-formas, .T-text-space, .T-h-header, .T-hb-c-select, .T-switch, .T-switch-image, .T-m_image {
+.T-default, .T-title-formas, .T-text-space, .T-h-header, .T-hb-c-select, .T-switch, .T-switch-image, .T-m_image, .T-GPS {
     font-family: 'PublicSansThin', 'RobotoRegular', 'Open Sans', sans-serif;
     font-size: 1rem;
     line-height: 1.2rem;
@@ -35,7 +35,7 @@
     color: #090b1e;
 }
 
-.T-switch-image {
+.T-switch-image, .T-GPS {
     font-family: 'RobotoRegular', 'Open Sans', sans-serif;
     font-size: 0.9rem;
 }

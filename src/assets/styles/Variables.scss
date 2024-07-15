@@ -5,9 +5,9 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   GLOBAL Styles - variables (V)
-//  *   
+//  *
 
 // in index.html <body class"v">
 .v {
@@ -19,7 +19,7 @@
     --V-scrollbar-width: 16px;
 
     // Landing Page//<header>
-    --LP-V-h-height: 62px;
+    --LP-V-h-height: 66px;
     --LP-T-h_Title-opacity: 0.8;
     --LP-T-h_Title-opacity-title: 0.7;
 
@@ -39,7 +39,7 @@
     --V-h-SEARCH-width: 500px;
     --V-h-SEARCH-width-middle: 380px;
     --V-h-SEARCH-width-small: 300px;
-    
+
     // msg-Alert
     --V-h-mA-height: 35px;
 
@@ -55,7 +55,7 @@
     // TABS
     --V-t-height: 35px;
     --V-t-height-s: 25px;
-    
+
     // EXPLORER (sidebar)
     --V-ui-EXP-b-width: 260px;
     --V-ui-EXP-search-height: 20px;
@@ -94,7 +94,7 @@
     --V-rs-ftTb: 20px;
     --V-rs-ftTc: 250px;
     --V-rs-ftTd: 100px;
-    
+
     --V-rs-ftTe: 50px;
     --V-rs-ftTf: 50px;
     --V-rs-ftTg: 50px;

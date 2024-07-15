@@ -17,7 +17,7 @@
     <footer class="LPf-footer">
         <div class="LPf-container">
             <p class="LPf-el T-LPf-el">{{RootStore.Copyright()}}</p>
-            <p class="LPf-el T-LPf-el">{{RootStore.ReleaseId()}}</p>
+<!--            <p class="LPf-el T-LPf-el">{{RootStore.ReleaseId()}}</p>-->
         </div>
     </footer>
 </template>
@@ -50,4 +50,4 @@
         // border:1px dashed red;
     }
 
-</style>@/store/index.html-store
+</style>

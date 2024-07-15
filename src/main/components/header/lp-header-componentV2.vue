@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.02
+//  *   Built on 2024.07.15
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - header [.ts]
@@ -18,24 +18,21 @@
   <header class="LPh-header">
     <div class="LPh-container">
 
-      <div class="hb-c">
-
-<!--        <div class="hb-c-select T-hb-c-select">Vietas Latvijā</div>-->
-
+      <div class="hb-c-right">
         <div class="hb-c-div">
-          <select class="hb-c-select T-hb-c-select" id="hb-c-select"
-              v-model="MENU_selected"
-              @click="MENU_fn_Change(MENU_selected)">
-
+          <select class="hb-c-select T-hb-c-select"
+                  id="hb-c-select"
+                  v-model="MENU_selected"
+                  @click="MENU_fn_Change(MENU_selected)">
             <option class="hb-c-select-o T-hb-c-select" value="Hexahedron">Hexahedron</option>
             <option class="hb-c-select-o T-hb-c-select" value="Tetrahedron">Tetrahedron</option>
             <option class="hb-c-select-o T-hb-c-select" value="Octahedron">Octahedron</option>
             <option class="hb-c-select-o T-hb-c-select" value="Dodekahedron">Dodekahedron</option>
             <option class="hb-c-select-o T-hb-c-select" value="Icosahedron">Icosahedron</option>
-
           </select>
         </div>
       </div>
+
 
     </div>
   </header>
@@ -71,15 +68,7 @@ import {onMounted, ref } from 'vue';
     MENU_selected.value = value;
 
     try {
-      if (window.innerWidth < 800){
-        router.push({name: value + 'Mobile'});
-        // console.log(window.innerWidth, 'Mobile');
-      }
-      else {
         router.push({name: value});
-        // console.log(window.innerWidth, 'Desktop');
-      }
-
     } catch (error) {
         console.error(error);
         console.error('Failed to navigate to ', value, ': ', ID);
@@ -98,20 +87,77 @@ import {onMounted, ref } from 'vue';
   height: var(--LP-V-h-height); min-height: var(--LP-V-h-height); max-height: var(--LP-V-h-height);
   width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
   background-color: var(--C-background-color);
+  border-bottom: 1px solid var(--C-background-line);
 }
 .LPh-container{
   height: var(--LP-V-h-height); min-height: var(--LP-V-h-height); max-height: var(--LP-V-h-height);
   width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
-  padding-top: 7px;
   padding-left: 80px;
-  padding-right: 50px;
+    padding-right: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   flex-shrink: 0;
   flex-grow: 0;
   background-color: transparent;
+
+  @include for-size(600px) {
+    padding-right: 0;
+  }}
+.hb-c-right{
+  margin-left: auto;
+  display: flex;
+  justify-content: right;
+  height: 48px; min-height: 48px; max-height: 48px;
+  margin-top: 9px;
+  margin-right: 15px;
+  background-color: transparent;
 }
+.hb-c-div{
+  display: flex;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--C-hs-svg); //var(--C-T-app-h-search-line);
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow: hidden !important;
+  cursor: pointer;
+}
+.hb-c-select {
+  background-color: transparent;
+  border: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+}
+.hb-c-select-o { background-color: var(--C-background-color); }
+.hb-c-select:focus, .hb-c-select-o:focus {outline: none;}
+*:focus {outline: none;}
+input:focus {outline:none;}
+
+
+
+
+
+.h-icon-form{
+
+  height: 40px;
+}
+.h_svg_hexahedron, .h_svg_tetrahedron, .h_svg_octahedron, .h_svg_dodekahedron, .h_svg_icosahedron {
+  width: 30px;
+  height: 30px;
+  margin-left: 20px}
+
+.h_st_svg{
+  fill:none;
+  stroke: #c122a9;//#5B5B5B;
+  stroke-width: 5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;}
+
+
 
 .LPh-products{
   display: flex;
@@ -139,51 +185,4 @@ import {onMounted, ref } from 'vue';
   border: 1px solid transparent;
   cursor: pointer;
 }
-
-.hb-c{
-  margin-left: auto;
-  display: flex;
-  justify-content: right;
-  height: 48px; min-height: 48px; max-height: 48px;
-  margin-top: 9px;
-  margin-right: 15px;
-  background-color: transparent;
-}
-
-.hb-c-div{
-  display: flex;
-  text-decoration: none;
-  background-color: transparent;
-  border: 1px solid var(--C-T-app-h-search-line);
-  border-radius: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow: hidden !important;
-  cursor: pointer;
-}
-
-.hb-c-select {
-  background-color: transparent;
-  border: 0;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 3px;
-}
-
-.hb-c-select-o{
-  background-color: var(--C-app-h-bg);
-}
-
-.hb-c-select:focus, .hb-c-select-o:focus {
-  outline: none;
-}
-
-*:focus {
-  outline: none;
-}
-
-input:focus {
-  outline:none;
-}
-
 </style>

@@ -3,8 +3,8 @@
 //  *   Project Name: VIVENTE Front-end
 //  *   Vue 3 + Typescript + SCSS + Vite
 //  *   Built on 2024.02.14
-//  *   Contributor(s): Aigars Kokins 
-//  *	 
+//  *   Contributor(s): Aigars Kokins
+//  *
 //  *   GLOBAL Typography -- Landing Page component
 //  *   version: 1.0.0
 //  *
@@ -15,20 +15,20 @@
     font-family: 'DMSansExtraBoldItalic', 'SegoeUIBold', 'InterRegular', 'Open Sans', 'Segoe UI', sans-serif;
     font-size: 2.4rem;
     line-height: 1.7em;
-    letter-spacing: 0.1em; 
-    font-weight: 600; 
+    letter-spacing: 0.1em;
+    font-weight: 600;
     color: var(--LP-T-h_Title);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: antialiased;
-    
+
 }
 //<header> Sign In
 .T-h-signin{
     font-family: 'BitterMedium', 'BitterRegular', 'Open Sans', sans-serif;
     font-size: 1.1rem;
     line-height: 1.3em;
-    letter-spacing: normal; 
-    font-weight: 400; 
+    letter-spacing: normal;
+    font-weight: 400;
     color: var(--LP-C-h_icont_bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: antialiased;
@@ -46,19 +46,19 @@
     color: var(--LP-T-h2b);
     overflow-wrap: break-word;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
 }
 //<body>//<p>
 .T-LPb-p{
     font-family: 'PublicSansRegular', 'Open Sans', sans-serif;
     font-size: 1em;
     line-height: 1.7em;
-    letter-spacing: normal; 
+    letter-spacing: normal;
     font-weight: 400;
     color: var(--LP-T-p1);
     overflow-wrap: break-word;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
 }
 
 // footer
@@ -66,9 +66,9 @@
     font-family: 'InterRegular', 'Open Sans', 'Segoe UI', sans-serif;
     font-size: 0.88rem;
     line-height: 1.7em;
-    letter-spacing: normal; 
-    font-weight: 500; 
+    letter-spacing: normal;
+    font-weight: 500;
     color: var(--LP-T-p);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
 }

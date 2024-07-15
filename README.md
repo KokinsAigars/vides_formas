@@ -6,15 +6,14 @@ npm install
 
 ``` bash
 npm run dev
-
 npm run build
 
 npm run firebaseemulators
-
 npm run firebasdeploy
 
-npm run firebasdisable
 
+
+npm run firebasdisable
 npm run firebasdisablevidesformas
 
 ```

@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.02
+//  *   Built on 2024.07.15
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   <RouterView/>
@@ -20,51 +20,27 @@
 
     <HeaderComponent/>
 
-    <div class="LPb">
-      <RouterView/>
-    </div>
+    <div class="LPb"> <RouterView/> </div>
 
     <FooterComponent/>
 
   </div>
-
 </template>
 
 <script setup lang="ts">
 
-  import { onMounted, ref} from 'vue';
+  import { onMounted } from 'vue';
   import { RouterView } from 'vue-router'
-
-  // const isMobile = ref(false);
-  // const isDesktop = ref(true);
 
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
   import { RefreshService } from '@services/refresh.service';
 
+  onMounted(() => { RefreshService(); });
+
   import HeaderComponent  from '@components/header/lp-header-componentV2.vue';
   import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
-
-  // import { v4 as uuid4 } from 'uuid';
-  // console.log("ts : " + uuid4());
-
-  // console.log("//  Function ID: " + Math.floor(Math.random() * 1000000) + 1);
-
-  onMounted(() => {
-
-    RefreshService(); // on Page Refresh
-      //
-      // if (window.innerWidth < 600){
-      //   isMobile.value = true;
-      //   isDesktop.value = false;
-      // }
-      // console.log(window.screen.width + ' x ' + window.screen.height);
-
-  });
-
 </script>
-
-
 
 <style scoped lang="scss">
 
@@ -74,13 +50,16 @@
   }
 
   $b-height: calc(var(--V-screen-height) - var(--V-h-height));
+
   .LPb{
-    overflow:visible;
+    overflow: visible;
     left: 0;
     top: var(--V-h-height);
     min-height: $b-height;
     width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
     background-color: var(--C-background-color);
     border: 1px solid transparent;
+    //border: 3px dashed blue;
   }
+
 </style>

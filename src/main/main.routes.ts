@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.02
+//  *   Built on 2024.07.15
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
@@ -22,47 +22,27 @@ const router = createRouter ({
 
     //   Hexahedron
     { path: '/h', name: "Hexahedron",
-      component: () => import('@components/bodyMobile/hexahedron.m.vue'),
-      // component: () => import('@components/body/hexahedron.vue'),
-    },
-    { path: '/h.m', name: "HexahedronMobile",
-      component: () => import('@components/bodyMobile/hexahedron.m.vue'),
+      component: () => import('@components/body/hexahedron.vue'),
     },
 
     //   Tetrahedron
     { path: '/t', name: "Tetrahedron",
-      component: () => import('@components/bodyMobile/tetrahedron.m.vue'),
-      // component: () => import('@components/body/tetrahedron.vue'),
-    },
-    { path: '/t.m', name: "TetrahedronMobile",
-      component: () => import('@components/bodyMobile/tetrahedron.m.vue'),
+      component: () => import('@components/body/tetrahedron.vue'),
     },
 
     //   Octahedron
     { path: '/o', name: "Octahedron",
-      component: () => import('@components/bodyMobile/octahedron.m.vue'),
-      // component: () => import('@components/body/octahedron.vue'),
-    },
-    { path: '/o.m', name: "OctahedronMobile",
-      component: () => import('@components/bodyMobile/octahedron.m.vue'),
+      component: () => import('@components/body/octahedron.vue'),
     },
 
     //   Dodekahedron
     { path: '/d', name: "Dodekahedron",
-      component: () => import('@components/bodyMobile/dodekahedron.m.vue'),
-      // component: () => import('@components/body/dodekahedron.vue'),
-    },
-    { path: '/d.m', name: "DodekahedronMobile",
-      component: () => import('@components/bodyMobile/dodekahedron.m.vue'),
+      component: () => import('@components/body/dodekahedron.vue'),
     },
 
     //   Icosahedron
     { path: '/i', name: "Icosahedron",
-      component: () => import('@components/bodyMobile/icosahedron.m.vue'),
-      // component: () => import('@components/body/icosahedron.vue'),
-    },
-    { path: '/i.m', name: "IcosahedronMobile",
-      component: () => import('@components/bodyMobile/icosahedron.m.vue'),
+      component: () => import('@components/body/icosahedron.vue'),
     },
 
     { path: '/:catchAll(.*)*', name: 'NotFound', redirect: '/h' },
