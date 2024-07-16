@@ -15,24 +15,29 @@
 
 <template>
 
+<!--  <div class="AuxiliaryLine0"></div><div class="AuxiliaryLine1"></div><div class="AuxiliaryLine2"></div>-->
+
   <header class="LPh-header">
     <div class="LPh-container">
+
+      <div class="LPh-Title T-LPh-Title">
+        {{HEADER_TITLE}}
+      </div>
 
       <div class="hb-c-right">
         <div class="hb-c-div">
           <select class="hb-c-select T-hb-c-select"
                   id="hb-c-select"
-                  v-model="MENU_selected"
-                  @click="MENU_fn_Change(MENU_selected)">
-            <option class="hb-c-select-o T-hb-c-select" value="Hexahedron">Hexahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="Tetrahedron">Tetrahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="Octahedron">Octahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="Dodekahedron">Dodekahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="Icosahedron">Icosahedron</option>
+                  @input="fn_Select($event)"
+                  v-model="defaultValue">
+            <option class="hb-c-select-o T-hb-c-select" value="h">Hexahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="t">Tetrahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="o">Octahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="d">Dodekahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="i">Icosahedron</option>
           </select>
         </div>
       </div>
-
 
     </div>
   </header>
@@ -41,38 +46,38 @@
 
 <script setup lang="ts">
 
-import {onMounted, ref } from 'vue';
+  const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
+
+  import {ref} from 'vue';
 
   import {useRouter} from 'vue-router';
   const router = useRouter();
 
-  // localization // => ts : aa82b725-d29a-4717-9812-ea128c49d907
-  //import i18n from '@locale/index'
+  const HEADER_TITLE = 'VIDES FORMAS';
 
-  // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
-  import {useRootStore} from '@rootStore/index.html-store';
-  const RootStore = useRootStore();
+  const defaultValue = ref('');
+  defaultValue.value = 'h'
 
-  const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
 
-  import {RefreshService} from "@services/refresh.service";
+  const temp = ref('');
 
-  const isDesktop = ref(true);
-  const isMobile = ref(false);
+  const fn_Select = (event: Event) => {
 
-  // MENU
-  const MENU_selected = ref('');
-  MENU_selected.value = "Hexahedron";
+    const target = event.target as HTMLSelectElement;
+    const selectedValue = target.value;
 
-  const MENU_fn_Change = (value: string) => {
-    MENU_selected.value = value;
-
-    try {
-        router.push({name: value});
-    } catch (error) {
+    if(temp.value === selectedValue) {
+      return
+    } else {
+      try {
+        router.push({path: '/' + selectedValue});
+        temp.value = selectedValue;
+      } catch (error) {
         console.error(error);
-        console.error('Failed to navigate to ', value, ': ', ID);
+        console.error('Failed to navigate to ', selectedValue, ': ', ID);
       }
+    }
+
   }
 
 
@@ -81,6 +86,8 @@ import {onMounted, ref } from 'vue';
 <style scoped lang="scss">
 
 @import '@style/mixin.scss';
+
+.AuxiliaryLine0{@include AuxL_Horizontal(40px);}
 
 .LPh-header{
   top: 0;
@@ -104,6 +111,14 @@ import {onMounted, ref } from 'vue';
   @include for-size(600px) {
     padding-right: 0;
   }}
+
+.LPh-Title{
+  background: transparent;
+
+  @include for-size(750px) {
+    display:none;
+  }}
+
 .hb-c-right{
   margin-left: auto;
   display: flex;
@@ -136,14 +151,6 @@ import {onMounted, ref } from 'vue';
 *:focus {outline: none;}
 input:focus {outline:none;}
 
-
-
-
-
-.h-icon-form{
-
-  height: 40px;
-}
 .h_svg_hexahedron, .h_svg_tetrahedron, .h_svg_octahedron, .h_svg_dodekahedron, .h_svg_icosahedron {
   width: 30px;
   height: 30px;
@@ -158,31 +165,4 @@ input:focus {outline:none;}
   stroke-miterlimit:10;}
 
 
-
-.LPh-products{
-  display: flex;
-  justify-content: right;
-  flex: 1;
-  margin-left: auto;
-  background-color: transparent;
-}
-
-.hc2-user-text-s{
-  height: 40px;
-  margin-right: 16px;
-  background-color: transparent;
-  text-decoration: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-
-.LPh-signin-text, .hc2-user-text-options{
-  margin-top: 7px;
-  margin-left: 16px;
-  margin-right: 16px;
-  background-color: transparent;
-  text-decoration: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
 </style>

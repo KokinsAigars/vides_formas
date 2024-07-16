@@ -36,7 +36,7 @@
         height: var(--LP-V-h-footer); min-height: var(--LP-V-h-footer); max-height: var(--LP-V-h-footer);
         width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
         background-color: var(--C-background-color);
-        border-top:1px solid var(--C-background-line);
+        //border-top:1px solid var(--C-background-line);
         padding: 33px;
     }
     .LPf-container{

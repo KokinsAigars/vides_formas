@@ -3,11 +3,25 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL Typography [stylesTypography.scss]
 //  *
+
+//<header> TITLE
+.T-LPh-Title{
+    // font-family: 'DMSansExtraBold', 'DMSansExtraBoldItalic', 'SegoeUIBold', 'InterRegular', 'Open Sans', 'Segoe UI', sans-serif;
+    font-family: 'DMSansExtraBoldItalic', sans-serif;
+    font-size: 2.4rem;
+    line-height: 1.7em;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--LP-T-h_Title);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+
+}
 
 .T-test-color{
     // font-family: 'DMSansExtraBold', 'DMSansExtraBoldItalic', 'SegoeUIBold', 'InterRegular', 'Open Sans', 'Segoe UI', sans-serif;

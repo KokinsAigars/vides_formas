@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.07.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   <RouterView/>
@@ -35,6 +35,8 @@
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
   import { RefreshService } from '@services/refresh.service';
 
+  // import { browserService } from '@services/refresh.service';
+
   onMounted(() => { RefreshService(); });
 
   import HeaderComponent  from '@components/header/lp-header-componentV2.vue';
@@ -49,16 +51,20 @@
     overflow-y: auto !important;
   }
 
-  $b-height: calc(var(--V-screen-height) - var(--V-h-height));
+  $b-height: calc(var(--V-screen-height) - var(--V-h-height) - var(--LP-V-h-footer));
 
+  .LP-Layout{
+    height: var(--V-screen-height); min-height: var(--V-screen-height); max-height: var(--V-screen-height);
+    width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
+  }
   .LPb{
     overflow: visible;
     left: 0;
     top: var(--V-h-height);
-    min-height: $b-height;
-    width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
+    width:  100%;
+    height: $b-height;
     background-color: var(--C-background-color);
-    border: 1px solid transparent;
+    //border: 1px solid transparent;
     //border: 3px dashed blue;
   }
 

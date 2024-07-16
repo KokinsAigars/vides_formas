@@ -21,19 +21,6 @@ export const RefreshService = () => {
 
     const RootStore = useRootStore();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     // UI Theme
     const ui_theme = RootStore.$state.Ui_Theme;
     const ui_theme_sessionStorage = localStorage.getItem('ui_theme');

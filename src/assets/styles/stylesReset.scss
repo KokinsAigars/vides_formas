@@ -5,12 +5,12 @@
 //  *   Vue + Typescript + SCSS + Vite
 //  *   Built on 2024.06.29
 //  *   Contributor(s): Aigars Kokins
-//  *	 
+//  *
 //  *   GLOBAL Styles - RESET CSS
-//  *   
+//  *
 
 *, *::before, *::after {margin: 0; padding: 0; box-sizing: border-box;}
-html, body {  height: auto;  width: auto; margin: 0; padding: 0; }
+html, body {  height: auto;  width: auto; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto !important;}
 
 // text without fonts will be rendered RED!
 body { font-family: sans-serif; color: #091bf1;}
