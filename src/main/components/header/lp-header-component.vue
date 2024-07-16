@@ -57,7 +57,7 @@
   import { useRootStore } from '@rootStore/index.html-store';
   const RootStore = useRootStore();
 
-  const HEADER_TITLE = 'sacred geometry sites';
+  const HEADER_TITLE = 'sacred geometry'; // sites
   const defaultValue = ref('');
   const temp = ref('');
 
