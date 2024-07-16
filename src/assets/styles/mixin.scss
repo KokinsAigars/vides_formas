@@ -3,7 +3,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL Mixins [mixin.scss]
@@ -18,13 +18,22 @@
 
 
 $max-width: var(--M-max-width);
+$max-height: var(--M-max-height);
+
   @mixin for-size($max-width) {
       @media (max-width: $max-width) {
         @content;
       }
-
   @media (min-width: #{$max-width + 1}px) {
     display: none;
   }
 }
 
+@mixin for-height-size($max-height) {
+  @media (max-height: $max-height) {
+    @content;
+  }
+  @media (min-height: #{$max-height + 1}px) {
+    display: none;
+  }
+}

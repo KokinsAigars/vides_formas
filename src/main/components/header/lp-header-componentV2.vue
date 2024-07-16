@@ -20,7 +20,9 @@
   <header class="LPh-header">
     <div class="LPh-container">
 
-      <div class="LPh-Title T-LPh-Title">
+      <div class="LPh-color"></div>
+
+      <div class="LPh-Title T-h-Title">
         {{HEADER_TITLE}}
       </div>
 
@@ -53,7 +55,7 @@
   import {useRouter} from 'vue-router';
   const router = useRouter();
 
-  const HEADER_TITLE = 'VIDES FORMAS';
+  const HEADER_TITLE = 'sacred geometry sites';
 
   const defaultValue = ref('');
   defaultValue.value = 'h'
@@ -94,13 +96,11 @@
   height: var(--LP-V-h-height); min-height: var(--LP-V-h-height); max-height: var(--LP-V-h-height);
   width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
   background-color: var(--C-background-color);
-  border-bottom: 1px solid var(--C-background-line);
 }
 .LPh-container{
   height: var(--LP-V-h-height); min-height: var(--LP-V-h-height); max-height: var(--LP-V-h-height);
   width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
-  padding-left: 80px;
-    padding-right: 50px;
+  //padding-right: 80px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -112,7 +112,18 @@
     padding-right: 0;
   }}
 
+.LPh-color{
+  left: 0;
+  width: 5px;
+  background: var(--LP-T-h_Title);
+
+  @include for-size(750px) {
+    display:none;
+  }}
+
 .LPh-Title{
+  margin-left: 55px;
+  padding-top: 10px;
   background: transparent;
 
   @include for-size(750px) {
@@ -132,8 +143,9 @@
   display: flex;
   text-decoration: none;
   background-color: transparent;
-  border: 1px solid var(--C-hs-svg); //var(--C-T-app-h-search-line);
-  border-radius: 5px;
+  //border: 1px solid transparent;//var(--LP-T-h_Title); //var(--C-T-app-h-search-line);
+  //border-bottom: 1px solid var(--LP-T-h_Title);
+  //border-radius: 5px;
   padding-left: 5px;
   padding-right: 5px;
   overflow: hidden !important;

@@ -85,7 +85,7 @@
             style="width: 100%; height: 100%"
             :map-id="map_id"
             :api-key="apiKey"
-            version="version"
+            version="3.55"
             :center="center"
             :zoom="zoom"
             :disableDefaultUi="true"
@@ -97,7 +97,7 @@
              }"
           />
         </GoogleMap>
-        <div class="GPS-container T-GPS">
+        <div class="GPS-container">
           <a class="GPS T-GPS"
              href="https://www.google.com/maps/place/56%C2%B032'43.5%22N+27%C2%B053'08.1%22E/@56.8242139,26.7347303,9z/data=!4m4!3m3!8m2!3d56.5454167!4d27.8855833?entry=ttu">
             56°32'43.5"N 27°53'08.1"E
@@ -123,8 +123,8 @@
   const map_id  = RootStore.mapStyleId;
   const center = { lat: 56.927628, lng: 24.372477 };
   const zoom  = 7;
-  // const version = 3.55;
-  const version = 3.47; //IE supported version
+  const version = 3.55;
+  //const version = 3.47; //IE supported version
 
   const svgMarker = {
     path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",

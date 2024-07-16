@@ -57,7 +57,7 @@
             style="width: 100%; height: 100%"
             :map-id="map_id"
             :api-key="apiKey"
-            version="version"
+            version="3.55"
             :center="center"
             :zoom="zoom"
             :disableDefaultUi="true"
@@ -96,8 +96,8 @@
   const map_id  = RootStore.mapStyleId;
   const center = { lat: 56.927628, lng: 24.372477 };
   const zoom  = 7;
-  // const version = 3.55;
-  const version = 3.47; //IE supported version
+  const version = 3.55;
+  //const version = 3.47; //IE supported version
 
 
   const svgMarker = {

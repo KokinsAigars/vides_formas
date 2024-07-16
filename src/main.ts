@@ -39,4 +39,3 @@ import '@style/stylesRoot_Light.scss';
 import '@style/stylesScrollbar.scss';
 import '@style/Typography.scss';
 import '@style/Variables.scss';
-import '@style/landing-page/Typography-LP-V2.scss';

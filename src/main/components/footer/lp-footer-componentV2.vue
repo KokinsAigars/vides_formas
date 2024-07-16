@@ -32,6 +32,8 @@
 
 <style scoped lang="scss">
 
+@import '@style/mixin.scss';
+
     .LPf-footer{
         height: var(--LP-V-h-footer); min-height: var(--LP-V-h-footer); max-height: var(--LP-V-h-footer);
         width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
@@ -39,14 +41,20 @@
         //border-top:1px solid var(--C-background-line);
         padding: 33px;
     }
+
     .LPf-container{
         margin: auto;
         max-width: var(--V-screen-width);
         // border:1px dashed purple;
+
+      @include for-height-size(600px) {
+        display: none;
+      }
     }
     .LPf-el{
         margin: 0;
         text-align: center;
+      opacity: 0.7;
         // border:1px dashed red;
     }
 

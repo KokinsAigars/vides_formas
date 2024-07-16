@@ -19,6 +19,7 @@
   <div class="LP-Layout">
 
     <HeaderComponent/>
+    <HeaderComponentLine/>
 
     <div class="LPb"> <RouterView/> </div>
 
@@ -40,6 +41,7 @@
   onMounted(() => { RefreshService(); });
 
   import HeaderComponent  from '@components/header/lp-header-componentV2.vue';
+  import HeaderComponentLine  from '@components/header/lp-header-line.vue';
   import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
 </script>

@@ -5,7 +5,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.07.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL Styles - Light Theme
@@ -14,22 +14,20 @@
 :root[data-theme="ThemeLight"] {
 
     // GLOBAL
-    --C-background-color: #ffffff;//#e1e1e1;//#fff;
+    --C-background-color: #ffffff; //#e1e1e1;//#fff;
     --C-background-line: #dadce0;
 
-    --vivente-icon-lines: #23313b;
-    --vivente-icon-circe: transparent;
-    --vivente-icon-grp: #00000000;
-    --vivente-icon-grp-hover: #220f5f;
-
-    --C-scrollbar-thumb:hwb(216 78% 25%);
+    --C-scrollbar-thumb: hwb(216 78% 25%);
     --C-scrollbar-thumb-border: hwb(216 78% 25%);
     --C-scrollbar-thumb-hover: hwb(216 78% 30%);
     --C-scrollbar-thumb-hover-border: hwb(216 78% 30%);
     --C-scrollbar-track: hwb(0 71% 29% / 0.5);
 
+    --svg-object-color: #252633;
+    --switchText: #5b5b67;
+
     // Landing Page//<header>
-    --LP-T-h_Title: #ffe100;
+    --LP-T-h_Title: #57657e; //#5c82aa;
     --LP-C-h_line: #dadce0;
     --LP-C-h_icont_bg: #5f6368;
     --LP-C-h_icont_bg-hover: #9daab8;
@@ -41,167 +39,9 @@
 
     // Landing Page//<footer>
     --C-ui-f-bg: #f1f2f3;
-    --LP-T-p: #646469;
+    --LP-T-p: #98989f;
     --LP-T-p-hover: #4f4f52;
 
-    // SIGNIN && LOGIN
-    --SignIn-T-Title: #212124;
-    --SignIn-T-msg: #646469;
-    --SignIn-T-next-btn-txt: #828282;
-    --SignIn-T-next-btn-hover: #23313b;
-    --SignIn--C-input-border: #747984;
-    --C-ui-SignIn-btn-hover: #f5f5f5;
-    --C-ui-btn-bg-active: #ececec;
-    --C-ui-btn-shadow: #d2d2d2;
-    --C-ui-btn-shadow-active: #b4b4b4;
-    --C-T--SignIn-VIVENTEStock: rgba(66, 66, 72, 0.702);
-    --C-T--CreateAccount: #ffffff;
-    --C--login-bg: #ffffff;
-    --C-ui-proceed-btn-bg:#f3f3f3;
-    --C-ui-proceed-btn-line: #e0e0e0;
-    --C-spinner-fill:#d8d8d8;
+    --light: #212123;
 
-    // workspace
-    --C-app-bg:#f6f8fa;
-    --C-app-bg2:#f1f1f2;
-    --C-app-h-bg: rgb(235,235,235);
-    --C-T-app-h-search-input: #f2f4f5;
-    --C-T-app-h-search-input-focuss:#f1f1f2;
-    --C-T-app-h-search-line: hwb(0 78% 22%);
-    --C-app-h-bttn:hwb(217 8% 78%);
-    --C-app-h-bg-shadow: rgba(201, 201, 201, 0.639);
-    --C-app-h-bg-shadowB: hwb(217 6% 85% / 0.15);
-    --C-T-app-h-lines:hwb(270 16% 81% / 0.4);
-    --C-T-app-h-linesB:hwb(270 16% 81% / 0.4);
-    --C-app-h-svg:#a1a19a;
-    --C-app-h-svg-hover:#dadada;
-    --C-app-h-svgB:#acacac;
-    --T-app-h-title:#2e3d53;
-    --C-ui-footer-bg: rgb(240,240,240);
-    --C-ui-footer-LineA: rgb(190,190,190);
-    --C-ui-ab-LineA: rgb(190,190,190);
-    --C-app-h-mA-bg: #619bf7;
-    --C-app-h-mA-bg-cheked: rgba(156, 226, 166, 0.571);
-    --C-T-app-h-mA-bg-cheked: rgb(0,0,0);
-    --C-T-app-h-mA-text: #252652;
-    --C-T-app-h-search-lines:#d0d7de;
-    --C-T-app-h-search-line-active:#1471db;
-    --C-app-icons-hover: #868686;
-    --C-app-icons-hover-v: #e2f1ff;
-    --C-app-icons-hover-g: #e2f1ff;
-    --C-ui-Line-1: #dadce0;
-    --C-ui-Line-1-hover: #afafaf;
-    --C-ui-box-shadow: #e6e8ee;
-    --C-sepv-active: #afafaf;
-
-    // HEADER
-    --C-h-u-bg: #f1f2f3;
-    --C-T-h-1:rgba(33,33,38,.70);
-    --C-T-h-SearchInput: #3c4043;
-    --C-T-h-SearchSVG: #212126;
-    --C-T-h-Search-text: #323232;
-    --C-lb-bg: #799a7d;
-    --C-hs-svg:#a4a4a4;
-
-    // VIVENTE STOCK - Product File Tree
-    --C-rs-bg: #ffffff;
-    --C-rs-ft-h-border: #edecec;
-    --C-rs-ft-h-border-color: #e6e6e6;
-    --C-rs-ft-h-Category-label: #1f1f22;
-    --C-rs-ft-h-filter-Line: #dadce0;
-    --C-rs-ft-Line: #e6e6e6;
-    --C-rs-ft-b-active-row:rgba(242, 241, 247, 0.4);
-    --V-C-rs-ft-text-color: #1c1c20;
-    --C-rsFTg-bg: #fff;
-    --C-rsFTg-bg-hover: #efefef;
-    --T-rsFTg-bg-hover: #c6c6c6;
-    --T-rsFTg-bg-Flash: #347292;
-    --C-rsFTg-border-a: #e6e6e6;
-    --T-rsFTg:#1f1f22;
-    --T-rsFTg-add: #8e8e8e;
-
-    // SETTINGS
-    --C-ui-settings-icons-Line-1:#a4a4a4;
-    --C-ui-settings-icons-Line-2:#646464;
-    --C-T-h-ui-settings-hover:#3c4043;
-    --C-T-h-ui-settings-hover-bg:#e7e7e7;
-    --C-b-ui-DOC-tr-Line-1: #030c1f21;
-    --T-set-title: #212121;
-    --C-set--btn-hover: #ccf1eb;
-    --C-set--btn-active: #91eae1;
-
-    // TABS
-    --C-tab-Line-color: #1471db;
-    --C-tab-bg: #f6f8fa;
-
-    // ACTIVITY BAR
-    --C-ui-AB-bg: #f1f2f3;
-    --C-ui-AB-icon-hover:#ededed;
-    --C-ui-AB-icon-hover-b:#d1d4dd;
-    --C-ui-AB-fill: rgba(33,33,38,.70);
-    --C-ui-AB-fill-v: #98989a;
-    --C-ui-AB-fill-g: #232324;
-    --C-ui-AB-fill-v-hover:rgba(33,33,38,.70);
-    --C-ui-AB-Line-a: rgba(33,33,38,.70);
-    --C-ui-EXP-Line1: #b4b4b4;
-
-    // FOOTER
-    --C-f-ui-bg: #f1f2f3;
-    --C-f-ui-icon: rgba(33,33,38,.70);
-
-    //  EXPLORER
-    --C-exp-bg:rgb(241, 242, 243);
-    --C-exp-svg-line: rgb(208, 211, 215);
-    --C-exp-icon-a: rgb(167, 143, 198);
-    --C-exp-icon-b: rgb(228, 157, 157);
-    --C-exp-icon-c: rgb(144, 144, 174);
-    --C-exp-icon-d: rgb(217, 217, 218);
-    --C-exp-icon-e: rgb(180, 181, 180);
-    --C-exp-hover: rgb(233, 233, 233);
-
-    // INVOICE
-    --C-inv-cust-h-A: hwb(0 100% 0%);
-    --C-inv-cust-h-B: hwb(0 100% 0%);
-    --C-inv-cust-h-C: hwb(0 100% 0%);
-    --C-inv-cust-h-A2: #ffffff;
-    --C-inv-Title-arrows: #383dd3;
-    --T-inv-data-field-nr: #142030;
-    --C-inv-bg: #FFFFFF;
-    --C-inv-addNew-bg: rgb(250, 250, 250);
-    --C-inv-bg-hover: rgba(214, 224, 229, 0.2);
-    --C-inv-bg-active: rgba(96, 80, 38, 0.2);
-    --C-inv-input-bg: rgba(214, 224, 229, 0.2);
-    --C-inv-bookings-bg: rgba(214, 224, 229, 0.2);
-    --C-inv-line-active: rgb(0, 0, 0);
-    --C-inv-line:rgb(191, 191, 191);
-    --C-inv-line-hover: rgb(137, 140, 142, 0.5);
-    --C-inv-btn-hover: rgba(198, 225, 243, 0.5);
-    --C-inv-line2:rgba(214, 224, 229, 0.7);
-    --C-inv-line3: rgb(208, 212, 229);
-    --C-inv-svg-fill: #5a5d5c;
-    --C-inv-svg-fillB: #444746;
-    --C-inv-svg-fillC: #6589c7;
-    --C-inv-bttn: rgb(206, 206, 206);
-    --C-inv-bttn-line: hwb(217 8% 78%);
-    --C-inv-add-top-bg: rgb(247, 248, 249);
-    --C-inv-add-top-bg-ramp: rgba(222, 223, 255, 0.2);
-    --C-inv-data-bg: #FFFFFF;
-    --C-inv-data-border:rgb(247, 248, 249);
-    --C-inv-svg-LineA: rgb(43,93,157);
-    --C-inv-cust-editBorder: rgb(178, 178, 178);
-    --C-inv-cust-editField: rgb(255, 253, 248);
-    --C-inv-cust-editFieldBorder: rgb(222, 220, 213);
-    --C-inv-linear-gradientA: rgba(0, 100, 255, 0.05);
-    --C-inv-linear-gradientB: rgba(0, 100, 255, 0.05);
-    --C-inv-linear-gradientC: rgba(0, 100, 255, 0.05);
-    --T-inv-Title: rgb(43,93,157);
-    --T-inv-grp-name: rgb(43,93,157);
-    --T-inv-data-field: rgb(95, 63, 63);
-    --T-inv-info-field: rgb(122, 127, 130);
-    --T-inv-bttn1: rgb(0, 0, 0);
-    --T-inv-total: rgb(141, 32, 83);
-
-    --C-ui-ICON-Line-1: rgba(33,33,38,.70);
-    --C-T-b-DOC-td4: rgba(33,33,38,.70);
-    --C-RSp-active-Line-2: rgba(3, 12, 31, 0.4);
 }

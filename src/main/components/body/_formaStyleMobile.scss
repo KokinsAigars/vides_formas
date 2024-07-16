@@ -110,7 +110,7 @@ $maxImgWidth: 900px;
 //  SVG
 .m_st_svg{
   fill:none;
-  stroke: #252633;//#5B5B5B;
+  stroke: var(--svg-object-color); //#252633;//#5B5B5B;
   stroke-width:1;
   stroke-linecap:round;
   stroke-linejoin:round;
