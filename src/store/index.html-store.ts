@@ -33,14 +33,17 @@ export const useRootStore = defineStore({
         Ui_Theme: 'ThemeLight', //'ThemeDark', 'ThemeCustom', 'ThemeLightColorA'
 
         formas: [
-            {id: 0, title: 'Hexahedron'     , value: ''},
-            {id: 1, title: 'Tetrahedron'    , value: false},
-            {id: 2, title: 'Octahedron'     , value: false},
-            {id: 3, title: 'Dodekahedron'   , value: false},
-            {id: 4, title: 'Icosahedron'    , value: false},
+            {id: 0, title: 'Hexahedron'     , path: 'h', value: false },
+            {id: 1, title: 'Tetrahedron'    , path: 't', value: false},
+            {id: 2, title: 'Octahedron'     , path: 'o', value: false},
+            {id: 3, title: 'Dodekahedron'   , path: 'd', value: true},
+            {id: 4, title: 'Icosahedron'    , path: 'i', value: false},
         ],
 
-        mapAPI: 'AIzaSyB14TR74Nym584RN4Yy6zcIN_AtZiw3-ew',
+        m:  'AIzaSyB14TR',
+        a:  '74Nym584RN4Y',
+        z:  'y6zcIN_AtZiw3-ew',
+
         mapStyleId: 'aff95100f6e051a6',
 
     }),
@@ -55,6 +58,28 @@ export const useRootStore = defineStore({
         // at Landing page footer
         ReleaseId() {
             return 'Released ' + this.$state.Released_id;
+        },
+
+        constructed() {
+            return this.$state.m + this.$state.a + this.$state.z;
+        },
+
+        // onMenuChange in header
+        changeUiMENU(payload: string) {
+
+            console.log('changeUiMENU(), payload: ', payload);
+
+            if(payload === 'h' || payload === 't' || payload === 'o' || payload === 'd' || payload === 'i') {
+
+                for (let i = 0; i < 5; i++) { this.$state.formas[i].value = false; }
+
+                if (payload === 'h') this.$state.formas[0].value = true;
+                if (payload === 't') this.$state.formas[1].value = true;
+                if (payload === 'o') this.$state.formas[2].value = true;
+                if (payload === 'd') this.$state.formas[3].value = true;
+                if (payload === 'i') this.$state.formas[4].value = true;
+
+            }
         },
 
         // change UI language

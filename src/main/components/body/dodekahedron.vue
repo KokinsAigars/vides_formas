@@ -84,7 +84,7 @@
         <GoogleMap
             style="width: 100%; height: 100%"
             :map-id="map_id"
-            :api-key="apiKey"
+            :api-key="p"
             version="3.55"
             :center="center"
             :zoom="zoom"
@@ -119,7 +119,7 @@
 
   import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
 
-  const apiKey  = RootStore.mapAPI;
+  const p = RootStore.constructed();
   const map_id  = RootStore.mapStyleId;
   const center = { lat: 56.927628, lng: 24.372477 };
   const zoom  = 7;
@@ -167,6 +167,27 @@
     }
   }
 
+
+  onMounted( () => {
+    //
+    // if(SEARCH_activeValue.value === ''){SEARCH_Attributes.value = true;}
+    // MENU_option.value = [];
+    // UserStore.$state.AppCategory.forEach((item) => {
+    //   if(item !== null && item !== undefined){
+    //     MENU_option.value.push(item);
+    //   }
+    // });
+    //
+    // // MENU
+    // if(MENU_option.value.length > 0){
+    //   MENU_option_display.value = true;
+    //   if (UserStore.$state.apps[0].title == 'Active' && UserStore.$state.apps[0].value !== '')
+    //   {MENU_selected.value = String(UserStore.$state.apps[0].value);}
+    //   else MENU_selected.value = MENU_option.value[0];
+    // }
+  })
+
+
 </script>
 
-<style lang="scss" src="./_formaStyleMobile.scss"/>
+<style lang="scss" src="./_formaStyleBody.scss"/>

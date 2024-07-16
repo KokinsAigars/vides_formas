@@ -1,7 +1,6 @@
 
 @import '@style/mixin.scss';
 
-
 html, body {
   overflow-x: hidden;
   overflow-y: auto !important;
@@ -26,13 +25,12 @@ $maxImgWidth: 900px;
     padding-right: 0;
   }}
 
-
 //<!--MENU-->
 .m_switch-container{
   display: flex;
   flex-direction: row;
   justify-content: left;
-  margin-top: 5px;
+  margin-top: 15px;
   padding-left: 25px;
   height: 25px;
   margin-bottom: 25px;}
@@ -83,6 +81,8 @@ $maxImgWidth: 900px;
   }}
 
   .googleMapsContainer{
+    display: flex;
+    flex-direction: column;
     width: 760px;
     height: 500px;
     @include for-size($include) {
@@ -91,7 +91,9 @@ $maxImgWidth: 900px;
       padding-left: 20px;
     }}
   .GPS-container{
+    margin-left: auto;
     padding-top: 10px;
+    padding-right: 20px;
   }
   .GPS {
     text-decoration: none;

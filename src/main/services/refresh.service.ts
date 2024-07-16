@@ -15,11 +15,21 @@
 
 import i18n from '@/locale/index'
 import { useRootStore } from '@rootStore/index.html-store';
-// import { watch } from 'vue';
+import { watch } from 'vue';
 
 export const RefreshService = () => {
 
-    const RootStore = useRootStore();
+    const RootStore= useRootStore();
+
+    // Load state from localStorage
+    if (localStorage.getItem('RS')) {
+        RootStore.$patch(JSON.parse(localStorage.getItem('RS') ?? ''));
+    }
+    watch(
+        () => RootStore.$state,
+        ( newState ) => {localStorage.setItem('RS', JSON.stringify(newState));},
+        { deep: true }
+    );
 
     // UI Theme
     const ui_theme = RootStore.$state.Ui_Theme;

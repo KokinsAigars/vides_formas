@@ -14,16 +14,9 @@
 -->
 
 <template>
-<div class="LPh-line"></div>
+  <div class="LPh-line"></div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"/>
+<style lang="scss" src="./_formaStyleHeader.scss"/>
 
-<style scoped lang="scss">
-.LPh-line{
-  border-bottom: 1px solid var(--LP-T-h_Title);
-  opacity: 0.4;
-}
-
-</style>
