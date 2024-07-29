@@ -80,6 +80,18 @@ $maxImgWidth: 900px;
       height: $svg_form_size_small;
   }}
 
+  .webgl_container{
+    width: $svg_form_size;
+    height: $svg_form_size;
+    margin-left: 40px;
+    border:2px dashed green;
+    @include for-size($include) {
+      margin-left: 0;
+      width: $svg_form_size_small;
+      height: $svg_form_size_small;
+    }}
+
+
   .googleMapsContainer{
     display: flex;
     flex-direction: column;

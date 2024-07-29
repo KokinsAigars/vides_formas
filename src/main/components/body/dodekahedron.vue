@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.07.29
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - components - Dodekahedron
@@ -13,27 +13,31 @@
 -->
 
 <template>
+
   <div class="m_container">
 
     <!--MENU-->
     <div class="m_switch-container">
-
       <div class="m_sw-items">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
                 @click="fn_switch_items('geometry')"
                 @contextmenu.prevent="fn_switch_items('geometry')">geometry
         </button>
       </div>
-
       <div class="m_sw-items m_switch-items-second">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
+                v-on:click="fn_initCanvas(); fn_switch_items('3D')"
+                @contextmenu.prevent="fn_switch_items('3D')">3D
+        </button>
+      </div>
+      <div class="m_sw-items m_switch-items-second">
+        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
                 @click="fn_switch_items('image')"
                 @contextmenu.prevent="fn_switch_items('image')">image
         </button>
       </div>
-
       <div class="m_sw-items m_switch-items-second">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
                 @click="fn_switch_items('map')"
                 @contextmenu.prevent="fn_switch_items('map')">map
         </button>
@@ -79,7 +83,14 @@
           <line class="m_st_svg" x1="414.3" y1="173.35" x2="269.86" y2="105.65"/>
         </g>
       </svg>
+
+      <div class="webgl_container" v-if="MENU_selected === '3D'">
+        <canvas ref="ref_webgl" class="webgl"></canvas>
+      </div>
+
+
       <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_dodekahedron">
+
       <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
         <GoogleMap
             style="width: 100%; height: 100%"
@@ -111,21 +122,25 @@
 
 <script setup lang="ts">
 
-  import {onMounted, ref} from 'vue';
+import {ref} from 'vue';
+
+  // import * as THREE from 'three';
+  import {Scene, PerspectiveCamera, WebGLRenderer} from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
   import { useRootStore } from '@rootStore/index.html-store';
   const RootStore = useRootStore();
 
-  import { GoogleMap, Marker, InfoWindow } from "vue3-google-map";
-
+  // Google Maps
+  import { GoogleMap, Marker } from "vue3-google-map";
+  import {ColorRepresentation} from "three";
   const p = RootStore.constructed();
   const map_id  = RootStore.mapStyleId;
   const center = { lat: 56.927628, lng: 24.372477 };
   const zoom  = 7;
-  const version = 3.55;
-  //const version = 3.47; //IE supported version
-
+  const version = 3.55;   // 3.47; //IE supported version
   const svgMarker = {
     path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
     fillColor: "blue",
@@ -136,15 +151,87 @@
     // anchor: new google.maps.Point(0, 20),s
   };
 
-  const ref_image_karte = ref('');
-  ref_image_karte.value = 'img/map.jpg';
-
   const MENU_selected = ref('');
   MENU_selected.value = "geometry";
 
   const fn_switch_items = (switchTo: string) => {
     MENU_selected.value = switchTo;
   }
+
+  // '3D'
+  const ref_webgl = ref<HTMLCanvasElement | null>(null);
+  const cls_webgl_container = ref(null);
+  const scene = new Scene();
+  const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  scene.add(camera);
+
+
+  const fn_initCanvas = () => {
+    setTimeout(function(){
+      cls_webgl_container.value = document.querySelector('.webgl_container') as HTMLDivElement;
+      init();
+    }, 500);
+  }
+
+  function init() {
+
+    const webgl_canvas = ref_webgl.value as unknown as HTMLCanvasElement;
+    // console.log('ref_webgl: ' + webgl_canvas);
+    // console.log('ref_webgl: ' + webgl_canvas.width);
+
+    const renderer = new WebGLRenderer({
+      canvas: ref_webgl.value as unknown as HTMLCanvasElement,
+      antialias: true,
+    });
+    renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
+
+    renderer.render(scene, camera);
+
+  }
+
+  //
+  // document.body.appendChild( renderer.domElement );
+  // const light;
+  // const controls = new OrbitControls( camera, renderer.domElement );
+  // const loader = new GLTFLoader();
+
+  // Initialize
+  // function init(color?: ColorRepresentation, intensity?: number) {
+  //
+  //   scene  = new THREE.Scene();
+  //
+  //   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  //   camera.position.z = 3
+  //   camera.position.y = -1
+  //   scene.add(camera);
+  //
+  //   controls = new OrbitControls(camera, canvas)
+  //   controls.enableDamping = true
+  //   // controls.maxPolarAngle = Math.PI / 2;
+  //   controls.enabled = true
+  //
+  //   renderer = new THREE.WebGLRenderer({
+  //     canvas: canvas,
+  //     alpha: true,
+  //     // powerPreference: 'high-performance',
+  //     antialias: true
+  //   })
+  //   renderer.setClearColor( 0xffffff, 0)
+  //   // renderer.setSize(window_sizes.width, window_sizes.height)
+  //   renderer.setSize(window.innerWidth, window.innerHeight)
+  //   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
+  //
+  //   light = new THREE.DirectionalLight(0xffffff, 0.5); //, 1000)
+  //   light.position.set(0, 15, 15)
+  //   scene.add(light);
+  // }
+
+  // Rel Time Render enable orbit
+  // function RelTimeRender() {
+  //   controls.update()
+  //   renderer.render(scene, camera)
+  //   window.requestAnimationFrame(RelTimeRender)
+  // }
 
   const ref_image = ref('');
   ref_image.value = 'img/dodekahedron001.jpg';
@@ -166,26 +253,6 @@
       return null;
     }
   }
-
-
-  onMounted( () => {
-    //
-    // if(SEARCH_activeValue.value === ''){SEARCH_Attributes.value = true;}
-    // MENU_option.value = [];
-    // UserStore.$state.AppCategory.forEach((item) => {
-    //   if(item !== null && item !== undefined){
-    //     MENU_option.value.push(item);
-    //   }
-    // });
-    //
-    // // MENU
-    // if(MENU_option.value.length > 0){
-    //   MENU_option_display.value = true;
-    //   if (UserStore.$state.apps[0].title == 'Active' && UserStore.$state.apps[0].value !== '')
-    //   {MENU_selected.value = String(UserStore.$state.apps[0].value);}
-    //   else MENU_selected.value = MENU_option.value[0];
-    // }
-  })
 
 
 </script>
