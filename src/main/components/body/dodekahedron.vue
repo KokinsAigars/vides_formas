@@ -1,10 +1,10 @@
 <!--
-//  *   ts :
+//  *   vue : 4125ded2-aa79-4453-9ba0-48eeddac6a5b
 //  *
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.29
+//  *   Built on 2024.07.30
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - components - Dodekahedron
@@ -88,7 +88,6 @@
         <canvas ref="ref_webgl" class="webgl"></canvas>
       </div>
 
-
       <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_dodekahedron">
 
       <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
@@ -122,62 +121,38 @@
 
 <script setup lang="ts">
 
-import {ref} from 'vue';
-
-  // import * as THREE from 'three';
-  import {Scene, PerspectiveCamera, WebGLRenderer} from 'three';
-  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+  import {ref} from 'vue';
 
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
   import { useRootStore } from '@rootStore/index.html-store';
   const RootStore = useRootStore();
 
-  // Google Maps
-  import { GoogleMap, Marker } from "vue3-google-map";
-  import {ColorRepresentation} from "three";
-  const p = RootStore.constructed();
-  const map_id  = RootStore.mapStyleId;
-  const center = { lat: 56.927628, lng: 24.372477 };
-  const zoom  = 7;
-  const version = 3.55;   // 3.47; //IE supported version
-  const svgMarker = {
-    path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
-    fillColor: "blue",
-    fillOpacity: 0.6,
-    strokeWeight: 0,
-    rotation: 0,
-    scale: 1.5,
-    // anchor: new google.maps.Point(0, 20),s
-  };
 
+  // --------'geometry'
   const MENU_selected = ref('');
   MENU_selected.value = "geometry";
-
   const fn_switch_items = (switchTo: string) => {
     MENU_selected.value = switchTo;
   }
 
-  // '3D'
+
+  // --------'3D'
+  // import * as THREE from 'three';
+  import {Scene, PerspectiveCamera, WebGLRenderer } from 'three';
+  // import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+  // import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
   const ref_webgl = ref<HTMLCanvasElement | null>(null);
   const cls_webgl_container = ref(null);
   const scene = new Scene();
   const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
   scene.add(camera);
-
-
   const fn_initCanvas = () => {
     setTimeout(function(){
       cls_webgl_container.value = document.querySelector('.webgl_container') as HTMLDivElement;
       init();
     }, 500);
   }
-
   function init() {
-
-    const webgl_canvas = ref_webgl.value as unknown as HTMLCanvasElement;
-    // console.log('ref_webgl: ' + webgl_canvas);
-    // console.log('ref_webgl: ' + webgl_canvas.width);
 
     const renderer = new WebGLRenderer({
       canvas: ref_webgl.value as unknown as HTMLCanvasElement,
@@ -189,54 +164,11 @@ import {ref} from 'vue';
 
   }
 
-  //
-  // document.body.appendChild( renderer.domElement );
-  // const light;
-  // const controls = new OrbitControls( camera, renderer.domElement );
-  // const loader = new GLTFLoader();
 
-  // Initialize
-  // function init(color?: ColorRepresentation, intensity?: number) {
-  //
-  //   scene  = new THREE.Scene();
-  //
-  //   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  //   camera.position.z = 3
-  //   camera.position.y = -1
-  //   scene.add(camera);
-  //
-  //   controls = new OrbitControls(camera, canvas)
-  //   controls.enableDamping = true
-  //   // controls.maxPolarAngle = Math.PI / 2;
-  //   controls.enabled = true
-  //
-  //   renderer = new THREE.WebGLRenderer({
-  //     canvas: canvas,
-  //     alpha: true,
-  //     // powerPreference: 'high-performance',
-  //     antialias: true
-  //   })
-  //   renderer.setClearColor( 0xffffff, 0)
-  //   // renderer.setSize(window_sizes.width, window_sizes.height)
-  //   renderer.setSize(window.innerWidth, window.innerHeight)
-  //   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
-  //
-  //   light = new THREE.DirectionalLight(0xffffff, 0.5); //, 1000)
-  //   light.position.set(0, 15, 15)
-  //   scene.add(light);
-  // }
-
-  // Rel Time Render enable orbit
-  // function RelTimeRender() {
-  //   controls.update()
-  //   renderer.render(scene, camera)
-  //   window.requestAnimationFrame(RelTimeRender)
-  // }
-
+  // --------'image'
   const ref_image = ref('');
   ref_image.value = 'img/dodekahedron001.jpg';
-
-  function fn_switch_image(number){
+  function fn_switch_image(number:number){
     try {
       const imageUrl = 'img/dodekahedron00' + number + '.jpg';
       const img = new Image();
@@ -253,6 +185,24 @@ import {ref} from 'vue';
       return null;
     }
   }
+
+
+  // --------'map'
+  import { GoogleMap, Marker } from "vue3-google-map";
+  const p = RootStore.constructed();
+  const map_id  = RootStore.mapStyleId;
+  const center = { lat: 56.927628, lng: 24.372477 };
+  const zoom  = 7;
+  //const version = 3.55;   // 3.47; //IE supported version
+  const svgMarker = {
+    path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+    fillColor: "blue",
+    fillOpacity: 0.6,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1.5,
+    // anchor: new google.maps.Point(0, 20),s
+  };
 
 
 </script>
