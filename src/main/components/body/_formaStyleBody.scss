@@ -120,6 +120,14 @@ $maxImgWidth: 900px;
       opacity: 1;
     }}
 
+.m_image2{
+  width: 500px;
+  opacity: 1;
+  @include for-size($include) {
+    width: 480px;
+    padding-left: 20px;
+    opacity: 1;
+  }}
 
 //  SVG
 .m_st_svg{

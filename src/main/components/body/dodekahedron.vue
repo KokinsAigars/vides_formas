@@ -86,6 +86,7 @@
 
       <div class="webgl_container" v-if="MENU_selected === '3D'">
         <canvas ref="ref_webgl" class="webgl"></canvas>
+        under construction
       </div>
 
       <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_dodekahedron">

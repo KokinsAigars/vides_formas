@@ -77,7 +77,7 @@
           <line class="m_st_svg" x1="272.09" y1="362.26" x2="316.51" y2="452.49"/>
         </g>
       </svg>
-      <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_Icosahedron">
+      <img class="m_image2 T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_Icosahedron">
       <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
         <GoogleMap
             style="width: 100%; height: 100%"
