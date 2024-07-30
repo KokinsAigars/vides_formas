@@ -139,14 +139,21 @@
 
   // --------'3D'
   // import * as THREE from 'three';
-  import {Scene, PerspectiveCamera, WebGLRenderer } from 'three';
-  // import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+  import {Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight } from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   // import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
   const ref_webgl = ref<HTMLCanvasElement | null>(null);
   const cls_webgl_container = ref(null);
   const scene = new Scene();
   const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  camera.position.z = 3
+  camera.position.y = -1
+  // camera.position.z = 25
   scene.add(camera);
+
+  const light = new DirectionalLight(0xffffff, 1000)
+  light.position.set(0, 15, 15)
+  scene.add(light);
   const fn_initCanvas = () => {
     setTimeout(function(){
       cls_webgl_container.value = document.querySelector('.webgl_container') as HTMLDivElement;
@@ -155,16 +162,30 @@
   }
   function init() {
 
+    const controls = new OrbitControls(camera, ref_webgl.value as unknown as HTMLCanvasElement)
+    controls.enableDamping = true
+    // controls.maxPolarAngle = Math.PI / 2;
+    controls.enabled = true
+
     const renderer = new WebGLRenderer({
       canvas: ref_webgl.value as unknown as HTMLCanvasElement,
       antialias: true,
     });
+    renderer.setClearColor( 0xffffff, 0);
     renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
 
     renderer.render(scene, camera);
 
+    RelTimeRender(controls, renderer)
   }
-
+  // Rel Time Render enable orbit
+  function RelTimeRender(controls:any, renderer:any) {
+    controls.update();
+    renderer.render(scene, camera);
+    // window.requestAnimationFrame(RelTimeRender(controls, renderer));
+  }
+  // import {Create_DoDEC} from '@assets/obj/dodekahedron.obj';
 
   // --------'image'
   const ref_image = ref('');
