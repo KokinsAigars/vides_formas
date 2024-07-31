@@ -67,7 +67,7 @@ export const useRootStore = defineStore({
         // onMenuChange in header
         changeUiMENU(payload: string) {
 
-            console.log('changeUiMENU(), payload: ', payload);
+            // console.log('changeUiMENU(), payload: ', payload);
 
             if(payload === 'h' || payload === 't' || payload === 'o' || payload === 'd' || payload === 'i') {
 

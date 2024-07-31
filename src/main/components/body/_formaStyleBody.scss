@@ -51,10 +51,15 @@ $maxImgWidth: 900px;
     overflow: hidden !important;
     cursor: pointer;
     user-select: none;
-    border-bottom: 1px solid transparent;}
+    border-bottom: 1px solid transparent;
+    opacity: 0.5;
+  }
   .m_swit_btn:hover {
-    border-bottom: 1px solid darkslategray;}
-
+    border-bottom: 1px solid var(--light);}
+  .m_swit_btn_selected{
+    //border-bottom: 1px solid var(--light);
+    opacity: 1;
+  }
 
 //<!--OBJECT-->
 .m_art_container{
@@ -75,7 +80,7 @@ $maxImgWidth: 900px;
     height: $svg_form_size;
     margin-left: 40px;
     @include for-size($include) {
-      margin-left: 0;
+      margin-left: 40px;
       width: $svg_form_size_small;
       height: $svg_form_size_small;
   }}
@@ -84,9 +89,9 @@ $maxImgWidth: 900px;
     width: $svg_form_size;
     height: $svg_form_size;
     margin-left: 40px;
-    border:2px dashed green;
+    //border:1px dashed #733e59;
     @include for-size($include) {
-      margin-left: 0;
+      margin-left: 40px;
       width: $svg_form_size_small;
       height: $svg_form_size_small;
     }}

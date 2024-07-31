@@ -26,7 +26,20 @@
 <script setup lang="ts">
     // RootStore => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
     import { useRootStore } from '@rootStore/index.html-store';
+    import {ref, watchEffect} from "vue";
     const RootStore = useRootStore();
+
+    // const appHeight = ref<HTMLDivElement | null>(null);
+    // appHeight.value = document.querySelector('.app') as HTMLDivElement;
+    // console.log('hmm', appHeight.value.offsetHeight);
+
+    // watchEffect(() => {
+    //   let temp = document.querySelector('.app') as HTMLDivElement;
+    //   if(appHeight.value !== temp.offsetHeight){
+    //     appHeight.value = temp;
+    //     console.log(appHeight.value);
+    //   }
+    // })
 </script>
 
 

@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.30
+//  *   Built on 2024.07.31
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - components - Dodekahedron
@@ -20,24 +20,28 @@
     <div class="m_switch-container">
       <div class="m_sw-items">
         <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
+                v-bind:class = "(MENU_selected === 'geometry')?'m_swit_btn_selected':''"
                 @click="fn_switch_items('geometry')"
                 @contextmenu.prevent="fn_switch_items('geometry')">geometry
         </button>
       </div>
       <div class="m_sw-items m_switch-items-second">
         <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
-                v-on:click="fn_initCanvas(); fn_switch_items('3D')"
+                v-bind:class = "(MENU_selected === '3D')?'m_swit_btn_selected':''"
+                v-on:click="fn_initCanvasTimeout(500); fn_switch_items('3D')"
                 @contextmenu.prevent="fn_switch_items('3D')">3D
         </button>
       </div>
       <div class="m_sw-items m_switch-items-second">
         <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
+                v-bind:class = "(MENU_selected === 'image')?'m_swit_btn_selected':''"
                 @click="fn_switch_items('image')"
                 @contextmenu.prevent="fn_switch_items('image')">image
         </button>
       </div>
       <div class="m_sw-items m_switch-items-second">
         <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
+                v-bind:class = "(MENU_selected === 'map')?'m_swit_btn_selected':''"
                 @click="fn_switch_items('map')"
                 @contextmenu.prevent="fn_switch_items('map')">map
         </button>
@@ -83,14 +87,13 @@
           <line class="m_st_svg" x1="414.3" y1="173.35" x2="269.86" y2="105.65"/>
         </g>
       </svg>
-
-      <div class="webgl_container" v-if="MENU_selected === '3D'">
+      <div class="webgl_container" v-if="MENU_selected === '3D'"
+           @mousedown="circuitBreaker = true; fn_RelTimeRender()"
+           v-on:scroll.capture="handleScroll()"
+           @mouseup="circuitBreaker = false">
         <canvas ref="ref_webgl" class="webgl"></canvas>
-        under construction
       </div>
-
       <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_dodekahedron">
-
       <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
         <GoogleMap
             style="width: 100%; height: 100%"
@@ -129,6 +132,7 @@
   const RootStore = useRootStore();
 
 
+
   // --------'geometry'
   const MENU_selected = ref('');
   MENU_selected.value = "geometry";
@@ -137,55 +141,151 @@
   }
 
 
-  // --------'3D'
-  // import * as THREE from 'three';
-  import {Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight } from 'three';
-  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-  // import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-  const ref_webgl = ref<HTMLCanvasElement | null>(null);
-  const cls_webgl_container = ref(null);
-  const scene = new Scene();
-  const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  camera.position.z = 3
-  camera.position.y = -1
-  // camera.position.z = 25
-  scene.add(camera);
 
-  const light = new DirectionalLight(0xffffff, 1000)
-  light.position.set(0, 15, 15)
-  scene.add(light);
-  const fn_initCanvas = () => {
+  // --------'3D'
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+  import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+  import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+
+  import {Create_DoDEC} from '@assets/test/DodecahedronGeometry.js';
+  import {mat_Basic} from '@assets/test/MeshBasicMaterial.js';
+
+  const cls_webgl_container = ref(null);
+  const ref_webgl = ref<HTMLCanvasElement | null>(null);
+  let canvas = null;
+  let scene = null;
+  let camera = null;
+  let light = null;
+  let SpotLight1 = null;
+  let controls = null;
+  let renderer = null;
+  const circuitBreaker = ref<boolean>(false);
+
+  // set timeout before calling fn_init() for creating canvas, give time to draw canvas on html
+  const fn_initCanvasTimeout = (timeout: number) => {
     setTimeout(function(){
       cls_webgl_container.value = document.querySelector('.webgl_container') as HTMLDivElement;
-      init();
-    }, 500);
+      if (cls_webgl_container.value !== null){
+        fn_add_Canvas();
+        fn_add_Scene();
+        fn_add_Camera();
+        fn_add_Controls();
+        fn_add_Lights();
+        fn_add_Geo();
+        fn_add_Render();
+      } else {
+        fn_switch_items('geometry')
+      }
+    }, timeout );
   }
-  function init() {
 
-    const controls = new OrbitControls(camera, ref_webgl.value as unknown as HTMLCanvasElement)
+  const fn_add_Canvas   = () => {
+    canvas = ref_webgl.value as unknown as HTMLCanvasElement;
+  }
+  const fn_add_Scene    = () => {
+    scene = new THREE.Scene();
+    scene.name = 'my_Scen';
+  }
+  const fn_add_Camera   = () => {
+
+    camera = new THREE.PerspectiveCamera(75, 1, 0.1, 500);
+    camera.position.set(2, 3, 0);
+    const pt = new THREE.Vector3(0,1,2);
+    camera.lookAt(pt);
+    scene.add(camera);
+
+  }
+  const fn_add_Controls = () => {
+
+    controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true
     // controls.maxPolarAngle = Math.PI / 2;
     controls.enabled = true
 
-    const renderer = new WebGLRenderer({
-      canvas: ref_webgl.value as unknown as HTMLCanvasElement,
+  }
+  const fn_add_Lights   = () => {
+
+    light = new THREE.DirectionalLight(0xffffff, 1000)
+    light.position.set(0, 15, 15)
+    scene.add(light);
+
+    SpotLight1 = new THREE.SpotLight(0xffffff, 12, 1000);
+    SpotLight1.position.set(-4,-4,-4);
+    SpotLight1.lookAt(0,0,0)
+    scene.add(SpotLight1);
+
+  }
+  const fn_add_Geo      = () => {
+
+    // const LoadingManager = new THREE.LoadingManager();
+
+    const mat_basic = mat_Basic("rgb(31,127,211)", "", true);
+
+
+    const DoDEC = Create_DoDEC(mat_basic)
+    DoDEC.position.y = 1
+    // DoDEC.geometry.setAttribute('positionX', 2)
+    scene.add(DoDEC)
+
+    const objHex = new OBJLoader();
+    const mtlHex = new MTLLoader();
+
+    mtlHex.load('./obj/dodekahedron2.mtl', function ( materials ) {
+          materials.preload();
+
+          objHex.setMaterials(materials);
+          objHex.load('./obj/dodekahedron2.obj',function ( object ) {
+                object.position.y = 1;
+                scene.add( object );
+
+              },
+              // function ( xhr ) {fn_onProgress(xhr);},
+              // function ( error ) {fn_onError( error );}
+          );
+        },
+        // function ( xhr ) {fn_onProgress(xhr);},
+        // function ( error ) {fn_onError( error );}
+    );
+
+    //
+    // const edges = new THREE.EdgesGeometry( objHex );
+    // const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial( { color: "#222222" } ) );
+    // scene.add( line );
+
+
+    // function fn_onProgress(xhr){
+    //   console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    // }
+    // function fn_onError( error ) {
+    //   console.log( 'An error happened', error );
+    // }
+
+  }
+  const fn_add_Render   = () => {
+
+    renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
       antialias: true,
     });
     renderer.setClearColor( 0xffffff, 0);
     renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
-
     renderer.render(scene, camera);
+  }
 
-    RelTimeRender(controls, renderer)
+  const fn_RelTimeRender = () =>  {
+    if(circuitBreaker.value === true) {
+      controls.update()
+      renderer.render(scene, camera)
+      window.requestAnimationFrame(fn_RelTimeRender)
+    }
   }
-  // Rel Time Render enable orbit
-  function RelTimeRender(controls:any, renderer:any) {
-    controls.update();
-    renderer.render(scene, camera);
-    // window.requestAnimationFrame(RelTimeRender(controls, renderer));
+
+  function handleScroll(){
+    console.log('schrooling');
   }
-  // import {Create_DoDEC} from '@assets/obj/dodekahedron.obj';
+
 
   // --------'image'
   const ref_image = ref('');
@@ -208,6 +308,9 @@
     }
   }
 
+  // beforeDestroy() {
+  //   cancelAnimationFrame(animationFrameId);
+  // }
 
   // --------'map'
   import { GoogleMap, Marker } from "vue3-google-map";
@@ -225,6 +328,7 @@
     scale: 1.5,
     // anchor: new google.maps.Point(0, 20),s
   };
+
 
 
 </script>
