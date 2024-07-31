@@ -25,10 +25,10 @@
                 @contextmenu.prevent="fn_switch_items('geometry')">geometry
         </button>
       </div>
-      <div class="m_sw-items m_switch-items-second">
+      <div class="m_sw-items m_switch-items-second" v-if="btn_3D === true">
         <button class="m_swit_btn T-switch" id="btn1" role="button" type="button"
                 v-bind:class = "(MENU_selected === '3D')?'m_swit_btn_selected':''"
-                v-on:click="fn_initCanvasTimeout(500); fn_switch_items('3D')"
+                v-on:click="fn_init_Canvas(10); fn_switch_items('3D')"
                 @contextmenu.prevent="fn_switch_items('3D')">3D
         </button>
       </div>
@@ -50,6 +50,7 @@
 
     <!--OBJECT-->
     <div class="m_art_container">
+
       <svg class="m_svg_dodekahedron" v-if="MENU_selected === 'geometry'"
            x="0px" y="0px" viewBox="0 0 480 480"
            style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
@@ -87,13 +88,17 @@
           <line class="m_st_svg" x1="414.3" y1="173.35" x2="269.86" y2="105.65"/>
         </g>
       </svg>
+
       <div class="webgl_container" v-if="MENU_selected === '3D'"
-           @mousedown="circuitBreaker = true; fn_RelTimeRender()"
+           @mousedown="circuitBreaker = false; fn_RelTimeRender()"
            v-on:scroll.capture="handleScroll()"
-           @mouseup="circuitBreaker = false">
+           @mouseup="circuitBreaker = true">
         <canvas ref="ref_webgl" class="webgl"></canvas>
       </div>
-      <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_dodekahedron">
+
+      <img class="m_image T-m_image" v-if="MENU_selected === 'image'"
+           v-bind:src="ref_image" alt="image_dodekahedron">
+
       <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
         <GoogleMap
             style="width: 100%; height: 100%"
@@ -118,6 +123,7 @@
           </a>
         </div>
       </div>
+
     </div>
 
   </div>
@@ -131,13 +137,22 @@
   import { useRootStore } from '@rootStore/index.html-store';
   const RootStore = useRootStore();
 
-
+  const lastState = ref<string>(null);
 
   // --------'geometry'
   const MENU_selected = ref('');
   MENU_selected.value = "geometry";
+
   const fn_switch_items = (switchTo: string) => {
-    MENU_selected.value = switchTo;
+
+    if (lastState.value === '3D') {
+      MENU_selected.value = switchTo;
+      fn_three_dispose();
+    } else {
+      MENU_selected.value = switchTo;
+    }
+
+    lastState.value = switchTo;
   }
 
 
@@ -151,6 +166,7 @@
   import {Create_DoDEC} from '@assets/test/DodecahedronGeometry.js';
   import {mat_Basic} from '@assets/test/MeshBasicMaterial.js';
 
+  const btn_3D = ref<boolean>(true);
   const cls_webgl_container = ref(null);
   const ref_webgl = ref<HTMLCanvasElement | null>(null);
   let canvas = null;
@@ -162,129 +178,166 @@
   let renderer = null;
   const circuitBreaker = ref<boolean>(false);
 
-  // set timeout before calling fn_init() for creating canvas, give time to draw canvas on html
-  const fn_initCanvasTimeout = (timeout: number) => {
+  const fn_init_Canvas = (timeout: number) => {
+
     setTimeout(function(){
+
       cls_webgl_container.value = document.querySelector('.webgl_container') as HTMLDivElement;
+
       if (cls_webgl_container.value !== null){
-        fn_add_Canvas();
-        fn_add_Scene();
-        fn_add_Camera();
-        fn_add_Controls();
-        fn_add_Lights();
-        fn_add_Geo();
-        fn_add_Render();
+        fn_init()
       } else {
-        fn_switch_items('geometry')
+        fn_lets_wait_a_bit_longer();
       }
     }, timeout );
-  }
 
-  const fn_add_Canvas   = () => {
-    canvas = ref_webgl.value as unknown as HTMLCanvasElement;
-  }
-  const fn_add_Scene    = () => {
-    scene = new THREE.Scene();
-    scene.name = 'my_Scen';
-  }
-  const fn_add_Camera   = () => {
+    // LAST CHANCE
+    const fn_lets_wait_a_bit_longer = () => {
 
-    camera = new THREE.PerspectiveCamera(75, 1, 0.1, 500);
-    camera.position.set(2, 3, 0);
-    const pt = new THREE.Vector3(0,1,2);
-    camera.lookAt(pt);
-    scene.add(camera);
+      setTimeout(function(){
 
-  }
-  const fn_add_Controls = () => {
+        cls_webgl_container.value = document.querySelector('.webgl_container') as HTMLDivElement;
 
-    controls = new OrbitControls(camera, canvas);
-    controls.enableDamping = true
-    // controls.maxPolarAngle = Math.PI / 2;
-    controls.enabled = true
+        if (cls_webgl_container.value !== null){
+          fn_init()
+        } else {
+          fn_switch_items('geometry')
+          btn_3D.value = false;
+        }
+      }, 500 );
+    }
 
-  }
-  const fn_add_Lights   = () => {
-
-    light = new THREE.DirectionalLight(0xffffff, 1000)
-    light.position.set(0, 15, 15)
-    scene.add(light);
-
-    SpotLight1 = new THREE.SpotLight(0xffffff, 12, 1000);
-    SpotLight1.position.set(-4,-4,-4);
-    SpotLight1.lookAt(0,0,0)
-    scene.add(SpotLight1);
+    // INIT() 3D view
+    const fn_init = () => {
+      fn_add_Canvas();
+      fn_add_Scene();
+      fn_add_Camera();
+      fn_add_Controls();
+      fn_add_Lights();
+      fn_add_Geo();
+      fn_add_Render();
+      circuitBreaker.value = false;
+      fn_RelTimeRender();
+    }
 
   }
-  const fn_add_Geo      = () => {
 
-    // const LoadingManager = new THREE.LoadingManager();
+    const fn_add_Canvas   = () => {
+      canvas = ref_webgl.value as unknown as HTMLCanvasElement;
+    }
+    const fn_add_Scene    = () => {
+      scene = new THREE.Scene();
+    }
+    const fn_add_Camera   = () => {
+      camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+      camera.position.z = 3
+      camera.position.y = -1
+      // camera.position.z = 25
+      camera.lookAt(new THREE.Vector3(0, 0, 0));
+      scene.add(camera);
 
-    const mat_basic = mat_Basic("rgb(31,127,211)", "", true);
+    }
+    const fn_add_Controls = () => {
+
+      controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.campingFactor = 0.25;
+      controls.enabledZoom = true;
+      // controls.maxPolarAngle = Math.PI / 2;
+      controls.enabled = true;
+
+    }
+    const fn_add_Lights   = () => {
+
+      light = new THREE.DirectionalLight(0xffffff, 1)
+      light.position.set(0, 15, 15)
+      scene.add(light);
+
+      SpotLight1 = new THREE.SpotLight("rgb(223,173,107)", 12, 1);
+      SpotLight1.position.set(-4,-4,-4);
+      SpotLight1.lookAt(0,0,0)
+      scene.add(SpotLight1);
+
+    }
+    const fn_add_Geo      = () => {
+
+      const objHex = new OBJLoader();
+      const mtlHex = new MTLLoader();
+
+      mtlHex.load('./obj/dodekahedron.mtl', function ( materials ) {
+            materials.preload();
+
+            objHex.setMaterials(materials);
+            objHex.load('./obj/dodekahedron.obj',function ( object ) {
+                  // object.position.z += 2;
+                  scene.add( object );
+
+                },
+                function ( xhr ) {fn_onProgress(xhr);},
+                function ( error ) {fn_onError( error );}
+            );
+          },
+          function ( xhr ) {fn_onProgress(xhr);},
+          function ( error ) {fn_onError( error );}
+      );
+
+      //
+      // const edges = new THREE.EdgesGeometry( objHex );
+      // const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial( { color: "#222222" } ) );
+      // scene.add( line );
 
 
-    const DoDEC = Create_DoDEC(mat_basic)
-    DoDEC.position.y = 1
-    // DoDEC.geometry.setAttribute('positionX', 2)
-    scene.add(DoDEC)
+      function fn_onProgress(xhr){
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      }
+      function fn_onError( error ) {
+        console.log( 'An error happened', error );
+      }
 
-    const objHex = new OBJLoader();
-    const mtlHex = new MTLLoader();
+    }
+    const fn_add_Render   = () => {
 
-    mtlHex.load('./obj/dodekahedron2.mtl', function ( materials ) {
-          materials.preload();
-
-          objHex.setMaterials(materials);
-          objHex.load('./obj/dodekahedron2.obj',function ( object ) {
-                object.position.y = 1;
-                scene.add( object );
-
-              },
-              // function ( xhr ) {fn_onProgress(xhr);},
-              // function ( error ) {fn_onError( error );}
-          );
-        },
-        // function ( xhr ) {fn_onProgress(xhr);},
-        // function ( error ) {fn_onError( error );}
-    );
-
-    //
-    // const edges = new THREE.EdgesGeometry( objHex );
-    // const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial( { color: "#222222" } ) );
-    // scene.add( line );
-
-
-    // function fn_onProgress(xhr){
-    //   console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-    // }
-    // function fn_onError( error ) {
-    //   console.log( 'An error happened', error );
-    // }
-
-  }
-  const fn_add_Render   = () => {
-
-    renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      antialias: true,
-    });
-    renderer.setClearColor( 0xffffff, 0);
-    renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
-    renderer.render(scene, camera);
-  }
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+      });
+      renderer.setClearColor( 0xffffff, 0);
+      renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
+      renderer.render(scene, camera);
+    }
 
   const fn_RelTimeRender = () =>  {
-    if(circuitBreaker.value === true) {
+    if(circuitBreaker.value === false) {
       controls.update()
       renderer.render(scene, camera)
       window.requestAnimationFrame(fn_RelTimeRender)
     }
   }
 
-  function handleScroll(){
+  const handleScroll = () => {
     console.log('schrooling');
   }
+
+  const fn_three_dispose = () => {
+
+    scene.clear();
+    renderer.dispose();
+    renderer.forceContextLoss();
+
+    canvas = null;
+    scene = null;
+    camera = null;
+    light = null;
+    SpotLight1 = null;
+    controls = null;
+    renderer = null;
+    circuitBreaker.value = true;
+
+    console.log('3d view disposed');
+
+  }
+
 
 
   // --------'image'
