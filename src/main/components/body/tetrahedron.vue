@@ -154,250 +154,357 @@
 const unique_geo_path = 'tetrahedron/tetrahedron';
 const unique_img_path = 'tetrahedron/t';
 
-// ---------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------
 
-        import {ref} from 'vue';
-
-        // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
-        import { useRootStore } from '@rootStore/index.html-store';
-        const RootStore = useRootStore();
-
-        const lastState = ref<string>(null);
-
-        const m_select = ref('');
-        m_select.value = "geometry";
-
-        const fn_switch_items = (switchTo: string) => {
-
-          if (switchTo === '3D' && lastState.value === '3D') {
-            return
-          }
-          else if (lastState.value === '3D') {
-            m_select.value = switchTo;
-            fn_three_dispose();
-          } else {
-            m_select.value = switchTo;
-          }
-
-          lastState.value = switchTo;
-        }
-
-        // --------'3D'
-        import * as THREE from 'three';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-        import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
-        import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-        import { GUI } from 'dat.gui';
-
-        const mtlHex = new MTLLoader();
-        const objHex = new OBJLoader();
-
-        const btn_3D = ref<boolean>(true); const cls_webgl_container = ref(null); const ref_webgl = ref<HTMLCanvasElement | null>(null); let canvas = null; let scene = null; let camera = null; let light = null; let SpotLight1 = null; let controls = null; let axesHelper = null; let gui = null; let renderer = null; const circuitBreaker = ref<boolean>(false);
-
-        const fn_init_Canvas = (timeout: number) => {
-
-          setTimeout(function(){
-
-            cls_webgl_container.value = document.querySelector('.o-3d-cnn') as HTMLDivElement;
-
-            if (cls_webgl_container.value !== null){
-              fn_init()
-            } else {
-              fn_lets_wait_a_bit_longer();
-            }
-          }, timeout );
-
-          // LAST CHANCE
-          const fn_lets_wait_a_bit_longer = () => {
-
-            setTimeout(function(){
-
-              cls_webgl_container.value = document.querySelector('.o-3d-cnn') as HTMLDivElement;
-
-              if (cls_webgl_container.value !== null){
-                fn_init()
-              } else {
-                fn_switch_items('geometry')
-                btn_3D.value = false;
-              }
-            }, 500 );
-          }
-
-          // ---INIT()--- 3D view
-          const fn_init = () => {
-            fn_add_Canvas();
-            fn_add_Scene();
-            fn_add_Camera();
-            fn_add_Controls();
-            fn_add_Lights();
-            fn_add_Geo();
-            fn_add_Render();
-            // fn_UCS();
-            // fn_GUI();
-            circuitBreaker.value = false;
-            fn_RelTimeRender();
-          }
-
-        }
-
-        const fn_add_Canvas     = () => {
-          canvas = ref_webgl.value as unknown as HTMLCanvasElement;
-        }
-        const fn_add_Scene      = () => {
-          scene = new THREE.Scene();
-        }
-        const fn_add_Camera     = () => {
-          camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-          camera.position.x = 1.3;
-          camera.position.y = 1;
-          camera.position.z = 1.3;
-          // camera.rotation.x = -5;
-          camera.lookAt(new THREE.Vector3(0, 0, 0));
-          scene.add(camera);
-
-        }
-        const fn_add_Controls   = () => {
-          controls = new OrbitControls(camera, canvas);
-          controls.enableDamping = true;
-          controls.campingFactor = 0.25;
-          controls.enabledZoom = true;
-          // controls.maxPolarAngle = Math.PI / 2;
-          controls.enabled = true;
-        }
-        const fn_add_Lights     = () => {
-
-          light = new THREE.DirectionalLight(0xffffff, 1)
-          light.position.set(0, 15, 15)
-          scene.add(light);
-
-          SpotLight1 = new THREE.SpotLight("rgb(255,255,255)", 22, 1);
-          SpotLight1.position.set(-4,-4,-4);
-          SpotLight1.lookAt(0,0,0)
-          scene.add(SpotLight1);
-
-          const HemisphereLight1 = new THREE.HemisphereLight("rgb(255,255,255)", "rgb(255,255,255)", 0.7);
-          HemisphereLight1.position.y -=0.5;
-          scene.add(HemisphereLight1);
-
-          // const alight = new THREE.AmbientLight(0xf0f0f0, 0.4)
-          // scene.add(alight)
-
-          // HELPERS
-          // let light1Helper = new THREE.DirectionalLightHelper(DirectionalLight1);
-          // scene.add(light1Helper);
-          //
-          // let HemisphereLight1Helper = new THREE.HemisphereLightHelper(HemisphereLight1);
-          // scene.add(HemisphereLight1Helper);
-
-          // const SpotLight1Helper = new THREE.SpotLightHelper(SpotLight1);
-          // scene.add(SpotLight1Helper);
-
-        }
-        const fn_add_Geo        = () => {
-
-          mtlHex.load('./obj/'+ unique_geo_path +'.mtl', function ( materials ) {
-            materials.preload();
-            objHex.setMaterials(materials);
-            objHex.load('./obj/'+ unique_geo_path +'.obj',function ( object ) {
-              // object.position.z += 2;
-              scene.add( object );
-            });
-          });
-
-        }
-        const fn_add_Render     = () => {
-          renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-          });
-          renderer.setClearColor( 0xffffff, 0);
-          renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
-          renderer.render(scene, camera);
-        }
-        const fn_UCS            = () => {
-          axesHelper = new THREE.AxesHelper();
-          scene.add(axesHelper)
-        }
-        const fn_GUI            = () => {
-          gui = new GUI();
-          gui.add(camera.position, 'x', 0, 20).name(camera.position.x);
-          gui.add(camera.position, 'y', 0, 20).name(camera.position.y);
-          gui.add(camera.position, 'z', 0, 20).name(camera.position.z);
-          // gui.add(camera.rotation, 'x', 0, 20).name(camera.rotation.x);
-          // gui.add(camera.rotation, 'y', 0, 20).name(camera.rotation.y);
-          // gui.add(camera.rotation, 'z', 0, 20).name(camera.rotation.z);
-        }
-        const fn_RelTimeRender  = () => {
-          if(circuitBreaker.value === false) {
-            controls.update()
-            renderer.render(scene, camera)
-            window.requestAnimationFrame(fn_RelTimeRender)
-          }
-        }
-        const handleScroll      = () => {
-          console.log('schrooling');
-        }
-        const fn_three_dispose  = () => {
-
-          scene.clear();
-          renderer.dispose();
-          renderer.forceContextLoss();
-
-          canvas = null;
-          scene = null;
-          camera = null;
-          light = null;
-          SpotLight1 = null;
-          controls = null;
-          axesHelper = null;
-          gui = null;
-          renderer = null;
-          circuitBreaker.value = true;
-
-          // console.log('3d view disposed');
-
-        }
-
-        // --------'image'
-        const ref_image = ref('');
-        ref_image.value = 'img/'+ unique_img_path +'01.jpg';
-
-        // function fn_switch_image(number:number){
-        //   try {
-        //     const imageUrl = 'img/dodekahedron00' + number + '.jpg';
-        //     const img = new Image();
-        //     img.src = imageUrl;
-        //
-        //     img.onload = () => {
-        //       this.ref_image = imageUrl;
-        //     };
-        //
-        //     img.onerror = () => {
-        //       return null;
-        //     };
-        //   } catch (error) {
-        //     return null;
-        //   }
-        // }
-
-        // --------'map'
-        import { GoogleMap, Marker } from "vue3-google-map";
-        const p = RootStore.constructed();
-        const map_id  = RootStore.mapStyleId;
-        const center = { lat: 56.927628, lng: 24.372477 };
-        const zoom  = 7;
-        //const version = 3.47; //IE supported version
 
 
 // ---------------------------------------------------------------------------------
+// -------------------  identical  - START -----------------------------------------
 // ---------------------------------------------------------------------------------
+
+import {ref} from 'vue';
+
+// RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
+import { useRootStore } from '@rootStore/index.html-store';
+const RootStore = useRootStore();
+
+const lastState = ref<string>(null);
+
+const m_select = ref('');
+m_select.value = "geometry";
+
+const fn_switch_items = (switchTo: string) => {
+
+  if (switchTo === '3D' && lastState.value === '3D') {
+    return
+  }
+  else if (lastState.value === '3D') {
+    m_select.value = switchTo;
+    fn_three_dispose();
+  } else {
+    m_select.value = switchTo;
+  }
+
+  lastState.value = switchTo;
+}
+
+// --------'3D'
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {RectAreaLightUniformsLib} from "three/examples/jsm/lights/RectAreaLightUniformsLib.js";
+import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js";
+import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+// import { GUI } from 'dat.gui';
+import { GUI } from 'lil-gui'
+
+const mtlLoader = new MTLLoader();
+const objLoader = new OBJLoader();
+
+const btn_3D = ref<boolean>(true); const cls_webgl_container = ref(null); const ref_webgl = ref<HTMLCanvasElement | null>(null); let canvas = null; let scene = null; let camera = null; let light = null; let SpotLight1 = null; let controls = null; let axesHelper = null; let gui = null; let renderer = null; const circuitBreaker = ref<boolean>(false);
+
+const fn_init_Canvas = (timeout: number) => {
+
+  setTimeout(function(){
+
+    cls_webgl_container.value = document.querySelector('.o-3d-cnn') as HTMLDivElement;
+
+    if (cls_webgl_container.value !== null){
+      fn_init()
+    } else {
+      fn_lets_wait_a_bit_longer();
+    }
+  }, timeout );
+
+  // LAST CHANCE
+  const fn_lets_wait_a_bit_longer = () => {
+
+    setTimeout(function(){
+
+      cls_webgl_container.value = document.querySelector('.o-3d-cnn') as HTMLDivElement;
+
+      if (cls_webgl_container.value !== null){
+        fn_init()
+      } else {
+        fn_switch_items('geometry')
+        btn_3D.value = false;
+      }
+    }, 500 );
+  }
+
+  // ---INIT()--- 3D view
+  const fn_init = () => {
+
+    canvas = ref_webgl.value as unknown as HTMLCanvasElement;
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0xffffff );
+
+    fn_add_Camera();
+
+    renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true,});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
+    // renderer.setClearColor( 0xffffff, 0);
+    renderer.render(scene, camera);
+
+    fn_add_Controls();
+
+    fn_add_Geo();
+    // fn_add_Geo_plane();
+
+    fn_add_HemisphereLight();
+    //fn_add_AmbientLight();
+    fn_add_DirectionalLight();
+    //fn_add_RectAreaLight();
+
+    // fn_UCS();
+    // fn_GUI();
+
+    circuitBreaker.value = false;
+    fn_RelTimeRender();
+  }
+
+}
+
+
+const fn_add_Camera     = () => {
+  camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.x = 1.3;
+  camera.position.y = 1;
+  camera.position.z = 1.3;
+  camera.lookAt(new THREE.Vector3(0, 0, 0));
+  scene.add(camera);
+
+}
+const fn_add_Controls   = () => {
+  controls = new OrbitControls(camera, canvas);
+  controls.enableDamping = true;
+  controls.campingFactor = 0.25;
+  controls.enabledZoom = true;
+  controls.enabled = true;
+}
+const fn_add_Geo        = () => {
+
+  let my_mat = new THREE.MeshLambertMaterial( {
+    color: "rgb(182,182,182)",
+    opacity: 0.5,
+    side: THREE.DoubleSide,
+    transparent: true
+  } );
+  // let meshGeometry = new THREE.DodecahedronGeometry( 10 );
+  //
+  // const mesh = new THREE.Mesh( meshGeometry, my_mat);
+  // scene.add(mesh);
+
+  mtlLoader.load('./obj/'+ unique_geo_path +'.mtl', function ( materials ) {
+    materials.preload();
+    objLoader.setMaterials(materials);
+
+    objLoader.load('./obj/'+ unique_geo_path +'.obj',function ( object ) {
+      object.traverse(function (child) {
+        if (child instanceof THREE.Mesh) {
+          child.material = my_mat;
+        }
+      });
+      // object.position.z += 2;
+      scene.add( object );
+    });
+  });
+
+
+}
+const fn_add_Geo_plane  = () => {
+  const planeGeometry = new THREE.PlaneGeometry( 10, 10 );
+  planeGeometry.rotateX( - Math.PI / 2 );
+  const planeMaterial = new THREE.ShadowMaterial( { color: 0x000000, opacity: 0.2 } );
+
+  const plane = new THREE.Mesh( planeGeometry, planeMaterial );
+  plane.position.y = - 0.2;
+  plane.receiveShadow = true;
+  scene.add( plane );
+
+  const helper = new THREE.GridHelper( 10, 50 );
+  helper.position.y = - 0.99;
+  helper.material.opacity = 0.25;
+  helper.material.transparent = false;
+  scene.add( helper );
+}
+const fn_add_HemisphereLight = () => {
+  let light_2_HemisphereLight = new THREE.HemisphereLight( 0xcfe3fc, 0x6f849e, 2.0)
+  scene.add(light_2_HemisphereLight);
+}
+const fn_add_AmbientLight = () => {
+
+  let light_1_Ambient = new THREE.AmbientLight(0xFFFF80, 1) ;
+  scene.add(light_1_Ambient);
+}
+const fn_add_DirectionalLight = () => {
+
+  // Directional light
+  let light_3_Directional = new THREE.DirectionalLight(0xFFFFFF, 5.3);
+  light_3_Directional.position.set(2, 10, 1);
+  light_3_Directional.target.position.set(0,0,0);
+  scene.add(light_3_Directional);
+
+  let light_3_Directional2 = new THREE.DirectionalLight(0xFFFFFF, 2.3);
+  light_3_Directional2.position.set(-2, -10, -1);
+  light_3_Directional2.target.position.set(0,0,0);
+  scene.add(light_3_Directional2);
+
+
+  // let Helper_light_3_Directional = new THREE.DirectionalLightHelper(light_3_Directional, 5, "rgb(0,0,0)");
+  // scene.add(Helper_light_3_Directional);
+}
+const fn_add_RectAreaLight = () => {
+
+  RectAreaLightUniformsLib.init();
+
+  const width = 5;
+  const height = 5;
+  const intensity1 = 3.5;
+  const intensity2 = 2.2;
+  const intensity3 = 1.9;
+  const color1 = 0xFFFFFF;
+  const color2 = 0xFFFFFF;
+  const color3 = 0xFFFFFF;
+
+  const rectLight1 = new THREE.RectAreaLight( color1, intensity1,  width, height );
+  rectLight1.position.set( 5, 0, 0 );
+  rectLight1.lookAt( 0, 0, 0 );
+  scene.add( rectLight1 );
+
+  const rectLight2 = new THREE.RectAreaLight( color1, intensity1,  width, height );
+  rectLight2.position.set( -5, 0, 0 );
+  rectLight2.lookAt( 0, 0, 0 );
+  scene.add( rectLight2 );
+
+  const rectLight3 = new THREE.RectAreaLight( color2, intensity2,  width, height );
+  rectLight3.position.set( 0, 5, 0 );
+  rectLight3.lookAt( 0, 0, 0 );
+  scene.add( rectLight3 );
+
+  const rectLight4 = new THREE.RectAreaLight( color2, intensity2,  width, height );
+  rectLight4.position.set( 0, -5, 0 );
+  rectLight4.lookAt( 0, 0, 0 );
+  scene.add( rectLight4 );
+
+  const rectLight5 = new THREE.RectAreaLight( color3, intensity3,  width, height );
+  rectLight5.position.set( 0, 0, 5 );
+  rectLight5.lookAt( 0, 0, 0 );
+  scene.add( rectLight5 );
+
+  const rectLight6 = new THREE.RectAreaLight( color3, intensity3,  width, height );
+  rectLight6.position.set( 0, 0, -5 );
+  rectLight6.lookAt( 0, 0, 0 );
+  scene.add( rectLight6 );
+
+
+  // const rectLightHelper1 = new RectAreaLightHelper( rectLight1,  0xdb1229);
+  // rectLight1.add( rectLightHelper1 );
+  // const rectLightHelper2 = new RectAreaLightHelper( rectLight2,  0xdb1229);
+  // rectLight2.add( rectLightHelper2 );
+  // const rectLightHelper3 = new RectAreaLightHelper( rectLight3,  0xdb1229);
+  // rectLight3.add( rectLightHelper3 );
+  // const rectLightHelper4 = new RectAreaLightHelper( rectLight4,  0xdb1229);
+  // rectLight4.add( rectLightHelper4 );
+
+}
+const fn_UCS            = () => {
+  axesHelper = new THREE.AxesHelper();
+  scene.add(axesHelper)
+}
+const fn_GUI            = () => {
+  gui = new GUI();
+  //
+  // gui.add(camera.position, 'x', 0, 20).name(camera.position.x);
+  // gui.add(camera.position, 'y', 0, 20).name(camera.position.y);
+  // gui.add(camera.position, 'z', 0, 20).name(camera.position.z);
+  //
+  // gui.add(my_mat.color, "r", 0.0, 1.0);
+  // gui.add(my_mat.color, "g", 0.0, 1.0);
+  // gui.add(my_mat.color, "b", 0.0, 1.0);
+
+  // Ambient light
+  // gui.add(light_1_Ambient, "visible");
+  // gui.add(light_1_Ambient, "castShadow");
+  // gui.add(light_1_Ambient, "intensity", 0.0, 3.0);
+  // gui.add(light_1_Ambient.color, "r", 0.0, 1.0);
+  // gui.add(light_1_Ambient.color, "g", 0.0, 1.0);
+  // gui.add(light_1_Ambient.color, "b", 0.0, 1.0);
+
+  // HemisphereLight
+  // gui.add(light_2_HemisphereLight, "visible");
+  // gui.add(light_2_HemisphereLight, "intensity", 0.0, 3.0);
+
+}
+
+const fn_RelTimeRender  = () => {
+  if(circuitBreaker.value === false) {
+    controls.update()
+    renderer.render(scene, camera)
+    window.requestAnimationFrame(fn_RelTimeRender)
+  }
+}
+
+const handleScroll      = () => {
+  console.log('schrooling');
+}
+
+const fn_three_dispose  = () => {
+
+  scene.clear();
+  renderer.dispose();
+  renderer.forceContextLoss();
+
+  canvas = null;
+  scene = null;
+  camera = null;
+  light = null;
+  SpotLight1 = null;
+  controls = null;
+  axesHelper = null;
+  gui = null;
+  renderer = null;
+  circuitBreaker.value = true;
+
+  // console.log('3d view disposed');
+
+}
+
+
+
+// --------'image'
+const ref_image = ref('');
+ref_image.value = 'img/'+ unique_img_path +'01.jpg';
+
+// function fn_switch_image(number:number){
+//   try {
+//     const imageUrl = 'img/dodekahedron00' + number + '.jpg';
+//     const img = new Image();
+//     img.src = imageUrl;
+//
+//     img.onload = () => {
+//       this.ref_image = imageUrl;
+//     };
+//
+//     img.onerror = () => {
+//       return null;
+//     };
+//   } catch (error) {
+//     return null;
+//   }
+// }
+
+// --------'map'
+import { GoogleMap, Marker } from "vue3-google-map";
+const p = RootStore.constructed();
+const map_id  = RootStore.mapStyleId;
+const center = { lat: 56.927628, lng: 24.372477 };
+const zoom  = 7;
+//const version = 3.47; //IE supported version
+
 // ---------------------------------------------------------------------------------
-
-
-
+// -------------------  identical  - END  ------------------------------------------
+// ---------------------------------------------------------------------------------
 
 
 
