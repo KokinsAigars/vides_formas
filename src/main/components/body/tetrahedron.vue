@@ -157,6 +157,7 @@ const unique_img_path = 'tetrahedron/t';
 
 
 
+
 // ---------------------------------------------------------------------------------
 // -------------------  identical  - START -----------------------------------------
 // ---------------------------------------------------------------------------------
@@ -285,11 +286,23 @@ const fn_add_Controls   = () => {
 const fn_add_Geo        = () => {
 
   let my_mat = new THREE.MeshLambertMaterial( {
-    color: "rgb(182,182,182)",
-    opacity: 0.5,
+    color: "rgb(0,111,255)",
+    opacity: 0.6,
+    transparent: true,
     side: THREE.DoubleSide,
-    transparent: true
+    flatShading: false
   } );
+
+  // let my_mat = new THREE.MeshPhongMaterial( {
+  //   color: "rgb(0,111,255)",
+  //   opacity: 0.6,
+  //   transparent: true,
+  //   flatShading: true,
+  //   vertexColors: true,
+  //   shininess: 0
+  // } );
+
+
   // let meshGeometry = new THREE.DodecahedronGeometry( 10 );
   //
   // const mesh = new THREE.Mesh( meshGeometry, my_mat);
