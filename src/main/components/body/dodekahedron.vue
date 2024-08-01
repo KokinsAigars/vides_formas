@@ -162,6 +162,7 @@
   import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
   import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
   import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+  import { GUI } from 'dat.gui';
 
   import {Create_DoDEC} from '@assets/test/DodecahedronGeometry.js';
   import {mat_Basic} from '@assets/test/MeshBasicMaterial.js';
@@ -175,6 +176,8 @@
   let light = null;
   let SpotLight1 = null;
   let controls = null;
+  let axesHelper = null;
+  let gui = null;
   let renderer = null;
   const circuitBreaker = ref<boolean>(false);
 
@@ -216,6 +219,8 @@
       fn_add_Lights();
       fn_add_Geo();
       fn_add_Render();
+      fn_UCS();
+      fn_GUI();
       circuitBreaker.value = false;
       fn_RelTimeRender();
     }
@@ -229,10 +234,11 @@
       scene = new THREE.Scene();
     }
     const fn_add_Camera   = () => {
-      camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
-      camera.position.z = 3
-      camera.position.y = -1
-      // camera.position.z = 25
+      camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
+      camera.position.x = 1.3;
+      camera.position.y = 1.5;
+      camera.position.z = 1.5;
+      // camera.rotation.x = -5;
       camera.lookAt(new THREE.Vector3(0, 0, 0));
       scene.add(camera);
 
@@ -258,19 +264,43 @@
       SpotLight1.lookAt(0,0,0)
       scene.add(SpotLight1);
 
+      const HemisphereLight1 = new THREE.HemisphereLight(0xffffbb, 0xffffaa, 0.4);
+      HemisphereLight1.position.y -=0.5;
+      scene.add(HemisphereLight1);
+
+      // const alight = new THREE.AmbientLight(0xf0f0f0, 0.4)
+      // scene.add(alight)
+
+      // HELPERS
+      // let light1Helper = new THREE.DirectionalLightHelper(DirectionalLight1);
+      // scene.add(light1Helper);
+      //
+      // let HemisphereLight1Helper = new THREE.HemisphereLightHelper(HemisphereLight1);
+      // scene.add(HemisphereLight1Helper);
+
+      // const SpotLight1Helper = new THREE.SpotLightHelper(SpotLight1);
+      // scene.add(SpotLight1Helper);
+
     }
     const fn_add_Geo      = () => {
 
       const objHex = new OBJLoader();
       const mtlHex = new MTLLoader();
 
-      mtlHex.load('./obj/dodekahedron.mtl', function ( materials ) {
+      let hexahedron = 'hexahedron3';
+      let dodekahedron = 'dodekahedron3';
+
+      mtlHex.load('./obj/'+hexahedron+'.mtl', function ( materials ) {
             materials.preload();
 
             objHex.setMaterials(materials);
-            objHex.load('./obj/dodekahedron.obj',function ( object ) {
+            objHex.load('./obj/'+hexahedron+'.obj',function ( object ) {
                   // object.position.z += 2;
-                  scene.add( object );
+
+
+
+                  // --NOT ___ VISIBLE ON SCENE -----
+                  // scene.add( object );
 
                 },
                 function ( xhr ) {fn_onProgress(xhr);},
@@ -294,6 +324,14 @@
         console.log( 'An error happened', error );
       }
 
+      const geBox = new THREE.BoxGeometry(1,1, 1);
+      const boxMat = new THREE.MeshPhongMaterial({color: "rgb(124,175,241)"});
+      const boxMesh = new THREE.Mesh(geBox, boxMat);
+      scene.add(boxMesh);
+
+    //   https://www.youtube.com/watch?v=JyhhHhoqK2o
+
+
     }
     const fn_add_Render   = () => {
 
@@ -305,6 +343,19 @@
       renderer.setSize(cls_webgl_container.value.offsetWidth-4, cls_webgl_container.value.offsetHeight-4);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); //pixel ratio not biger than 2
       renderer.render(scene, camera);
+    }
+    const fn_UCS          = () => {
+      axesHelper = new THREE.AxesHelper();
+      scene.add(axesHelper)
+    }
+    const fn_GUI          = () => {
+      gui = new GUI();
+      gui.add(camera.position, 'x', 0, 20).name(camera.position.x);
+      gui.add(camera.position, 'y', 0, 20).name(camera.position.y);
+      gui.add(camera.position, 'z', 0, 20).name(camera.position.z);
+      // gui.add(camera.rotation, 'x', 0, 20).name(camera.rotation.x);
+      // gui.add(camera.rotation, 'y', 0, 20).name(camera.rotation.y);
+      // gui.add(camera.rotation, 'z', 0, 20).name(camera.rotation.z);
     }
 
   const fn_RelTimeRender = () =>  {
@@ -331,6 +382,8 @@
     light = null;
     SpotLight1 = null;
     controls = null;
+    axesHelper = null;
+    gui = null;
     renderer = null;
     circuitBreaker.value = true;
 
