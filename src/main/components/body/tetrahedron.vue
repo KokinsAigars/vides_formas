@@ -1,53 +1,81 @@
 <!--
-//  *   ts :
+//  *   vue : 566071e3-9694-4511-bc7e-da9f408d86d6
 //  *
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.08.01
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   Landing page - body - components - Tetrahedron
-//  *   version: 1.0.0
+//  *   Landing page - body - component
+//  *   [Tetrahedron]
 //  *
+//  *   abbreviations
+//  *   - body : b
+//  *   - container : cnn
+//  *   - menu : m
+//  *   - object : o
+//  *   - button : btn
 -->
 
 <template>
-  <div class="m_container">
+  <div class="b-cnn">
 
     <!--MENU-->
-    <div class="m_switch-container">
-      <div class="m_sw-items">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+    <div class="m-cnn">
+
+      <div class="m-items">
+
+        <button class="m-btn T-switch" role="button" type="button"
+                v-bind:class = "(m_select === '3D')?'m-btn-active':''"
                 @click="fn_switch_items('geometry')"
                 @contextmenu.prevent="fn_switch_items('geometry')">geometry
         </button>
+
       </div>
-      <div class="m_sw-items m_switch-items-second">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+
+      <div class="m-items m-items2">
+
+        <button class="m-btn T-switch" role="button" type="button"
+                v-bind:class = "(m_select === '3D')?'m-btn-active':''"
                 @click="fn_switch_items('map')"
                 @contextmenu.prevent="fn_switch_items('map')">map
         </button>
+
       </div>
+
     </div>
 
     <!--OBJECT-->
-    <div class="m_art_container">
-      <svg class="m_svg_tetrahedron" v-if="MENU_selected === 'geometry'"
-           x="0px" y="0px" viewBox="0 0 480 480"
-           style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
-           xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <line class="m_st_svg" x1="39.18" y1="269.15" x2="427.54" y2="449.13"/>
-          <line class="m_st_svg" x1="39.18" y1="269.15" x2="302.24" y2="30.22"/>
-          <line class="m_st_svg" x1="427.54" y1="449.13" x2="440" y2="105.43"/>
-          <line class="m_st_svg" x1="302.24" y1="30.22" x2="440" y2="105.43"/>
-          <line class="m_st_svg" x1="427.54" y1="449.13" x2="302.24" y2="30.22"/>
-          <line class="m_st_svg" x1="440" y1="105.43" x2="39.18" y2="269.15"/>
-        </g>
-      </svg>
-      <img class="m_image T-m_image" v-if="MENU_selected === 'image'" v-bind:src="ref_image" alt="image_tetrahedron">
-      <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
+    <div class="o-cnn">
+
+      <div class="o-svg-cnn" v-if="m_select === 'geometry'">
+
+        <svg class="svg-static"
+             x="0px" y="0px" viewBox="0 0 480 480"
+             aria-hidden="true" focusable="false" role="img">
+
+          <g>
+            <line class="svg-static-st1" x1="39.18" y1="269.15" x2="427.54" y2="449.13"/>
+            <line class="svg-static-st1" x1="39.18" y1="269.15" x2="302.24" y2="30.22"/>
+            <line class="svg-static-st1" x1="427.54" y1="449.13" x2="440" y2="105.43"/>
+            <line class="svg-static-st1" x1="302.24" y1="30.22" x2="440" y2="105.43"/>
+            <line class="svg-static-st1" x1="427.54" y1="449.13" x2="302.24" y2="30.22"/>
+            <line class="svg-static-st1" x1="440" y1="105.43" x2="39.18" y2="269.15"/>
+          </g>
+
+        </svg>
+
+      </div>
+
+      <div class="o-image-cnn" v-if="m_select === 'image'">
+
+        <img class="o-image" v-bind:src="ref_image" alt="image_tetrahedron">
+
+      </div>
+
+      <div class="o-map-cnn" v-if="m_select === 'map'">
+
         <GoogleMap
             style="width: 100%; height: 100%"
             :map-id="map_id"
@@ -65,13 +93,16 @@
           />
 
         </GoogleMap>
-        <div class="GPS-container T-GPS">
-          <a class="GPS T-GPS"
+
+        <div class="gps-cnn">
+          <a class="gps T-GPS"
              href="https://www.google.com/maps/place/57%C2%B000'57.4%22N+21%C2%B034'51.1%22E/@57.0159448,21.5759791,792m/data=!3m1!1e3!4m13!1m8!3m7!1s0x46f0246a071254b7:0x29e13b1cdc62efa0!2sAlsunga,+Alsungas+pagasts,+Kuld%C4%ABga+Municipality,+LV-3306!3b1!8m2!3d56.9819676!4d21.5664811!16s%2Fm%2F02qm3xz!3m3!8m2!3d57.0159444!4d21.5808611?entry=ttu">
             57°00'57.4"N 21°34'51.1"E
           </a>
         </div>
+
       </div>
+
     </div>
 
   </div>
@@ -105,15 +136,15 @@
     // anchor: new google.maps.Point(0, 20),s
   }
 
-  const MENU_selected = ref('');
-  MENU_selected.value = "geometry";
+  const m_select = ref('');
+  m_select.value = "geometry";
 
   const fn_switch_items = (switchTo: string) => {
-    MENU_selected.value = switchTo;
+    m_select.value = switchTo;
   }
 
   const ref_image = ref('');
-  ref_image.value = 'img/tetrahedron001.jpg';
+  ref_image.value = 'img/tetrahedron/t01.jpg';
 
   function fn_switch_image(number){
     try {

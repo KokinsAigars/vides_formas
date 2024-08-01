@@ -1,58 +1,80 @@
 <!--
-//  *   ts :
+//  *   vue : c4cf3822-2e11-482c-8244-55b197a85a7f
 //  *
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.08.01
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   Landing page - body - components - Hexahedron
-//  *   version: 1.0.0
+//  *   Landing page - body - component
+//  *   [Hexahedron]
 //  *
+//  *   abbreviations
+//  *   - body : b
+//  *   - container : cnn
+//  *   - menu : m
+//  *   - object : o
+//  *   - button : btn
 -->
 
 <template>
-  <div class="m_container">
+  <div class="b-cnn">
 
     <!--MENU-->
-    <div class="m_switch-container">
-      <div class="m_sw-items">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+    <div class="m-cnn">
+
+      <div class="m-items">
+
+        <button class="m-btn T-switch" role="button" type="button"
+                v-bind:class = "(m_select === '3D')?'m-btn-active':''"
                 @click="fn_switch_items('geometry')"
                 @contextmenu.prevent="fn_switch_items('geometry')">geometry
         </button>
+
       </div>
-      <div class="m_sw-items m_switch-items-second">
-        <button class="m_swit_btn T-switch" id="btn1" role="button" type="button" aria-hidden="true"
+
+      <div class="m-items m-items2">
+
+        <button class="m-btn T-switch" role="button" type="button"
+                v-bind:class = "(m_select === '3D')?'m-btn-active':''"
                 @click="fn_switch_items('map')"
                 @contextmenu.prevent="fn_switch_items('map')">map
         </button>
+
       </div>
+
     </div>
 
     <!--OBJECT-->
-    <div class="m_art_container">
-      <svg class="m_svg_hexahedron" v-if="MENU_selected === 'geometry'"
-           x="0px" y="0px" viewBox="0 0 480 480"
-           style="user-select:none; overflow:hidden;" aria-hidden="true" focusable="false" role="img"
-           xmlns="http://www.w3.org/2000/svg">
+    <div class="o-cnn">
+
+      <div class="o-svg-cnn" v-if="m_select === 'geometry'">
+
+        <svg class="svg-static"
+             x="0px" y="0px" viewBox="0 0 480 480"
+             aria-hidden="true" focusable="false" role="img">
+
           <g>
-            <line class="m_st_svg" x1="450" y1="82.17" x2="190.12" y2="7.35"/>
-            <line class="m_st_svg" x1="450" y1="82.17" x2="450" y2="343.18"/>
-            <line class="m_st_svg" x1="190.12" y1="268.36" x2="450" y2="343.18"/>
-            <line class="m_st_svg" x1="190.12" y1="7.35" x2="190.12" y2="268.36"/>
-            <line class="m_st_svg" x1="299.06" y1="210.99" x2="450" y2="82.17"/>
-            <line class="m_st_svg" x1="299.06" y1="210.99" x2="299.06" y2="472"/>
-            <line class="m_st_svg" x1="450" y1="343.18" x2="299.06" y2="472"/>
-            <line class="m_st_svg" x1="190.12" y1="7.35" x2="39.18" y2="136.17"/>
-            <line class="m_st_svg" x1="39.18" y1="397.18" x2="190.12" y2="268.36"/>
-            <line class="m_st_svg" x1="39.18" y1="136.17" x2="299.06" y2="210.99"/>
-            <line class="m_st_svg" x1="39.18" y1="136.17" x2="39.18" y2="397.18"/>
-            <line class="m_st_svg" x1="299.06" y1="472" x2="39.18" y2="397.18"/>
+            <line class="svg-static-st1" x1="450" y1="82.17" x2="190.12" y2="7.35"/>
+            <line class="svg-static-st1" x1="450" y1="82.17" x2="450" y2="343.18"/>
+            <line class="svg-static-st1" x1="190.12" y1="268.36" x2="450" y2="343.18"/>
+            <line class="svg-static-st1" x1="190.12" y1="7.35" x2="190.12" y2="268.36"/>
+            <line class="svg-static-st1" x1="299.06" y1="210.99" x2="450" y2="82.17"/>
+            <line class="svg-static-st1" x1="299.06" y1="210.99" x2="299.06" y2="472"/>
+            <line class="svg-static-st1" x1="450" y1="343.18" x2="299.06" y2="472"/>
+            <line class="svg-static-st1" x1="190.12" y1="7.35" x2="39.18" y2="136.17"/>
+            <line class="svg-static-st1" x1="39.18" y1="397.18" x2="190.12" y2="268.36"/>
+            <line class="svg-static-st1" x1="39.18" y1="136.17" x2="299.06" y2="210.99"/>
+            <line class="svg-static-st1" x1="39.18" y1="136.17" x2="39.18" y2="397.18"/>
+            <line class="svg-static-st1" x1="299.06" y1="472" x2="39.18" y2="397.18"/>
           </g>
+
         </svg>
-      <div class="googleMapsContainer" v-if="MENU_selected === 'map'">
+      </div>
+
+      <div class="o-map-cnn" v-if="m_select === 'map'">
+
         <GoogleMap
             style="width: 100%; height: 100%"
             :map-id="map_id"
@@ -70,13 +92,16 @@
           />
 
         </GoogleMap>
-        <div class="GPS-container T-GPS">
-          <a class="GPS T-GPS"
+
+        <div class="gps-cnn">
+          <a class="gps T-GPS"
              href="https://www.google.com/maps/place//@56.571917,23.0735,14z/data=!4m2!3m1!1s0x0:0x40f9edc407a559ce?entry=s&sa=X">
             56°34'18.9"N 23°04'24.6"E
           </a>
         </div>
+
       </div>
+
     </div>
 
   </div>
@@ -109,11 +134,11 @@
     scale: 1.5,
   };
 
-  const MENU_selected = ref('');
-  MENU_selected.value = "geometry";
+  const m_select = ref('');
+  m_select.value = "geometry";
 
   const fn_switch_items = (switchTo: string) => {
-    MENU_selected.value = switchTo;
+    m_select.value = switchTo;
   }
 
 </script>

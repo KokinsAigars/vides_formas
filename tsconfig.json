@@ -39,7 +39,6 @@
   "compilerOptions": {
     "plugins": [{ "name": "vue" }],
     "composite": true,
-    "noEmit": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "removeComments":true,
@@ -48,6 +47,10 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"],
+
+    //  for *.ts import
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
 
     // important
     "baseUrl": ".",
