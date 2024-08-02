@@ -21,5 +21,14 @@
 <body>
     <div id="app" class="app"></div>
     <script type="module" src="/src/main.ts"></script>
+
+    <script>
+        let isSafari = window.safari !== undefined;
+        if (isSafari) console.log("Safari!");
+        let isChrome = window.chrome !== undefined;
+        if (isChrome) console.log("Chrome!");
+    </script>
+
+
 </body>
 </html>
