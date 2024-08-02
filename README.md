@@ -25,3 +25,7 @@ firebase deploy --only hosting:videsformas
 
 firebase hosting:disable
 firebase hosting:disable -s videsformas
+
+
+
+npm create vue@latest
