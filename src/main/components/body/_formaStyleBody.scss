@@ -9,6 +9,8 @@ html, body            {
 $include: 600px;
 $svg_form_size: 350px;
 $svg_form_size_small: 250px;
+$webgl_size: 700px;
+$webgl_size_small: 350px;
 $maxImgWidth: 900px;
 
 .b-cnn                {
@@ -26,7 +28,7 @@ $maxImgWidth: 900px;
   }}
 
 
-//<!--MENU-->
+//  MENU buttons
 .m-cnn                {
   display: flex;
   flex-direction: row;
@@ -34,13 +36,16 @@ $maxImgWidth: 900px;
   margin-top: 15px;
   padding-left: 25px;
   height: 25px;
-  margin-bottom: 25px;}
+  margin-bottom: 25px;
+}
   .m-items            {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;}
+    justify-content: space-between;
+  }
   .m-items2           {
-    margin-left: 20px;}
+    margin-left: 20px;
+  }
   .m-btn              {
     width: 100%;
     height: 100%;
@@ -56,12 +61,13 @@ $maxImgWidth: 900px;
     opacity: 0.5;
   }
   .m-btn:hover        {
-    border-bottom: 1px solid var(--light);}
+    border-bottom: 1px solid var(--light);
+  }
   .m-btn-active       {
     opacity: 1;
   }
 
-//<!--OBJECT-->
+//  OBJECTS
 .o-cnn                {
   display: flex;
   flex-direction: column;
@@ -83,26 +89,26 @@ $maxImgWidth: 900px;
       height: $svg_form_size_small;
   }}
     .svg-static       {
-    user-select:none;
-    overflow:hidden;
-  }
+      user-select:none;
+      overflow:hidden;
+    }
     .svg-static-st1   {
-    fill:none;
-    stroke: var(--svg-object-color); //#252633;//#5B5B5B;
-    stroke-width:1;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    stroke-miterlimit:10;
-  }
+      fill:none;
+      stroke: var(--svg-object-color); //#252633;//#5B5B5B;
+      stroke-width:1;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-miterlimit:10;
+    }
 
   .o-3d-cnn           {
-    width: $svg_form_size;
-    height: $svg_form_size;
+    width: $webgl_size;
+    height: $webgl_size;
     margin-left: 40px;
     @include for-size($include) {
       margin-left: 40px;
-      width: $svg_form_size_small;
-      height: $svg_form_size_small;
+      width: $webgl_size_small;
+      height: $webgl_size_small;
     }}
 
   .o-image-cnn        {
@@ -132,6 +138,17 @@ $maxImgWidth: 900px;
     align-content: space-between;}
   .o-img-switch-li    {
     padding-left: 10px;}
+  .o-img-switch-btn   {
+    height: 20px; min-height: 20px; max-height: 20px;
+    width: 20px; min-width: 20px; max-width: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    overflow: hidden !important;
+    cursor: pointer;
+  }
 
   .o-map-cnn          {
     display: flex;
@@ -144,10 +161,10 @@ $maxImgWidth: 900px;
       padding-left: 20px;
     }}
     .gps-cnn          {
-    margin-left: auto;
-    padding-top: 10px;
-    padding-right: 20px;
-  }
+      margin-left: auto;
+      padding-top: 10px;
+      padding-right: 20px;
+    }
     .gps              {
-    text-decoration: none;
-  }
+      text-decoration: none;
+    }

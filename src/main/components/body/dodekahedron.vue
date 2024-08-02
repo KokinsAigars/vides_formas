@@ -4,18 +4,18 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.01
+//  *   Built on 2024.08.02
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - component
 //  *   [Dodekahedron]
 //  *
 //  *   abbreviations
-//  *   - body : b
-//  *   - container : cnn
-//  *   - menu : m
-//  *   - object : o
-//  *   - button : btn
+//  *     - body : b
+//  *     - container : cnn
+//  *     - menu : m
+//  *     - object : o
+//  *     - button : btn
 -->
 
 <template>
@@ -46,7 +46,7 @@
 
       </div>
 
-      <div class="m-items m-items2">
+      <div class="m-items m-items2" v-if="add_Images === true">
 
         <button class="m-btn T-switch" role="button" type="button"
                 v-bind:class = "(m_select === 'image')?'m-btn-active':''"
@@ -75,44 +75,11 @@
 
       <div class="o-svg-cnn" v-if="m_select === 'geometry'">
 
-        <svg class="svg-static"
-             x="0px" y="0px" viewBox="0 0 480 480"
-             aria-hidden="true" focusable="false" role="img">
-
-          <g>
-            <line class="svg-static-st1" x1="443.02" y1="262.38" x2="443.02" y2="125.89"/>
-            <line class="svg-static-st1" x1="316.34" y1="249.71" x2="443.02" y2="262.38"/>
-            <line class="svg-static-st1" x1="443.02" y1="262.38" x2="414.3" y2="394.2"/>
-            <line class="svg-static-st1" x1="443.02" y1="125.89" x2="316.34" y2="28.85"/>
-            <line class="svg-static-st1" x1="414.3" y1="173.35" x2="443.02" y2="125.89"/>
-            <line class="svg-static-st1" x1="36.16" y1="353.46" x2="36.16" y2="216.97"/>
-            <line class="svg-static-st1" x1="269.86" y1="463" x2="209.32" y2="373.7"/>
-            <line class="svg-static-st1" x1="36.16" y1="353.46" x2="162.84" y2="450.49"/>
-            <line class="svg-static-st1" x1="64.89" y1="306" x2="36.16" y2="353.46"/>
-            <line class="svg-static-st1" x1="209.32" y1="373.7" x2="64.89" y2="306"/>
-            <line class="svg-static-st1" x1="82.64" y1="140.17" x2="64.89" y2="306"/>
-            <line class="svg-static-st1" x1="238.05" y1="105.38" x2="316.34" y2="249.71"/>
-            <line class="svg-static-st1" x1="209.32" y1="373.7" x2="316.34" y2="249.71"/>
-            <line class="svg-static-st1" x1="36.16" y1="216.97" x2="64.89" y2="85.14"/>
-            <line class="svg-static-st1" x1="162.84" y1="229.64" x2="36.16" y2="216.97"/>
-            <line class="svg-static-st1" x1="209.32" y1="16.35" x2="269.86" y2="105.65"/>
-            <line class="svg-static-st1" x1="162.84" y1="450.49" x2="241.14" y2="373.97"/>
-            <line class="svg-static-st1" x1="162.84" y1="450.49" x2="269.86" y2="463"/>
-            <line class="svg-static-st1" x1="414.3" y1="394.2" x2="269.86" y2="463"/>
-            <line class="svg-static-st1" x1="414.3" y1="394.2" x2="396.54" y2="339.18"/>
-            <line class="svg-static-st1" x1="82.64" y1="140.17" x2="238.05" y2="105.38"/>
-            <line class="svg-static-st1" x1="64.89" y1="85.14" x2="82.64" y2="140.17"/>
-            <line class="svg-static-st1" x1="209.32" y1="16.35" x2="64.89" y2="85.14"/>
-            <line class="svg-static-st1" x1="209.32" y1="16.35" x2="316.34" y2="28.85"/>
-            <line class="svg-static-st1" x1="316.34" y1="28.85" x2="238.05" y2="105.38"/>
-            <line class="svg-static-st1" x1="162.84" y1="229.64" x2="269.86" y2="105.65"/>
-            <line class="svg-static-st1" x1="241.14" y1="373.97" x2="162.84" y2="229.64"/>
-            <line class="svg-static-st1" x1="396.54" y1="339.18" x2="241.14" y2="373.97"/>
-            <line class="svg-static-st1" x1="396.54" y1="339.18" x2="414.3" y2="173.35"/>
-            <line class="svg-static-st1" x1="414.3" y1="173.35" x2="269.86" y2="105.65"/>
-          </g>
-
-        </svg>
+        <svg_Hexahedron   v-if="unique_geometry === 'hexahedron'"   />
+        <svg_Tetrahedron  v-if="unique_geometry === 'tetrahedron'"  />
+        <svg_Octahedron   v-if="unique_geometry === 'octahedron'"   />
+        <svg_Dodekahedron v-if="unique_geometry === 'dodekahedron'" />
+        <svg_Icosahedron  v-if="unique_geometry === 'icosahedron'"  />
 
       </div>
 
@@ -121,20 +88,22 @@
            @mouseup="circuitBreaker = true"
            v-on:scroll.capture="handleScroll()"
       >
-
         <canvas ref="ref_webgl" class="webgl"></canvas>
 
       </div>
 
       <div class="o-image-cnn" v-if="m_select === 'image'">
 
-        <img class="o-image" v-bind:src="ref_image" alt="image_dodekahedron">
+        <img class="o-image" v-bind:src="ref_image" alt="image">
 
-<!--        <div class="o-img-switch-cnn T-m_image">-->
-<!--          <ul class="o-img-switch-ul">-->
-<!--            <li class="o-img-switch-li">1</li>-->
-<!--          </ul>-->
-<!--        </div>-->
+          <div class="o-img-switch-cnn T-m_image">
+            <ul class="o-img-switch-ul">
+              <li v-for="(index) in unique_number_of_images" class="o-img-switch-li">
+                <button class="o-img-switch-btn" @click="fn_switch_image(index)">{{index}}</button>
+              </li>
+
+            </ul>
+          </div>
 
       </div>
 
@@ -148,30 +117,45 @@
             :center="center"
             :zoom="zoom"
             :disableDefaultUi="true"
-
+            :minZoom="zoom"
+            :maxZoom="zoom"
         >
-<!--          minZoom: zoom - 3,-->
-<!--          maxZoom: zoom + 3,-->
-<!--          restriction: {-->
-<!--          latLngBounds: {-->
-<!--          north: -10,-->
-<!--          south: -40,-->
-<!--          east: 160,-->
-<!--          west: 100,-->
-<!--          },-->
-<!--          },-->
+
           <Marker :options="{
             position: { lat: 56.5454149, lng: 27.8855629 },
-            icon: svgMarker,
+            icon: svgMarkerD,
             title: 'Dodekahedron',
+             }"/>
+          <Marker :options="{
+            position: { lat: 56.5719081, lng: 23.0734866 },
+            icon: svgMarkerH,
+            title: 'Hexahedron',
              }"
+          />
+          <Marker :options="{
+            position: { lat: 57.8718272, lng: 25.005863 },
+            icon: svgMarkerI,
+            title: 'Icosahedron',
+             }"
+          />
+          <Marker :options="{
+            position: { lat: 57.7582386, lng: 22.5969097 },
+            icon: svgMarkerO,
+            title: 'Octahedron',
+             }"
+          />
+          <Marker :options="{
+              position: { lat: 57.0159213, lng: 21.5810198 },
+              icon: svgMarkerT,
+              title: 'Tetrahedron',
+            }"
           />
         </GoogleMap>
 
         <div class="gps-cnn">
           <a class="gps T-GPS"
-             href="https://www.google.com/maps/place/56%C2%B032'43.5%22N+27%C2%B053'08.1%22E/@56.8242139,26.7347303,9z/data=!4m4!3m3!8m2!3d56.5454167!4d27.8855833?entry=ttu">
-            56°32'43.5"N 27°53'08.1"E
+             :href="`${unique_gps_path}`">
+            {{ unique_gps }}
           </a>
         </div>
 
@@ -184,12 +168,25 @@
 
 <script setup lang="ts">
 
-  const unique_geo_path = 'dodekahedron/dodekahedron';
-  const unique_img_path = 'dodekahedron/d';
+  //  UNIQUE for DODEKAHEDRON
 
+  const unique_geometry = ref<string>(null);
+  unique_geometry.value = 'dodekahedron';
 
+  const add_Images = ref<boolean>(true);
 
+  const unique_geo_path = 'd/dodekahedron';
+  const unique_img_path = 'd/d';
+  const unique_number_of_images = ref<number>(2);
 
+  const unique_gps = '56°32\'43.5"N 27°53\'08.1"E';
+  const unique_gps_path = 'https://www.google.com/maps/place/56%C2%B032\'43.5%22N+27%C2%B053\'08.1%22E/@56.5456064,27.8831361,644m'
+
+  const unique_svgMarkerD_color = "blue";
+  const unique_svgMarkerH_color = "black";
+  const unique_svgMarkerI_color = "black";
+  const unique_svgMarkerO_color = "black";
+  const unique_svgMarkerT_color = "black";
 
 
   // ---------------------------------------------------------------------------------
@@ -201,6 +198,14 @@
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
   import { useRootStore } from '@rootStore/index.html-store';
   const RootStore = useRootStore();
+
+  // SVG vue component
+  import svg_Hexahedron from '@assets/svg/h.vue';
+  import svg_Tetrahedron from '@assets/svg/t.vue';
+  import svg_Octahedron from '@assets/svg/o.vue';
+  import svg_Dodekahedron from '@assets/svg/d.vue';
+  import svg_Icosahedron from '@assets/svg/i.vue';
+
 
   const lastState = ref<string>(null);
 
@@ -221,6 +226,8 @@
 
     lastState.value = switchTo;
   }
+
+
 
   // --------'3D'
   import * as THREE from 'three';
@@ -300,222 +307,218 @@
 
   }
 
+    const fn_add_Camera     = () => {
+      camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+      camera.position.x = 1.3;
+      camera.position.y = 1;
+      camera.position.z = 1.3;
+      camera.lookAt(new THREE.Vector3(0, 0, 0));
+      scene.add(camera);
 
-  const fn_add_Camera     = () => {
-    camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-    camera.position.x = 1.3;
-    camera.position.y = 1;
-    camera.position.z = 1.3;
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
-    scene.add(camera);
-
-  }
-  const fn_add_Controls   = () => {
-    controls = new OrbitControls(camera, canvas);
-    controls.enableDamping = true;
-    controls.campingFactor = 0.25;
-    controls.enabledZoom = true;
-    controls.enabled = true;
-  }
-  const fn_add_Geo        = () => {
-
-    let my_mat = new THREE.MeshLambertMaterial( {
-      color: "rgb(0,111,255)",
-      opacity: 0.6,
-      transparent: true,
-      side: THREE.DoubleSide,
-      flatShading: false
-    } );
-
-    // let my_mat = new THREE.MeshPhongMaterial( {
-    //   color: "rgb(0,111,255)",
-    //   opacity: 0.6,
-    //   transparent: true,
-    //   flatShading: true,
-    //   vertexColors: true,
-    //   shininess: 0
-    // } );
-
-
-    // let meshGeometry = new THREE.DodecahedronGeometry( 10 );
-    //
-    // const mesh = new THREE.Mesh( meshGeometry, my_mat);
-    // scene.add(mesh);
-
-    mtlLoader.load('./obj/'+ unique_geo_path +'.mtl', function ( materials ) {
-      materials.preload();
-      objLoader.setMaterials(materials);
-
-      objLoader.load('./obj/'+ unique_geo_path +'.obj',function ( object ) {
-        object.traverse(function (child) {
-          if (child instanceof THREE.Mesh) {
-            child.material = my_mat;
-          }
-        });
-        // object.position.z += 2;
-        scene.add( object );
-      });
-    });
-
-
-  }
-  const fn_add_Geo_plane  = () => {
-    const planeGeometry = new THREE.PlaneGeometry( 10, 10 );
-    planeGeometry.rotateX( - Math.PI / 2 );
-    const planeMaterial = new THREE.ShadowMaterial( { color: 0x000000, opacity: 0.2 } );
-
-    const plane = new THREE.Mesh( planeGeometry, planeMaterial );
-    plane.position.y = - 0.2;
-    plane.receiveShadow = true;
-    scene.add( plane );
-
-    const helper = new THREE.GridHelper( 10, 50 );
-    helper.position.y = - 0.99;
-    helper.material.opacity = 0.25;
-    helper.material.transparent = false;
-    scene.add( helper );
-  }
-  const fn_add_HemisphereLight = () => {
-    let light_2_HemisphereLight = new THREE.HemisphereLight( 0xcfe3fc, 0x6f849e, 2.0)
-    scene.add(light_2_HemisphereLight);
-  }
-  const fn_add_AmbientLight = () => {
-
-    let light_1_Ambient = new THREE.AmbientLight(0xFFFF80, 1) ;
-    scene.add(light_1_Ambient);
-  }
-  const fn_add_DirectionalLight = () => {
-
-    // Directional light
-    let light_3_Directional = new THREE.DirectionalLight(0xFFFFFF, 5.3);
-    light_3_Directional.position.set(2, 10, 1);
-    light_3_Directional.target.position.set(0,0,0);
-    scene.add(light_3_Directional);
-
-    let light_3_Directional2 = new THREE.DirectionalLight(0xFFFFFF, 2.3);
-    light_3_Directional2.position.set(-2, -10, -1);
-    light_3_Directional2.target.position.set(0,0,0);
-    scene.add(light_3_Directional2);
-
-
-    // let Helper_light_3_Directional = new THREE.DirectionalLightHelper(light_3_Directional, 5, "rgb(0,0,0)");
-    // scene.add(Helper_light_3_Directional);
-  }
-  const fn_add_RectAreaLight = () => {
-
-    RectAreaLightUniformsLib.init();
-
-    const width = 5;
-    const height = 5;
-    const intensity1 = 3.5;
-    const intensity2 = 2.2;
-    const intensity3 = 1.9;
-    const color1 = 0xFFFFFF;
-    const color2 = 0xFFFFFF;
-    const color3 = 0xFFFFFF;
-
-    const rectLight1 = new THREE.RectAreaLight( color1, intensity1,  width, height );
-    rectLight1.position.set( 5, 0, 0 );
-    rectLight1.lookAt( 0, 0, 0 );
-    scene.add( rectLight1 );
-
-    const rectLight2 = new THREE.RectAreaLight( color1, intensity1,  width, height );
-    rectLight2.position.set( -5, 0, 0 );
-    rectLight2.lookAt( 0, 0, 0 );
-    scene.add( rectLight2 );
-
-    const rectLight3 = new THREE.RectAreaLight( color2, intensity2,  width, height );
-    rectLight3.position.set( 0, 5, 0 );
-    rectLight3.lookAt( 0, 0, 0 );
-    scene.add( rectLight3 );
-
-    const rectLight4 = new THREE.RectAreaLight( color2, intensity2,  width, height );
-    rectLight4.position.set( 0, -5, 0 );
-    rectLight4.lookAt( 0, 0, 0 );
-    scene.add( rectLight4 );
-
-    const rectLight5 = new THREE.RectAreaLight( color3, intensity3,  width, height );
-    rectLight5.position.set( 0, 0, 5 );
-    rectLight5.lookAt( 0, 0, 0 );
-    scene.add( rectLight5 );
-
-    const rectLight6 = new THREE.RectAreaLight( color3, intensity3,  width, height );
-    rectLight6.position.set( 0, 0, -5 );
-    rectLight6.lookAt( 0, 0, 0 );
-    scene.add( rectLight6 );
-
-
-    // const rectLightHelper1 = new RectAreaLightHelper( rectLight1,  0xdb1229);
-    // rectLight1.add( rectLightHelper1 );
-    // const rectLightHelper2 = new RectAreaLightHelper( rectLight2,  0xdb1229);
-    // rectLight2.add( rectLightHelper2 );
-    // const rectLightHelper3 = new RectAreaLightHelper( rectLight3,  0xdb1229);
-    // rectLight3.add( rectLightHelper3 );
-    // const rectLightHelper4 = new RectAreaLightHelper( rectLight4,  0xdb1229);
-    // rectLight4.add( rectLightHelper4 );
-
-  }
-  const fn_UCS            = () => {
-    axesHelper = new THREE.AxesHelper();
-    scene.add(axesHelper)
-  }
-  const fn_GUI            = () => {
-    gui = new GUI();
-    //
-    // gui.add(camera.position, 'x', 0, 20).name(camera.position.x);
-    // gui.add(camera.position, 'y', 0, 20).name(camera.position.y);
-    // gui.add(camera.position, 'z', 0, 20).name(camera.position.z);
-    //
-    // gui.add(my_mat.color, "r", 0.0, 1.0);
-    // gui.add(my_mat.color, "g", 0.0, 1.0);
-    // gui.add(my_mat.color, "b", 0.0, 1.0);
-
-    // Ambient light
-    // gui.add(light_1_Ambient, "visible");
-    // gui.add(light_1_Ambient, "castShadow");
-    // gui.add(light_1_Ambient, "intensity", 0.0, 3.0);
-    // gui.add(light_1_Ambient.color, "r", 0.0, 1.0);
-    // gui.add(light_1_Ambient.color, "g", 0.0, 1.0);
-    // gui.add(light_1_Ambient.color, "b", 0.0, 1.0);
-
-    // HemisphereLight
-    // gui.add(light_2_HemisphereLight, "visible");
-    // gui.add(light_2_HemisphereLight, "intensity", 0.0, 3.0);
-
-  }
-
-  const fn_RelTimeRender  = () => {
-    if(circuitBreaker.value === false) {
-      controls.update()
-      renderer.render(scene, camera)
-      window.requestAnimationFrame(fn_RelTimeRender)
     }
-  }
+    const fn_add_Controls   = () => {
+      controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.campingFactor = 0.25;
+      controls.enabledZoom = true;
+      controls.enabled = true;
+    }
+    const fn_add_Geo        = () => {
 
-  const handleScroll      = () => {
-    console.log('schrooling');
-  }
+      let my_mat = new THREE.MeshLambertMaterial( {
+        color: "rgb(0,111,255)",
+        opacity: 0.6,
+        transparent: true,
+        side: THREE.DoubleSide,
+        flatShading: false
+      } );
 
-  const fn_three_dispose  = () => {
+      // let my_mat = new THREE.MeshPhongMaterial( {
+      //   color: "rgb(0,111,255)",
+      //   opacity: 0.6,
+      //   transparent: true,
+      //   flatShading: true,
+      //   vertexColors: true,
+      //   shininess: 0
+      // } );
 
-    scene.clear();
-    renderer.dispose();
-    renderer.forceContextLoss();
 
-    canvas = null;
-    scene = null;
-    camera = null;
-    light = null;
-    SpotLight1 = null;
-    controls = null;
-    axesHelper = null;
-    gui = null;
-    renderer = null;
-    circuitBreaker.value = true;
+      // let meshGeometry = new THREE.DodecahedronGeometry( 10 );
+      //
+      // const mesh = new THREE.Mesh( meshGeometry, my_mat);
+      // scene.add(mesh);
 
-    // console.log('3d view disposed');
+      mtlLoader.load('./obj/'+ unique_geo_path +'.mtl', function ( materials ) {
+        materials.preload();
+        objLoader.setMaterials(materials);
 
-  }
+        objLoader.load('./obj/'+ unique_geo_path +'.obj',function ( object ) {
+          object.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+              child.material = my_mat;
+            }
+          });
+          // object.position.z += 2;
+          scene.add( object );
+        });
+      });
+
+
+    }
+    const fn_add_Geo_plane  = () => {
+      const planeGeometry = new THREE.PlaneGeometry( 10, 10 );
+      planeGeometry.rotateX( - Math.PI / 2 );
+      const planeMaterial = new THREE.ShadowMaterial( { color: 0x000000, opacity: 0.2 } );
+
+      const plane = new THREE.Mesh( planeGeometry, planeMaterial );
+      plane.position.y = - 0.2;
+      plane.receiveShadow = true;
+      scene.add( plane );
+
+      const helper = new THREE.GridHelper( 10, 50 );
+      helper.position.y = - 0.99;
+      helper.material.opacity = 0.25;
+      helper.material.transparent = false;
+      scene.add( helper );
+    }
+    const fn_add_HemisphereLight = () => {
+      let light_2_HemisphereLight = new THREE.HemisphereLight( 0xcfe3fc, 0x6f849e, 2.0)
+      scene.add(light_2_HemisphereLight);
+    }
+    const fn_add_AmbientLight = () => {
+
+      let light_1_Ambient = new THREE.AmbientLight(0xFFFF80, 1) ;
+      scene.add(light_1_Ambient);
+    }
+    const fn_add_DirectionalLight = () => {
+
+      // Directional light
+      let light_3_Directional = new THREE.DirectionalLight(0xFFFFFF, 5.3);
+      light_3_Directional.position.set(2, 10, 1);
+      light_3_Directional.target.position.set(0,0,0);
+      scene.add(light_3_Directional);
+
+      let light_3_Directional2 = new THREE.DirectionalLight(0xFFFFFF, 2.3);
+      light_3_Directional2.position.set(-2, -10, -1);
+      light_3_Directional2.target.position.set(0,0,0);
+      scene.add(light_3_Directional2);
+
+
+      // let Helper_light_3_Directional = new THREE.DirectionalLightHelper(light_3_Directional, 5, "rgb(0,0,0)");
+      // scene.add(Helper_light_3_Directional);
+    }
+    const fn_add_RectAreaLight = () => {
+
+      RectAreaLightUniformsLib.init();
+
+      const width = 5;
+      const height = 5;
+      const intensity1 = 3.5;
+      const intensity2 = 2.2;
+      const intensity3 = 1.9;
+      const color1 = 0xFFFFFF;
+      const color2 = 0xFFFFFF;
+      const color3 = 0xFFFFFF;
+
+      const rectLight1 = new THREE.RectAreaLight( color1, intensity1,  width, height );
+      rectLight1.position.set( 5, 0, 0 );
+      rectLight1.lookAt( 0, 0, 0 );
+      scene.add( rectLight1 );
+
+      const rectLight2 = new THREE.RectAreaLight( color1, intensity1,  width, height );
+      rectLight2.position.set( -5, 0, 0 );
+      rectLight2.lookAt( 0, 0, 0 );
+      scene.add( rectLight2 );
+
+      const rectLight3 = new THREE.RectAreaLight( color2, intensity2,  width, height );
+      rectLight3.position.set( 0, 5, 0 );
+      rectLight3.lookAt( 0, 0, 0 );
+      scene.add( rectLight3 );
+
+      const rectLight4 = new THREE.RectAreaLight( color2, intensity2,  width, height );
+      rectLight4.position.set( 0, -5, 0 );
+      rectLight4.lookAt( 0, 0, 0 );
+      scene.add( rectLight4 );
+
+      const rectLight5 = new THREE.RectAreaLight( color3, intensity3,  width, height );
+      rectLight5.position.set( 0, 0, 5 );
+      rectLight5.lookAt( 0, 0, 0 );
+      scene.add( rectLight5 );
+
+      const rectLight6 = new THREE.RectAreaLight( color3, intensity3,  width, height );
+      rectLight6.position.set( 0, 0, -5 );
+      rectLight6.lookAt( 0, 0, 0 );
+      scene.add( rectLight6 );
+
+
+      // const rectLightHelper1 = new RectAreaLightHelper( rectLight1,  0xdb1229);
+      // rectLight1.add( rectLightHelper1 );
+      // const rectLightHelper2 = new RectAreaLightHelper( rectLight2,  0xdb1229);
+      // rectLight2.add( rectLightHelper2 );
+      // const rectLightHelper3 = new RectAreaLightHelper( rectLight3,  0xdb1229);
+      // rectLight3.add( rectLightHelper3 );
+      // const rectLightHelper4 = new RectAreaLightHelper( rectLight4,  0xdb1229);
+      // rectLight4.add( rectLightHelper4 );
+
+    }
+    const fn_UCS            = () => {
+      axesHelper = new THREE.AxesHelper();
+      scene.add(axesHelper)
+    }
+    const fn_GUI            = () => {
+      gui = new GUI();
+      //
+      // gui.add(camera.position, 'x', 0, 20).name(camera.position.x);
+      // gui.add(camera.position, 'y', 0, 20).name(camera.position.y);
+      // gui.add(camera.position, 'z', 0, 20).name(camera.position.z);
+      //
+      // gui.add(my_mat.color, "r", 0.0, 1.0);
+      // gui.add(my_mat.color, "g", 0.0, 1.0);
+      // gui.add(my_mat.color, "b", 0.0, 1.0);
+
+      // Ambient light
+      // gui.add(light_1_Ambient, "visible");
+      // gui.add(light_1_Ambient, "castShadow");
+      // gui.add(light_1_Ambient, "intensity", 0.0, 3.0);
+      // gui.add(light_1_Ambient.color, "r", 0.0, 1.0);
+      // gui.add(light_1_Ambient.color, "g", 0.0, 1.0);
+      // gui.add(light_1_Ambient.color, "b", 0.0, 1.0);
+
+      // HemisphereLight
+      // gui.add(light_2_HemisphereLight, "visible");
+      // gui.add(light_2_HemisphereLight, "intensity", 0.0, 3.0);
+
+    }
+    const fn_RelTimeRender  = () => {
+      if(circuitBreaker.value === false) {
+        controls.update()
+        renderer.render(scene, camera)
+        window.requestAnimationFrame(fn_RelTimeRender)
+      }
+    }
+    const handleScroll      = () => {
+      console.log('schrooling');
+    }
+    const fn_three_dispose  = () => {
+
+      scene.clear();
+      renderer.dispose();
+      renderer.forceContextLoss();
+
+      canvas = null;
+      scene = null;
+      camera = null;
+      light = null;
+      SpotLight1 = null;
+      controls = null;
+      axesHelper = null;
+      gui = null;
+      renderer = null;
+      circuitBreaker.value = true;
+
+      // console.log('3d view disposed');
+
+    }
 
 
 
@@ -523,23 +526,15 @@
   const ref_image = ref('');
   ref_image.value = 'img/'+ unique_img_path +'01.jpg';
 
-  // function fn_switch_image(number:number){
-  //   try {
-  //     const imageUrl = 'img/dodekahedron00' + number + '.jpg';
-  //     const img = new Image();
-  //     img.src = imageUrl;
-  //
-  //     img.onload = () => {
-  //       this.ref_image = imageUrl;
-  //     };
-  //
-  //     img.onerror = () => {
-  //       return null;
-  //     };
-  //   } catch (error) {
-  //     return null;
-  //   }
-  // }
+  function fn_switch_image(input_number:number){
+    try {
+      ref_image.value = 'img/'+ unique_img_path +'0'+ input_number +'.jpg';
+    } catch (error) {
+      return null;
+    }
+  }
+
+
 
   // --------'map'
   import { GoogleMap, Marker } from "vue3-google-map";
@@ -549,23 +544,57 @@
   const zoom  = 7;
   //const version = 3.47; //IE supported version
 
-  // ---------------------------------------------------------------------------------
-  // -------------------  identical  - END  ------------------------------------------
-  // ---------------------------------------------------------------------------------
-
-
-
-
-  const svgMarker = {
+  // GoogleMapsMarkers
+  const svgMarkerD = {
     path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
-    fillColor: "blue",
+    fillColor: unique_svgMarkerD_color,
     fillOpacity: 0.6,
     strokeWeight: 0,
     rotation: 0,
     scale: 1.5,
     // anchor: new google.maps.Point(0, 20),s
   };
+  const svgMarkerH = {
+    path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+    fillColor: unique_svgMarkerH_color,
+    fillOpacity: 0.6,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1.5,
+  };
+  const svgMarkerI = {
+    path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+    fillColor: unique_svgMarkerI_color,
+    fillOpacity: 0.6,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1.5,
+    // anchor: new google.maps.Point(0, 20),s
+  }
+  const svgMarkerO = {
+    path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+    fillColor: unique_svgMarkerO_color,
+    fillOpacity: 0.6,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1.5,
+    // anchor: new google.maps.Point(0, 20),s
+  }
+  const svgMarkerT = {
+    path: "M-1.547 12l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM0 0q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+    fillColor: unique_svgMarkerT_color,
+    fillOpacity: 0.6,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1.5,
+    // anchor: new google.maps.Point(0, 20),
+  }
 
+
+
+  // ---------------------------------------------------------------------------------
+  // -------------------  identical  - END  ------------------------------------------
+  // ---------------------------------------------------------------------------------
 
 
 </script>
