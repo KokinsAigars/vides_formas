@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.08.14
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - header [.ts]
@@ -13,43 +13,11 @@
 //  *
 -->
 
-<template>
-
-<!--  <div class="AuxiliaryLine0"></div><div class="AuxiliaryLine1"></div><div class="AuxiliaryLine2"></div>-->
-
-  <header class="LPh-header">
-    <div class="LPh-container">
-
-      <div class="LPh-Title T-h-Title">
-        {{HEADER_TITLE}}
-      </div>
-
-      <div class="hb-c-right">
-        <div class="hb-c-div">
-          <select class="hb-c-select T-hb-c-select"
-                  id="hb-c-select"
-                  @input="fn_Select($event)"
-                  v-model="defaultValue">
-            <option class="hb-c-select-o T-hb-c-select" value="h">Hexahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="t">Tetrahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="o">Octahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="d">Dodekahedron</option>
-            <option class="hb-c-select-o T-hb-c-select" value="i">Icosahedron</option>
-          </select>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-</template>
-
 <script setup lang="ts">
 
   const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
 
   import {onMounted, ref} from 'vue';
-
   import {useRouter} from 'vue-router';
   const router = useRouter();
 
@@ -61,7 +29,15 @@
   const defaultValue = ref('');
   const temp = ref('');
 
+  const fn_clearSelect = () => {
+    defaultValue.value = '';
+  }
+  const fn_notSelected = () => {
+    defaultValue.value = temp.value;
+  }
   const fn_Select = (event: Event) => {
+    // console.log(event);
+
     const target = event.target as HTMLSelectElement;
     const selectedValue = target.value;
 
@@ -79,14 +55,10 @@
   }
 
   onMounted(() => {
-
     try {
-
-      const activeForm = 'h'
-
-      defaultValue.value = activeForm;
+      const activeForm = ''
+      defaultValue.value = 'd';
       temp.value = activeForm;
-      router.push({path: '/' + activeForm});
 
     } catch (error) {
       console.error('An error occurred in onMounted(): ', ID, error);
@@ -96,5 +68,37 @@
   })
 
 </script>
+
+<template>
+<!--  <div class="AuxiliaryLine0"></div><div class="AuxiliaryLine1"></div><div class="AuxiliaryLine2"></div>-->
+
+  <header class="LPh-header">
+    <div class="LPh-container">
+
+      <div class="LPh-Title T-h-Title">
+        {{HEADER_TITLE}}
+      </div>
+
+      <div class="hb-c-right">
+        <div class="hb-c-div">
+          <select class="hb-c-select T-hb-c-select"
+                  id="hb-c-select"
+                  @mousedown="fn_clearSelect()"
+                  @mouseup="fn_notSelected()"
+                  @input="fn_Select($event)"
+                  v-model="defaultValue">
+            <option class="hb-c-select-o T-hb-c-select" value="h">Hexahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="t">Tetrahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="o">Octahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="d">Dodekahedron</option>
+            <option class="hb-c-select-o T-hb-c-select" value="i">Icosahedron</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+</template>
 
 <style lang="scss" src="./_formaStyleHeader.scss"/>

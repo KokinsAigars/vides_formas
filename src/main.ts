@@ -19,7 +19,7 @@ import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d90
 import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";
 import { app as firebaseApp } from './firebase';
 
-const   VIVENTE = createApp(init_app_vue)
+const   VIVENTE = createApp (init_app_vue)
         VIVENTE.use(i18n)
         VIVENTE.use(router)
         VIVENTE.use(createPinia())

@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.16
+//  *   Built on 2024.08.14
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   <RouterView/>
@@ -18,31 +18,47 @@
 <template>
   <div class="LP-Layout">
 
-    <HeaderComponent/>
-    <HeaderComponentLine/>
+    <HeaderComponent v-if="TempRoutePath !=='/adm' || route.path !=='/adm'"/>
+    <HeaderComponentLine v-if="TempRoutePath !=='/adm' || route.path !=='/adm'"/>
 
     <div class="LPb"> <RouterView/> </div>
 
-    <FooterComponent/>
+    <FooterComponent v-if="TempRoutePath !=='/adm' || route.path !=='/adm'"/>
 
   </div>
 </template>
 
 <script setup lang="ts">
 
-  import { onMounted } from 'vue';
-  import { RouterView } from 'vue-router'
+  import HeaderComponent  from '@components/header/lp-header-component.vue';
+  import HeaderComponentLine  from '@components/header/lp-header-line.vue';
+  import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
+
+  import {onMounted, watch, watchEffect} from 'vue';
+  import { RouterView, useRoute } from 'vue-router'
 
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
   import { RefreshService } from '@services/refresh.service';
 
   // import { browserService } from '@services/refresh.service';
 
-  onMounted(() => { RefreshService(); });
+  // what is current route.path [e.g. '/h']
+  const route = useRoute();
+  let TempRoutePath: string = route.path;
 
-  import HeaderComponent  from '@components/header/lp-header-component.vue';
-  import HeaderComponentLine  from '@components/header/lp-header-line.vue';
-  import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
+  watchEffect(() => {
+
+    // if [route.path] changes
+    if(TempRoutePath !== route.path){
+      console.log(route.path);
+      TempRoutePath = route.path;
+    }
+  })
+
+  onMounted(() => {
+    RefreshService();
+  });
+
 
 </script>
 

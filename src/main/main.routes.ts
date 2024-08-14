@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.08.14
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
@@ -18,7 +18,12 @@ const router = createRouter ({
 
   routes: [
 
-    { path: '/', redirect: '/h' },
+    // { path: '/', redirect: '/h' },
+
+    //  home page
+    { path: '/', name: "home",
+      component: () => import('@home/home.vue'),
+    },
 
     //   Hexahedron
     { path: '/h', name: "Hexahedron",
@@ -45,7 +50,15 @@ const router = createRouter ({
       component: () => import('@components/body/icosahedron.vue'),
     },
 
-    { path: '/:catchAll(.*)*', name: 'NotFound', redirect: '/h' },
+    //   Admin Console
+    { path: '/adm', name: "adm",
+      component: () => import('@admin/adm.vue'),
+    },
+
+    { path: '/:catchAll(.*)*', name: 'NotFound',
+      // component: () => import('@admin/404/404.vue'),
+      redirect: '/'
+    },
   ],
 
 })

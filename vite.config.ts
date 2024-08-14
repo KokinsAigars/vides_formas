@@ -40,6 +40,8 @@ export default defineConfig({
 
       '@components'     : '/src/main/components',
       '@services'       : '/src/main/services',
+      '@admin'          : '/src/main/components/admin',
+      '@home'           : '/src/main/components/home',
 
       '@style'          : '/src/assets/styles/',
 

@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.08.14
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - footer  [.ts]
@@ -14,10 +14,17 @@
 -->
 
 <template>
+
     <footer class="LPf-footer">
         <div class="LPf-container">
             <p class="LPf-el T-LPf-el">{{RootStore.Copyright()}}</p>
 <!--            <p class="LPf-el T-LPf-el">{{RootStore.ReleaseId()}}</p>-->
+          <p>
+            <button class="btn_footer_email T-LPf-el">
+              Share your photos
+            </button>
+          </p>
+
         </div>
     </footer>
 </template>
@@ -40,6 +47,30 @@
     //     console.log(appHeight.value);
     //   }
     // })
+
+
+    /**/	//	Sending emails from Feedback window using ""emailjs""
+    /**/	//	https://dashboard.emailjs.com/
+    /**/
+    function fn_send_mail(Feedback_INPUT:string) { //_log(Feedback_INPUT);
+
+      let data = {
+        service_id: "service_z3yp5bg",
+        template_id: "template_nft4qrm",
+        user_id: "YY3n_uVQKT3V7sJmA",
+        template_params: {
+          'message' : Feedback_INPUT,
+          'date': new Date()
+        }
+      };
+
+      let http = new XMLHttpRequest();
+      http.open("POST", 'https://api.emailjs.com/api/v1.0/email/send', true);
+      http.setRequestHeader("Content-Type", 'application/json');
+      http.send ( JSON.stringify(data) );
+
+    }
+
 </script>
 
 
@@ -69,6 +100,14 @@
         text-align: center;
       opacity: 0.7;
         // border:1px dashed red;
+    }
+    .btn_footer_email{
+      padding-left: 40px;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      overflow: hidden !important;
+      cursor: pointer;
     }
 
 </style>
