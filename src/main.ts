@@ -40,4 +40,3 @@ import '@style/stylesRoot_Light.scss';
 import '@style/stylesScrollbar.scss';
 import '@style/Typography.scss';
 import '@style/Variables.scss';
-import '@style/sign-in/Typography-signIn-V1.scss';
