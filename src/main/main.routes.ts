@@ -4,22 +4,29 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.14
+//  *   Built on 2024.08.15
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
 //  *
 
 import { createRouter, createWebHistory } from 'vue-router'
-import { AuthGuard_app } from '@services/auth-guard-service.ts';
 
+import adminConsole from '@admin/console.vue';
+
+import { AuthGuard_app } from '@services/auth-guard-service.ts';
 const EnterGuards = async (to: any, from: any, next: any) => {
   let isAuthenticated: boolean = false;
+
   try {
+
     isAuthenticated  = await AuthGuard_app();
 
-  } catch (error) { console.error(error); }
-  if (!isAuthenticated) next({ name: 'forbidden' }); // 403.error => ts : d4ad29e7-70e4-4812-888a-6bd369680905
+  } catch (error) {
+    console.error('not Authenticated', error);
+  }
+
+  if (!isAuthenticated) next({ redirect: '/' });
   else {
     next();
     // return true;
@@ -33,50 +40,45 @@ const router = createRouter ({
 
   routes: [
 
-    // { path: '/', redirect: '/h' },
-
-    //  home page
+    //  Home Page
     { path: '/', name: "home",
       component: () => import('@home/home.vue'),
     },
 
-    //   Hexahedron
+    //  Hexahedron
     { path: '/h', name: "Hexahedron",
       component: () => import('@components/body/hexahedron.vue'),
     },
 
-    //   Tetrahedron
+    //  Tetrahedron
     { path: '/t', name: "Tetrahedron",
       component: () => import('@components/body/tetrahedron.vue'),
     },
 
-    //   Octahedron
+    //  Octahedron
     { path: '/o', name: "Octahedron",
       component: () => import('@components/body/octahedron.vue'),
     },
 
-    //   Dodekahedron
+    //  Dodekahedron
     { path: '/d', name: "Dodekahedron",
       component: () => import('@components/body/dodekahedron.vue'),
     },
 
-    //   Icosahedron
+    //  Icosahedron
     { path: '/i', name: "Icosahedron",
       component: () => import('@components/body/icosahedron.vue'),
     },
 
-    //   Admin Console
+    //  Login
     { path: '/adm', name: "adm",
       component: () => import('@admin/adm.vue'),
-      children: [
-        {
-          path: 'adm/:id',
-          name: 'adminConsole',
-          component: () => import('@admin/console.vue'),
-          props: true,
-          beforeEnter: EnterGuards,
-        },
-      ],
+    },
+
+    //   Admin Console
+    { path: '/adm/console', name: 'adminConsole',
+      component: adminConsole,
+      beforeEnter: EnterGuards,
     },
 
     { path: '/:catchAll(.*)*', name: 'NotFound', redirect: '/' },

@@ -68,16 +68,16 @@
 
       </div>
 
-      <div class="m-items m-items2">
+<!--      <div class="m-items m-items2">-->
 
-        <button class="m-btn T-switch" role="button" type="button"
-                v-bind:class = "(m_select === 'email')?'m-btn-active':''"
-                @click="fn_switch_items('email')"
-                @contextmenu.prevent="fn_switch_items('email')"
-        >[share your photos]
-        </button>
+<!--        <button class="m-btn T-switch" role="button" type="button"-->
+<!--                v-bind:class = "(m_select === 'email')?'m-btn-active':''"-->
+<!--                @click="fn_switch_items('email')"-->
+<!--                @contextmenu.prevent="fn_switch_items('email')"-->
+<!--        >[share your photos]-->
+<!--        </button>-->
 
-      </div>
+<!--      </div>-->
 
     </div>
 

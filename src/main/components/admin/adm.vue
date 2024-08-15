@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 
-  import { ref } from 'vue';
+  import {ref, watch, watchEffect} from 'vue';
 
   import {useRouter} from 'vue-router';
   const router = useRouter();
@@ -13,6 +13,9 @@
   import { auth } from '@/firebase';
   import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
+  const isAuthenticated = ref<boolean>(false);
+  isAuthenticated.value = RootStore.$state.isAuthenticated;
+
   const textEmail = ref<string>('');
   const textPassword = ref<string>('');
   const state = ref<string>(null);
@@ -20,8 +23,8 @@
   const ref_errorMsg = ref<boolean>(false);
 
   // TESTING
-  textEmail.value = 'testAuth@www.test';
-  textPassword.value = 'nticationtechniquesandprovide';
+  // textEmail.value = 'testAuth@www.test';
+  // textPassword.value = 'nticationtechniquesandprovide';
 
   const loginEmailPassword = async () => {
 
@@ -38,7 +41,7 @@
       RootStore.act_isAuthenticated(true);
       RootStore.act_uid(uid.value);
 
-      // await router.push({path: '/adm/' + 1});
+      await router.push({name: 'adminConsole'})
 
     } catch (e) {
       ref_errorMsg.value = true;
@@ -51,11 +54,12 @@
   const sign_out = async () => {
 
     try {
-      await auth.signOut();
+      await signOut(auth);
       state.value = null;
       uid.value = null;
       RootStore.act_isAuthenticated_false();
-      RootStore.act_uid(uid.value);
+      RootStore.act_uid(null);
+      await router.push({name: 'home'})
     } catch (e) {
       console.log('error: ', e);
     }
@@ -70,28 +74,34 @@
     }, 3000);
   }
 
+  watchEffect(() => { // IF STORE CHANGES,
+
+    if(RootStore.$state.isAuthenticated !== isAuthenticated.value ){
+      isAuthenticated.value = RootStore.$state.isAuthenticated;
+    }
+
+  })
+
+
 </script>
 
 <template>
 
   <div class="authError" v-if="ref_errorMsg">
     <p class="authError-text">Authentication Error</p>
-
   </div>
 
-    <div class="adm-auth-title T-hb-c-select">Administrator console</div>
+  <div class="adm-auth-title T-hb-c-select">Administrator console</div>
 
-    <div class="adm-auth-div" v-if="state === null && ref_errorMsg === false">
-      <input v-model="textEmail">
-      <input type="password" v-model="textPassword">
-      <button @click="loginEmailPassword">authenticate</button>
-    </div>
+  <div class="adm-auth-div" v-if="isAuthenticated === false && ref_errorMsg === false">
+    <input v-model="textEmail">
+    <input type="password" v-model="textPassword">
+    <button @click="loginEmailPassword">authenticate</button>
+  </div>
 
-    <div class="adm-auth-div" v-if="state === 'signIn' && ref_errorMsg === false">
-      <button @click="sign_out">sign_out</button>
-    </div>
-
-
+  <div class="adm-auth-div" v-if="isAuthenticated === true">
+    <button @click="sign_out">sign_out</button>
+  </div>
 
 </template>
 

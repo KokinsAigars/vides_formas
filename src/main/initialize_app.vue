@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.14
+//  *   Built on 2024.08.15
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   <RouterView/>
@@ -15,54 +15,47 @@
 //  *
 -->
 
-<template>
-  <div class="LP-Layout">
-
-    <div v-if="TempRoutePath ==='/adm' || route.path ==='/adm'">
-      <div class="LPb"> <RouterView/> </div>
-    </div>
-
-    <div v-if="TempRoutePath !=='/adm' || route.path !=='/adm'">
-      <HeaderComponent/>
-      <HeaderComponentLine/>
-      <div class="LPb"> <RouterView/> </div>
-      <FooterComponent/>
-    </div>
-
-  </div>
-</template>
-
 <script setup lang="ts">
 
   import HeaderComponent  from '@components/header/lp-header-component.vue';
   import HeaderComponentLine  from '@components/header/lp-header-line.vue';
   import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
-  import {onMounted, watch, watchEffect} from 'vue';
+  import {onMounted, ref, watch, watchEffect} from 'vue';
   import { RouterView, useRoute } from 'vue-router'
 
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
   import { RefreshService } from '@services/refresh.service';
 
-
   const route = useRoute();
-  let TempRoutePath: string = route.path;
-
-  watchEffect(() => {
-
-    // if [route.path] changes
-    if(TempRoutePath !== route.path){
-      // console.log(route.path);
-      TempRoutePath = route.path;
-    }
-  })
+  const TempRoutePath = ref<string>(null);
+  TempRoutePath.value= route.path;
 
   onMounted(() => {
     RefreshService();
   });
 
+  watchEffect(() => {
+    if(TempRoutePath.value !== route.path){
+      TempRoutePath.value = route.path.substring(0,4)
+    }
+  })
 
 </script>
+
+<template>
+  <div class="LP-Layout">
+
+    <div v-if="TempRoutePath !== '/adm'">
+      <HeaderComponent/>
+      <HeaderComponentLine/>
+      <div class="LPb"> <RouterView/> </div>
+      <FooterComponent/>
+    </div>
+
+    <div class="LPb" v-if="TempRoutePath === '/adm'"> <RouterView/> </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 
