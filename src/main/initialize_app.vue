@@ -18,12 +18,16 @@
 <template>
   <div class="LP-Layout">
 
-    <HeaderComponent v-if="TempRoutePath !=='/adm' || route.path !=='/adm'"/>
-    <HeaderComponentLine v-if="TempRoutePath !=='/adm' || route.path !=='/adm'"/>
+    <div v-if="TempRoutePath ==='/adm' || route.path ==='/adm'">
+      <div class="LPb"> <RouterView/> </div>
+    </div>
 
-    <div class="LPb"> <RouterView/> </div>
-
-    <FooterComponent v-if="TempRoutePath !=='/adm' || route.path !=='/adm'"/>
+    <div v-if="TempRoutePath !=='/adm' || route.path !=='/adm'">
+      <HeaderComponent/>
+      <HeaderComponentLine/>
+      <div class="LPb"> <RouterView/> </div>
+      <FooterComponent/>
+    </div>
 
   </div>
 </template>
@@ -40,9 +44,7 @@
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
   import { RefreshService } from '@services/refresh.service';
 
-  // import { browserService } from '@services/refresh.service';
 
-  // what is current route.path [e.g. '/h']
   const route = useRoute();
   let TempRoutePath: string = route.path;
 
@@ -50,7 +52,7 @@
 
     // if [route.path] changes
     if(TempRoutePath !== route.path){
-      console.log(route.path);
+      // console.log(route.path);
       TempRoutePath = route.path;
     }
   })

@@ -17,7 +17,7 @@ import router from './main/main.routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0
 import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d907
 
 import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";
-import { app as firebaseApp } from './firebase';
+import { firebaseApp } from './firebase';
 
 const   VIVENTE = createApp (init_app_vue)
         VIVENTE.use(i18n)
@@ -40,3 +40,4 @@ import '@style/stylesRoot_Light.scss';
 import '@style/stylesScrollbar.scss';
 import '@style/Typography.scss';
 import '@style/Variables.scss';
+import '@style/sign-in/Typography-signIn-V1.scss';

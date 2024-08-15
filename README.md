@@ -8,6 +8,12 @@ npm install
 npm run dev
 npm run build
 
+
+
+firebase login
+firebase logout
+firebase emulators:start
+
 npm run firebaseemulators
 npm run firebasdeploy
 
@@ -17,6 +23,10 @@ npm run firebasdisable
 npm run firebasdisablevidesformas
 
 ```
+
+
+
+
 
 https://console.firebase.google.com/project/videsformas/overview
 

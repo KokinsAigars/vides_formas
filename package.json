@@ -13,7 +13,8 @@
     "firebasdisablevidesformas": "firebase hosting:disable -s videsformas"
   },
   "dependencies": {
-    "axios": "^1.7.2",
+    "@emailjs/nodejs": "^4.0.4",
+    "axios": "^1.7.4",
     "core-js": "^3.8.3",
     "dat.gui": "^0.7.9",
     "firebase": "^10.12.3",

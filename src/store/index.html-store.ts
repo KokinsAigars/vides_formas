@@ -46,6 +46,9 @@ export const useRootStore = defineStore({
 
         mapStyleId: 'aff95100f6e051a6',
 
+        ejpk: 'ULZXVxIic525q-n4m',
+        ejprk: 'xHMslxlhyNt4LX8eTo5qz',
+
     }),
 
     actions: {

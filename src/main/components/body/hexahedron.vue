@@ -4,7 +4,7 @@
 //  *   Project Name: "Vides Formas"
 //  *   Organization: VIVENTE
 //  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.02
+//  *   Built on 2024.08.15
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page - body - component
@@ -35,7 +35,7 @@
 
       </div>
 
-      <div class="m-items m-items2" v-if="btn_3D === true">
+      <div class="m-items m-items2" v-if="btn_3D">
 
         <button class="m-btn T-switch" role="button" type="button"
                 v-bind:class = "(m_select === '3D')?'m-btn-active':''"
@@ -46,7 +46,7 @@
 
       </div>
 
-      <div class="m-items m-items2" v-if="add_Images === true">
+      <div class="m-items m-items2" v-if="add_Images">
 
         <button class="m-btn T-switch" role="button" type="button"
                 v-bind:class = "(m_select === 'image')?'m-btn-active':''"
@@ -64,6 +64,17 @@
                 @click="fn_switch_items('map')"
                 @contextmenu.prevent="fn_switch_items('map')"
         >map
+        </button>
+
+      </div>
+
+      <div class="m-items m-items2">
+
+        <button class="m-btn T-switch" role="button" type="button"
+                v-bind:class = "(m_select === 'email')?'m-btn-active':''"
+                @click="fn_switch_items('email')"
+                @contextmenu.prevent="fn_switch_items('email')"
+        >[share your photos]
         </button>
 
       </div>
@@ -161,7 +172,14 @@
 
       </div>
 
+      <div class="o-map-cnn" v-if="m_select === 'email'">
+
+       email
+
+      </div>
+
     </div>
+
 
   </div>
 </template>
@@ -169,7 +187,6 @@
 <script setup lang="ts">
 
   //  UNIQUE for HEXAHEDRON
-
   const unique_geometry = ref<string>(null);
   unique_geometry.value = 'hexahedron';
 
@@ -189,11 +206,40 @@
   const unique_svgMarkerT_color = "black";
 
 
+
+  import axios from 'axios'
+  const fn_sendEmail = () => {
+
+    /**/	//	Sending emails from Feedback window using ""emailjs""
+    /**/	//	https://dashboard.emailjs.com/
+    /**/
+    let Feedback_INPUT:string = '';
+
+    let data = {
+      service_id: "service_z3yp5bg",
+      template_id: "template_nft4qrm",
+      user_id: "YY3n_uVQKT3V7sJmA",
+      template_params: {
+        'message' : Feedback_INPUT,
+        'date': new Date()
+      }
+    };
+
+    let http = new XMLHttpRequest();
+    http.open("POST", 'https://api.emailjs.com/api/v1.0/email/send', true);
+    http.setRequestHeader("Content-Type", 'application/json');
+    http.send ( JSON.stringify(data) );
+  }
+
+
+
+
   // ---------------------------------------------------------------------------------
   // -------------------  identical  - START -----------------------------------------
   // ---------------------------------------------------------------------------------
 
   import {ref} from 'vue';
+
 
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
   import { useRootStore } from '@rootStore/index.html-store';
