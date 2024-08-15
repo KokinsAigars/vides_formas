@@ -11,6 +11,21 @@
 //  *
 
 import { createRouter, createWebHistory } from 'vue-router'
+import { AuthGuard_app } from '@services/auth-guard-service.ts';
+
+const EnterGuards = async (to: any, from: any, next: any) => {
+  let isAuthenticated: boolean = false;
+  try {
+    isAuthenticated  = await AuthGuard_app();
+
+  } catch (error) { console.error(error); }
+  if (!isAuthenticated) next({ name: 'forbidden' }); // 403.error => ts : d4ad29e7-70e4-4812-888a-6bd369680905
+  else {
+    next();
+    // return true;
+  }
+}
+
 
 const router = createRouter ({
 
@@ -53,12 +68,19 @@ const router = createRouter ({
     //   Admin Console
     { path: '/adm', name: "adm",
       component: () => import('@admin/adm.vue'),
+      children: [
+        {
+          path: 'adm/:id',
+          name: 'adminConsole',
+          component: () => import('@admin/console.vue'),
+          props: true,
+          beforeEnter: EnterGuards,
+        },
+      ],
     },
 
-    { path: '/:catchAll(.*)*', name: 'NotFound',
-      // component: () => import('@admin/404/404.vue'),
-      redirect: '/'
-    },
+    { path: '/:catchAll(.*)*', name: 'NotFound', redirect: '/' },
+
   ],
 
 })
