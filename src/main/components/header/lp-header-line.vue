@@ -11,10 +11,11 @@
 //  *
 -->
 
+<script setup lang="ts"/>
+
 <template>
   <div class="LPh-line"></div>
 </template>
 
-<script setup lang="ts"/>
 <style lang="scss" src="./_formaStyleHeader.scss"/>
 

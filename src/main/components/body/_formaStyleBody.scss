@@ -111,6 +111,7 @@ $maxImgWidth: 900px;
       height: $webgl_size_small;
     }}
 
+
   .o-image-cnn        {
     width: 760px;
     opacity: 1;
@@ -119,12 +120,18 @@ $maxImgWidth: 900px;
       padding-left: 20px;
       opacity: 1;
     }}
+
+    .cls_iframe-cnn{
+      border: none;
+      overflow: hidden;
+    }
+
   .o-image            {
     max-width: 100%;
     max-height: 100%;
   }
 
-  .o-img-switch-cnn   {
+.o-img-switch-cnn   {
     display: flex;
     flex-direction: row;
     justify-content: left;
