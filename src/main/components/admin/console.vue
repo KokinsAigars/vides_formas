@@ -20,7 +20,7 @@
   const router = useRouter();
 
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
-  import { useRootStore } from '@/store/index.html-store.ts';
+  import { useRootStore } from '@/_store/index.html-store.ts';
   const RootStore = useRootStore();
 
   import {signOut} from "firebase/auth";

@@ -1,7 +1,7 @@
 
 @import '@style/mixin.scss';
 
-html, body            {
+html, body {
   overflow-x: hidden;
   overflow-y: auto !important;
 }
@@ -113,7 +113,8 @@ $maxImgWidth: 900px;
 
 
   .o-image-cnn        {
-    width: 760px;
+    width: 900px;
+    height: 506px;
     opacity: 1;
     @include for-size($include) {
       width: 480px;
@@ -121,7 +122,7 @@ $maxImgWidth: 900px;
       opacity: 1;
     }}
 
-    .cls_iframe-cnn{
+    .cls_image_iframe{
       border: none;
       overflow: hidden;
 

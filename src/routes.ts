@@ -14,7 +14,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import adminConsole from '@admin/console.vue';
 
 // Auth Guard //=> ts : 73a8d985-a778-4113-8850-ba1321b9dfcf
-import { AuthGuard_app } from '@services/auth-guard-service.ts';
+import { AuthGuard_app } from '@/_services/auth-guard-service.ts';
 
 const EnterGuards = async (to: any, from: any, next: any) => {
   let isAuthenticated: boolean = false;

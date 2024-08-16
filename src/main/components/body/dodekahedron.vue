@@ -21,6 +21,8 @@
 
 //  UNIQUE for DODEKAHEDRON
 
+import value from "*.json";
+
 const unique_geometry = ref<string>(null);
 unique_geometry.value = 'dodekahedron';
 
@@ -39,9 +41,21 @@ const unique_svgMarkerI_color = "black";
 const unique_svgMarkerO_color = "black";
 const unique_svgMarkerT_color = "black";
 
-const ref_iframe_width = ref(null);
-const ref_iframe_height = ref(null);
+const ref_image_iframe = ref<HTMLIFrameElement | null>(null);
 
+const fn_load_ref_image_iframe = () => {
+    console.log(ref_image_iframe.value);
+}
+
+//
+// if (image_iframe) {
+//   // The iframe exists, so you can safely access its properties
+//   image_iframe.src = "https://www.example.com";
+//   // Perform other operations with the iframe
+// } else {
+//   // Handle the case where the iframe is not found
+//   console.warn('Iframe element not found.');
+// }
 
 
 //  IDENTICAL for ALL
@@ -50,18 +64,18 @@ const ref_iframe_height = ref(null);
 // -------------------  identical  - START -----------------------------------------
 // ---------------------------------------------------------------------------------
 
-import {ref} from 'vue';
+import {onMounted, Ref, ref} from 'vue';
 
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
 const RootStore = useRootStore();
 
 // SVG vue component
-import svg_Hexahedron from '@assets/svg/h.vue';
-import svg_Tetrahedron from '@assets/svg/t.vue';
-import svg_Octahedron from '@assets/svg/o.vue';
-import svg_Dodekahedron from '@assets/svg/d.vue';
-import svg_Icosahedron from '@assets/svg/i.vue';
+import svg_Hexahedron from '@/_assets/svg/h.vue';
+import svg_Tetrahedron from '@/_assets/svg/t.vue';
+import svg_Octahedron from '@/_assets/svg/o.vue';
+import svg_Dodekahedron from '@/_assets/svg/d.vue';
+import svg_Icosahedron from '@/_assets/svg/i.vue';
 
 
 const lastState = ref<string>(null);
@@ -79,6 +93,13 @@ const fn_switch_items = (switchTo: string) => {
     fn_three_dispose();
   } else {
     m_select.value = switchTo;
+  }
+  if(switchTo === 'image'){
+
+    setTimeout(() => {
+      fn_load_ref_image_iframe();
+    }, 1000);
+
   }
 
   lastState.value = switchTo;
@@ -528,26 +549,29 @@ const svgMarkerT = {
 
       <div class="o-image-cnn" v-if="m_select === 'image'">
 
-        <iframe
-            class="cls_iframe-cnn"
-            width="ref_iframe_width"
-            height="ref_iframe_height"
+        <iframe ref="ref_image_iframe"
+            class="cls_image_iframe"
+            name="n_image_iframe"
+            width="100%"
+            height="100%"
             v-bind:src="ref_image"
+        ></iframe>
 
-        >
-        </iframe>
-          <img class="o-image" v-bind:src="ref_image" alt="image">
-
+          <!--<img class="o-image" v-bind:src="ref_image" alt="image">-->
 
           <div class="o-img-switch-cnn T-m_image">
+
             <ul class="o-img-switch-ul">
+
               <li v-for="(index) in unique_number_of_images" class="o-img-switch-li">
+
                 <button class="o-img-switch-btn" @click="fn_switch_image(index)">{{index}}</button>
+
               </li>
 
             </ul>
-          </div>
 
+          </div>
 
 
         <!--  width="560" height="315"  -->
@@ -555,29 +579,24 @@ const svgMarkerT = {
         <!--  width="853" height="480"  -->
         <!--  width="1280" height="720"  -->
 
-        <iframe width="853" height="480"
-                src="https://www.youtube.com/embed/ryiMJyiCPmg?si=hN3cAlngzRj9c3Dq"
-                title="YouTube video player"
-                frameborder="0"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-        >
-        </iframe>
+<!--        <iframe width="853" height="480"-->
+<!--                src="https://www.youtube.com/embed/ryiMJyiCPmg?si=hN3cAlngzRj9c3Dq"-->
+<!--                title="YouTube video player"-->
+<!--                frameborder="0"-->
+<!--                allow="-->
+<!--                  accelerometer;-->
+<!--                  autoplay;-->
+<!--                  clipboard-write;-->
+<!--                  encrypted-media;-->
+<!--                  picture-in-picture;-->
+<!--                  web-share"-->
+<!--                referrerpolicy="strict-origin-when-cross-origin"-->
+<!--                allowfullscreen-->
+<!--        >-->
+<!--        </iframe>-->
 
 
 
-
-      </div>
-
-      <div class="o-video-cnn" v-if="m_select === 'video'">
 
       </div>
 

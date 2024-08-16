@@ -13,7 +13,7 @@
 //  *   import { useRootStore } from '@rootStore/index.html-store';
 //  *   const RootStore = useRootStore();
 
-import i18n from '@/locale/index';
+import i18n from '@/_locale/index';
 import {defineStore} from "pinia";
 
 export const useRootStore = defineStore({

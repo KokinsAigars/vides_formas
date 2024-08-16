@@ -79,11 +79,11 @@ import { useRootStore } from '@rootStore/index.html-store';
 const RootStore = useRootStore();
 
 // SVG vue component
-import svg_Hexahedron from '@assets/svg/h.vue';
-import svg_Tetrahedron from '@assets/svg/t.vue';
-import svg_Octahedron from '@assets/svg/o.vue';
-import svg_Dodekahedron from '@assets/svg/d.vue';
-import svg_Icosahedron from '@assets/svg/i.vue';
+import svg_Hexahedron from '@/_assets/svg/h.vue';
+import svg_Tetrahedron from '@/_assets/svg/t.vue';
+import svg_Octahedron from '@/_assets/svg/o.vue';
+import svg_Dodekahedron from '@/_assets/svg/d.vue';
+import svg_Icosahedron from '@/_assets/svg/i.vue';
 
 
 const lastState = ref<string>(null);

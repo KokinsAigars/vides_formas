@@ -9,10 +9,7 @@ index.html => /vue/
     |__ src/store
     |__ services
         |__ src/main/initialize_app.vue
-            |__ components
-            |__ initialize_app.vue
-            
-
+            |__ components          
 
 home : /
 Admin : /adm

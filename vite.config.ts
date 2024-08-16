@@ -32,18 +32,18 @@ export default defineConfig({
       // path to write in html url?
       '@': fileURLToPath(new URL('./src', import.meta.url)),
 
-      '@assets'         : '/src/assets',
-      '@locale'         : '/src/locale',
+      '@assets'         : '/src/_assets',
+      '@locale'         : '/src/_locale',
+      '@services'       : '/src/_services',
+      '@rootStore'      : '/src/_store',
       '@main'           : '/src/main',
-      '@rootStore'      : '/src/store',
-      '@services'       : '/src/services',
 
       '@components'     : '/src/main/components',
 
       '@admin'          : '/src/main/components/admin',
       '@home'           : '/src/main/components/home',
 
-      '@style'          : '/src/assets/styles/',
+      '@style'          : '/src/_assets/styles/',
 
     },
   },
