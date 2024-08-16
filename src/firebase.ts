@@ -1,4 +1,14 @@
 
+//  *   ts : db00ccf0-17db-46c1-b98d-f69025da03fd
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   [firebase initialize]
+//  *
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 

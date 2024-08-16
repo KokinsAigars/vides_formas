@@ -1,10 +1,9 @@
 
 //  *   ts : 9ce03af6-fd0e-4c23-9be7-022c8c0c964e
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.15
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   [main.ts]
@@ -13,7 +12,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import init_app_vue from './main/initialize_app.vue' //=> ts : 507bc6bc-b152-4adc-a92f-6b96d8987c6f
-import router from './main/main.routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
+import router from './routes' //=> ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
 import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d907
 
 import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";

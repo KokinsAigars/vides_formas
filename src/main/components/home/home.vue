@@ -1,10 +1,25 @@
-<script setup lang="ts">
-import {ref} from "vue";
+<!--
+//  *   vue : fb65edee-07fa-45e9-8a36-3891f0701c19
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   HOME page
+//  *
+//  *   [home.vue]
+//  *
+-->
 
-const unique_img_path = 'd/d';
-// --------'image'
-const ref_image = ref('');
-ref_image.value = 'img/'+ unique_img_path +'01.jpg';
+<script setup lang="ts">
+
+  import {ref} from "vue";
+
+  const unique_img_path = 'd/d';
+  // --------'image'
+  const ref_image = ref('');
+  ref_image.value = 'img/'+ unique_img_path +'01.jpg';
 
 </script>
 

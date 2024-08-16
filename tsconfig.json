@@ -1,10 +1,9 @@
 
 //  *   ts : 8ba668cb-3fba-40d6-8b8a-6a972f9faa0e
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.05
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   tsconfig.json
@@ -64,12 +63,12 @@
       "@locale/*"     : ["src/locale/*" ],
       "@main/*"       : ["src/main/*"   ],
       "@rootStore/*"  : ["src/store/*"  ],
+      "@services/*"   : ["src/services/*"],
 
       "@components/*" : ["src/main/components/*"],
-      "@services/*"   : ["src/main/services/*"],
+
       "@admin/*"      : ["src/main/components/admin/*"],
       "@home/*"       : ["src/main/components/home/*"],
-
 
       "@style/*"      : ["src/assets/styles/*"]
     },

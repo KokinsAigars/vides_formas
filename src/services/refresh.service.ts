@@ -1,10 +1,9 @@
 
 //  *   ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.06.29
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   after web browser refresh

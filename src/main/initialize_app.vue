@@ -1,18 +1,19 @@
 <!--
-//  *   ts : 507bc6bc-b152-4adc-a92f-6b96d8987c6f
+//  *   vue : 507bc6bc-b152-4adc-a92f-6b96d8987c6f
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.15
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
+//  *   Initialize Vue web app
 //  *   <RouterView/>
 //  *
-//  *   [Initialize App Vue]
+//  *   [initialize_app.vue]
 //  *
 //  *   description: This component is render, "mounted", first
-//  *
+//  *   RefreshService makes possible to write and read all Root Store content in Application / local storage
+//  *   prevents losing states after refresh
 -->
 
 <script setup lang="ts">
@@ -54,6 +55,7 @@
     </div>
 
     <div class="LPb" v-if="TempRoutePath === '/adm'"> <RouterView/> </div>
+
   </div>
 </template>
 

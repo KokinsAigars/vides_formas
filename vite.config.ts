@@ -1,10 +1,9 @@
 
 //  *   ts : 09533637-797a-43ab-98a7-90b6a3447ae9
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.02
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   vite.config.ts
@@ -37,9 +36,10 @@ export default defineConfig({
       '@locale'         : '/src/locale',
       '@main'           : '/src/main',
       '@rootStore'      : '/src/store',
+      '@services'       : '/src/services',
 
       '@components'     : '/src/main/components',
-      '@services'       : '/src/main/services',
+
       '@admin'          : '/src/main/components/admin',
       '@home'           : '/src/main/components/home',
 

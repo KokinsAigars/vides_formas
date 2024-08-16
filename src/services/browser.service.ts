@@ -1,3 +1,19 @@
+
+//  *   ts : 7b4196d9-2c72-4ce0-b727-a3eaa40763c7
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   check browser
+//  *   [browser.service.ts]
+//  *
+//  *   // Services //=> ts : 7b4196d9-2c72-4ce0-b727-a3eaa40763c7
+//  *   import { BrowserService } from '@services/browser.service';
+
+
+
 //
 // // Compactability script
 //

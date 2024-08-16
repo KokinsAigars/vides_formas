@@ -1,15 +1,13 @@
 <!--
-//  *   ts :
+//  *   vue : 1d610809-85da-4c53-ba64-e7590463613d
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.16
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   Landing page - header - line [.ts]
+//  *   Landing page - header - line
 //  *   abbreviation: LPh-line
-//  *   version: 2
 //  *
 -->
 

@@ -1,10 +1,9 @@
 
 //  *   ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.07.02
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL STORE (pinia)
@@ -94,10 +93,10 @@ export const useRootStore = defineStore({
         act_isAuthenticated_false() {
             this.$state.isAuthenticated = false;
         },
+
         act_uid (payload: string) {
             this.$state.uid = payload;
         },
-
 
         // change UI language
         changeUiLanguage(payload: string) {

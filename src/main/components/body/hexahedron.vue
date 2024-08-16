@@ -1,13 +1,12 @@
 <!--
 //  *   vue : c4cf3822-2e11-482c-8244-55b197a85a7f
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.15
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   Landing page - body - component
+//  *   Landing page (site) - body - component
 //  *   [Hexahedron]
 //  *
 //  *   abbreviations

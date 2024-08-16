@@ -1,10 +1,9 @@
 
 //  *   ts : 23ddfd40-b699-49fa-b6bc-9435e0d5675c
 //  *
-//  *   Project Name: "Vides Formas"
+//  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Vue + Typescript + SCSS + Vite
-//  *   Built on 2024.08.15
+//  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
@@ -14,7 +13,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import adminConsole from '@admin/console.vue';
 
+// Auth Guard //=> ts : 73a8d985-a778-4113-8850-ba1321b9dfcf
 import { AuthGuard_app } from '@services/auth-guard-service.ts';
+
 const EnterGuards = async (to: any, from: any, next: any) => {
   let isAuthenticated: boolean = false;
 

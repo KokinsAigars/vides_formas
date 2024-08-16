@@ -1,3 +1,16 @@
+<!--
+//  *   vue : 8483f325-3938-43f7-b352-20c484a98f6a
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   Administrative login page
+//  *
+//  *   [adm.vue]
+//  *
+-->
 
 <script setup lang="ts">
 
@@ -23,8 +36,8 @@
   const ref_errorMsg = ref<boolean>(false);
 
   // TESTING
-  // textEmail.value = 'testAuth@www.test';
-  // textPassword.value = 'nticationtechniquesandprovide';
+  textEmail.value = 'testAuth@www.test';
+  textPassword.value = 'nticationtechniquesandprovide';
 
   const loginEmailPassword = async () => {
 
