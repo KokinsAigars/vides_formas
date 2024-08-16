@@ -18,8 +18,6 @@ import i18n from '@/locale/index'; //=> ts : aa82b725-d29a-4717-9812-ea128c49d90
 import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";
 import { firebaseApp } from './firebase';
 
-import VueIframe from 'vue-iframes';
-
 const   VIVENTE = createApp (init_app_vue)
         VIVENTE.use(i18n)
         VIVENTE.use(router)
@@ -30,7 +28,6 @@ const   VIVENTE = createApp (init_app_vue)
                     VueFireFirestoreOptionsAPI()
                 ],
         });
-        VIVENTE.use(VueIframe)
         VIVENTE.mount('.app')
 
 
