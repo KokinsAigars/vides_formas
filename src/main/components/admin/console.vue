@@ -12,13 +12,6 @@
 //  *
 -->
 
-
-
-<!--https://dashboard.emailjs.com/admin/account/general-->
-
-
-
-
 <script setup lang="ts">
 
   import {ref, watchEffect} from "vue";
@@ -71,3 +64,7 @@
 <style scoped lang="scss">
 
 </style>
+
+
+
+<!--https://dashboard.emailjs.com/admin/account/general-->
