@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vue-tsc -b && vite build --base=/",
+    "serviceWorkersCache": "workbox generateSW workbox-config.cjs",
     "preview": "vite preview",
     "firebaseemulators": "firebase emulators:start --import=./local --export-on-exit",
     "firebasdeploy": "firebase deploy --only hosting:videsformas",

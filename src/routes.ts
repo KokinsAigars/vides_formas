@@ -71,9 +71,9 @@ const router = createRouter ({
       component: () => import('@components/body/icosahedron.vue'),
     },
 
-    //  login page [/alp]
-    { path: '/alp', name: "alp",
-      component: () => import('@admin/login/alp.vue'),
+    //  login page [/auth]
+    { path: '/auth', name: "auth",
+      component: () => import('@admin/login/auth.vue'),
     },
 
     //  logout page [/out]
@@ -82,7 +82,7 @@ const router = createRouter ({
     },
 
     //   Administrative Console
-    { path: '/alp/console', name: 'adminConsole',
+    { path: '/auth/console', name: 'adminConsole',
       component: adminConsole,
       beforeEnter: EnterGuards,
     },

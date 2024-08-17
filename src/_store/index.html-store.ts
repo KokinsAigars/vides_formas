@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.17
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL STORE (pinia)
@@ -24,7 +24,9 @@ export const useRootStore = defineStore({
 
         init: 'RootStore',
 
-        Released_id: 'f775bba3-a998-46cc-a4ea-8ed081068bc9',
+        // if you change this, then change 'public/manifest.json' ["id"] as well
+        // and index.html [uuid] as well
+        Released_id: '2024.08.17.f775bba3-a998-46cc-a4ea-8ed081068bc9',
         Title: 'Vides Formas',
 
         // in session storage
@@ -47,11 +49,6 @@ export const useRootStore = defineStore({
         z:  'y6zcIN_AtZiw3-ew',
 
         mapStyleId: 'aff95100f6e051a6',
-
-        ejpk: 'ULZXVxIic525q-n4m',
-        ejprk: 'xHMslxlhyNt4LX8eTo5qz',
-
-        API_URL: '',
 
     }),
 

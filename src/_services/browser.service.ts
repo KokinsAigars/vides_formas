@@ -15,6 +15,13 @@
 
 
 //
+// <!--        <script>-->
+// <!--            // if (window.safari !== undefined) console.log("Safari!");-->
+// <!--            // if (window.chrome !== undefined) console.log("Chrome!");-->
+// <!--        </script>-->
+
+
+//
 // // Compactability script
 //
 // export const browserService = () => {

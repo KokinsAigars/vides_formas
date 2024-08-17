@@ -7,10 +7,10 @@ import type { IAuthUser } from '@models/user';
 import { useRootStore } from '@rootStore/index.html-store';
 
 import { auth } from '@/firebase.ts';
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
 
 
-export const AuthService = async (userData: IAuthUser) => {
+export const AuthService_EP = async (userData: IAuthUser) => {
 
     const RootStore = useRootStore();
     const serviceID = 'service : ';

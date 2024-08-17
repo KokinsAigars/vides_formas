@@ -37,7 +37,7 @@
   const RootStore = useRootStore();
 
   // services
-  import { AuthService } from '@services/auth.service.ts';
+  import {AuthService_EP} from '@services/auth.service.ts';
 
   // interface
   import type { IAuthUser } from '@models/user.ts';
@@ -48,17 +48,17 @@
 
   // public API (localized)
   const lang                  = computed(() =>  i18n.global.t('message.lang'));
-  const Title_msg             = computed(() =>  i18n.global.t('message.signIn_title_alp'));
-  const UserEmail             = computed(() =>  i18n.global.t('message.signIn_placeholder_EmailUser'));
-  const UserPassword          = computed(() =>  i18n.global.t('message.signIn_placeholder_Password'));
-  const ProceedBtn            = computed(() =>  i18n.global.t('message.signIn_proceed_btn'));
-  const signIn_password_show  = computed(() =>  i18n.global.t('message.signIn_password_show'));
-  const signIn_password_hide  = computed(() =>  i18n.global.t('message.signIn_password_hide'));
-  const placeholder_incorrect = computed(() =>  i18n.global.t('message.signIn_placeholder_incorrect'));
-  const sup_email             = computed(() =>  i18n.global.t('message.signIn_superscript_email'));
-  const sup_password          = computed(() =>  i18n.global.t('message.signIn_superscript_password'));
-  const Reset_password_title  = computed(() =>  i18n.global.t('message.signIn_forgot_Reset_password'));
-  const Alert_Email_sent      = computed(() =>  i18n.global.t('message.signIn_Alert_Email_sent'));
+  const Title_msg             = computed(() =>  i18n.global.t('signIn.title_alp'));
+  const UserEmail             = computed(() =>  i18n.global.t('signIn.placeholder_EmailUser'));
+  const UserPassword          = computed(() =>  i18n.global.t('signIn.placeholder_Password'));
+  const ProceedBtn            = computed(() =>  i18n.global.t('signIn.proceed_btn'));
+  const signIn_password_show  = computed(() =>  i18n.global.t('signIn.password_show'));
+  const signIn_password_hide  = computed(() =>  i18n.global.t('signIn.password_hide'));
+  const placeholder_incorrect = computed(() =>  i18n.global.t('signIn.placeholder_incorrect'));
+  const sup_email             = computed(() =>  i18n.global.t('signIn.superscript_email'));
+  const sup_password          = computed(() =>  i18n.global.t('signIn.superscript_password'));
+  const Reset_password_title  = computed(() =>  i18n.global.t('signIn.forgot_Reset_password'));
+  const Alert_Email_sent      = computed(() =>  i18n.global.t('signIn.Alert_Email_sent'));
 
   const placeholder       = ref('');
   const activeValue       = ref('');     //<input value>
@@ -161,7 +161,7 @@
 
         // call service for authentication
         // => service :
-        const success = await AuthService(userData)
+        const success = await AuthService_EP(userData)
         if (!success) {
           console.log(`error in Sign in component: ${ID}`);
           placeholder.value = placeholder_incorrect.value;
@@ -246,10 +246,10 @@
   }
 
   const onTermsBtnClick = () => {
-    // alert(i18n.global.t('message.signIn_f_Terms'));
+    alert('Administration Console, no unauthorised access');
   }
   const onCookiesBtnClick = () => {
-   // alert(i18n.global.t('message.signIn_Cookies_alert'));
+   alert('Strictly necessary or essential cookies are exempt from cookie consent.');
   }
 
 
@@ -257,12 +257,11 @@
 
 <template>
   <div class="alp-cnn">
-    <div class="alp-side"></div>
+    <div class="alp-side"/>
     <div class="alp-center">
 
       <!--  main  -->
       <div class="alp-c-a">
-
         <div class="alp-c-loading"></div>
 
         <div class="alp-c-main">
@@ -343,7 +342,7 @@
 
           <div class="alp-c-login-btn-cnn">
             <div class="alp-c-login-btn-line T-signin-msg">
-              contact for user
+              Sign in with Google
             </div>
 
             <div class="alp-c-proceed-cnn">
@@ -363,12 +362,12 @@
 
         <div class="alp-c-b-btn1 T-signin-msg"
              @click="onTermsBtnClick()">
-          {{ $t('message.signIn_f_Terms') }}
+          {{ $t('signIn.f_Terms') }}
         </div>
 
         <div class="alp-c-b-btn2 T-signin-msg"
              @click="onCookiesBtnClick()">
-          {{ $t('message.signIn_f_Cookies') }}
+          {{ $t('signIn.f_Cookies') }}
         </div>
 
         <div style="margin: auto;"></div>
@@ -397,8 +396,8 @@
       </div>
 
       </div>
-    <div class="alp-side"></div>
+    <div class="alp-side"/>
   </div>
 </template>
 
-<style scoped lang="scss" src="./_adm-styles.scss"/>
+<style scoped lang="scss" src="./authStyles.scss"/>

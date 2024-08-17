@@ -38,7 +38,7 @@
 
   watchEffect(() => {
     if(routePath.value !== route.path){
-      routePath.value = route.path.substring(0,4)
+      routePath.value = route.path.substring(0,5)
     }
   })
 
@@ -46,9 +46,9 @@
 
 <template>
 
-  <div class="LPb" v-if="routePath === '/alp'"> <RouterView/> </div>
+  <div class="LPb" v-if="routePath === '/auth'"> <RouterView/> </div>
 
-  <div class="LP-Layout" v-if="routePath !== '/alp'">
+  <div class="LP-Layout" v-if="routePath !== '/auth'">
       <HeaderComponent/>
       <HeaderComponentLine/>
       <div class="LPb">

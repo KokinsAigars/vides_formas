@@ -34,7 +34,7 @@
     <button @click="sign_out">sign_out</button>
   </div>
 
-  Console
+  <div class="T-signin-title">Administrative Console</div>
 </template>
 
 <style scoped lang="scss">

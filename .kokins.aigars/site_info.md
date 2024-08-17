@@ -12,8 +12,8 @@ index.html => /vue/
             |__ components          
 
 home : /
-Admin : /adm
-Admin Console : /adm/console
+Admin : /auth
+Admin Console : /auth/console
 
 
 Hosting: https://console.firebase.google.com/project/videsformas
