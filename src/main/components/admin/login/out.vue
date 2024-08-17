@@ -3,7 +3,7 @@
   import {onMounted, ref} from "vue"
 
   // FIREBASE
-  import {signOut} from "firebase/auth";
+  import {signOut, GoogleAuthProvider} from "firebase/auth";
   import {auth} from "@/firebase.ts";
 
   import {useRouter} from 'vue-router';
@@ -20,6 +20,7 @@
     if(isAuthenticated.value === true) {
       try {
         await signOut(auth);
+
         RootStore.act_isAuthenticated_false();
         RootStore.act_uid(null);
       }

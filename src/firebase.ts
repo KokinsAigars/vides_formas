@@ -6,7 +6,7 @@
 //  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   [firebase initialize]
+//  *   [initialize firebase]
 //  *
 
 import { initializeApp } from "firebase/app";

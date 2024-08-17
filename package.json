@@ -3,16 +3,26 @@
   "version": "0.0.4",
   "private": true,
   "type": "module",
+
   "scripts": {
+
     "dev": "vite --host",
+
     "build": "vue-tsc -b && vite build --base=/",
+
     "serviceWorkersCache": "workbox generateSW workbox-config.cjs",
+
     "preview": "vite preview",
+
     "firebaseemulators": "firebase emulators:start --import=./local --export-on-exit",
+
     "firebasdeploy": "firebase deploy --only hosting:videsformas",
+
+
     "firebasdisable": "firebase emulators:start",
     "firebasdisablevidesformas": "firebase hosting:disable -s videsformas"
   },
+
   "dependencies": {
     "@emailjs/nodejs": "^4.0.4",
     "axios": "^1.7.4",

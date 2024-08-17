@@ -20,6 +20,12 @@ export default defineConfig({
     vue(),
   ],
 
+  server: {
+    headers: {
+      "Cross-Origin-Embedder-Policy": "unsafe-none",
+    },
+  },
+
   // FOLDER NAME IN TOMCAT SERVER
   base: '/vue',
 

@@ -174,16 +174,13 @@ $signin-width: 450px;
             align-self: center;
             width: 80%;}
 
-        .alp-c-login-btn-line{
+        .alp-c-login-btn-flex-start{
             display: flex;
             flex-grow: 1;}
-
-
-
-
-        .alp-c-proceed-cnn{
+        .alp-c-login-btn-flex-end{
             display: flex;
             justify-content: flex-end;}
+
         .alp-c-proceed-btn{
             height: 40px; min-height: 40px; max-height: 40px;
             width: auto; min-width: 100px;
@@ -200,6 +197,23 @@ $signin-width: 450px;
             .alp-c-proceed-btn:active{
                 background-color: var(--C-ui-btn-bg-active);
                 box-shadow: 1.5px 1.5px 1.5px var(--C-ui-btn-shadow-active);}
+
+
+        .alp-c-google-btn{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: var(--C-ui-proceed-btn-google-bg);
+        }
+
+        .GoogleSvg-logo{
+            flex: none;
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+
+        }
+
 
 
 // MESSAGE at a bottom
@@ -232,7 +246,6 @@ $signin-width: 450px;
         background-color: var(--C-background-color);}
     .alp-c-b-select-o:hover{
         background-color: var(--C-background-color);}
-
 
 .alp-loadingSpinner {
     position: absolute;
