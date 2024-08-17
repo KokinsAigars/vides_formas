@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 
-  import {ref, watch, watchEffect} from 'vue';
+import {computed, ref, watch, watchEffect} from 'vue';
 
   import {useRouter} from 'vue-router';
   const router = useRouter();
@@ -23,7 +23,7 @@
   import { useRootStore } from '@/_store/index.html-store.ts';
   const RootStore = useRootStore();
 
-  import { auth } from '@/firebase';
+  import { auth } from '@/firebase.ts';
   import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
   const isAuthenticated = ref<boolean>(false);
@@ -95,7 +95,6 @@
 
   })
 
-
 </script>
 
 <template>
@@ -119,6 +118,7 @@
 </template>
 
 <style scoped lang="scss">
+
 .authError{
   position: absolute;
   width: 200px;

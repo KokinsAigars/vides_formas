@@ -58,12 +58,13 @@
     // also in && => vite.config.ts "resolve / alias" { ... }
     "paths": {
 
-      "@/*"           : ["src/*"        ],
-      "@assets/*"     : ["src/_assets/*" ],
-      "@locale/*"     : ["src/_locale/*" ],
+      "@/*"           : ["src/*"          ],
+      "@assets/*"     : ["src/_assets/*"  ],
+      "@locale/*"     : ["src/_locale/*"  ],
+      "@models/*"     : ["src/_models/*"  ],
       "@services/*"   : ["src/_services/*"],
-      "@rootStore/*"  : ["src/_store/*"  ],
-      "@main/*"       : ["src/main/*"   ],
+      "@rootStore/*"  : ["src/_store/*"   ],
+      "@main/*"       : ["src/main/*"     ],
 
       "@components/*" : ["src/main/components/*"],
 

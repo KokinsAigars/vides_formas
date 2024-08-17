@@ -29,33 +29,32 @@
   import { RefreshService } from '@/_services/refresh.service';
 
   const route = useRoute();
-  const TempRoutePath = ref<string>(null);
-  TempRoutePath.value= route.path;
+  const routePath = ref<string>(null);
+  routePath.value= route.path;
 
   onMounted(() => {
     RefreshService();
   });
 
   watchEffect(() => {
-    if(TempRoutePath.value !== route.path){
-      TempRoutePath.value = route.path.substring(0,4)
+    if(routePath.value !== route.path){
+      routePath.value = route.path.substring(0,4)
     }
   })
 
 </script>
 
 <template>
-  <div class="LP-Layout">
 
-    <div v-if="TempRoutePath !== '/adm'">
+  <div class="LPb" v-if="routePath === '/alp'"> <RouterView/> </div>
+
+  <div class="LP-Layout" v-if="routePath !== '/alp'">
       <HeaderComponent/>
       <HeaderComponentLine/>
-      <div class="LPb"> <RouterView/> </div>
+      <div class="LPb">
+        <RouterView/>
+      </div>
       <FooterComponent/>
-    </div>
-
-    <div class="LPb" v-if="TempRoutePath === '/adm'"> <RouterView/> </div>
-
   </div>
 </template>
 

@@ -1,0 +1,241 @@
+
+//  *   scss :
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.17
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   Administrative Login Page -- [SCSS]
+//  *   abbreviation: alp
+//  *   version: 2.0.0
+//  *
+
+@import '@style/mixin.scss';
+
+$signin-height: 650px;
+$signin-width: 450px;
+
+.alp-cnn {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--C-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;}
+.alp-side{
+    display: flex;
+    height: $signin-height;
+    flex-grow: 1;}
+.alp-center{
+    height: $signin-height; min-height: $signin-height; max-height: $signin-height;
+    width: $signin-width; min-width: $signin-width; max-width: $signin-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;}
+
+// MAIN SIGNIN AREA
+.alp-c-a {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    width: $signin-width; min-width: $signin-width; max-width: $signin-width;
+    border: 1px solid var(--C-background-line);
+    border-radius: 10px;
+
+    @include for-size(600px) {
+        border: 0;
+        transition: 1s;
+    }}
+
+    //  need to be implemented
+    .alp-c-loading{
+        display: flex;
+        width: $signin-width; min-width: $signin-width; max-width: $signin-width;
+        height: 5px; min-height: 5px; max-height: 5px;
+        background-color: var(--C-background-color);
+        opacity: 0.5;
+        border-radius: 5px 5px 0 0;}
+
+    .alp-c-main{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        width: $signin-width; min-width: $signin-width; max-width: $signin-width;}
+
+        .alp-c-logo{
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            background-color: transparent;}
+        .alp-c-title{
+            min-height: 30px;
+            margin-top: 35px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            width: 95%;
+            background-color: transparent;}
+        .alp-c-input-superscript-cnn{
+            margin-top: 25px;
+            display: flex;
+            align-self: center;
+            align-items: flex-start;
+            flex-direction: column;
+            background-color: transparent;
+            width: 80%;
+            height: 15px;}
+        .alp-c-input-superscript{
+            position: absolute;
+            z-index: 900;
+            margin-left: 15px;
+            margin-top: 5px;
+            padding-left: 7px;
+            padding-right: 7px;
+            background-color: var(--C-background-color);
+            opacity: 1;
+            height: 20px;}
+
+        // INPUT FIELD
+        .alp-c-input-cnn{
+            margin-top: 0;
+            display: flex;
+            align-self: center;
+            align-items: flex-start;
+            flex-direction: row;
+            background-color: transparent;
+            width: 80%;
+            height: 50px;
+            border: 1px solid var(--SignIn--C-input-border);
+            border-radius: 5px;}
+
+        .alp-c-input-main-form{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex: 1;
+            align-items: flex-start;
+            margin-right: auto;}
+
+        .alp-c-signIn-input{
+            margin-left: 25px;
+            margin-top: 5px;
+            border: none;
+            outline: none;
+            height: 80%;
+            width: 100%;
+            background-color: transparent;}
+
+            .alp-c-input-cnn:focus-within,
+            .alp-c-signIn-input:focus-within{
+                color: #000000;}
+
+            .alp-c-signIn-input:-webkit-autofill,
+            .alp-c-signIn-input:-webkit-autofill:hover,
+            .alp-c-signIn-input:-webkit-autofill:focus,
+            .alp-c-signIn-input:-webkit-autofill:active{
+                -webkit-box-shadow: 0 0 0 30px var(--C--login-bg) inset !important;}
+
+        .alp-c-input-eye-btn{
+            display: flex;
+            align-self: center;
+            width: 24px;
+            margin-right: 15px;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;}
+        .alp-c-input-eye-svg{
+            opacity: 0.2;}
+        .alp-c-input-eye-svg-st0{
+            fill: var(--LP-C-h_icont_bg);}
+            .alp-c-input-eye-svg:hover{
+            opacity: 0.5;}
+
+        .alp-c-pwd_tooltip{
+            position: absolute;
+            z-index: 900;
+            text-align: right;
+            margin-left: -70px;
+            margin-top: 55px;
+            padding-left: 5px;
+            padding-right: 5px;
+            background-color: var(--C-background-color);
+            opacity: 1;}
+
+        .alp-c-login-btn-cnn{
+            margin-top: 45px;
+            display: flex;
+            flex-direction: row;
+            align-self: center;
+            width: 80%;}
+
+        .alp-c-login-btn-line{
+            display: flex;
+            flex-grow: 1;}
+
+
+
+
+        .alp-c-proceed-cnn{
+            display: flex;
+            justify-content: flex-end;}
+        .alp-c-proceed-btn{
+            height: 40px; min-height: 40px; max-height: 40px;
+            width: auto; min-width: 100px;
+            text-align: center;
+            padding: 0 15px;
+            border: 1px solid var(--C-ui-proceed-btn-line);
+            border-radius: 5px;
+            background-color: var(--C-ui-proceed-btn-bg);
+            opacity: 1;
+            cursor: pointer;}
+            .alp-c-proceed-btn:hover{
+                color: var(--SignIn-T-next-btn-hover);
+                box-shadow: 1.5px 1.5px 1.5px var(--C-ui-btn-shadow);}
+            .alp-c-proceed-btn:active{
+                background-color: var(--C-ui-btn-bg-active);
+                box-shadow: 1.5px 1.5px 1.5px var(--C-ui-btn-shadow-active);}
+
+
+// MESSAGE at a bottom
+.alp-c-b{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: $signin-width; min-width: $signin-width; max-width: $signin-width;
+    height: 35px; min-height: 35px; max-height: 35px;}
+    .alp-c-b-btn1, .alp-c-b-btn2{
+        margin-left: 15px;
+        outline: none;
+        text-decoration: none;
+        background-color: transparent;
+        border: 0;
+        overflow: hidden !important;
+        cursor: pointer;}
+    .alp-c-b-btn2{
+        margin-left: 35px;}
+    .alp-c-b-select {
+        background-color: var(--C-background-color);
+        border: 0;
+        border-radius: 3px;}
+    .alp-c-b-select-o{
+        border: 0.1px solid var(--C-background-line);
+        background-color: var(--C-background-color);
+        padding: 5px 5px;}
+    .alp-c-b-select:focus, .alp-c-b-select-o:focus {
+        outline: none;
+        background-color: var(--C-background-color);}
+    .alp-c-b-select-o:hover{
+        background-color: var(--C-background-color);}
+
+
+.alp-loadingSpinner {
+    position: absolute;
+    justify-content: center;
+    align-self: center;
+    background-color: transparent;}

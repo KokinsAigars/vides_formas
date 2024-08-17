@@ -1,0 +1,87 @@
+
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *	 
+//  *   GLOBAL Typography -- Sign In component
+//  *   version: 2.0.0
+//  *
+
+// SIGN IN
+.T-signin-title, .TsigninTitle2{
+    font-family: 'GilroyMedium', 'ProductSansRegular', 'Open Sans', sans-serif;
+    font-size: 1.43rem;
+    line-height: 1.5rem;
+    letter-spacing: normal; 
+    font-weight: 200; 
+    color: var(--SignIn-T-Title);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+    // color: red;
+}
+.T-signin-email{
+    font-family: 'RobotoRegular', 'ProductSansRegular', 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: normal; 
+    font-weight: 200; 
+    color: var(--SignIn-T-Title);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+    // color: green;
+}
+.T-signin-input  {
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    letter-spacing: normal; 
+    font-weight: 200; 
+    color: var(--SignIn-T-msg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+.T-signin-msg, .T-pwd_tooltip  {
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    letter-spacing: normal; 
+    font-weight: 200; 
+    color: var(--SignIn-T-msg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+.T-proceed-btn{
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.04rem; 
+    font-weight: 200; 
+    color: var(--SignIn-T-next-btn-txt);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+.T-SignIn_superscript {
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.83rem;
+    line-height: 1.2rem;
+    letter-spacing: normal; 
+    font-weight: 400;
+    color: var(--C-T-h-SearchInput);
+    opacity: 0.6;
+}
+.T-SignIn-forgot, .T-forgot-msg {
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.2rem;
+    letter-spacing: normal; 
+    font-weight: 400;
+    color: var(--SignIn-T-msg);
+    opacity: 0.9;
+}
+
+.T-SignIn-forgot:hover{
+    color: var(--vivente-icon-lines);
+    opacity: 1;
+}

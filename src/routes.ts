@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.17
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
@@ -71,13 +71,18 @@ const router = createRouter ({
       component: () => import('@components/body/icosahedron.vue'),
     },
 
-    //  Login
-    { path: '/adm', name: "adm",
-      component: () => import('@admin/adm.vue'),
+    //  login page [/alp]
+    { path: '/alp', name: "alp",
+      component: () => import('@admin/login/alp.vue'),
     },
 
-    //   Admin Console
-    { path: '/adm/console', name: 'adminConsole',
+    //  logout page [/out]
+    { path: '/out', name: "out",
+      component: () => import('@admin/login/out.vue'),
+    },
+
+    //   Administrative Console
+    { path: '/alp/console', name: 'adminConsole',
       component: adminConsole,
       beforeEnter: EnterGuards,
     },

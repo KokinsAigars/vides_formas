@@ -34,6 +34,7 @@ export default defineConfig({
 
       '@assets'         : '/src/_assets',
       '@locale'         : '/src/_locale',
+      '@models'         : 'src/_models',
       '@services'       : '/src/_services',
       '@rootStore'      : '/src/_store',
       '@main'           : '/src/main',

@@ -51,6 +51,8 @@ export const useRootStore = defineStore({
         ejpk: 'ULZXVxIic525q-n4m',
         ejprk: 'xHMslxlhyNt4LX8eTo5qz',
 
+        API_URL: '',
+
     }),
 
     actions: {
