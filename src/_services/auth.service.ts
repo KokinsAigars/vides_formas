@@ -21,6 +21,7 @@ export const AuthService_EP = async (userData: IAuthUser) => {
         try {
             const userCredentials = await signInWithEmailAndPassword(auth, userData.usernameOrEmail, userData.password);
 
+            console.log(userCredentials);
             RootStore.act_isAuthenticated(true);
             RootStore.act_uid(userCredentials.user.uid);
 
@@ -47,14 +48,14 @@ export const AuthService_Google = async () => {
                 .then((result) => {
 
                     // const _OAuthCredential = GoogleAuthProvider.credentialFromResult(result);
-                    // const user = result.user;
+                    const user = result.user;
 
                     // console.log('email: ', result.user.email);
                     // console.log('uid: ', result.user.uid);
                     // console.log('displayName: ', result.user.displayName);
                     // console.log('operationType: ', result.operationType);
                     // console.log('_OAuthCredential.idToken: ', _OAuthCredential.idToken);
-                    // console.log('user: ', user);
+                    console.log('user: ', user);
 
                     RootStore.act_isAuthenticated(true);
                     RootStore.act_uid(result.user.uid);
