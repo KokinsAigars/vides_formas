@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.18
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page (site) - body - component
@@ -64,7 +64,11 @@ const fn_load_ref_image_iframe = () => {
 // -------------------  identical  - START -----------------------------------------
 // ---------------------------------------------------------------------------------
 
-import {onMounted, Ref, ref} from 'vue';
+import { ref} from 'vue';
+
+import HeaderComponent  from '@components/header/lp-header-component.vue';
+import HeaderComponentLine  from '@components/header/lp-header-line.vue';
+import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
@@ -474,7 +478,11 @@ const svgMarkerT = {
 </script>
 
 <template>
-  <div class="b-cnn">
+  <div class="LP-Layout">
+    <HeaderComponent/>
+    <HeaderComponentLine/>
+    <div class="LPb">
+      <div class="b-cnn">
 
     <!-- MENU buttons -->
     <div class="m-cnn">
@@ -657,11 +665,12 @@ const svgMarkerT = {
     </div>
 
   </div>
+    </div>
+    <FooterComponent/>
+  </div>
 </template>
 
 <style lang="scss" src="./_formaStyleBody.scss"/>
-
-
 
 
 

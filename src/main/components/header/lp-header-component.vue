@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.18
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page (site) - header
@@ -16,9 +16,9 @@
 
   const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
 
-  import {onMounted, ref} from 'vue';
-  import {useRouter} from 'vue-router';
-  const router = useRouter();
+  import {onMounted, ref, watchEffect} from 'vue';
+  import { useRouter } from 'vue-router'
+  const router = useRouter()
 
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
   import { useRootStore } from '@rootStore/index.html-store';
@@ -28,15 +28,7 @@
   const defaultValue = ref('');
   const temp = ref('');
 
-  const fn_clearSelect = () => {
-    defaultValue.value = '';
-  }
-  const fn_notSelected = () => {
-    defaultValue.value = temp.value;
-  }
   const fn_Select = (event: Event) => {
-    // console.log(event);
-
     const target = event.target as HTMLSelectElement;
     const selectedValue = target.value;
 
@@ -56,14 +48,12 @@
   onMounted(() => {
     try {
       const activeForm = ''
-      defaultValue.value = 'd';
+      defaultValue.value = 'h';
       temp.value = activeForm;
 
     } catch (error) {
       console.error('An error occurred in onMounted(): ', ID, error);
     }
-
-
   })
 
 </script>
@@ -82,8 +72,6 @@
         <div class="hb-c-div">
           <select class="hb-c-select T-hb-c-select"
                   id="hb-c-select"
-                  @mousedown="fn_clearSelect()"
-                  @mouseup="fn_notSelected()"
                   @input="fn_Select($event)"
                   v-model="defaultValue">
             <option class="hb-c-select-o T-hb-c-select" value="h">Hexahedron</option>

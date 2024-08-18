@@ -1,6 +1,7 @@
 
 @import '@style/mixin.scss';
 
+
 html, body {
   overflow-x: hidden;
   overflow-y: auto !important;
@@ -12,6 +13,20 @@ $svg_form_size_small: 250px;
 $webgl_size: 700px;
 $webgl_size_small: 350px;
 $maxImgWidth: 900px;
+$b-height: calc(var(--V-screen-height) - var(--V-h-height) - var(--LP-V-h-footer));
+
+.LP-Layout{
+  height: var(--V-screen-height); min-height: var(--V-screen-height); max-height: var(--V-screen-height);
+  width: var(--V-screen-width); min-width: var(--V-screen-width); max-width: var(--V-screen-width);
+}
+.LPb{
+  overflow: visible;
+  left: 0;
+  top: var(--V-h-height);
+  width:  100%;
+  height: $b-height;
+  background-color: var(--C-background-color);
+}
 
 .b-cnn                {
   display: flex;

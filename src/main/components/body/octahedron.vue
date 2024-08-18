@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.18
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page (site) - body - component
@@ -44,7 +44,11 @@ const unique_svgMarkerT_color = "black";
 // -------------------  identical  - START -----------------------------------------
 // ---------------------------------------------------------------------------------
 
-import {ref} from 'vue';
+import { ref} from 'vue';
+
+import HeaderComponent  from '@components/header/lp-header-component.vue';
+import HeaderComponentLine  from '@components/header/lp-header-line.vue';
+import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
 
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
@@ -451,150 +455,157 @@ const svgMarkerT = {
 </script>
 
 <template>
-  <div class="b-cnn">
+  <div class="LP-Layout">
+    <HeaderComponent/>
+    <HeaderComponentLine/>
+    <div class="LPb">
+      <div class="b-cnn">
 
-    <!-- MENU buttons -->
-    <div class="m-cnn">
+        <!-- MENU buttons -->
+        <div class="m-cnn">
 
-      <div class="m-items">
+          <div class="m-items">
 
-        <button class="m-btn T-switch" role="button" type="button"
-                v-bind:class = "(m_select === 'geometry')?'m-btn-active':''"
-                @click="fn_switch_items('geometry')"
-                @contextmenu.prevent="fn_switch_items('geometry')"
-        >geometry
-        </button>
+            <button class="m-btn T-switch" role="button" type="button"
+                    v-bind:class = "(m_select === 'geometry')?'m-btn-active':''"
+                    @click="fn_switch_items('geometry')"
+                    @contextmenu.prevent="fn_switch_items('geometry')"
+            >geometry
+            </button>
 
-      </div>
+          </div>
 
-      <div class="m-items m-items2" v-if="btn_3D === true">
+          <div class="m-items m-items2" v-if="btn_3D === true">
 
-        <button class="m-btn T-switch" role="button" type="button"
-                v-bind:class = "(m_select === '3D')?'m-btn-active':''"
-                v-on:click="fn_init_Canvas(10); fn_switch_items('3D')"
-                @contextmenu.prevent="fn_switch_items('3D')"
-        >3D
-        </button>
+            <button class="m-btn T-switch" role="button" type="button"
+                    v-bind:class = "(m_select === '3D')?'m-btn-active':''"
+                    v-on:click="fn_init_Canvas(10); fn_switch_items('3D')"
+                    @contextmenu.prevent="fn_switch_items('3D')"
+            >3D
+            </button>
 
-      </div>
+          </div>
 
-      <div class="m-items m-items2" v-if="add_Images === true">
+          <div class="m-items m-items2" v-if="add_Images === true">
 
-        <button class="m-btn T-switch" role="button" type="button"
-                v-bind:class = "(m_select === 'image')?'m-btn-active':''"
-                @click="fn_switch_items('image')"
-                @contextmenu.prevent="fn_switch_items('image')"
-        >image
-        </button>
+            <button class="m-btn T-switch" role="button" type="button"
+                    v-bind:class = "(m_select === 'image')?'m-btn-active':''"
+                    @click="fn_switch_items('image')"
+                    @contextmenu.prevent="fn_switch_items('image')"
+            >image
+            </button>
 
-      </div>
+          </div>
 
-      <div class="m-items m-items2">
+          <div class="m-items m-items2">
 
-        <button class="m-btn T-switch" role="button" type="button"
-                v-bind:class = "(m_select === 'map')?'m-btn-active':''"
-                @click="fn_switch_items('map')"
-                @contextmenu.prevent="fn_switch_items('map')"
-        >map
-        </button>
+            <button class="m-btn T-switch" role="button" type="button"
+                    v-bind:class = "(m_select === 'map')?'m-btn-active':''"
+                    @click="fn_switch_items('map')"
+                    @contextmenu.prevent="fn_switch_items('map')"
+            >map
+            </button>
 
-      </div>
+          </div>
 
-    </div>
-
-    <!-- OBJECTS -->
-    <div class="o-cnn">
-
-      <div class="o-svg-cnn" v-if="m_select === 'geometry'">
-
-        <svg_Hexahedron   v-if="unique_geometry === 'hexahedron'"   />
-        <svg_Tetrahedron  v-if="unique_geometry === 'tetrahedron'"  />
-        <svg_Octahedron   v-if="unique_geometry === 'octahedron'"   />
-        <svg_Dodekahedron v-if="unique_geometry === 'dodekahedron'" />
-        <svg_Icosahedron  v-if="unique_geometry === 'icosahedron'"  />
-
-      </div>
-
-      <div class="o-3d-cnn" v-if="m_select === '3D'"
-           @mousedown="circuitBreaker = false; fn_RelTimeRender()"
-           @mouseup="circuitBreaker = true"
-           v-on:scroll.capture="handleScroll()"
-      >
-        <canvas ref="ref_webgl" class="webgl"></canvas>
-
-      </div>
-
-      <div class="o-image-cnn" v-if="m_select === 'image'">
-
-        <img class="o-image" v-bind:src="ref_image" alt="image">
-
-        <div class="o-img-switch-cnn T-m_image">
-          <ul class="o-img-switch-ul">
-            <li v-for="(index) in unique_number_of_images" class="o-img-switch-li">
-              <button class="o-img-switch-btn" @click="fn_switch_image(index)">{{index}}</button>
-            </li>
-
-          </ul>
         </div>
 
-      </div>
+        <!-- OBJECTS -->
+        <div class="o-cnn">
 
-      <div class="o-map-cnn" v-if="m_select === 'map'">
+          <div class="o-svg-cnn" v-if="m_select === 'geometry'">
 
-        <GoogleMap
-            style="width: 100%; height: 100%"
-            :map-id="map_id"
-            :api-key="p"
-            version="3.55"
-            :center="center"
-            :zoom="zoom"
-            :disableDefaultUi="true"
-            :minZoom="zoom"
-            :maxZoom="zoom"
-        >
+            <svg_Hexahedron   v-if="unique_geometry === 'hexahedron'"   />
+            <svg_Tetrahedron  v-if="unique_geometry === 'tetrahedron'"  />
+            <svg_Octahedron   v-if="unique_geometry === 'octahedron'"   />
+            <svg_Dodekahedron v-if="unique_geometry === 'dodekahedron'" />
+            <svg_Icosahedron  v-if="unique_geometry === 'icosahedron'"  />
 
-          <Marker :options="{
+          </div>
+
+          <div class="o-3d-cnn" v-if="m_select === '3D'"
+               @mousedown="circuitBreaker = false; fn_RelTimeRender()"
+               @mouseup="circuitBreaker = true"
+               v-on:scroll.capture="handleScroll()"
+          >
+            <canvas ref="ref_webgl" class="webgl"></canvas>
+
+          </div>
+
+          <div class="o-image-cnn" v-if="m_select === 'image'">
+
+            <img class="o-image" v-bind:src="ref_image" alt="image">
+
+            <div class="o-img-switch-cnn T-m_image">
+              <ul class="o-img-switch-ul">
+                <li v-for="(index) in unique_number_of_images" class="o-img-switch-li">
+                  <button class="o-img-switch-btn" @click="fn_switch_image(index)">{{index}}</button>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="o-map-cnn" v-if="m_select === 'map'">
+
+            <GoogleMap
+                style="width: 100%; height: 100%"
+                :map-id="map_id"
+                :api-key="p"
+                version="3.55"
+                :center="center"
+                :zoom="zoom"
+                :disableDefaultUi="true"
+                :minZoom="zoom"
+                :maxZoom="zoom"
+            >
+
+              <Marker :options="{
             position: { lat: 56.5454149, lng: 27.8855629 },
             icon: svgMarkerD,
             title: 'Dodekahedron',
              }"/>
-          <Marker :options="{
+              <Marker :options="{
             position: { lat: 56.5719081, lng: 23.0734866 },
             icon: svgMarkerH,
             title: 'Hexahedron',
              }"
-          />
-          <Marker :options="{
+              />
+              <Marker :options="{
             position: { lat: 57.8718272, lng: 25.005863 },
             icon: svgMarkerI,
             title: 'Icosahedron',
              }"
-          />
-          <Marker :options="{
+              />
+              <Marker :options="{
             position: { lat: 57.7582386, lng: 22.5969097 },
             icon: svgMarkerO,
             title: 'Octahedron',
              }"
-          />
-          <Marker :options="{
+              />
+              <Marker :options="{
               position: { lat: 57.0159213, lng: 21.5810198 },
               icon: svgMarkerT,
               title: 'Tetrahedron',
             }"
-          />
-        </GoogleMap>
+              />
+            </GoogleMap>
 
-        <div class="gps-cnn">
-          <a class="gps T-GPS"
-             :href="`${unique_gps_path}`">
-            {{ unique_gps }}
-          </a>
+            <div class="gps-cnn">
+              <a class="gps T-GPS"
+                 :href="`${unique_gps_path}`">
+                {{ unique_gps }}
+              </a>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
-
     </div>
-
+    <FooterComponent/>
   </div>
 </template>
 
