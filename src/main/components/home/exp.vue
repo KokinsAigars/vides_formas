@@ -27,8 +27,7 @@ const grid_cnn_height = ref(window.innerHeight + 50);
 
 /**
  * fn_round_numbers function
- * @remarks
- * round numbers so that they are divisible
+ * @remarks round numbers so that they are divisible
  */
 const fn_round_numbers = () => {
 
