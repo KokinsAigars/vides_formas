@@ -21,8 +21,29 @@
   font-weight: normal;
   font-style: normal;
 }
+
 // Mulish
 @font-face {
   font-family: 'MulishLight';
   src: url('../Fonts/Mulish/static/Mulish-Light.ttf') format('ttf');
+}
+
+// Gilroy
+@font-face {
+  font-family: 'GilroyMedium';
+  src: url('../Fonts/gilroy/Gilroy-Medium.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'GilroyRegular';
+  src: url('../Fonts/gilroy/Gilroy-Regular.ttf') format('ttf');
+}
+
+// Roboto
+@font-face {
+  font-family: 'RobotoRegular';
+  src: url('../Fonts/Roboto/Roboto-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'RobotoMedium';
+  src: url('../Fonts/Roboto/Roboto-Medium.ttf') format('ttf');
 }

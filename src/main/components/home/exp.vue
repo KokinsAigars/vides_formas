@@ -124,10 +124,10 @@ const fn_createGrid = () => {
 
 
       // Set multiple style properties
-      // const styles = styleSettings[randomClass];
-      // for (const property in styles) {
-      //   gridItem.style[property] = styles[property];
-      // }
+      const styles = styleSettings[randomClass];
+      for (const property in styles) {
+        gridItem.style[property] = styles[property];
+      }
 
 
 

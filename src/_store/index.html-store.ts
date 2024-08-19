@@ -48,7 +48,9 @@ export const useRootStore = defineStore({
         a:  '74Nym584RN4Y',
         z:  'y6zcIN_AtZiw3-ew',
 
-        mapStyleId: 'aff95100f6e051a6',
+        mapId: 'aff95100f6e051a6',
+        //  mapStyleId: controled in :
+        // https://console.cloud.google.com/google/maps-apis/studio/maps/
 
     }),
 

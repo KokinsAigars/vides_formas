@@ -9,7 +9,7 @@
 //  *
 
 //<header> TITLE
-.T-h-Title{
+.T-h-Title, .T-administrative-Console-title{
     font-family: 'MulishLight', 'PublicSansRegular', sans-serif;
     font-size: 1.6rem;
     line-height: 1.7em;
@@ -18,6 +18,10 @@
     color: var(--LP-T-h_Title);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
+}
+.T-administrative-Console-title{
+    font-size: 1.8rem;
+    line-height: 1.9em;
 }
 .T-hb-c-select {
     font-family: 'MulishLight', sans-serif;

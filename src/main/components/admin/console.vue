@@ -30,14 +30,35 @@
 </script>
 
 <template>
-  <div class="adm-auth-div">
-    <button @click="sign_out">sign_out</button>
-  </div>
+  <div class="c-cnn">
 
-  <div class="T-signin-title">Administrative Console</div>
+    <div class="c-title T-administrative-Console-title">Administrative Console</div>
+
+    <button @click="sign_out" class="c-btn T-h-Title">sign_out</button>
+
+  </div>
 </template>
 
 <style scoped lang="scss">
+
+.c-cnn{
+  width: 100vw;
+  height: 100vh;
+  background: var(--c-home-bg);
+  overflow:hidden;
+}
+
+.c-btn{
+  margin-top: 30px;
+  margin-left: 50px;
+  padding: 0 10px 0 10px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+.c-title{
+  margin-top: 60px;
+  margin-left: 50px;
+}
 
 </style>
 

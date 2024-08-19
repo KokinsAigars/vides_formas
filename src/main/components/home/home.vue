@@ -18,7 +18,7 @@
 
 <template>
   <div class="cnn">
-
+home
   </div>
 </template>
 

@@ -16,10 +16,21 @@ Admin : /auth
 Admin Console : /auth/console
 
 
-Hosting: https://console.firebase.google.com/project/videsformas
+Domain: 'sacredgeometrysites.com' 
+https://www.godaddy.com
+?? www.europeregistry.com
 
-Domain: 'sacredgeometrysites.com' https://www.godaddy.com
+Domain Management-Caching-CDN (content delivery network):
+?? https://www.cloudflare.com
 
-Authentication: https://console.firebase.google.com/project/videsformas/authentication
+Hosting-Authentication: 
+https://console.firebase.google.com/project/videsformas
+
+Google Project - 'VidesFormas' - 633823330129
+    - Maps_API: Maps_API_key_1 [Maps JavaScript API]
+    - Firebase_API: Browser key (auto created by Firebase)
+    - OAuth 2.0_API: OAuth_2_API (auto created by Google Service - firebase)
+    - Service Accounts: Email (firebase-adminsdk-l1zlh@videsformas.iam.gserviceaccount.com)
+    https://console.cloud.google.com/apis/credentials
 
 
