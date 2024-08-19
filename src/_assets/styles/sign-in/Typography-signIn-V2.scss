@@ -10,74 +10,73 @@
 //  *
 
 // SIGN IN
-.T-signin-title, .TsigninTitle2{
-    font-family: 'GilroyMedium', 'RobotoRegular', sans-serif;
-    font-size: 1.43rem;
-    line-height: 1.5rem;
+.T-signin-title {
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
     letter-spacing: normal;
-    font-weight: 200;
-    color: var(--SignIn-T-Title);
+    font-weight: 400;
+    color: var(--c-auth-T-Title);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
-    // color: red;
 }
 .T-signin-email{
-    font-family: 'RobotoRegular', sans-serif;
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
     font-size: 1.25rem;
     line-height: 1.5rem;
     letter-spacing: normal;
-    font-weight: 200;
-    color: var(--SignIn-T-Title);
+    font-weight: 400;
+    color: var(--c-auth-T-Title);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
-    // color: green;
 }
 .T-signin-input  {
-    font-family: 'RobotoRegular', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.5rem;
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
+    font-size: 0.96rem;
+    line-height: 1.1rem;
     letter-spacing: normal;
-    font-weight: 200;
-    color: var(--SignIn-T-msg);
+    font-weight: 400;
+    color: var(--c-auth-T-msg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
 }
+
 .T-signin-msg, .T-pwd_tooltip  {
-    font-family: 'RobotoRegular', sans-serif;
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
     font-size: 0.9rem;
     line-height: 1.5rem;
     letter-spacing: normal;
     font-weight: 200;
-    color: var(--SignIn-T-msg);
+    color: var(--c-auth-T-msg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
 }
 .T-proceed-btn{
-    font-family: 'RobotoRegular', sans-serif;
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
     font-size: 0.9rem;
     line-height: 1.5rem;
     letter-spacing: 0.04rem;
     font-weight: 200;
-    color: var(--SignIn-T-next-btn-txt);
+    color: var(--c-auth-T-proceed-btn-txt);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
 }
 .T-SignIn_superscript {
-    font-family: 'RobotoRegular', sans-serif;
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
     font-size: 0.83rem;
     line-height: 1.2rem;
-    letter-spacing: normal;
-    font-weight: 400;
-    color: var(--C-T-h-SearchInput);
+    letter-spacing: 0.02rem;
+    font-weight: 200;
+    color: var(--c-auth-T-superscript);
     opacity: 0.6;
 }
 .T-SignIn-forgot, .T-forgot-msg {
-    font-family: 'RobotoRegular', sans-serif;
+    font-family: 'ArialRegular', 'RobotoRegular', sans-serif;
     font-size: 0.85rem;
     line-height: 1.2rem;
     letter-spacing: normal;
     font-weight: 400;
-    color: var(--SignIn-T-msg);
+    color: var(--c-auth-T-msg);
     opacity: 0.9;
 }
 

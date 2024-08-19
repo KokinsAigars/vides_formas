@@ -11,7 +11,18 @@
 :root[data-theme="ThemeLight"] {
 
     //  HOME SCREEM
-    --c-home-bg: ECEEF4FF;
+    --c-home-bg: #1e1e23;
+
+    //  Auth screen
+    --c-auth-bg: #f2f4f7;
+    --c-auth-sign-in-bg: #ffffff;
+    --c-auth-box-shadow: rgba(0, 0, 0, .1);
+    --c-auth-border: #dddfe2;
+    --c-auth-border-focus: #0866ff;
+    --c-auth-T-Title: #212124;
+    --c-auth-T-msg: #646469;
+    --c-auth-T-superscript: #86888c;
+    --c-auth-T-proceed-btn-txt: #828282;
 
     --C-background-color: #ffffff; //#e1e1e1;//#fff;
     --C-background-line: #dadce0;
@@ -22,9 +33,9 @@
     --vivente-icon-grp-hover: #220f5f;
 
     // SIGNIN && LOGIN
-    --SignIn-T-Title: #212124;
-    --SignIn-T-msg: #646469;
-    --SignIn-T-next-btn-txt: #828282;
+
+
+
     --SignIn-T-next-btn-hover: #23313b;
     --SignIn--C-input-border: #747984;
     --C-ui-SignIn-btn-hover: #f5f5f5;
