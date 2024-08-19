@@ -1,5 +1,19 @@
 
 
+//  *   ts : 83c3b978-1c71-4ff8-b615-177ff062a112
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.19
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   Authentication Service
+//  *   [auth.service.ts]
+//  *
+//  *   // Services //=> ts : 83c3b978-1c71-4ff8-b615-177ff062a112
+//  *   import { AuthService_EP, AuthService_Google } from '@services/auth.service.ts';
+
+
 // interface
 import type { IAuthUser } from '@models/user';
 
@@ -14,7 +28,7 @@ import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signIn
 export const AuthService_EP = async (userData: IAuthUser) => {
 
 
-    const AuthService_EP_ID = 'service : AuthService_EP_ID';
+    const AuthService_EP_ID = 'service : dcb1394c-e106-46af-bfe3-1936771d3f84';
 
     return new Promise(async (resolve, reject) => {
 
@@ -38,7 +52,7 @@ export const AuthService_EP = async (userData: IAuthUser) => {
 
 export const AuthService_Google = async () => {
 
-    const AuthService_Google_ID = 'service : AuthService_Google_ID';
+    const AuthService_Google_ID = 'service : 3a07bef2-8486-4c9c-a424-baad43c3d044';
     const provider = new GoogleAuthProvider();
 
     return new Promise(async (resolve, reject) => {
@@ -48,14 +62,10 @@ export const AuthService_Google = async () => {
                 .then((result) => {
 
                     // const _OAuthCredential = GoogleAuthProvider.credentialFromResult(result);
-                    const user = result.user;
+                    // const user = result.user;
+                    // console.log('user: ', user);
 
                     // console.log('email: ', result.user.email);
-                    // console.log('uid: ', result.user.uid);
-                    // console.log('displayName: ', result.user.displayName);
-                    // console.log('operationType: ', result.operationType);
-                    // console.log('_OAuthCredential.idToken: ', _OAuthCredential.idToken);
-                    console.log('user: ', user);
 
                     RootStore.act_isAuthenticated(true);
                     RootStore.act_uid(result.user.uid);

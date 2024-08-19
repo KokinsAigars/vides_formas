@@ -1,3 +1,18 @@
+<!--
+//  *   vue : 78d148ca-d8dd-43fb-b769-c567dd5b11f5
+//  *
+//  *   Project Name: "sacredgeometrysites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.19
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   Log Out
+//  *
+//  *   [out.vue]
+//  *
+-->
+
+
 <script setup lang="ts">
 
   import {onMounted, ref} from "vue"

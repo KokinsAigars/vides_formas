@@ -1,31 +1,28 @@
 
-//  *   ts : 7b4196d9-2c72-4ce0-b727-a3eaa40763c7
+//  *   ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
 //  *   Built on 2024.08.16
 //  *   Contributor(s): Aigars Kokins
 //  *
-//  *   check browser
+//  *   check browser compactability
 //  *   [browser.service.ts]
 //  *
-//  *   // Services //=> ts : 7b4196d9-2c72-4ce0-b727-a3eaa40763c7
+//  *   // Services //=> ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
 //  *   import { BrowserService } from '@services/browser.service';
 
 
 
-//
-// <!--        <script>-->
-// <!--            // if (window.safari !== undefined) console.log("Safari!");-->
-// <!--            // if (window.chrome !== undefined) console.log("Chrome!");-->
-// <!--        </script>-->
+export const browserCompactabilityService = () => {
+
+    const ID = 'ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a';
+
+    console.log('browser Compactability Service', ID);
+}
 
 
-//
-// // Compactability script
-//
-// export const browserService = () => {
-//
+
 //     public var nVer = navigator.appVersion;
 //     public var nAgt = navigator.userAgent;
 //     public var browserName  = navigator.appName;
@@ -96,3 +93,12 @@
 // //     +'navigator.appName = '+navigator.appName+'<br>'
 // //     +'navigator.userAgent = '+navigator.userAgent+'<br>'
 // // )
+
+
+
+
+//
+// <!--        <script>-->
+// <!--            // if (window.safari !== undefined) console.log("Safari!");-->
+// <!--            // if (window.chrome !== undefined) console.log("Chrome!");-->
+// <!--        </script>-->

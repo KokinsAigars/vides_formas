@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "sacredgeometrysites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.17
+//  *   Built on 2024.08.19
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Administrative Login Page
@@ -36,7 +36,7 @@
   import { useRootStore } from '@/_store/index.html-store.ts';
   const RootStore = useRootStore();
 
-  // services
+  // Services //=> ts : 83c3b978-1c71-4ff8-b615-177ff062a112
   import { AuthService_EP, AuthService_Google } from '@services/auth.service.ts';
 
   // interface
@@ -159,15 +159,17 @@
         loading = true;
 
         // call service for authentication
-        // => service :
+        // => service : dcb1394c-e106-46af-bfe3-1936771d3f84
         const success = await AuthService_EP(userData)
-        if (!success) {
-          console.log(`error in Sign in component: ${ID}`);
-          placeholder.value = placeholder_incorrect.value;
-          await passColor(500, "#ff8080");
-          await resetAndReturn();
-          return
-        }
+
+          // if not success
+          if (!success) {
+            console.log(`error in Sign in component: ${ID}`);
+            placeholder.value = placeholder_incorrect.value;
+            await passColor(500, "#ff8080");
+            await resetAndReturn();
+            return
+          }
 
         loading = false;
 
@@ -186,16 +188,17 @@
   const onGoogleBtnClick = async () => {
 
     // call service for authentication
-    // => service :
+    // => service : 3a07bef2-8486-4c9c-a424-baad43c3d044
     const success = await AuthService_Google();
-    console.log('success', success);
-    if (!success) {
-      console.log(`error in Sign in component: ${ID}`);
-      placeholder.value = placeholder_incorrect.value;
-      await passColor(500, "#ff8080");
-      await resetAndReturn();
-      return
-    }
+
+      // if not success
+      if (!success) {
+        console.log(`error in Sign in component: ${ID}`);
+        placeholder.value = placeholder_incorrect.value;
+        await passColor(500, "#ff8080");
+        await resetAndReturn();
+        return
+      }
 
     loading = false;
 
