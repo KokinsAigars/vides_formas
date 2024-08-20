@@ -1,7 +1,7 @@
 
 //  *   scss :
 //  *
-//  *   Project Name: "sacredgeometrysites"
+//  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
 //  *   Built on 2024.08.17
 //  *   Contributor(s): Aigars Kokins
@@ -47,29 +47,13 @@ $signin-loading-bar-width: 440px;
     border: none;
     background-color: var(--c-auth-sign-in-bg);
     border-radius: 15px;
-    box-shadow: 0 2px 4px var(--c-auth-box-shadow), 0 8px 16px var(--c-auth-box-shadow);
+    box-shadow: 0 2px 5px  var(--c-auth-box-shadow), 0 8px 16px var(--c-auth-box-shadow);
 
     @include for-size(600px) {
         background-color: var(--c-auth-bg);
         box-shadow: none;
         transition: 1s;
     }}
-
-    //  need to be implemented
-    .alp-c-loading{
-        display: flex;
-        justify-content: center;
-        margin-left: 5px;
-        width: $signin-loading-bar-width; min-width: $signin-loading-bar-width; max-width: $signin-loading-bar-width;
-        height: 5px; min-height: 5px; max-height: 5px;
-        background-color: var(--c-auth-sign-in-bg);
-        opacity: 0.5;
-        border-radius: 20px 20px 0 0;
-        border:none;
-        @include for-size(600px) {
-            background-color: var(--c-auth-bg);
-            transition: 1s;
-        }}
 
     .alp-c-main{
         display: flex;
@@ -235,7 +219,7 @@ $signin-loading-bar-width: 440px;
 
 // MESSAGE at a bottom
 .alp-c-b{
-    padding-top: 10px;
+    padding-top: 15px;
     display: flex;
     flex-direction: row;
     width: $signin-width; min-width: $signin-width; max-width: $signin-width;

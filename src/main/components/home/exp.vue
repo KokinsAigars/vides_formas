@@ -1,7 +1,7 @@
 <!--
 //  *   vue :
 //  *
-//  *   Project Name: "sacredgeometrysites"
+//  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
 //  *   Built on 2024.08.19
 //  *   Contributor(s): Aigars Kokins, ChatGPT

@@ -1,7 +1,7 @@
 <!--
 //  *   vue : c4cf3822-2e11-482c-8244-55b197a85a7f
 //  *
-//  *   Project Name: "sacredgeometrysites"
+//  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
 //  *   Built on 2024.08.18
 //  *   Contributor(s): Aigars Kokins

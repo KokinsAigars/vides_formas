@@ -1,16 +1,18 @@
 
 //  *
-//  *   Project Name: "sacredgeometrysites"
+//  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.20
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL Typography [stylesTypography.scss]
 //  *
+//  *   Web Safe Fonts: sans-serif, serif, monospace
+
 
 //<header> TITLE
 .T-h-Title, .T-administrative-Console-title{
-    font-family: 'MulishLight', 'PublicSansRegular', sans-serif;
+    font-family: 'MulishLight', 'PublicSansRegular', sans-serif, serif, monospace;
     font-size: 1.6rem;
     line-height: 1.7em;
     letter-spacing: 0.1em;

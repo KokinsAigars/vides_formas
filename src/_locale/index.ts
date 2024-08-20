@@ -1,7 +1,7 @@
 
 //  *   ts :
 //  *
-//  *   Project Name: "sacredgeometrysites"
+//  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
 //  *   Built on 2024.08.17
 //  *   Contributor(s): Aigars Kokins
@@ -128,7 +128,7 @@ const messages = {
       set_TabBar: 'Tab Bar',
       set_SaveClose: 'Save and Close',
       set_Cancel: 'Cancel',
-      set_Reset: 'Reset', 
+      set_Reset: 'Reset',
       set_PrivacyPolicy: 'Privacy policy',
     }
   },
@@ -171,7 +171,7 @@ const messages = {
       settings_Header: 'Header',
       settings_Footer: 'Footer',
       settings_Sign_Out: 'Sign Out',
-      
+
       app_AppWorkspace : 'Workspace',
       app_AppUsers : 'User Management',
       app_AppStock : 'VIVENTE Stock',
