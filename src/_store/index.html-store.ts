@@ -52,6 +52,7 @@ export const useRootStore = defineStore({
         //  mapStyleId: controled in :
         // https://console.cloud.google.com/google/maps-apis/studio/maps/
 
+        BROWSER: '',
     }),
 
     actions: {
@@ -97,6 +98,11 @@ export const useRootStore = defineStore({
 
         act_uid (payload: string) {
             this.$state.uid = payload;
+        },
+
+        // user browser
+        act_browser (payload: string) {
+            this.$state.BROWSER = payload;
         },
 
         // change UI language

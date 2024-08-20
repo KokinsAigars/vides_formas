@@ -38,3 +38,14 @@ firebase hosting:disable -s videsformas
 
 
 npm create vue@latest
+
+
+npm install -D @types/module-name
+
+
+
+
+npm install ua-parser-js
+npm install -D @types/ua-parser-js
+
+
