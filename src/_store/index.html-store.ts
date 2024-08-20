@@ -52,7 +52,7 @@ export const useRootStore = defineStore({
         //  mapStyleId: controled in :
         // https://console.cloud.google.com/google/maps-apis/studio/maps/
 
-        BROWSER: '',
+        BROWSER: null,
     }),
 
     actions: {

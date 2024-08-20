@@ -89,6 +89,13 @@ import svg_Octahedron from '@assets/svg/o.vue';
 import svg_Dodekahedron from '@assets/svg/d.vue';
 import svg_Icosahedron from '@assets/svg/i.vue';
 
+// user browser
+// from store, detected in browser.service
+// Services //=> ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
+const BROWSER = ref<string>(null);
+if(RootStore.BROWSER !== null){
+  BROWSER.value = RootStore.BROWSER;
+}
 
 const lastState = ref<string>(null);
 
@@ -503,7 +510,7 @@ const svgMarkerT = {
 
           </div>
 
-          <div class="m-items m-items2" v-if="btn_3D">
+          <div class="m-items m-items2" v-if="btn_3D === true && BROWSER !== 'Safari'">
 
             <button class="m-btn T-switch" role="button" type="button"
                     v-bind:class = "(m_select === '3D')?'m-btn-active':''"

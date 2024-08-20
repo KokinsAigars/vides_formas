@@ -44,7 +44,7 @@ npm install -D @types/module-name
 
 
 
-
+[//]: # (check browser name)
 npm install ua-parser-js
 npm install -D @types/ua-parser-js
 

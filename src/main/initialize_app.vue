@@ -28,8 +28,9 @@
 
   onMounted(() => {
     RefreshService();
-    browserCompactabilityService();
   });
+
+  browserCompactabilityService();
 
 </script>
 

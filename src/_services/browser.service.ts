@@ -17,8 +17,6 @@ import UAParser from 'ua-parser-js';
 
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
-const RootStore = useRootStore();
-
 
 export const browserCompactabilityService = async () => {
     // console.clear();
@@ -55,6 +53,7 @@ export const browserCompactabilityService = async () => {
     }
 
     //  function to detect browser using library `UAParser.js`
+    //  https://uaparser.dev/
     //  https://github.com/faisalman/ua-parser-js
     const fn_by_lib_UAParser = async ():Promise<string> => {
 
@@ -66,6 +65,7 @@ export const browserCompactabilityService = async () => {
         // console.log(result.os.name); // Operating system name
         // console.log(result.os.version); // Operating system version
 
+        // https://docs.uaparser.dev/list/browser/name.html
         return result.browser.name;
     }
 
@@ -79,6 +79,7 @@ export const browserCompactabilityService = async () => {
     const BROWSER: string = await fn_by_lib_UAParser();
 
     // store user browser name ir Pinia 'RootStore'
+    const RootStore = useRootStore();
     RootStore.act_browser(BROWSER);
 
 }
