@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.18
+//  *   Built on 2024.08.20
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page (site) - body - component
@@ -482,7 +482,7 @@ const svgMarkerT = {
 
           </div>
 
-          <div class="m-items m-items2" v-if="btn_3D === true && BROWSER !== 'Safari'">
+          <div class="m-items m-items2" v-if="btn_3D === true && BROWSER !== 'Safari' || BROWSER !== null">
 
             <button class="m-btn T-switch" role="button" type="button"
                     v-bind:class = "(m_select === '3D')?'m-btn-active':''"
