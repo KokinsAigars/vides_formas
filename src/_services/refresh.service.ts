@@ -10,13 +10,13 @@
 //  *   [refresh.service.ts]
 //  *
 //  *   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
-//  *   import { RefreshService } from '@services/refresh.service';
+//  *   import { service_refresh } from '@services/refresh.service';
 
 import i18n from '@/_locale/index'
 import { useRootStore } from '@rootStore/index.html-store';
 import { watch } from 'vue';
 
-export const RefreshService = () => {
+export const service_refresh = () => {
 
     const RootStore= useRootStore();
 

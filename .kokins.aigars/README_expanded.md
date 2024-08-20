@@ -49,3 +49,9 @@ npm install ua-parser-js
 npm install -D @types/ua-parser-js
 
 
+firebase database
+https://vuefire.vuejs.org/guide/getting-started.html
+npm i vuefire firebase
+
+
+

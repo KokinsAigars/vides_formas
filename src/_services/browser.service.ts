@@ -6,11 +6,11 @@
 //  *   Built on 2024.08.20
 //  *   Contributor(s): Aigars Kokins, ChatGPT
 //  *
-//  *   check browser compactability
+//  *   check browser compatibility
 //  *   [browser.service.ts]
 //  *
 //  *   // Services //=> ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
-//  *   import { browserCompactabilityService } from '@services/browser.service';
+//  *   import { service_browser_compatibility } from '@services/browser.service';
 
 import Bowser from 'bowser';
 import UAParser from 'ua-parser-js';
@@ -18,7 +18,7 @@ import UAParser from 'ua-parser-js';
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
 
-export const browserCompactabilityService = async () => {
+export const service_browser_compatibility = async () => {
     // console.clear();
 
     const ID = 'ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a';

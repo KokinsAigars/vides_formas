@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.08.20
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   [initialize firebase]
@@ -15,6 +15,7 @@ import { getAuth } from "firebase/auth";
 export const firebaseApp = initializeApp({
     apiKey: "AIzaSyCFpd_NThU_eP20R0tKk7uU5m7Stdci3Rg",
     authDomain: "videsformas.firebaseapp.com",
+    databaseURL: "https://videsformas-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "videsformas",
     storageBucket: "videsformas.appspot.com",
     messagingSenderId: "633823330129",
@@ -22,4 +23,9 @@ export const firebaseApp = initializeApp({
 });
 
 export const auth = getAuth(firebaseApp)
+
+
+
+
+
 

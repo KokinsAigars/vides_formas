@@ -21,16 +21,24 @@
   import { onMounted } from 'vue';
 
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
-  import { RefreshService } from '@/_services/refresh.service';
+  import { service_refresh } from '@/_services/refresh.service';
 
   // Services //=> ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
-  import { browserCompactabilityService } from '@services/browser.service';
+  import { service_browser_compatibility } from '@services/browser.service';
+
+  // Services //=> ts :
+  import {service_test_db} from "@services/db_test.service.ts";
+
 
   onMounted(() => {
-    RefreshService();
+
+    service_browser_compatibility ();
+    service_test_db ();
+    service_refresh ();
+
   });
 
-  browserCompactabilityService();
+
 
 </script>
 
