@@ -38,7 +38,7 @@ export default defineConfig({
       // path to write in html url?
       '@': fileURLToPath(new URL('./src', import.meta.url)),
 
-      '@assets'         : '/src/_assets',
+      '@assets'         : '/src/assets',
       '@locale'         : '/src/_locale',
       '@models'         : 'src/_models',
       '@services'       : '/src/_services',
@@ -50,7 +50,7 @@ export default defineConfig({
       '@admin'          : '/src/main/components/admin',
       '@home'           : '/src/main/components/home',
 
-      '@style'          : '/src/_assets/styles/',
+      '@style'          : '/src/assets/styles/',
 
     },
   },

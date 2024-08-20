@@ -34,6 +34,18 @@
 
         <link rel="manifest" href="/manifest.json">
 
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+
+                    // CHANGE PATH FOR PRODUCTION
+                    // navigator.serviceWorker.register('sw.js');
+
+                    navigator.serviceWorker.register('dist/sw.js');
+                });
+            }
+        </script>
+
         <link id="favicon" rel="icon" type="image/x-icon" href="/favicon_W.ico" sizes="32x32">
 
         <link rel="shortcut icon" href="/favicon_W.ico" type="image/x-icon">

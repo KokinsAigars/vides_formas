@@ -5,10 +5,14 @@ npm install workbox-cli --global
 [//]: # (run)
 npx workbox-cli wizard
 
+[//]: # (rename *.js => to *.cjs [workbox-config.cjs])
+
 [//]: # (rename )
 *.cjs
 
-[//]: # (run, to generate in dist/)
+[//]: # (run, to generate in dist/sw.js)
+[//]: # (To build your service worker, run)
+
 workbox generateSW workbox-config.cjs
 
 

@@ -59,7 +59,7 @@
     "paths": {
 
       "@/*"           : ["src/*"          ],
-      "@assets/*"     : ["src/_assets/*"  ],
+      "@assets/*"     : ["src/assets/*"   ],
       "@locale/*"     : ["src/_locale/*"  ],
       "@models/*"     : ["src/_models/*"  ],
       "@services/*"   : ["src/_services/*"],
@@ -71,7 +71,7 @@
       "@admin/*"      : ["src/main/components/admin/*"],
       "@home/*"       : ["src/main/components/home/*"],
 
-      "@style/*"      : ["src/_assets/styles/*"]
+      "@style/*"      : ["src/assets/styles/*"]
     },
 
 //    "files": [],
