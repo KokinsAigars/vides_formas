@@ -30,7 +30,6 @@ const   VIVENTE = createApp (init_app_vue)
         });
         VIVENTE.mount('.app')
 
-
 // Styles
 import '@style/Fonts.scss';
 import '@style/mixin.scss';

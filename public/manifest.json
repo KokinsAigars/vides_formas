@@ -2,7 +2,6 @@
   "name": "sacred geometry sites",
   "short_name": "geometry",
   "start_url": "/",
-  "scope": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",

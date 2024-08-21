@@ -36,6 +36,16 @@
     service_test_db ();
     service_refresh ();
 
+    // if exist - register and use service Worker
+    // back-end in browser, extra thread for listeners and their services
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker
+          .register('sw.js')
+          .then(registration => {
+            console.log('Service worker successfully registered!');
+          })
+    }
+
   });
 
 
