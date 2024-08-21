@@ -1,15 +1,15 @@
 {
   "name": "sacred geometry sites",
-  "short_name": "sgs",
-  "description" : "sacred geometry sites in Latvia",
-  "id": "f775bba3-a998-46cc-a4ea-8ed081068bc9",
+  "short_name": "geometry",
   "start_url": "/",
+  "scope": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "orientation": "portrait-primary",
+  "dir": "ltr",
+  "lang": "en-US",
+  "orientation": "any",
   "icons": [
-
 
     {
       "src": "icons/ic_black_safe_32x32_dodec.png",
@@ -265,5 +265,7 @@
       "form_factor": "narrow",
       "label": "sacred geometry sites"
     }
-  ]
+  ],
+  "description" : "sacred geometry sites in Latvia",
+  "id": "f775bba3-a998-46cc-a4ea-8ed081068bc9"
 }
