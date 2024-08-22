@@ -1,0 +1,16 @@
+
+//  *
+//  *   Project Name: "Sacred Geometry Sites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   GLOBAL Styles - RESET CSS
+//  *
+
+*, *::before, *::after {margin: 0; padding: 0; box-sizing: border-box;}
+html, body {  height: auto;  width: auto; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto !important;}
+
+// text without fonts will be rendered RED!
+body { font-family: sans-serif; color: #091bf1;}
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, button, p, br {background-color: transparent;}

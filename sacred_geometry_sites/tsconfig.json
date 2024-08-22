@@ -1,0 +1,88 @@
+
+//  *   ts : 8ba668cb-3fba-40d6-8b8a-6a972f9faa0e
+//  *
+//  *   Project Name: "Sacred Geometry Sites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   tsconfig.json
+//  *   https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+//  *
+
+{
+//  "extends": [
+//    "@tsconfig/node20/tsconfig.json",
+//    "@vue/tsconfig/tsconfig.dom.json",
+//  ],
+  "include": [
+          "config/env.d.ts",
+          "config/typings.d.ts",
+          "config/*.d.ts",
+          "config/**/*.d.ts",
+          "src/*",
+          "src/**/*",
+          "src/**/*.vue",
+          "src/**/*.ts",
+          "src/**/*.tsx",
+          "src/**/*.jsx",
+          "src/**/*.d.ts",
+          "vite.config.*",
+          "vitest.config.*",
+          "cypress.config.*",
+          "nightwatch.conf.*",
+          "playwright.config.*"
+        ],
+  "exclude": ["src/**/__tests__/*"],
+
+  "compilerOptions": {
+    "plugins": [{ "name": "vue" }],
+    "composite": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments":true,
+    "skipLibCheck": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"],
+
+    //  for *.ts import
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+
+    // important
+    "baseUrl": ".",
+
+    // Typescript path alias
+    // also in && => vite.config.ts "resolve / alias" { ... }
+    "paths": {
+
+      "@/*"           : ["src/*"          ],
+      "@assets/*"     : ["src/assets/*"   ],
+      "@locale/*"     : ["src/_locale/*"  ],
+      "@models/*"     : ["src/_models/*"  ],
+      "@services/*"   : ["src/_services/*"],
+      "@rootStore/*"  : ["src/_store/*"   ],
+      "@main/*"       : ["src/main/*"     ],
+
+      "@components/*" : ["src/main/components/*"],
+
+      "@admin/*"      : ["src/main/components/admin/*"],
+      "@home/*"       : ["src/main/components/home/*"],
+
+      "@style/*"      : ["src/assets/styles/*"]
+    },
+
+//    "files": [],
+//    "references": [
+//      {
+//        "path": "config/tsconfig.node.json"
+//      },
+//      {
+//        "path": "config/tsconfig.app.json"
+//      }
+//    ],
+
+  }
+}

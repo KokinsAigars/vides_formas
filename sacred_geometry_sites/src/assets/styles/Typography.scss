@@ -1,0 +1,68 @@
+
+//  *
+//  *   Project Name: "Sacred Geometry Sites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.20
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   GLOBAL Typography [stylesTypography.scss]
+//  *
+//  *   Web Safe Fonts: sans-serif, serif, monospace
+
+
+//<header> TITLE
+.T-h-Title, .T-administrative-Console-title{
+    font-family: 'MulishLight', 'PublicSansRegular', sans-serif, serif, monospace;
+    font-size: 1.6rem;
+    line-height: 1.7em;
+    letter-spacing: 0.1em;
+    font-weight: 200;
+    color: var(--LP-T-h_Title);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+.T-administrative-Console-title{
+    font-size: 1.8rem;
+    line-height: 1.9em;
+}
+.T-hb-c-select {
+    font-family: 'MulishLight', sans-serif;
+    font-size: 1.32rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.06em;
+    font-weight: 200;
+    color: var(--LP-T-h_Title);
+    opacity: 1;
+}
+.T-default, .T-title-formas, .T-text-space, .T-h-header, .T-switch, .T-switch-image, .T-m_image, .T-GPS {
+    font-family: 'PublicSansThin', 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    letter-spacing: normal;
+    font-weight: 400;
+    color: var(--light);
+    opacity: 0.7;}
+
+
+.T-switch {
+    color: black;
+    opacity: 0.8;
+}
+
+.T-switch-image, .T-GPS {
+    font-family: 'RobotoRegular', 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--light);
+}
+
+//<footer>//<p>
+.T-LPf-el {
+    font-family: 'PublicSansThin', 'Open Sans', 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1em;
+    letter-spacing: normal;
+    font-weight: 200;
+    color: var(--light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}

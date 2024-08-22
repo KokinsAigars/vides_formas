@@ -1,0 +1,270 @@
+{
+  "name": "sacred geometry sites",
+  "short_name": "geometry",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "lang": "en-US",
+  "orientation": "any",
+  "icons": [
+
+    {
+      "src": "icons/ic_black_safe_32x32_dodec.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_32x32_maskable_dodec.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_48x48_dodec.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_48x48_maskable_dodec.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_57x57_dodec.png",
+      "sizes": "57x57",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_57x57_maskable_dodec.png",
+      "sizes": "57x57",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_60x60_dodec.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_60x60_maskable_dodec.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_72x72_dodec.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_72x72_maskable_dodec.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_76x76_dodec.png",
+      "sizes": "76x76",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_76x76_maskable_dodec.png",
+      "sizes": "76x76",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_96x96_dodec.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_96x96_maskable_dodec.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_114x114_dodec.png",
+      "sizes": "114x114",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_114x114_maskable_dodec.png",
+      "sizes": "114x114",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_120x120_dodec.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_120x120_maskable_dodec.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_128x128_dodec.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_128x128_maskable_dodec.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_144x144_dodec.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_144x144_maskable_dodec.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_152x152_dodec.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_152x152_maskable_dodec.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_180x180_dodec.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_180x180_maskable_dodec.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_192x192_dodec.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_192x192_maskable_dodec.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_256x256_dodec.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_256x256_maskable_dodec.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_384x384_dodec.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_384x384_maskable_dodec.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+
+    {
+      "src": "icons/ic_black_safe_512x512_dodec.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/ic_black_safe_512x512_maskable_dodec.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+
+
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshots1_640x320.png",
+      "sizes": "640x320",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "sacred geometry sites"
+    },
+    {
+      "src": "screenshots/screenshots2_640x430.png",
+      "sizes": "640x430",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "sacred geometry sites"
+    }
+  ],
+  "description" : "sacred geometry sites in Latvia",
+  "id": "f775bba3-a998-46cc-a4ea-8ed081068bc9"
+}

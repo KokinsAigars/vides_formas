@@ -1,0 +1,39 @@
+
+//  *
+//  *   Project Name: "Sacred Geometry Sites"
+//  *   Organization: VIVENTE
+//  *   Built on 2024.08.16
+//  *   Contributor(s): Aigars Kokins
+//  *
+//  *   GLOBAL Styles - scrollbar
+//  *
+
+ ::-webkit-scrollbar {
+     width: var(--V-scrollbar-width);
+     height: var(--V-scrollbar-width);
+ }
+ ::-webkit-scrollbar-track {
+     background: var(--C-scrollbar-track);
+ }
+ ::-webkit-scrollbar-thumb {
+     background: var(--C-scrollbar-thumb);
+ }
+ ::-webkit-scrollbar-thumb:hover {
+     background: var(--C-scrollbar-thumb-hover);
+ }
+ ::-webkit-scrollbar-button {
+     display: block;
+     width: auto;
+     height: auto;
+     background-color: var(--C-scrollbar-track);
+      //border-color: transparent transparent var(--C-scrollbar-thumb) transparent;
+ }
+ //Up Arrow */
+ //Down Arrow */
+
+
+ // /* For Firefox */
+ * {
+     scrollbar-width: thin;
+     scrollbar-color: var(--C--webkit-scrollbar-thumb) var(--C--webkit-scrollbar-track);
+   }

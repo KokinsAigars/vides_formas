@@ -1,0 +1,25 @@
+:root {
+    background-color: #ffffff;
+    /*background-color: #e1e1e1;*/
+    color: #ff0000;
+  }
+html, body {
+    /*height: 100%;*/
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+.maps-group{
+    padding-left: 200px;
+    /*padding-top: 200px;*/
+    width: 690px;
+    height: 500px;
+}
+
+gmp-map {
+    height: 100%;
+    width: 100%;
+}
+
