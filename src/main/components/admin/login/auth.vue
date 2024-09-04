@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.19
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Administrative Login Page
@@ -32,18 +32,18 @@
   // localization
   import i18n from '@/_locale';
 
-  // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
+  // Root Store // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
   import { useRootStore } from '@/_store/index.html-store.ts';
   const RootStore = useRootStore();
 
   // Services //=> ts : 83c3b978-1c71-4ff8-b615-177ff062a112
-  import { AuthService_EP, AuthService_Google } from '@services/auth.service.ts';
+  import { ser_auth_EP, ser_auth_Google } from '@services/ser_auth';
 
   // interface
-  import type { IAuthUser } from '@models/user.ts';
+  import type { IAuthUser } from '@models/model_user';
 
-  // Authentication Guard
-  import { AuthGuard_app } from '@services/auth-guard-service.ts';
+  // authentication guard service //=> ts : 73a8d985-a778-4113-8850-ba1321b9dfcf
+  import { ser_authGuard } from '@services/ser_authGuard.ts';
 
 
   // public API (localized)
@@ -90,7 +90,7 @@
     // prevent Sign in page after user is authenticated
     // or rewrite: beforeEnter in routes
     try {
-      isAuthenticated  = await AuthGuard_app();
+      isAuthenticated  = await ser_authGuard();
       console.log('isAuthenticated: ', isAuthenticated)
     } catch (error) {
       _INIT();
@@ -160,7 +160,7 @@
 
         // call service for authentication
         // => service : dcb1394c-e106-46af-bfe3-1936771d3f84
-        const success = await AuthService_EP(userData)
+        const success = await ser_auth_EP(userData)
 
           // if not success
           if (!success) {
@@ -189,7 +189,7 @@
 
     // call service for authentication
     // => service : 3a07bef2-8486-4c9c-a424-baad43c3d044
-    const success = await AuthService_Google();
+    const success = await ser_auth_Google();
 
       // if not success
       if (!success) {

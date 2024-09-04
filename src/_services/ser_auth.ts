@@ -1,21 +1,20 @@
 
-
 //  *   ts : 83c3b978-1c71-4ff8-b615-177ff062a112
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.19
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Authentication Service
 //  *   [auth.service.ts]
 //  *
 //  *   // Services //=> ts : 83c3b978-1c71-4ff8-b615-177ff062a112
-//  *   import { AuthService_EP, AuthService_Google } from '@services/auth.service.ts';
+//  *   import { ser_auth_EP, ser_auth_Google } from '@services/ser_auth';
 
 
 // interface
-import type { IAuthUser } from '@models/user';
+import type { IAuthUser } from '@models/model_user';
 
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
@@ -25,7 +24,7 @@ import { auth } from '@/firebase.ts';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 
 
-export const AuthService_EP = async (userData: IAuthUser) => {
+export const ser_auth_EP = async (userData: IAuthUser) => {
 
 
     const AuthService_EP_ID = 'service : dcb1394c-e106-46af-bfe3-1936771d3f84';
@@ -50,7 +49,7 @@ export const AuthService_EP = async (userData: IAuthUser) => {
 
 }
 
-export const AuthService_Google = async () => {
+export const ser_auth_Google = async () => {
 
     const AuthService_Google_ID = 'service : 3a07bef2-8486-4c9c-a424-baad43c3d044';
     const provider = new GoogleAuthProvider();

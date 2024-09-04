@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   after web browser refresh
@@ -16,7 +16,8 @@ import i18n from '@/_locale/index'
 import { useRootStore } from '@rootStore/index.html-store';
 import { watch } from 'vue';
 
-export const service_refresh = () => {
+// service
+export const ser_onBrowserRefresh = () => {
 
     const RootStore= useRootStore();
 

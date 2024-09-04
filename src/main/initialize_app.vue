@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.18
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Initialize Vue web app
@@ -21,31 +21,27 @@
   import { onMounted } from 'vue';
 
   // Services //=> ts : 9df63d66-54e2-4fcf-b07b-b0926d0a6ac5
-  import { service_refresh } from '@/_services/refresh.service';
+  import { ser_onBrowserRefresh } from '@services/ser_onBrowserRefresh';
 
   // Services //=> ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
-  import { service_browser_compatibility } from '@services/browser.service';
+  import { ser_browserCompatibility } from '@services/ser_browserCompatibility';
 
   // Services //=> ts :
-  import {service_test_db} from "@services/db_test.service.ts";
+  import { ser_db_test } from "@services/ser_db_test";
+
+  // Service - Service Worker //=> ts : 6b1379b4-7118-4761-b9b6-c35e7198fd9c
+  import { ser_sw_register, ser_sw_unregister } from '@services/ser_ServiceWorker';
 
 
   onMounted(() => {
 
-    service_browser_compatibility ();
-    service_test_db ();
-    service_refresh ();
+    ser_browserCompatibility();
 
-    // if exist - register and use service Worker
-    // back-end in browser, extra thread for listeners and their services
-    if('serviceWorker' in navigator) {
-      navigator.serviceWorker
-          .register('sw.js')
-          .then(registration => {
-            console.log('Service worker successfully registered!');
-          })
-    }
+    // ser_db_test();
 
+    ser_sw_register();
+
+    ser_onBrowserRefresh();
   });
 
 

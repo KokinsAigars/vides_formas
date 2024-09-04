@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.18
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page (site) - header
@@ -32,24 +32,23 @@
     const target = event.target as HTMLSelectElement;
     const selectedValue = target.value;
 
-    if(temp.value === selectedValue) return
-    else {
+    // if(temp.value === selectedValue) return
+    // else {
       try {
         router.push({path: '/' + selectedValue});
         RootStore.changeUiMENU(selectedValue);
-        temp.value = selectedValue;
+        defaultValue.value = selectedValue;
       } catch (error) {
         console.error('An error occurred in fn_Select(): ', ID, error);
       }
-    }
-
+    // }
   }
 
   onMounted(() => {
     try {
-      const activeForm = ''
-      defaultValue.value = 'h';
-      temp.value = activeForm;
+      // const activeForm = ''
+      // defaultValue.value = 'h';
+      temp.value = '';
 
     } catch (error) {
       console.error('An error occurred in onMounted(): ', ID, error);

@@ -7,7 +7,8 @@
 import { useFirestore, useCollection } from 'vuefire'
 // import { my_db } from 'firebase/firestore'
 
-export const service_test_db = () => {
+// service
+export const ser_db_test = () => {
 
     const db = useFirestore()
     // const my_db = db.ref("/my_db_table");

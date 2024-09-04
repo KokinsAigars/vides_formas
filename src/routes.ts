@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.17
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   /ROUTES  [main.routes.ts]
@@ -13,15 +13,15 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import adminConsole from '@admin/console.vue';
 
-// Auth Guard //=> ts : 73a8d985-a778-4113-8850-ba1321b9dfcf
-import { AuthGuard_app } from '@/_services/auth-guard-service.ts';
+// authentication guard service //=> ts : 73a8d985-a778-4113-8850-ba1321b9dfcf
+import { ser_authGuard } from '@services/ser_authGuard.ts';
 
 const EnterGuards = async (to: any, from: any, next: any) => {
   let isAuthenticated: boolean = false;
 
   try {
 
-    isAuthenticated  = await AuthGuard_app();
+    isAuthenticated  = await ser_authGuard ();
 
   } catch (error) {
     console.error('not Authenticated', error);
@@ -41,8 +41,8 @@ const router = createRouter ({
 
   routes: [
     //  Home Page
-    { path: '/', name: "home",
-      component: () => import('@home/home.vue'),
+    { path: '/', name: "home", redirect: '/h'
+      // component: () => import('@home/home.vue'),
     },
 
     //  Hexahedron

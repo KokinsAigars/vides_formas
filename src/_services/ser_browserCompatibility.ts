@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.20
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins, ChatGPT
 //  *
 //  *   check browser compatibility
@@ -18,7 +18,8 @@ import UAParser from 'ua-parser-js';
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
 
-export const service_browser_compatibility = async () => {
+// service
+export const ser_browserCompatibility = async () => {
     // console.clear();
 
     const ID = 'ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a';
