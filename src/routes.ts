@@ -8,6 +8,7 @@
 //  *
 //  *   /ROUTES  [main.routes.ts]
 //  *
+//  *   Documentation: https://router.vuejs.org/api/
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -40,9 +41,12 @@ const router = createRouter ({
   history: createWebHistory(import.meta.env.BASE_URL),
 
   routes: [
+
+    { path: '/', name: "root", redirect: '/h'},
+
     //  Home Page
-    { path: '/', name: "home", redirect: '/h'
-      // component: () => import('@home/home.vue'),
+    { path: '/--', name: "home",
+      component: () => import('@home/home.vue'),
     },
 
     //  Hexahedron

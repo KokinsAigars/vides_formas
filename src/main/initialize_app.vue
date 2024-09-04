@@ -26,29 +26,24 @@
   // Services //=> ts : 3077efdc-d524-44c3-ad8f-e9106bb97c8a
   import { ser_browserCompatibility } from '@services/ser_browserCompatibility';
 
-  // Services //=> ts :
-  import { ser_db_test } from "@services/ser_db_test";
-
   // Service - Service Worker //=> ts : 6b1379b4-7118-4761-b9b6-c35e7198fd9c
-  import { ser_sw_register, ser_sw_unregister } from '@services/ser_ServiceWorker';
+  // import { ser_sw_register, ser_sw_unregister } from '@services/ser_ServiceWorker';
 
+  // Services //=> ts :
+  //import { ser_db_test } from "@services/ser_db_test";
 
   onMounted(() => {
-
     ser_browserCompatibility();
-
-    // ser_db_test();
-
-    ser_sw_register();
-
+    // ser_sw_register();
     ser_onBrowserRefresh();
+    // ser_db_test();
   });
-
-
 
 </script>
 
 <template>
+
   <RouterView/>
+
 </template>
 

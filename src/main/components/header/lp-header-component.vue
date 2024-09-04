@@ -17,7 +17,8 @@
   const ID = 'ts : 6c8c7a9d-ce1f-45dc-9ca0-151f456f8df8';
 
   import {onMounted, ref, watchEffect} from 'vue';
-  import { useRouter } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
+  const route = useRoute();
   const router = useRouter()
 
   // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
@@ -26,14 +27,15 @@
 
   const HEADER_TITLE = 'sacred geometry'; // sites
   const defaultValue = ref('');
+  const currentRoute = ref(null);
   const temp = ref('');
 
   const fn_Select = (event: Event) => {
     const target = event.target as HTMLSelectElement;
     const selectedValue = target.value;
 
-    // if(temp.value === selectedValue) return
-    // else {
+    if(temp.value === selectedValue) return
+    else {
       try {
         router.push({path: '/' + selectedValue});
         RootStore.changeUiMENU(selectedValue);
@@ -41,16 +43,17 @@
       } catch (error) {
         console.error('An error occurred in fn_Select(): ', ID, error);
       }
-    // }
+    }
   }
 
   onMounted(() => {
+    currentRoute.value = route.path.substring(1);
     try {
-      // const activeForm = ''
-      // defaultValue.value = 'h';
+      defaultValue.value = currentRoute.value;
       temp.value = '';
-
-    } catch (error) {
+      RootStore.act_currentRoute(currentRoute.value);
+    }
+    catch (error) {
       console.error('An error occurred in onMounted(): ', ID, error);
     }
   })

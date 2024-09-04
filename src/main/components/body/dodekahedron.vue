@@ -60,6 +60,7 @@ const fn_load_ref_image_iframe = () => {
 
 //  IDENTICAL for ALL
 
+
 // ---------------------------------------------------------------------------------
 // -------------------  identical  - START -----------------------------------------
 // ---------------------------------------------------------------------------------
@@ -69,6 +70,7 @@ import { ref} from 'vue';
 import HeaderComponent  from '@components/header/lp-header-component.vue';
 import HeaderComponentLine  from '@components/header/lp-header-line.vue';
 import FooterComponent  from '@components/footer/lp-footer-componentV2.vue';
+
 
 // RootStore // => ts : f775bba3-a998-46cc-a4ea-8ed081068bc9
 import { useRootStore } from '@rootStore/index.html-store';
@@ -89,7 +91,6 @@ if(RootStore.BROWSER !== null){
   BROWSER.value = RootStore.BROWSER;
 }
 
-
 const lastState = ref<string>(null);
 
 const m_select = ref('');
@@ -106,16 +107,10 @@ const fn_switch_items = (switchTo: string) => {
   } else {
     m_select.value = switchTo;
   }
-  if(switchTo === 'image'){
-
-    setTimeout(() => {
-      fn_load_ref_image_iframe();
-    }, 1000);
-
-  }
 
   lastState.value = switchTo;
 }
+
 
 
 // --------'3D'
@@ -195,6 +190,7 @@ const fn_init_Canvas = (timeout: number) => {
   }
 
 }
+
 const fn_add_Camera     = () => {
   camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
   camera.position.x = 1.3;
@@ -409,17 +405,62 @@ const fn_three_dispose  = () => {
 }
 
 
+
 // --------'image'
 const ref_image = ref('');
-ref_image.value = 'img/'+ unique_img_path +'01.jpg';
+let currentImage = 1;
+let totalImages = unique_number_of_images.value;
+ref_image.value = 'img/'+ unique_img_path +'0' + currentImage + '.jpg';
 
+const touchStartX = ref(0);
+const scrollPosition = ref(0);
+const scrollDelta = ref(0);
+
+const onTouchStart = (e) => {
+  touchStartX.value = e.touches[0].clientX;
+  // console.log('touchStartX', touchStartX.value)
+}
+const onTouchMove = (e) => {
+  scrollDelta.value = e.touches[0].clientX - touchStartX.value;
+  scrollPosition.value += scrollDelta.value;
+  touchStartX.value = e.touches[0].clientX;
+
+  // console.log('scrollDelta', scrollDelta.value);
+  // console.log('scrollPosition', scrollPosition.value);
+  // console.log('touchStartX', touchStartX.value);
+}
+const onTouchEnd = () => {
+  fn_switch_image(scrollDelta.value);
+}
 function fn_switch_image(input_number:number){
+
+  let ifAdded = currentImage + 1;
+  let ifSubtracted = currentImage - 1;
+
+  try {
+
+    if(input_number <= 0 && ifAdded <= totalImages ){
+      currentImage += 1;
+      ref_image.value = 'img/'+ unique_img_path +'0'+ currentImage +'.jpg';
+    }
+
+    if (input_number >= 1 && ifSubtracted >= 1) {
+      currentImage -= 1;
+      ref_image.value = 'img/'+ unique_img_path +'0'+ currentImage +'.jpg';
+    }
+
+  } catch (error) {
+    return;
+  }
+}
+function fn_switch_image_desktop(input_number:number){
   try {
     ref_image.value = 'img/'+ unique_img_path +'0'+ input_number +'.jpg';
   } catch (error) {
     return null;
   }
 }
+
 
 
 // --------'map'
@@ -563,17 +604,12 @@ const svgMarkerT = {
 
       </div>
 
-      <div class="o-image-cnn" v-if="m_select === 'image'">
+      <div class="o-image-cnn" v-if="m_select === 'image'"
+           @touchstart="onTouchStart"
+           @touchmove="onTouchMove"
+           @touchend="onTouchEnd">
 
-        <iframe ref="ref_image_iframe"
-            class="cls_image_iframe"
-            name="n_image_iframe"
-            width="100%"
-            height="100%"
-            v-bind:src="ref_image"
-        ></iframe>
-
-          <!--<img class="o-image" v-bind:src="ref_image" alt="image">-->
+          <img class="o-image" v-bind:src="ref_image" alt="image">
 
           <div class="o-img-switch-cnn T-m_image">
 
@@ -581,7 +617,7 @@ const svgMarkerT = {
 
               <li v-for="(index) in unique_number_of_images" class="o-img-switch-li">
 
-                <button class="o-img-switch-btn" @click="fn_switch_image(index)">{{index}}</button>
+                <button class="o-img-switch-btn" @click="fn_switch_image_desktop(index)">{{index}}</button>
 
               </li>
 
@@ -678,7 +714,9 @@ const svgMarkerT = {
   </div>
 </template>
 
-<style lang="scss" src="./_formaStyleBody.scss"/>
+<style lang="scss" src="./_styleBody.scss"/>
+<style lang="scss" src="./_styleBody_MENU.scss"/>
+<style lang="scss" src="./_styleBody_OBJECTS.scss"/>
 
 
 

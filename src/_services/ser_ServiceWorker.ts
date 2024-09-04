@@ -33,7 +33,9 @@ export const ser_sw_unregister = () => {
     navigator.serviceWorker.getRegistrations()
         .then(function(registrations) {
             for(let registration of registrations) {
-                registration.unregister()
+                registration.unregister().then(r => {
+                    console.log('Service worker unregistered');
+                })
             }
         })
 }

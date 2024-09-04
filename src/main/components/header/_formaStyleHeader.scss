@@ -1,7 +1,5 @@
 
-@import '@style/mixin.scss';
-
-.AuxiliaryLine0{@include AuxL_Horizontal(40px);}
+$dropTitle: 600px;
 
 .LPh-header{
   top: 0;
@@ -20,18 +18,20 @@
   flex-grow: 0;
   background-color: transparent;
 
-  @include for-size(600px) {
+  @media (max-width: $dropTitle) {
     padding-right: 0;
-  }}
+  }
+}
 
 .LPh-Title{
   margin-left: 55px;
   padding-top: 10px;
   background: transparent;
 
-  @include for-size(750px) {
+  @media (max-width: $dropTitle) {
     display:none;
-  }}
+  }
+}
 
 .hb-c-right{
   margin-left: auto;

@@ -26,7 +26,7 @@ export const useRootStore = defineStore({
 
         // if you change this, then change 'public/manifest.json' ["id"] as well
         // and index.html [uuid] as well
-        Released_id: '2024.08.17.f775bba3-a998-46cc-a4ea-8ed081068bc9',
+        Released_id: '2024.09.04.f775bba3-a998-46cc-a4ea-8ed081068bc9',
         Title: 'Vides Formas',
 
         // in session storage
@@ -44,12 +44,14 @@ export const useRootStore = defineStore({
             {id: 4, title: 'Icosahedron'    , path: 'i', value: false},
         ],
 
+        currentRoute: '',
+
         m:  'AIzaSyB14TR',
         a:  '74Nym584RN4Y',
         z:  'y6zcIN_AtZiw3-ew',
 
         mapId: 'aff95100f6e051a6',
-        //  mapStyleId: controled in :
+        //  mapStyleId: controlled in :
         // https://console.cloud.google.com/google/maps-apis/studio/maps/
 
         BROWSER: null,
@@ -71,6 +73,10 @@ export const useRootStore = defineStore({
             return this.$state.m + this.$state.a + this.$state.z;
         },
 
+        act_uid (payload: string) {
+            this.$state.uid = payload;
+        },
+
         // onMenuChange in header
         changeUiMENU(payload: string) {
 
@@ -86,7 +92,14 @@ export const useRootStore = defineStore({
                 if (payload === 'd') this.$state.formas[3].value = true;
                 if (payload === 'i') this.$state.formas[4].value = true;
 
+                // this.$state.act_currentRoute(payload);
+
             }
+        },
+
+        // changing active routes
+        act_currentRoute (payload: string) {
+            this.$state.currentRoute = payload;
         },
 
         act_isAuthenticated(payload: boolean) {
@@ -94,10 +107,6 @@ export const useRootStore = defineStore({
         },
         act_isAuthenticated_false() {
             this.$state.isAuthenticated = false;
-        },
-
-        act_uid (payload: string) {
-            this.$state.uid = payload;
         },
 
         // user browser

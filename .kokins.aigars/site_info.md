@@ -46,4 +46,20 @@ Admin Console : /auth/console
     - Service Accounts: Email (firebase-adminsdk-l1zlh@videsformas.iam.gserviceaccount.com)
 
 
-    
+
+index.html
+    manifest.json   https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json
+    <!--    XHTML Vocabulary    [https://www.w3.org/1999/xhtml/vocab]   -->
+    <!--    The Open Graph protocol [https://ogp.me]    -->
+    <!--    Twitter Card Tags   [https://developer.x.com/en/docs/x-for-websites/cards/overview/markup]  -->
+
+
+[//]: # (Swipe librrary)
+[//]: # (https://vueuse.org/core/useSwipe/)
+
+
+
+
+
+
+

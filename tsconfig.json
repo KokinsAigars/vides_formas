@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   tsconfig.json
@@ -11,10 +11,6 @@
 //  *
 
 {
-//  "extends": [
-//    "@tsconfig/node20/tsconfig.json",
-//    "@vue/tsconfig/tsconfig.dom.json",
-//  ],
   "include": [
           "config/env.d.ts",
           "config/typings.d.ts",
@@ -73,16 +69,5 @@
 
       "@style/*"      : ["src/assets/styles/*"]
     },
-
-//    "files": [],
-//    "references": [
-//      {
-//        "path": "config/tsconfig.node.json"
-//      },
-//      {
-//        "path": "config/tsconfig.app.json"
-//      }
-//    ],
-
   }
 }

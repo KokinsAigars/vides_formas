@@ -2,7 +2,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.16
+//  *   Built on 2024.09.04
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL Mixins [mixin.scss]
@@ -16,17 +16,30 @@
 @mixin AuxL_Vertical_R($AL-left) { right: $AL-left; z-index: 1500; position: absolute; min-height:  var(--V-screen-height); border-right: 1px dashed rgb(77, 226, 77);}
 
 
-$max-width: var(--M-max-width);
+$max-desktop-width: var(--M-max-width);
+$max-phone-width: var(--M-max-phone-width);
 $max-height: var(--M-max-height);
 
-  @mixin for-size($max-width) {
-      @media (max-width: $max-width) {
-        @content;
-      }
-  @media (min-width: #{$max-width + 1}px) {
+
+@mixin for-size($max-desktop-width) {
+  @media (max-width: $max-desktop-width) {
+    @content;
+  }
+  @media (min-width: #{$max-desktop-width + 1}px) {
     display: none;
   }
 }
+
+
+@mixin for-phone-size($max-phone-width) {
+  @media (max-width: $max-phone-width) {
+    @content;
+  }
+  @media (min-width: #{$max-phone-width + 1}px) {
+    display: none;
+  }
+}
+
 
 @mixin for-height-size($max-height) {
   @media (max-height: $max-height) {
@@ -36,3 +49,4 @@ $max-height: var(--M-max-height);
     display: none;
   }
 }
+
