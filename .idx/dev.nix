@@ -3,25 +3,28 @@
   packages = [
     pkgs.nodejs_20
   ];
-  idx.extensions = [
-    "svelte.svelte-vscode"
-    "vue.volar"
-  ];
-  idx.previews = {
+  env = {};
+  idx = {
+    extensions = [
+      "svelte.svelte-vscode"
+      "vue.volar"
+      "vymarkov.firebase-explorer"
+    ];
+    workspace = {
+      onCreate = {
+        npm-install = "npm install --no-audit --prefer-offline";
+      };
+      onStart = {};
+    };
     previews = {
-      web = {
-        command = [
-          "npm"
-          "run"
-          "dev"
-          "--"
-          "--port"
-          "$PORT"
-          "--host"
-          "0.0.0.0"
-        ];
-        manager = "web";
+      enable = true;
+      previews = {
+        web = {
+          command = [ "npm" "run" "dev" "--" "--port" "$PORT" "--host" "0.0.0.0" ];
+          manager = "web";
+        };
       };
     };
   };
+
 }
