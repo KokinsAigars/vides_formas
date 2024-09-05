@@ -11,13 +11,13 @@
 // Public Sans
 @font-face {
   font-family: 'PublicSansRegular';
-  src: url('@assets/Fonts/Public_Sans/PublicSans-Regular.ttf') format('ttf');
+  src: url('../fonts/Public_Sans/PublicSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'PublicSansThin';
-  src: url('@assets/Fonts/Public_Sans/PublicSans-Thin.ttf') format('ttf');
+  src: url('../fonts/Public_Sans/PublicSans-Thin.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -25,31 +25,69 @@
 // Mulish
 @font-face {
   font-family: 'MulishLight';
-  src: url('../Fonts/Mulish/static/Mulish-Light.ttf') format('ttf');
+  src: url('../fonts/Mulish/static/Mulish-Light.ttf') format('truetype');
 }
 
 // Gilroy
 @font-face {
   font-family: 'GilroyMedium';
-  src: url('../Fonts/gilroy/Gilroy-Medium.ttf') format('ttf');
+  src: url('../fonts/gilroy/Gilroy-Medium.ttf') format('truetype');
 }
 @font-face {
   font-family: 'GilroyRegular';
-  src: url('../Fonts/gilroy/Gilroy-Regular.ttf') format('ttf');
+  src: url('../fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
 }
 
 // Roboto
 @font-face {
   font-family: 'RobotoRegular';
-  src: url('../Fonts/Roboto/Roboto-Regular.ttf') format('ttf');
+  src: url('../fonts/Roboto/Roboto-Regular.ttf')  format('truetype');
 }
 @font-face {
   font-family: 'RobotoMedium';
-  src: url('../Fonts/Roboto/Roboto-Medium.ttf') format('ttf');
+  src: url('../fonts/Roboto/Roboto-Medium.ttf') format('truetype');
 }
 
 // ARIAL
 @font-face {
   font-family: 'ArialRegular';
-  src: url('../Fonts/Arial/ARIAL.ttf') format('ttf');
+  src: url('../fonts/Arial/ARIAL.ttf') format('truetype');
 }
+
+// Inter
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+// Georgia
+@font-face {
+  font-family: 'Georgia-Regular';
+  src: url('../fonts/Georgia/georgia.ttf') format('truetype');
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

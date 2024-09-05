@@ -2,13 +2,15 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.20
+//  *   Built on 2024.09.05
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   GLOBAL Typography [stylesTypography.scss]
 //  *
 //  *   Web Safe Fonts: sans-serif, serif, monospace
 
+// px to rem
+// https://nekocalc.com/px-to-rem-converter
 
 //<header> TITLE
 .T-h-Title, .T-administrative-Console-title{
@@ -63,6 +65,28 @@
     letter-spacing: normal;
     font-weight: 200;
     color: var(--light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+
+// home screen
+.t-hp{
+    font-family: 'Inter', sans-serif, serif, monospace;
+    font-size: 2rem;
+    line-height: 10rem;
+    letter-spacing: normal;
+    font-weight: 900;
+    color: var(--c-home-t-h);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+.t-bp{
+    font-family: 'Georgia-Regular', sans-serif, serif, monospace;
+    font-size: 1.125rem;
+    line-height: 2.025rem;
+    letter-spacing: normal;
+    font-weight: 400;
+    color: var(--c-home-t-h);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
 }
