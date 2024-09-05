@@ -27,7 +27,8 @@
           "vitest.config.*",
           "cypress.config.*",
           "nightwatch.conf.*",
-          "playwright.config.*"
+          "playwright.config.*",
+          "firebase.json"
         ],
   "exclude": ["src/**/__tests__/*"],
 
