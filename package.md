@@ -1,9 +1,21 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 [//]: # (production Dependencies)
 "dependencies": {
     "@emailjs/nodejs" - emails in web (not critical)
-    "axios" - http requests POST, GET (critical)
+    "axios" - http requests POST, GET (not critical)
     "bowser" - library that detects browser (not critical)
     "ua-parser-js" - library that detects browser (not critical)
     "core-js" - javascript (critical)
@@ -15,25 +27,24 @@
     "firebaseui" - hosting (needed)
     "pinia" - store (critical)
     "vue" - (critical)
-    "vue-i18n" - Internationalization (i18n) (needed)
+    "vue-i18n" - Internationalization (i18n) (not critical at this stage)
     "vue-router" - routing (critical)
     "vue3-router-tree" - routing (critical)
     "vue3-google-map" - Google Maps (needed)
 },
-
-[//]: # (development Dependencies)
-"devDependencies": {
+"devDependencies": { [//]: # (development Dependencies)
     "@rushstack/eslint-patch"
     "@tsconfig/node20"
     "@types/dat.gui" - 3D GUI  (not critical)
     "@types/node"
     "@types/three"
+    "@types/ua-parser-js"
     "@vitejs/plugin-vue" - compiler (critical)
     "@vitejs/plugin-vue-jsx" - compiler (critical)
     "firebase-tools" - hosting (needed)
     "sass" - styles (critical)
     "sass-loader" - styles (critical)
-    "three"
+    "three" - 3D in web page (needed)
     "ts-node"
     "typescript" -  (critical)
     "vite" - compiler (critical)
