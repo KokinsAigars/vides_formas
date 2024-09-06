@@ -19,10 +19,10 @@
 <template>
   <div class="cnn">
     <div class="h">
-      <p class="t-hp">The Top 8 Factors</p>
+      <p class="t-hp">Header</p>
     </div>
     <div class="b">
-      <p class="bp t-bp">These are the top 8 SEO ranking factors. There are 200+ other factors that Google takes into account, but these are the ones that you should focus on first:</p>
+      <p class="bp t-bp">Body</p>
     </div>
   </div>
 </template>
