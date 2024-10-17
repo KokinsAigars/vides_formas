@@ -3,7 +3,7 @@
 //  *
 //  *   Project Name: "Sacred Geometry Sites"
 //  *   Organization: VIVENTE
-//  *   Built on 2024.08.20
+//  *   Built on 2024.10.17
 //  *   Contributor(s): Aigars Kokins
 //  *
 //  *   Landing page (site) - body - component
@@ -28,7 +28,7 @@ const add_Images = ref<boolean>(true);
 
 const unique_geo_path = 'o/octahedron';
 const unique_img_path = 'o/o';
-const unique_number_of_images = ref<number>(3);
+const unique_number_of_images = ref<number>(4);
 
 const unique_gps = '57°45\'29.7"N 22°35\'48.3"E';
 const unique_gps_path = 'https://www.google.com/maps/place/57%C2%B045\'29.7%22N+22%C2%B035\'48.3%22E/@57.7521343,22.5792294,6836m'
