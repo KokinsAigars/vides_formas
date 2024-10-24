@@ -105,7 +105,6 @@ const mtlLoader = new MTLLoader();
 const objLoader = new OBJLoader();
 
 const btn_3D = ref<boolean>(true); const cls_webgl_container = ref(null); const ref_webgl = ref<HTMLCanvasElement | null>(null); let canvas = null; let scene = null; let camera = null; let light = null; let SpotLight1 = null; let controls = null; let axesHelper = null; let gui = null; let renderer = null; const circuitBreaker = ref<boolean>(false);
-
 const fn_init_Canvas = (timeout: number) => {
 
   setTimeout(function(){
@@ -168,7 +167,13 @@ const fn_init_Canvas = (timeout: number) => {
   }
 
 }
-
+const fn_add_Controls   = () => {
+  controls = new OrbitControls(camera, canvas);
+  controls.enableDamping = true;
+  controls.campingFactor = 0.25;
+  controls.enabledZoom = true;
+  controls.enabled = true;
+}
 const fn_add_Camera     = () => {
   camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
   camera.position.x = 1.3;
@@ -177,13 +182,6 @@ const fn_add_Camera     = () => {
   camera.lookAt(new THREE.Vector3(0, 0, 0));
   scene.add(camera);
 
-}
-const fn_add_Controls   = () => {
-  controls = new OrbitControls(camera, canvas);
-  controls.enableDamping = true;
-  controls.campingFactor = 0.25;
-  controls.enabledZoom = true;
-  controls.enabled = true;
 }
 const fn_add_Geo        = () => {
 
