@@ -466,7 +466,7 @@ function fn_switch_image_desktop(input_number:number){
 // --------'map'
 import { GoogleMap, Marker } from "vue3-google-map";
 const p = RootStore.constructed();
-const map_id  = RootStore.mapId;
+const map_id  = null;
 const center = { lat: 56.927628, lng: 24.372477 };
 const zoom  = 7;
 //const version = 3.47; //IE supported version
